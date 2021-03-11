@@ -6,3 +6,8 @@
   sections:
     - file: markdown
     - file: notebooks
+
+- part: Workshop I: Annotation and Linguistic Data
+  chapters:
+  - file: w1/overview
+  - file: w1/intro-to-linguistic-data
