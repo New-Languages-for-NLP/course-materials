@@ -1,7 +1,7 @@
-Welcome to your Jupyter Book
+New Languages for NLP: Building Linguistic Diversity in the Digital Humanities 
 ============================
 
-This is a small sample book to give you a feel for how book content is
-structured.
+This is a book that contains instructional materials for our workshops. 
 
-Check out the content pages bundled with this sample book to get started.
+
+
