@@ -2,12 +2,9 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 #
 - file: intro
-- file: content
-  sections:
-    - file: markdown
-    - file: notebooks
+  numbered: true
 
-- part: Workshop I: Annotation and Linguistic Data
+- part: Workshop I Annotation and Linguistic Data
   chapters:
   - file: w1/overview
   - file: w1/intro-to-linguistic-data
