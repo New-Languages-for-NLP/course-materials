@@ -22,7 +22,7 @@ __Annotation work__
 - Part of Speech 
 - Lemma
 - Named entity
-- Coreference 
+- Coreferences 
 - Morphological features
 2. Click on each token to add (How to set key-bindings)
 3. When finished with all layers click on the lock icon to mark as complete. 
