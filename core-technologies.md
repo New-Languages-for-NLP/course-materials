@@ -5,7 +5,6 @@ An annotated list of the technology and tools used in Workshop 1 with explanatio
 
 
 Specific context in which these will be used, what it is, how to learn and practice   
-- Markdown Andy
 - Yaml Andy
 - GitHub - Toma
 - jupyter notebooks - Quinn
