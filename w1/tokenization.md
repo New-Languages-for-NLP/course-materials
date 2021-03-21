@@ -1,4 +1,5 @@
-# Tokenization
+Tokenization
+=======================
 
 From your computer’s perspective, text is nothing more than a sequence of characters. If you ask Python to iterate over a snippet of text, you’ll see that it returns just one letter at a time. Note that the index starts at 0, not 1 and that spaces are part of the sequence. 
 
