@@ -47,7 +47,7 @@ text.find("rivers")
 
 Keep in mind that computers are very precise and picky.  Any messiness in the text will cause the word to be missed, so `text.find("Rivers")` returns -1, which means that the sequence could not be found. You can also accidentally match characters that are part of the sequence, but not part of a word.  Try `text.find("y riv")`.  You get 15 as the answer because that is the beginning of the “y riv” sequence, which is present in the text, but isn’t a thing that you’d normally want to find. 
 
-## Natural language processing 
+## Natural language processing & Tokenization
 
 While pure Python is sufficient for many tasks, natural language processing (NLP) libraries allow us to work computationally with the text as language. NLP reveals a whole host of linguistic attributes of the text that can be used for analysis.  For example, the machine will know if a word is a noun or a verb with part of speech tagging.  We can find the direct object of a verb to determine who is speaking and the subject of that speech.  NLP gives your programs an instant boost of information that opens new forms of analysis. 
 
@@ -77,7 +77,7 @@ If you look at the `tokenizer_exceptions.py` files for the existing languages, y
 
 ## Adding new exceptions for your language 
 
-spaCy comes with a lot of opinions and defaults right from the beginning.  In most cases,this will save you time. You can find the default tokenizer exceptions by importing them.  
+spaCy comes with a lot of opinions and defaults right from the beginning.  In most cases, this will save you time. You can find the default tokenizer exceptions by importing them.  
 
 ```python
 from spacy.lang.tokenizer_exceptions import BASE_EXCEPTIONS

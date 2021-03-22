@@ -224,8 +224,8 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#natural-language-processing">
-     3.1. Natural language processing
+    <a class="reference internal nav-link" href="#natural-language-processing-tokenization">
+     3.1. Natural language processing &amp; Tokenization
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -339,8 +339,8 @@
 </pre></div>
 </div>
 <p>Keep in mind that computers are very precise and picky.  Any messiness in the text will cause the word to be missed, so <code class="docutils literal notranslate"><span class="pre">text.find(&quot;Rivers&quot;)</span></code> returns -1, which means that the sequence could not be found. You can also accidentally match characters that are part of the sequence, but not part of a word.  Try <code class="docutils literal notranslate"><span class="pre">text.find(&quot;y</span> <span class="pre">riv&quot;)</span></code>.  You get 15 as the answer because that is the beginning of the “y riv” sequence, which is present in the text, but isn’t a thing that you’d normally want to find.</p>
-<div class="section" id="natural-language-processing">
-<h2><span class="section-number">3.1. </span>Natural language processing<a class="headerlink" href="#natural-language-processing" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="natural-language-processing-tokenization">
+<h2><span class="section-number">3.1. </span>Natural language processing &amp; Tokenization<a class="headerlink" href="#natural-language-processing-tokenization" title="Permalink to this headline">¶</a></h2>
 <p>While pure Python is sufficient for many tasks, natural language processing (NLP) libraries allow us to work computationally with the text as language. NLP reveals a whole host of linguistic attributes of the text that can be used for analysis.  For example, the machine will know if a word is a noun or a verb with part of speech tagging.  We can find the direct object of a verb to determine who is speaking and the subject of that speech.  NLP gives your programs an instant boost of information that opens new forms of analysis.</p>
 <p>Our first NLP task is tokenization. This is where our text is split into meaningful parts; usually word tokens. The sentence, “Siberia has many rivers.” can be split into the tokens: <code class="docutils literal notranslate"><span class="pre">&lt;Siberia&gt;&lt;has&gt;&lt;many&gt;&lt;rivers&gt;&lt;.&gt;</span></code>  Note that the ending punctuation is now distinct from the word rivers. The rules for tokenization depend on the language your are using. For English and other languages with spaces between words, you often get good results simply by splitting the tokens on spaces. However, a host of rules are also needed to separate punctuation from a token, to split and normalize words (ex. “Let’s” &gt; Let us) as well as specific exceptions that don’t follow regular patterns. The <a class="reference external" href="https://spacy.io/usage/linguistic-features/#tokenization">spaCy documentation</a> is really excellent on this topic and I recommend that you start there.</p>
 <p>spaCy’s tokenization rules begins splitting tokens on spaces. It’s nearly identical what you’d get from <code class="docutils literal notranslate"><span class="pre">&quot;Siberia</span> <span class="pre">has</span> <span class="pre">many</span> <span class="pre">rivers.&quot;.split()</span></code>, which is <code class="docutils literal notranslate"><span class="pre">['Siberia','has','many','rivers.']</span></code>  Keep a close eye on the period in this sentence.  Once again, Python had trouble identifying the period as a distinct token. Once the text is split on the spaces, spaCy applies as series of checks.</p>
@@ -364,7 +364,7 @@
 </div>
 <div class="section" id="adding-new-exceptions-for-your-language">
 <h2><span class="section-number">3.2. </span>Adding new exceptions for your language<a class="headerlink" href="#adding-new-exceptions-for-your-language" title="Permalink to this headline">¶</a></h2>
-<p>spaCy comes with a lot of opinions and defaults right from the beginning.  In most cases,this will save you time. You can find the default tokenizer exceptions by importing them.</p>
+<p>spaCy comes with a lot of opinions and defaults right from the beginning.  In most cases, this will save you time. You can find the default tokenizer exceptions by importing them.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.lang.tokenizer_exceptions</span> <span class="kn">import</span> <span class="n">BASE_EXCEPTIONS</span>
 </pre></div>
 </div>
@@ -593,7 +593,7 @@ spaCy works well with RTL langauges, but the tokenizer moves from left to right.
         
           <div class="extra_footer">
             <p>
-... Add license info here...
+<a target="_blank" href="https://www.neh.gov/divisions/odh"><img src="https://www.neh.gov/sites/default/files/inline-files/NEH-Horizontal-Stk-Seal-Black820.jpg" /></a>
 </p>
 
           </div>
