@@ -43,3 +43,19 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: _build/html
         publish_branch: gh-pages
+        
+    - name: Deploy to Princeton server
+      uses: easingthemes/ssh-deploy@v2.1.5
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: _build/html
+        publish_branch: gh-pages
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+        ARGS: "-rltgoDzvO"
+        SOURCE: "dist/"
+        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+        REMOTE_USER: ${{ secrets.REMOTE_USER }}
+        TARGET: ${{ secrets.REMOTE_TARGET }} #The target directory 
+
+
