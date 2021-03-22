@@ -125,7 +125,7 @@ TOKENIZER_EXCEPTIONS = update_exc(BASE_EXCEPTIONS, yikes)
 
 
 ```
-Let's test to confirm that our the lemmatizer is acting as we'd expect. 
+Let's test to confirm that our the tokenizer is acting as we'd expect. 
 
 ```python 
 from spacy.lang.en import English
