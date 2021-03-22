@@ -167,7 +167,7 @@ doc = nlp('I luv this!')
 assert doc[1].norm_ == 'love'
 ```
 
-Challenge:
+__Challenge__:
 Add rules to the tokenizer so that this sentence "MAH TOKENIZR LOVEZ DIS SENTENCE" returns: ["My","tokenizer","loves","this","sentence"] [or make your own!](https://speaklolcat.com/)
 
 solution:
