@@ -51,12 +51,15 @@ Keep in mind that computers are very precise and picky.  Any messiness in the te
 
 While pure Python is sufficient for many tasks, natural language processing (NLP) libraries allow us to work computationally with the text as language. NLP reveals a whole host of linguistic attributes of the text that can be used for analysis.  For example, the machine will know if a word is a noun or a verb with part of speech tagging.  We can find the direct object of a verb to determine who is speaking and the subject of that speech.  NLP gives your programs an instant boost of information that opens new forms of analysis. 
 
-Our first NLP task is tokenization. This is where our text is split into meaningful parts; usually word tokens. The sentence, “Siberia has many rivers.” can be split into the tokens: ```<Siberia><has><many><rivers><.>```  Note that the ending punctuation is now distinct from the word rivers. The rules for tokenization depend on the language your are using. For English and other languages with spaces between words, you often get good results simply by splitting the tokens on spaces. However, a host of rules are also needed to separate punctuation from a token, to split and normalize words (ex. "Let's" > Let us) as well as specific exceptions that don't follow regular patterns. The [spaCy documentation](https://spacy.io/usage/linguistic-features/#tokenization) is really excellent on this topic and I recommend that you start there.
+Our first NLP task is tokenization. This is where our text is split into meaningful parts; usually word tokens, spans ("New York City") or sentences. The sentence, “Siberia has many rivers.” can be split into five tokens: ```<Siberia><has><many><rivers><.>```  Note that the ending punctuation is now distinct from the word rivers. The rules for tokenization depend on the language your are using. For English and other languages with spaces between words, you often get good results simply by splitting the tokens on spaces. However, a host of rules are also needed to separate punctuation from a token, to split and normalize words (ex. "Let's" = "Let us") as well as specific exceptions that don't follow regular patterns. 
 
-spaCy's tokenization rules begins splitting tokens on spaces. It's nearly identical what you'd get from `"Siberia has many rivers.".split()`, which is `['Siberia','has','many','rivers.']`  Keep a close eye on the period in this sentence.  Once again, Python had trouble identifying the period as a distinct token. Once the text is split on the spaces, spaCy applies as series of checks.  
-- Exceptions: This is a list of specific patterns to look for. For example, "1 am", will become `<1><a.m.>` The tokenizer not only notices that 'am' isn't the verb `to be`, but also that the formatting is ambiguous. If we turn all AM, am, and a.m into a.m. then we have a common unit for analysis. This is especially important when you are interested in word frequencies in a text.  
+The [spaCy documentation](https://spacy.io/usage/linguistic-features/#tokenization) is really excellent on this topic and I recommend that you start there. When you're done come back and we'll cover some practical topics and processes that you'll need when creating a new language object. 
 
-The exceptions for your language are most often found in `spacy/lang` directory in a `tokenizer_exceptions.py` file. For example, here are the exceptions for English to handle shortened forms of 'because' such as 'cause. These exception prevent the tokenizer from splitting off the `'` from `coz`. 
+## spaCy's Tokenizer 
+
+spaCy's tokenization begins by splitting tokens on spaces. It's nearly identical what you'd get from `"Siberia has many rivers.".split()`, which is `['Siberia','has','many','rivers.']`  Keep a close eye on the period in this sentence.  Once again, Python had trouble identifying the period as a distinct token. Once the text is split on the spaces, spaCy applies as series of checks.  
+
+Exceptions are a list of specific patterns to look for and what to do with them. The exceptions for your language are most often found in `spacy/lang` directory in a `tokenizer_exceptions.py` file. For example, here are the exceptions for English to handle shortened forms of 'because' such as 'cause. These exception prevent the tokenizer from splitting off the `'` from `coz`. 
 
 __[tokenizer_exceptions.py](https://github.com/explosion/spaCy/blob/34e13c1161f7d42b961026b12d2eb3d3165bae27/spacy/lang/en/tokenizer_exceptions.py#L392)__
 
@@ -73,7 +76,7 @@ __[tokenizer_exceptions.py](https://github.com/explosion/spaCy/blob/34e13c1161f7
 
 Note that the spaCy developers have accounted for the most common variations of 'because' and deliberately decided to incorporate slang and idomatic usage. They have added a normalized form (NORM) of `because`. If we're interested in word frequencies and not variation, this can be a very useful. This is available to you as `token.norm_`.     
 
-If you look at the `tokenizer_exceptions.py` files for the existing languages, you'll see a wide range of exceptions and ways of writing the rules. For the sake of simplicity, we provide a simple way to add exceptions for your language.
+If you look at the `tokenizer_exceptions.py` files for the existing languages, you'll see a wide range of exceptions and ways of writing the rules. For the sake of simplicity, we'll discuss the two most common ways to add exceptions for your language.
 
 ## Adding new exceptions for your language 
 
@@ -114,7 +117,7 @@ For example:
 ```python
 from spacy.symbols import ORTH
 from spacy.util import update_exc
-
+         #'match':   [{what to do }]
 yikes = {'BIG YIKES':[{ORTH: 'BIG YIKES'}]}
 TOKENIZER_EXCEPTIONS = update_exc(BASE_EXCEPTIONS, yikes)
 
@@ -144,7 +147,7 @@ assert doc[2].text == "BIG YIKES"
 [Yikes, !, BIG YIKES, !]
 ```
 
-That's exciting! We've made a change to the tokenization rules and it worked. Just keep in mind that exceptions are very specific.  If we have `"Yikes! BIG Yikes!"`, we get "BIG" and "Yikes" as separate tokens because "Yikes" isn't all in caps. Yes, it's that picky. When adding exceptions, you'll want to add rules for all of the variations that your model is likely to encounter.  
+That's exciting! We've made a change to the tokenization rules and it worked. Just keep in mind that exceptions are very specific.  If we have `"Yikes! BIG yikes!"`, we get "BIG" and "yikes" as separate tokens because "yikes" isn't all in caps. Yes, it's that picky. When adding specific exceptions, you'll want to add rules for all of the variations that your model is likely to encounter.  
 
 To build on our momentum, let's discuss several other common types of tokenizer exceptions.
 
@@ -186,9 +189,9 @@ assert [token.norm_ for token in doc] == ['My', 'tokenizer', 'loves', 'this', 's
 
 ## Separate a word into two tokens 
 
-It's very common to have words that should be split into separate tokens, but there isn't a regular infix that will make the cut.  Here we need an exception. As an example, let's explore Kummerspeck ('grief bacon') the German name for weight gain from emotional eating.
+It's very common to have words that should be split into separate tokens, but there isn't a regular infix that will make the cut.  Here we need an exception. As an example, let's explore Kummerspeck ('grief bacon') the German name for weight from emotional eating.
 
-Here we can use exception's list to split the word into parts and detail how to handle each of the new tokens: `'matchword':[{match}{word}]` 
+Here we can use the exceptions list to split the word into parts and detail how to handle each of the new tokens: `'matchword':[{match}{word}]` 
 
 ```python
 grief_bacon = {'Kummerspeck':[{ORTH:"Kummer"},{ORTH:"speck"}]}
@@ -224,14 +227,14 @@ TOKENIZER_PREFIXES = (
 )
 ```
 
-A third approach uses regular expressions. Regex is a serious pain in the butt.  There are regex masters out there, but most people Google helplessly until they get it to work.  A very helpful resource is [regex101](https://regex101.com/).  This is a website that let's you build a regular expression see its matches in a text.  There are also very helpful explainations to get you started. For the current example, we want to create a tokenization exception for a "$" followed by numbers.  One way of expressing that is "\$\d*", which will match any string with the charachter "$" followed by digits (\d) repeating any number of times (*).  If you try it out in regex101, you'll see that we get matches on "$1","$10000" and "$10000000".  
+A third approach uses regular expressions. Regex is a serious pain in the butt.  There are regex masters out there, but most people Google helplessly until they get it to work.  A very helpful resource is [regex101](https://regex101.com/).  This is a website that let's you build a regular expression see its matches in a text.  There are also very helpful explainations to get you started. For the current example, we want to create a tokenization exception for a `$` followed by numbers.  One way of expressing that is `"\$\d*"`, which will match any string with the charachter `$` followed by digits (`\d`) repeating any number of times (`*`).  If you try it out in regex101, you'll see that we get matches on `$1`, `$10000` and `$10000000`.  
 
 ```python
 TOKENIZER_PREFIXES = (
     r"\$\d*" 
 )
 ```
-Wondering what the r is for?  It's Python's raw string, which treats a backslash as a literal character and won't mistake it for a new line \n or tab \t or other escape charachters with a "\" in them. 
+Wondering what the r is for?  It's Python's raw string, which treats a backslash as a literal character and won't mistake it for a new line \n or tab \t or other escape charachters with a `\` in them. 
 
 We can also add a rule for all of the currency symbols
 ```python
