@@ -1,5 +1,6 @@
 import pytest
 
+
 def f():
     raise SystemExit(1)
 
