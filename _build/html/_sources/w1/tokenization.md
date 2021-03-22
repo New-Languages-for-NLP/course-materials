@@ -47,7 +47,7 @@ text.find("rivers")
 
 Keep in mind that computers are very precise and picky.  Any messiness in the text will cause the word to be missed, so `text.find("Rivers")` returns -1, which means that the sequence could not be found. You can also accidentally match characters that are part of the sequence, but not part of a word.  Try `text.find("y riv")`.  You get 15 as the answer because that is the beginning of the “y riv” sequence, which is present in the text, but isn’t a thing that you’d normally want to find. 
 
-## Natural language processing 
+## Natural language processing & Tokenization
 
 While pure Python is sufficient for many tasks, natural language processing (NLP) libraries allow us to work computationally with the text as language. NLP reveals a whole host of linguistic attributes of the text that can be used for analysis.  For example, the machine will know if a word is a noun or a verb with part of speech tagging.  We can find the direct object of a verb to determine who is speaking and the subject of that speech.  NLP gives your programs an instant boost of information that opens new forms of analysis. 
 
@@ -56,7 +56,7 @@ Our first NLP task is tokenization. This is where our text is split into meaning
 spaCy's tokenization rules begins splitting tokens on spaces. It's nearly identical what you'd get from `"Siberia has many rivers.".split()`, which is `['Siberia','has','many','rivers.']`  Keep a close eye on the period in this sentence.  Once again, Python had trouble identifying the period as a distinct token. Once the text is split on the spaces, spaCy applies as series of checks.  
 - Exceptions: This is a list of specific patterns to look for. For example, "1 am", will become `<1><a.m.>` The tokenizer not only notices that 'am' isn't the verb `to be`, but also that the formatting is ambiguous. If we turn all AM, am, and a.m into a.m. then we have a common unit for analysis. This is especially important when you are interested in word frequencies in a text.  
 
-The exceptions for your language are most often found in `spacy/lang` directory in a `tokenizer_exceptions.py` file. For example, here are exceptions for English and shortened forms of because. These exception prevent the tokenizer from splitting the `'` from `coz`.  Rather we take the whole thing and normalize it to `because`.    
+The exceptions for your language are most often found in `spacy/lang` directory in a `tokenizer_exceptions.py` file. For example, here are the exceptions for English to handle shortened forms of 'because' such as 'cause. These exception prevent the tokenizer from splitting off the `'` from `coz`. 
 
 __[tokenizer_exceptions.py](https://github.com/explosion/spaCy/blob/34e13c1161f7d42b961026b12d2eb3d3165bae27/spacy/lang/en/tokenizer_exceptions.py#L392)__
 
@@ -71,13 +71,13 @@ __[tokenizer_exceptions.py](https://github.com/explosion/spaCy/blob/34e13c1161f7
 {ORTH: "'Cuz", NORM: "because"},
 ```
 
-Note that the spaCy developers have accounted for the most common variations of 'because' and deliberately decided to incorporate slang and idomatic usage. 
+Note that the spaCy developers have accounted for the most common variations of 'because' and deliberately decided to incorporate slang and idomatic usage. They have added a normalized form (NORM) of `because`. If we're interested in word frequencies and not variation, this can be a very useful. This is available to you as `token.norm_`.     
 
-How to add new exceptions. If you look at the tokenizer_exceptions.py files for the existing languages, you'll see a wide range of exceptions and ways of writing the rules. For the sake of simplicity, we provide a simple way to add exceptions for your language.
+If you look at the `tokenizer_exceptions.py` files for the existing languages, you'll see a wide range of exceptions and ways of writing the rules. For the sake of simplicity, we provide a simple way to add exceptions for your language.
 
 ## Adding new exceptions for your language 
 
-spaCy comes with a lot of opinions and defaults right from the beginning.  In most cases,this will save you time. You can find the default tokenizer exceptions by importing them.  
+spaCy comes with a lot of opinions and defaults right from the beginning.  In most cases, this will save you time. You can find the default tokenizer exceptions by importing them.  
 
 ```python
 from spacy.lang.tokenizer_exceptions import BASE_EXCEPTIONS
@@ -97,6 +97,12 @@ You'll find that `BASE_EXCEPTIONS` is a Python dictionary.
 ```
 
 spaCy also comes with a nice utility function that lets you add new exceptions to the defaults: `update_exc()`.
+
+For clarity, we will refer to two types of exceptions.  The first are specific, or one-time, exceptions.  These define a very specific pattern for spaCy to look for. If it finds a match, it will apply specific tokenization rules to it. In the example above, `'Cuz` would normally be split into `<'><Cuz>` because the spaCy defaults would treat `'` as a prefix. To prevent this, we can add a specific exception in `tokenizer_exceptions.py`  
+
+Rule-based exceptions look for more general patterns. For the example above, we could add an exception for any time we find `'` followed by the letter c. This would be much more flexible and catch more variations on the form. Instead of 8 specific rules, we'd have one pattern.  But be careful, our rule-based pattern would also apply to `'cuse me!` which is a shortened form of `excuse me!` That might be a good thing, it might not. 
+
+The lesson here is that it's up to you when to use specific exceptions and when to use rule-based exceptions.      
 
 ## Specific Exceptions 
 
