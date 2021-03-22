@@ -4,7 +4,16 @@
 - file: intro
   numbered: true
 
+- part: Preparation
+  chapters:  
+  - file: content
+  - file: core-technologies
+  - file: markdown
+
 - part: Workshop I Annotation and Linguistic Data
   chapters:
   - file: w1/overview
   - file: w1/intro-to-linguistic-data
+  - file: w1/tokenization
+
+
