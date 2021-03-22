@@ -56,6 +56,7 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Annotation with INCEpTION" href="annotation.html" />
     <link rel="prev" title="2. Introduction to Linguistic Data" href="intro-to-linguistic-data.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -141,6 +142,11 @@
    4. Building A New Language Tokenizer
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="annotation.html">
+   5. Annotation with INCEpTION
+  </a>
+ </li>
 </ul>
 
 </nav> <!-- To handle the deprecated key -->
@@ -191,22 +197,6 @@
 </div>
 
             <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fw1/tokenization.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
 
 
             <!-- Full screen (wrap in <a> to have style consistency -->
@@ -357,7 +347,7 @@
 <ul class="simple">
 <li><p>Exceptions: This is a list of specific patterns to look for. For example, “1 am”, will become <code class="docutils literal notranslate"><span class="pre">&lt;1&gt;&lt;a.m.&gt;</span></code> The tokenizer not only notices that ‘am’ isn’t the verb <code class="docutils literal notranslate"><span class="pre">to</span> <span class="pre">be</span></code>, but also that the formatting is ambiguous. If we turn all AM, am, and a.m into a.m. then we have a common unit for analysis. This is especially important when you are interested in word frequencies in a text.</p></li>
 </ul>
-<p>The exceptions for your language are most often found in <code class="docutils literal notranslate"><span class="pre">spacy/lang</span></code> directory in a <code class="docutils literal notranslate"><span class="pre">tokenizer_exceptions.py</span></code> file. For example, here are exceptions for English and shortened forms of because. These exception prevent the tokenizer from splitting the <code class="docutils literal notranslate"><span class="pre">'</span></code> from <code class="docutils literal notranslate"><span class="pre">coz</span></code>.  Rather we take the whole thing and normalize it to <code class="docutils literal notranslate"><span class="pre">because</span></code>.</p>
+<p>The exceptions for your language are most often found in <code class="docutils literal notranslate"><span class="pre">spacy/lang</span></code> directory in a <code class="docutils literal notranslate"><span class="pre">tokenizer_exceptions.py</span></code> file. For example, here are the exceptions for English to handle shortened forms of ‘because’ such as ‘cause. These exception prevent the tokenizer from splitting off the <code class="docutils literal notranslate"><span class="pre">'</span></code> from <code class="docutils literal notranslate"><span class="pre">coz</span></code>.</p>
 <p><strong><a class="reference external" href="https://github.com/explosion/spaCy/blob/34e13c1161f7d42b961026b12d2eb3d3165bae27/spacy/lang/en/tokenizer_exceptions.py#L392">tokenizer_exceptions.py</a></strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;&#39;Cause&quot;</span><span class="p">,</span> <span class="n">NORM</span><span class="p">:</span> <span class="s2">&quot;because&quot;</span><span class="p">},</span>
 <span class="p">{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;&#39;cause&quot;</span><span class="p">,</span> <span class="n">NORM</span><span class="p">:</span> <span class="s2">&quot;because&quot;</span><span class="p">},</span>
@@ -369,8 +359,8 @@
 <span class="p">{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;&#39;Cuz&quot;</span><span class="p">,</span> <span class="n">NORM</span><span class="p">:</span> <span class="s2">&quot;because&quot;</span><span class="p">},</span>
 </pre></div>
 </div>
-<p>Note that the spaCy developers have accounted for the most common variations of ‘because’ and deliberately decided to incorporate slang and idomatic usage.</p>
-<p>How to add new exceptions. If you look at the tokenizer_exceptions.py files for the existing languages, you’ll see a wide range of exceptions and ways of writing the rules. For the sake of simplicity, we provide a simple way to add exceptions for your language.</p>
+<p>Note that the spaCy developers have accounted for the most common variations of ‘because’ and deliberately decided to incorporate slang and idomatic usage. They have added a normalized form (NORM) of <code class="docutils literal notranslate"><span class="pre">because</span></code>. If we’re interested in word frequencies and not variation, this can be a very useful. This is available to you as <code class="docutils literal notranslate"><span class="pre">token.norm_</span></code>.</p>
+<p>If you look at the <code class="docutils literal notranslate"><span class="pre">tokenizer_exceptions.py</span></code> files for the existing languages, you’ll see a wide range of exceptions and ways of writing the rules. For the sake of simplicity, we provide a simple way to add exceptions for your language.</p>
 </div>
 <div class="section" id="adding-new-exceptions-for-your-language">
 <h2><span class="section-number">3.2. </span>Adding new exceptions for your language<a class="headerlink" href="#adding-new-exceptions-for-your-language" title="Permalink to this headline">¶</a></h2>
@@ -391,6 +381,9 @@
 </pre></div>
 </div>
 <p>spaCy also comes with a nice utility function that lets you add new exceptions to the defaults: <code class="docutils literal notranslate"><span class="pre">update_exc()</span></code>.</p>
+<p>For clarity, we will refer to two types of exceptions.  The first are specific, or one-time, exceptions.  These define a very specific pattern for spaCy to look for. If it finds a match, it will apply specific tokenization rules to it. In the example above, <code class="docutils literal notranslate"><span class="pre">'Cuz</span></code> would normally be split into <code class="docutils literal notranslate"><span class="pre">&lt;'&gt;&lt;Cuz&gt;</span></code> because the spaCy defaults would treat <code class="docutils literal notranslate"><span class="pre">'</span></code> as a prefix. To prevent this, we can add a specific exception in <code class="docutils literal notranslate"><span class="pre">tokenizer_exceptions.py</span></code></p>
+<p>Rule-based exceptions look for more general patterns. For the example above, we could add an exception for any time we find <code class="docutils literal notranslate"><span class="pre">'</span></code> followed by the letter c. This would be much more flexible and catch more variations on the form. Instead of 8 specific rules, we’d have one pattern.  But be careful, our rule-based pattern would also apply to <code class="docutils literal notranslate"><span class="pre">'cuse</span> <span class="pre">me!</span></code> which is a shortened form of <code class="docutils literal notranslate"><span class="pre">excuse</span> <span class="pre">me!</span></code> That might be a good thing, it might not.</p>
+<p>The lesson here is that it’s up to you when to use specific exceptions and when to use rule-based exceptions.</p>
 </div>
 <div class="section" id="specific-exceptions">
 <h2><span class="section-number">3.3. </span>Specific Exceptions<a class="headerlink" href="#specific-exceptions" title="Permalink to this headline">¶</a></h2>
@@ -423,7 +416,7 @@
 <span class="k">assert</span> <span class="n">doc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s2">&quot;BIG YIKES&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>[ t for t in doc]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[ t for t in doc]
 [Yikes, !, BIG YIKES, !]
 </pre></div>
 </div>
@@ -540,7 +533,7 @@ Add rules to the tokenizer so that this sentence “MAH TOKENIZR LOVEZ DIS SENTE
 <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>[₪, 181, בלבד, !, משלוח, חינם, !]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[₪, 181, בלבד, !, משלוח, חינם, !]
 </pre></div>
 </div>
 <p>Extra brain teaser: Hebrew is written from right to left, so why isn’t ₪ a suffix?
@@ -586,6 +579,7 @@ spaCy works well with RTL langauges, but the tokenizer moves from left to right.
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="intro-to-linguistic-data.html" title="previous page"><span class="section-number">2. </span>Introduction to Linguistic Data</a>
+    <a class='right-next' id="next-link" href="annotation.html" title="next page"><span class="section-number">5. </span>Annotation with INCEpTION</a>
 
         </div>
         
@@ -597,7 +591,12 @@ spaCy works well with RTL langauges, but the tokenizer moves from left to right.
         
           By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
         
-            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            <p>
+... Add license info here...
+</p>
+
+          </div>
       </p>
     </div>
   </footer>

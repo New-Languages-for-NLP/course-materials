@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Annotation with INCEpTION &#8212; New Languages for NLP Building Linguistic Diversity in the Digital Humanities</title>
+    <title>5. Annotation with INCEpTION &#8212; New Languages for NLP Building Linguistic Diversity in the Digital Humanities</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -54,6 +54,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="3. Tokenization" href="tokenization.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -117,7 +118,7 @@
   Workshop I Annotation and Linguistic Data
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="overview.html">
    1. Welcome to Workshop I
@@ -136,6 +137,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="tokenization.html#building-a-new-language-tokenizer">
    4. Building A New Language Tokenizer
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   5. Annotation with INCEpTION
   </a>
  </li>
 </ul>
@@ -189,22 +195,6 @@
 
             <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fw1/annotation.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
 
             <!-- Full screen (wrap in <a> to have style consistency -->
             <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
@@ -227,37 +217,37 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#configure-your-project-in-inception">
-   Configure your project in INCEpTION
+   5.1. Configure your project in INCEpTION
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#upload-annotated-texts-from-cadet">
-   Upload annotated texts from Cadet
+   5.2. Upload annotated texts from Cadet
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#delegate-work-to-annotators">
-   Delegate work to annotators
+   5.3. Delegate work to annotators
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#monitor-progress-and-agreement">
-   Monitor progress and agreement
+   5.4. Monitor progress and agreement
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#curate-completed-texts">
-   Curate completed texts
+   5.5. Curate completed texts
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#export-your-text-for-model-training">
-   Export your text for model training
+   5.6. Export your text for model training
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#select-the-layer-you-want-to-annotate">
-   Select the layer you want to annotate
+   5.7. Select the layer you want to annotate
   </a>
  </li>
 </ul>
@@ -273,36 +263,36 @@
               <div>
                 
   <div class="section" id="annotation-with-inception">
-<h1>Annotation with INCEpTION<a class="headerlink" href="#annotation-with-inception" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">5. </span>Annotation with INCEpTION<a class="headerlink" href="#annotation-with-inception" title="Permalink to this headline">¶</a></h1>
 <p><strong>Overview</strong></p>
 <div class="section" id="configure-your-project-in-inception">
-<h2>Configure your project in INCEpTION<a class="headerlink" href="#configure-your-project-in-inception" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.1. </span>Configure your project in INCEpTION<a class="headerlink" href="#configure-your-project-in-inception" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>create user accounts for annotators</p></li>
 <li></li>
 </ul>
 </div>
 <div class="section" id="upload-annotated-texts-from-cadet">
-<h2>Upload annotated texts from Cadet<a class="headerlink" href="#upload-annotated-texts-from-cadet" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2. </span>Upload annotated texts from Cadet<a class="headerlink" href="#upload-annotated-texts-from-cadet" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="delegate-work-to-annotators">
-<h2>Delegate work to annotators<a class="headerlink" href="#delegate-work-to-annotators" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.3. </span>Delegate work to annotators<a class="headerlink" href="#delegate-work-to-annotators" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>how to do this</p></li>
 </ul>
 </div>
 <div class="section" id="monitor-progress-and-agreement">
-<h2>Monitor progress and agreement<a class="headerlink" href="#monitor-progress-and-agreement" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.4. </span>Monitor progress and agreement<a class="headerlink" href="#monitor-progress-and-agreement" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="curate-completed-texts">
-<h2>Curate completed texts<a class="headerlink" href="#curate-completed-texts" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.5. </span>Curate completed texts<a class="headerlink" href="#curate-completed-texts" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="export-your-text-for-model-training">
-<h2>Export your text for model training<a class="headerlink" href="#export-your-text-for-model-training" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.6. </span>Export your text for model training<a class="headerlink" href="#export-your-text-for-model-training" title="Permalink to this headline">¶</a></h2>
 <p><strong>Annotation work</strong></p>
 </div>
 <div class="section" id="select-the-layer-you-want-to-annotate">
-<h2>Select the layer you want to annotate<a class="headerlink" href="#select-the-layer-you-want-to-annotate" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.7. </span>Select the layer you want to annotate<a class="headerlink" href="#select-the-layer-you-want-to-annotate" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Part of Speech</p></li>
 <li><p>Lemma</p></li>
@@ -343,6 +333,7 @@
         
         <div class='prev-next-bottom'>
             
+    <a class='left-prev' id="prev-link" href="tokenization.html" title="previous page"><span class="section-number">3. </span>Tokenization</a>
 
         </div>
         
@@ -354,7 +345,12 @@
         
           By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
         
-            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            <p>
+... Add license info here...
+</p>
+
+          </div>
       </p>
     </div>
   </footer>
