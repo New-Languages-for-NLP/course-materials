@@ -57,7 +57,9 @@ The [spaCy documentation](https://spacy.io/usage/linguistic-features/#tokenizati
 
 ## spaCy's Tokenizer 
 
-spaCy's tokenization begins by splitting tokens on spaces. It's nearly identical what you'd get from `"Siberia has many rivers.".split()`, which is `['Siberia','has','many','rivers.']`  Keep a close eye on the period in this sentence.  Once again, Python had trouble identifying the period as a distinct token. Once the text is split on the spaces, spaCy applies as series of checks.  
+spaCy's tokenization begins by splitting tokens on spaces. It's nearly identical what you'd get from `"Siberia has many rivers.".split()`, which is `['Siberia','has','many','rivers.']`  Keep a close eye on the period in this sentence.  Once again, Python had trouble identifying the period as a distinct token. 
+
+To address this problem, spaCy has rules for how to split these chunks into tokens. In this case, it has a list of punctuation symbols.  If any of those symbols are at the end, a suffix rule separates the word from the punctuation.  These rules cover a lot of ground and are very powerful. However, there are many cases where we need to tell spaCy to handle things differently.   
 
 Exceptions are a list of specific patterns to look for and what to do with them. The exceptions for your language are most often found in `spacy/lang` directory in a `tokenizer_exceptions.py` file. For example, here are the exceptions for English to handle shortened forms of 'because' such as 'cause. These exception prevent the tokenizer from splitting off the `'` from `coz`. 
 
