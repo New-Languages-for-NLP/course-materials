@@ -46,10 +46,6 @@ jobs:
         
     - name: Deploy to Princeton server
       uses: easingthemes/ssh-deploy@v2.1.5
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: _build/html
-        publish_branch: gh-pages
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
         ARGS: "-rltgoDzvO"
