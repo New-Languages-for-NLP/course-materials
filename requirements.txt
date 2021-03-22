@@ -2,4 +2,4 @@ jupyter-book
 matplotlib
 numpy
 black
-pytests
+pytest
