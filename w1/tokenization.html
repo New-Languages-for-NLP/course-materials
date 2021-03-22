@@ -230,50 +230,55 @@
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spacy-s-tokenizer">
+     3.2. spaCy’s Tokenizer
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#adding-new-exceptions-for-your-language">
-     3.2. Adding new exceptions for your language
+     3.3. Adding new exceptions for your language
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#specific-exceptions">
-     3.3. Specific Exceptions
+     3.4. Specific Exceptions
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#normalized-forms-for-variations-and-abbreviations">
-       3.3.1. Normalized forms for variations and abbreviations
+       3.4.1. Normalized forms for variations and abbreviations
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#separate-a-word-into-two-tokens">
-     3.4. Separate a word into two tokens
+     3.5. Separate a word into two tokens
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#rule-based-exceptions">
-     3.5. Rule-based exceptions
+     3.6. Rule-based exceptions
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#extending-defaults">
-     3.6. Extending defaults
+     3.7. Extending defaults
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#prefixes-in-action">
-       3.6.1. Prefixes in action
+       3.7.1. Prefixes in action
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#infix">
-       3.6.2. Infix
+       3.7.2. Infix
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#suffix">
-       3.6.3. Suffix
+       3.7.3. Suffix
       </a>
      </li>
     </ul>
@@ -343,12 +348,13 @@
 <div class="section" id="natural-language-processing-tokenization">
 <h2><span class="section-number">3.1. </span>Natural language processing &amp; Tokenization<a class="headerlink" href="#natural-language-processing-tokenization" title="Permalink to this headline">¶</a></h2>
 <p>While pure Python is sufficient for many tasks, natural language processing (NLP) libraries allow us to work computationally with the text as language. NLP reveals a whole host of linguistic attributes of the text that can be used for analysis.  For example, the machine will know if a word is a noun or a verb with part of speech tagging.  We can find the direct object of a verb to determine who is speaking and the subject of that speech.  NLP gives your programs an instant boost of information that opens new forms of analysis.</p>
-<p>Our first NLP task is tokenization. This is where our text is split into meaningful parts; usually word tokens. The sentence, “Siberia has many rivers.” can be split into the tokens: <code class="docutils literal notranslate"><span class="pre">&lt;Siberia&gt;&lt;has&gt;&lt;many&gt;&lt;rivers&gt;&lt;.&gt;</span></code>  Note that the ending punctuation is now distinct from the word rivers. The rules for tokenization depend on the language your are using. For English and other languages with spaces between words, you often get good results simply by splitting the tokens on spaces. However, a host of rules are also needed to separate punctuation from a token, to split and normalize words (ex. “Let’s” &gt; Let us) as well as specific exceptions that don’t follow regular patterns. The <a class="reference external" href="https://spacy.io/usage/linguistic-features/#tokenization">spaCy documentation</a> is really excellent on this topic and I recommend that you start there.</p>
-<p>spaCy’s tokenization rules begins splitting tokens on spaces. It’s nearly identical what you’d get from <code class="docutils literal notranslate"><span class="pre">&quot;Siberia</span> <span class="pre">has</span> <span class="pre">many</span> <span class="pre">rivers.&quot;.split()</span></code>, which is <code class="docutils literal notranslate"><span class="pre">['Siberia','has','many','rivers.']</span></code>  Keep a close eye on the period in this sentence.  Once again, Python had trouble identifying the period as a distinct token. Once the text is split on the spaces, spaCy applies as series of checks.</p>
-<ul class="simple">
-<li><p>Exceptions: This is a list of specific patterns to look for. For example, “1 am”, will become <code class="docutils literal notranslate"><span class="pre">&lt;1&gt;&lt;a.m.&gt;</span></code> The tokenizer not only notices that ‘am’ isn’t the verb <code class="docutils literal notranslate"><span class="pre">to</span> <span class="pre">be</span></code>, but also that the formatting is ambiguous. If we turn all AM, am, and a.m into a.m. then we have a common unit for analysis. This is especially important when you are interested in word frequencies in a text.</p></li>
-</ul>
-<p>The exceptions for your language are most often found in <code class="docutils literal notranslate"><span class="pre">spacy/lang</span></code> directory in a <code class="docutils literal notranslate"><span class="pre">tokenizer_exceptions.py</span></code> file. For example, here are the exceptions for English to handle shortened forms of ‘because’ such as ‘cause. These exception prevent the tokenizer from splitting off the <code class="docutils literal notranslate"><span class="pre">'</span></code> from <code class="docutils literal notranslate"><span class="pre">coz</span></code>.</p>
+<p>Our first NLP task is tokenization. This is where our text is split into meaningful parts; usually word tokens, spans (“New York City”) or sentences. The sentence, “Siberia has many rivers.” can be split into five tokens: <code class="docutils literal notranslate"><span class="pre">&lt;Siberia&gt;&lt;has&gt;&lt;many&gt;&lt;rivers&gt;&lt;.&gt;</span></code>  Note that the ending punctuation is now distinct from the word rivers. The rules for tokenization depend on the language your are using. For English and other languages with spaces between words, you often get good results simply by splitting the tokens on spaces. However, a host of rules are also needed to separate punctuation from a token, to split and normalize words (ex. “Let’s” = “Let us”) as well as specific exceptions that don’t follow regular patterns.</p>
+<p>The <a class="reference external" href="https://spacy.io/usage/linguistic-features/#tokenization">spaCy documentation</a> is really excellent on this topic and I recommend that you start there. When you’re done come back and we’ll cover some practical topics and processes that you’ll need when creating a new language object.</p>
+</div>
+<div class="section" id="spacy-s-tokenizer">
+<h2><span class="section-number">3.2. </span>spaCy’s Tokenizer<a class="headerlink" href="#spacy-s-tokenizer" title="Permalink to this headline">¶</a></h2>
+<p>spaCy’s tokenization begins by splitting tokens on spaces. It’s nearly identical what you’d get from <code class="docutils literal notranslate"><span class="pre">&quot;Siberia</span> <span class="pre">has</span> <span class="pre">many</span> <span class="pre">rivers.&quot;.split()</span></code>, which is <code class="docutils literal notranslate"><span class="pre">['Siberia','has','many','rivers.']</span></code>  Keep a close eye on the period in this sentence.  Once again, Python had trouble identifying the period as a distinct token. Once the text is split on the spaces, spaCy applies as series of checks.</p>
+<p>Exceptions are a list of specific patterns to look for and what to do with them. The exceptions for your language are most often found in <code class="docutils literal notranslate"><span class="pre">spacy/lang</span></code> directory in a <code class="docutils literal notranslate"><span class="pre">tokenizer_exceptions.py</span></code> file. For example, here are the exceptions for English to handle shortened forms of ‘because’ such as ‘cause. These exception prevent the tokenizer from splitting off the <code class="docutils literal notranslate"><span class="pre">'</span></code> from <code class="docutils literal notranslate"><span class="pre">coz</span></code>.</p>
 <p><strong><a class="reference external" href="https://github.com/explosion/spaCy/blob/34e13c1161f7d42b961026b12d2eb3d3165bae27/spacy/lang/en/tokenizer_exceptions.py#L392">tokenizer_exceptions.py</a></strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;&#39;Cause&quot;</span><span class="p">,</span> <span class="n">NORM</span><span class="p">:</span> <span class="s2">&quot;because&quot;</span><span class="p">},</span>
 <span class="p">{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;&#39;cause&quot;</span><span class="p">,</span> <span class="n">NORM</span><span class="p">:</span> <span class="s2">&quot;because&quot;</span><span class="p">},</span>
@@ -361,10 +367,10 @@
 </pre></div>
 </div>
 <p>Note that the spaCy developers have accounted for the most common variations of ‘because’ and deliberately decided to incorporate slang and idomatic usage. They have added a normalized form (NORM) of <code class="docutils literal notranslate"><span class="pre">because</span></code>. If we’re interested in word frequencies and not variation, this can be a very useful. This is available to you as <code class="docutils literal notranslate"><span class="pre">token.norm_</span></code>.</p>
-<p>If you look at the <code class="docutils literal notranslate"><span class="pre">tokenizer_exceptions.py</span></code> files for the existing languages, you’ll see a wide range of exceptions and ways of writing the rules. For the sake of simplicity, we provide a simple way to add exceptions for your language.</p>
+<p>If you look at the <code class="docutils literal notranslate"><span class="pre">tokenizer_exceptions.py</span></code> files for the existing languages, you’ll see a wide range of exceptions and ways of writing the rules. For the sake of simplicity, we’ll discuss the two most common ways to add exceptions for your language.</p>
 </div>
 <div class="section" id="adding-new-exceptions-for-your-language">
-<h2><span class="section-number">3.2. </span>Adding new exceptions for your language<a class="headerlink" href="#adding-new-exceptions-for-your-language" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.3. </span>Adding new exceptions for your language<a class="headerlink" href="#adding-new-exceptions-for-your-language" title="Permalink to this headline">¶</a></h2>
 <p>spaCy comes with a lot of opinions and defaults right from the beginning.  In most cases, this will save you time. You can find the default tokenizer exceptions by importing them.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.lang.tokenizer_exceptions</span> <span class="kn">import</span> <span class="n">BASE_EXCEPTIONS</span>
 </pre></div>
@@ -387,13 +393,13 @@
 <p>The lesson here is that it’s up to you when to use specific exceptions and when to use rule-based exceptions.</p>
 </div>
 <div class="section" id="specific-exceptions">
-<h2><span class="section-number">3.3. </span>Specific Exceptions<a class="headerlink" href="#specific-exceptions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.4. </span>Specific Exceptions<a class="headerlink" href="#specific-exceptions" title="Permalink to this headline">¶</a></h2>
 <p>To add a new exception, pass a dictionary with a key with the string to match and a list with instructions on how to transform it.</p>
 <p>For example:
 “BIG YIKES” would normally be split into two tokens <code class="docutils literal notranslate"><span class="pre">&lt;BIG&gt;&lt;YIKES&gt;</span></code>. To prevent this from happening, we can create an exception.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.symbols</span> <span class="kn">import</span> <span class="n">ORTH</span>
 <span class="kn">from</span> <span class="nn">spacy.util</span> <span class="kn">import</span> <span class="n">update_exc</span>
-
+         <span class="c1">#&#39;match&#39;:   [{what to do }]</span>
 <span class="n">yikes</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;BIG YIKES&#39;</span><span class="p">:[{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s1">&#39;BIG YIKES&#39;</span><span class="p">}]}</span>
 <span class="n">TOKENIZER_EXCEPTIONS</span> <span class="o">=</span> <span class="n">update_exc</span><span class="p">(</span><span class="n">BASE_EXCEPTIONS</span><span class="p">,</span> <span class="n">yikes</span><span class="p">)</span>
 
@@ -421,10 +427,10 @@
 [Yikes, !, BIG YIKES, !]
 </pre></div>
 </div>
-<p>That’s exciting! We’ve made a change to the tokenization rules and it worked. Just keep in mind that exceptions are very specific.  If we have <code class="docutils literal notranslate"><span class="pre">&quot;Yikes!</span> <span class="pre">BIG</span> <span class="pre">Yikes!&quot;</span></code>, we get “BIG” and “Yikes” as separate tokens because “Yikes” isn’t all in caps. Yes, it’s that picky. When adding exceptions, you’ll want to add rules for all of the variations that your model is likely to encounter.</p>
+<p>That’s exciting! We’ve made a change to the tokenization rules and it worked. Just keep in mind that exceptions are very specific.  If we have <code class="docutils literal notranslate"><span class="pre">&quot;Yikes!</span> <span class="pre">BIG</span> <span class="pre">yikes!&quot;</span></code>, we get “BIG” and “yikes” as separate tokens because “yikes” isn’t all in caps. Yes, it’s that picky. When adding specific exceptions, you’ll want to add rules for all of the variations that your model is likely to encounter.</p>
 <p>To build on our momentum, let’s discuss several other common types of tokenizer exceptions.</p>
 <div class="section" id="normalized-forms-for-variations-and-abbreviations">
-<h3><span class="section-number">3.3.1. </span>Normalized forms for variations and abbreviations<a class="headerlink" href="#normalized-forms-for-variations-and-abbreviations" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.4.1. </span>Normalized forms for variations and abbreviations<a class="headerlink" href="#normalized-forms-for-variations-and-abbreviations" title="Permalink to this headline">¶</a></h3>
 <p>If you look at the <code class="docutils literal notranslate"><span class="pre">tokenizer_exceptions.py</span></code> files in the spacy/langs directory you’ll see that the most common use of exceptions is add a normalized form to slang, misspellings and common abbreviations for words.</p>
 <p>For example, “I luv this!”  We want spaCy to recognize that “luv” is a derivative of “love.”</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">luv</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;luv&quot;</span><span class="p">:[{</span><span class="n">ORTH</span><span class="p">:</span><span class="s1">&#39;luv&#39;</span><span class="p">,</span><span class="n">NORM</span><span class="p">:</span> <span class="s1">&#39;love&#39;</span><span class="p">}]}</span>
@@ -458,9 +464,9 @@ Add rules to the tokenizer so that this sentence “MAH TOKENIZR LOVEZ DIS SENTE
 </div>
 </div>
 <div class="section" id="separate-a-word-into-two-tokens">
-<h2><span class="section-number">3.4. </span>Separate a word into two tokens<a class="headerlink" href="#separate-a-word-into-two-tokens" title="Permalink to this headline">¶</a></h2>
-<p>It’s very common to have words that should be split into separate tokens, but there isn’t a regular infix that will make the cut.  Here we need an exception. As an example, let’s explore Kummerspeck (‘grief bacon’) the German name for weight gain from emotional eating.</p>
-<p>Here we can use exception’s list to split the word into parts and detail how to handle each of the new tokens: <code class="docutils literal notranslate"><span class="pre">'matchword':[{match}{word}]</span></code></p>
+<h2><span class="section-number">3.5. </span>Separate a word into two tokens<a class="headerlink" href="#separate-a-word-into-two-tokens" title="Permalink to this headline">¶</a></h2>
+<p>It’s very common to have words that should be split into separate tokens, but there isn’t a regular infix that will make the cut.  Here we need an exception. As an example, let’s explore Kummerspeck (‘grief bacon’) the German name for weight from emotional eating.</p>
+<p>Here we can use the exceptions list to split the word into parts and detail how to handle each of the new tokens: <code class="docutils literal notranslate"><span class="pre">'matchword':[{match}{word}]</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">grief_bacon</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Kummerspeck&#39;</span><span class="p">:[{</span><span class="n">ORTH</span><span class="p">:</span><span class="s2">&quot;Kummer&quot;</span><span class="p">},{</span><span class="n">ORTH</span><span class="p">:</span><span class="s2">&quot;speck&quot;</span><span class="p">}]}</span>
 </pre></div>
 </div>
@@ -476,7 +482,7 @@ Add rules to the tokenizer so that this sentence “MAH TOKENIZR LOVEZ DIS SENTE
 <p>The three use cases covered above are the most common types of tokenizer exceptions: adding normalizations, combining words, splitting words. Exceptions can be extremely useful for one-time problems for which there just aren’t any rules or common patterns. However, it’s simply impractical to handle everything with specific exceptions. The next section cover ways that you can handle common patterns and rule-based exceptions.</p>
 </div>
 <div class="section" id="rule-based-exceptions">
-<h2><span class="section-number">3.5. </span>Rule-based exceptions<a class="headerlink" href="#rule-based-exceptions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.6. </span>Rule-based exceptions<a class="headerlink" href="#rule-based-exceptions" title="Permalink to this headline">¶</a></h2>
 <p>To handle regular patterns, spaCy has three kinds of rule-based exceptions. They are:</p>
 <ul class="simple">
 <li><p>Prefix: A section at the start of a word that should be separated into its own token.</p></li>
@@ -491,13 +497,13 @@ Add rules to the tokenizer so that this sentence “MAH TOKENIZR LOVEZ DIS SENTE
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>A third approach uses regular expressions. Regex is a serious pain in the butt.  There are regex masters out there, but most people Google helplessly until they get it to work.  A very helpful resource is <a class="reference external" href="https://regex101.com/">regex101</a>.  This is a website that let’s you build a regular expression see its matches in a text.  There are also very helpful explainations to get you started. For the current example, we want to create a tokenization exception for a “<span class="math notranslate nohighlight">\(&quot; followed by numbers.  One way of expressing that is &quot;\$\d*&quot;, which will match any string with the charachter &quot;\)</span>” followed by digits (\d) repeating any number of times (*).  If you try it out in regex101, you’ll see that we get matches on “<span class="math notranslate nohighlight">\(1&quot;,&quot;\)</span>10000” and “$10000000”.</p>
+<p>A third approach uses regular expressions. Regex is a serious pain in the butt.  There are regex masters out there, but most people Google helplessly until they get it to work.  A very helpful resource is <a class="reference external" href="https://regex101.com/">regex101</a>.  This is a website that let’s you build a regular expression see its matches in a text.  There are also very helpful explainations to get you started. For the current example, we want to create a tokenization exception for a <code class="docutils literal notranslate"><span class="pre">$</span></code> followed by numbers.  One way of expressing that is <code class="docutils literal notranslate"><span class="pre">&quot;\$\d*&quot;</span></code>, which will match any string with the charachter <code class="docutils literal notranslate"><span class="pre">$</span></code> followed by digits (<code class="docutils literal notranslate"><span class="pre">\d</span></code>) repeating any number of times (<code class="docutils literal notranslate"><span class="pre">*</span></code>).  If you try it out in regex101, you’ll see that we get matches on <code class="docutils literal notranslate"><span class="pre">$1</span></code>, <code class="docutils literal notranslate"><span class="pre">$10000</span></code> and <code class="docutils literal notranslate"><span class="pre">$10000000</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">TOKENIZER_PREFIXES</span> <span class="o">=</span> <span class="p">(</span>
     <span class="sa">r</span><span class="s2">&quot;\$\d*&quot;</span> 
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>Wondering what the r is for?  It’s Python’s raw string, which treats a backslash as a literal character and won’t mistake it for a new line \n or tab \t or other escape charachters with a “” in them.</p>
+<p>Wondering what the r is for?  It’s Python’s raw string, which treats a backslash as a literal character and won’t mistake it for a new line \n or tab \t or other escape charachters with a <code class="docutils literal notranslate"><span class="pre">\</span></code> in them.</p>
 <p>We can also add a rule for all of the currency symbols</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.lang.char_classes</span> <span class="kn">import</span> <span class="n">CURRENCY</span>
 
@@ -509,7 +515,7 @@ Add rules to the tokenizer so that this sentence “MAH TOKENIZR LOVEZ DIS SENTE
 <p>The code above will take each individual symbol in CURRENCY and add a regular expression rule for it by replacing {c} with the symbol.</p>
 </div>
 <div class="section" id="extending-defaults">
-<h2><span class="section-number">3.6. </span>Extending defaults<a class="headerlink" href="#extending-defaults" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.7. </span>Extending defaults<a class="headerlink" href="#extending-defaults" title="Permalink to this headline">¶</a></h2>
 <p>As you develop a language object for a new language, you can delegate much of the work to the existing defaults, but it’s quite likely that your language has its own specific symbols and charachters. You can add them to your language’s <code class="docutils literal notranslate"><span class="pre">punctuation.py</span></code> file.</p>
 <p>For example, the default list of currency symbols does not include the Sheckel ₪. We can add our new prefix by adding a list of new symbols to our TOKENIZER_PREFIXES.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.lang.punctuation</span> <span class="kn">import</span> <span class="n">TOKENIZER_PREFIXES</span> <span class="k">as</span> <span class="n">BASE_TOKENIZER_PREFIXES</span>
@@ -519,7 +525,7 @@ Add rules to the tokenizer so that this sentence “MAH TOKENIZR LOVEZ DIS SENTE
 </div>
 <p>The prefixes are added to the language object in <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code></p>
 <div class="section" id="prefixes-in-action">
-<h3><span class="section-number">3.6.1. </span>Prefixes in action<a class="headerlink" href="#prefixes-in-action" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.7.1. </span>Prefixes in action<a class="headerlink" href="#prefixes-in-action" title="Permalink to this headline">¶</a></h3>
 <p>The addition of prefixes will usually be added to the language object. However, you may want to make adjustments on the fly. It’s also a good way to check that the new prefix is really what you need <a class="reference external" href="https://spacy.io/usage/linguistic-features#native-tokenizer-additions">docs</a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy</span> <span class="kn">import</span> <span class="n">util</span>
 <span class="kn">from</span> <span class="nn">spacy.lang.he</span> <span class="kn">import</span> <span class="n">Hebrew</span>
@@ -541,11 +547,11 @@ Add rules to the tokenizer so that this sentence “MAH TOKENIZR LOVEZ DIS SENTE
 spaCy works well with RTL langauges, but the tokenizer moves from left to right.  Even though ₪ follows 181 in the sentence, spaCy considers it a prefix.</p>
 </div>
 <div class="section" id="infix">
-<h3><span class="section-number">3.6.2. </span>Infix<a class="headerlink" href="#infix" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.7.2. </span>Infix<a class="headerlink" href="#infix" title="Permalink to this headline">¶</a></h3>
 <p>Off-pitch</p>
 </div>
 <div class="section" id="suffix">
-<h3><span class="section-number">3.6.3. </span>Suffix<a class="headerlink" href="#suffix" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.7.3. </span>Suffix<a class="headerlink" href="#suffix" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 </div>
