@@ -132,7 +132,8 @@ nlp.tokenizer.rules = update_exc(BASE_EXCEPTIONS, yikes)
 doc = nlp("Yikes! BIG YIKES!")
 assert doc[2].text == "BIG YIKES"
 ```
-```python
+
+```
 [ t for t in doc]
 [Yikes, !, BIG YIKES, !]
 ```
@@ -267,7 +268,8 @@ nlp.tokenizer.prefix_search = prefix_regex.search
 doc = nlp("₪181 בלבד! משלוח חינם!") #"Only NIS 181! Free Shipping!"
 [t for t in doc]
 ```
-```python
+
+```
 [₪, 181, בלבד, !, משלוח, חינם, !]
 ```
 Extra brain teaser: Hebrew is written from right to left, so why isn't ₪ a suffix? 
