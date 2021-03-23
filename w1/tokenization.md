@@ -76,9 +76,11 @@ __[tokenizer_exceptions.py](https://github.com/explosion/spaCy/blob/34e13c1161f7
 {ORTH: "'Cuz", NORM: "because"},
 ```
 
-Note that the spaCy developers have accounted for the most common variations of 'because' and deliberately decided to incorporate slang and idomatic usage. They have added a normalized form (NORM) of `because`. If we're interested in word frequencies and not variation, this can be a very useful. This is available to you as `token.norm_`.     
+Note that the spaCy developers have accounted for the most common variations of 'because' and deliberately decided to incorporate slang and idiomatic usage. They have added a normalized form (NORM) of `because`. If we're interested in word frequencies and not variation, this can be a very useful. This is available to you as `token.norm_`.     
 
 If you look at the `tokenizer_exceptions.py` files for the existing languages, you'll see a wide range of exceptions and ways of writing the rules. For the sake of simplicity, we'll discuss the two most common ways to add exceptions for your language.
+
+> What are ORTH and NORM? They are token attributes. When your exception becomes a token, it will have a `token.text` attribute: that's ORTH. NORM is `token.norm_` LEMMA is `token.lemma_`, `IS_STOP:True` will mark the token as a stop word; `token.is_stop`.
 
 ## Adding new exceptions for your language 
 
@@ -99,6 +101,12 @@ You'll find that `BASE_EXCEPTIONS` is a Python dictionary.
  '(ಠ_ಠ)': [{65: '(ಠ_ಠ)'}],
  '(>_<)': [{65: '(>_<)'}],
  ... 
+```
+
+If one of the base exceptions is causing problems for your language, it's easy to remove it. To remove the `'C++'` exception above:  
+
+```python 
+BASE_EXCEPTIONS.pop('C++')
 ```
 
 spaCy also comes with a nice utility function that lets you add new exceptions to the defaults: `update_exc()`.
@@ -153,41 +161,6 @@ That's exciting! We've made a change to the tokenization rules and it worked. Ju
 
 To build on our momentum, let's discuss several other common types of tokenizer exceptions.
 
-### Normalized forms for variations and abbreviations 
-
-If you look at the `tokenizer_exceptions.py` files in the spacy/langs directory you'll see that the most common use of exceptions is add a normalized form to slang, misspellings and common abbreviations for words. 
-
-For example, "I luv this!"  We want spaCy to recognize that "luv" is a derivative of "love."
-```python
-luv = {"luv":[{ORTH:'luv',NORM: 'love'}]}
-
-nlp.tokenizer.rules = update_exc(BASE_EXCEPTIONS, luv)
-
-doc = nlp('I luv this!')
-assert doc[1].norm_ == 'love'
-```
-
-__Challenge__:
-Add rules to the tokenizer so that this sentence "MAH TOKENIZR LOVEZ DIS SENTENCE" returns: ["My","tokenizer","loves","this","sentence"] [or make your own!](https://speaklolcat.com/)
-
-solution:
-```python 
-exceptions = [
-    {"MAH":[{ORTH:'MAH',NORM: 'My'}]},
-    {"TOKENIZR":[{ORTH:'TOKENIZR',NORM: 'tokenizer'}]},
-    {"LOVEZ":[{ORTH:'LOVEZ',NORM: 'loves'}]},
-    {"DIS":[{ORTH:'DIS',NORM: 'this'}]},
-    {"SENTENCE":[{ORTH:'SENTENCE',NORM: 'sentence'}]},
-]
-
-TOKENIZER_EXCEPTIONS = update_exc(BASE_EXCEPTIONS, *exceptions)
-
-nlp.tokenizer.rules = TOKENIZER_EXCEPTIONS
-
-doc = nlp('MAH TOKENIZR LOVEZ DIS SENTENCE')
-assert [token.norm_ for token in doc] == ['My', 'tokenizer', 'loves', 'this', 'sentence']
-
-```
 
 ## Separate a word into two tokens 
 
@@ -291,6 +264,7 @@ spaCy works well with RTL langauges, but the tokenizer moves from left to right.
 Off-pitch
 
 ### Suffix 
+
 
 # Building A New Language Tokenizer
 
