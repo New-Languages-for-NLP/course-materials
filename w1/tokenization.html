@@ -243,13 +243,6 @@
     <a class="reference internal nav-link" href="#specific-exceptions">
      3.4. Specific Exceptions
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#normalized-forms-for-variations-and-abbreviations">
-       3.4.1. Normalized forms for variations and abbreviations
-      </a>
-     </li>
-    </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#separate-a-word-into-two-tokens">
@@ -367,8 +360,11 @@
 <span class="p">{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;&#39;Cuz&quot;</span><span class="p">,</span> <span class="n">NORM</span><span class="p">:</span> <span class="s2">&quot;because&quot;</span><span class="p">},</span>
 </pre></div>
 </div>
-<p>Note that the spaCy developers have accounted for the most common variations of ‘because’ and deliberately decided to incorporate slang and idomatic usage. They have added a normalized form (NORM) of <code class="docutils literal notranslate"><span class="pre">because</span></code>. If we’re interested in word frequencies and not variation, this can be a very useful. This is available to you as <code class="docutils literal notranslate"><span class="pre">token.norm_</span></code>.</p>
+<p>Note that the spaCy developers have accounted for the most common variations of ‘because’ and deliberately decided to incorporate slang and idiomatic usage. They have added a normalized form (NORM) of <code class="docutils literal notranslate"><span class="pre">because</span></code>. If we’re interested in word frequencies and not variation, this can be a very useful. This is available to you as <code class="docutils literal notranslate"><span class="pre">token.norm_</span></code>.</p>
 <p>If you look at the <code class="docutils literal notranslate"><span class="pre">tokenizer_exceptions.py</span></code> files for the existing languages, you’ll see a wide range of exceptions and ways of writing the rules. For the sake of simplicity, we’ll discuss the two most common ways to add exceptions for your language.</p>
+<blockquote>
+<div><p>What are ORTH and NORM? They are token attributes. When your exception becomes a token, it will have a <code class="docutils literal notranslate"><span class="pre">token.text</span></code> attribute: that’s ORTH. NORM is <code class="docutils literal notranslate"><span class="pre">token.norm_</span></code> LEMMA is <code class="docutils literal notranslate"><span class="pre">token.lemma_</span></code>, <code class="docutils literal notranslate"><span class="pre">IS_STOP:True</span></code> will mark the token as a stop word; <code class="docutils literal notranslate"><span class="pre">token.is_stop</span></code>.</p>
+</div></blockquote>
 </div>
 <div class="section" id="adding-new-exceptions-for-your-language">
 <h2><span class="section-number">3.3. </span>Adding new exceptions for your language<a class="headerlink" href="#adding-new-exceptions-for-your-language" title="Permalink to this headline">¶</a></h2>
@@ -386,6 +382,10 @@
  <span class="s1">&#39;(ಠ_ಠ)&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="mi">65</span><span class="p">:</span> <span class="s1">&#39;(ಠ_ಠ)&#39;</span><span class="p">}],</span>
  <span class="s1">&#39;(&gt;_&lt;)&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="mi">65</span><span class="p">:</span> <span class="s1">&#39;(&gt;_&lt;)&#39;</span><span class="p">}],</span>
  <span class="o">...</span> 
+</pre></div>
+</div>
+<p>If one of the base exceptions is causing problems for your language, it’s easy to remove it. To remove the <code class="docutils literal notranslate"><span class="pre">'C++'</span></code> exception above:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BASE_EXCEPTIONS</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;C++&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>spaCy also comes with a nice utility function that lets you add new exceptions to the defaults: <code class="docutils literal notranslate"><span class="pre">update_exc()</span></code>.</p>
@@ -430,39 +430,6 @@
 </div>
 <p>That’s exciting! We’ve made a change to the tokenization rules and it worked. Just keep in mind that exceptions are very specific.  If we have <code class="docutils literal notranslate"><span class="pre">&quot;Yikes!</span> <span class="pre">BIG</span> <span class="pre">yikes!&quot;</span></code>, we get “BIG” and “yikes” as separate tokens because “yikes” isn’t all in caps. Yes, it’s that picky. When adding specific exceptions, you’ll want to add rules for all of the variations that your model is likely to encounter.</p>
 <p>To build on our momentum, let’s discuss several other common types of tokenizer exceptions.</p>
-<div class="section" id="normalized-forms-for-variations-and-abbreviations">
-<h3><span class="section-number">3.4.1. </span>Normalized forms for variations and abbreviations<a class="headerlink" href="#normalized-forms-for-variations-and-abbreviations" title="Permalink to this headline">¶</a></h3>
-<p>If you look at the <code class="docutils literal notranslate"><span class="pre">tokenizer_exceptions.py</span></code> files in the spacy/langs directory you’ll see that the most common use of exceptions is add a normalized form to slang, misspellings and common abbreviations for words.</p>
-<p>For example, “I luv this!”  We want spaCy to recognize that “luv” is a derivative of “love.”</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">luv</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;luv&quot;</span><span class="p">:[{</span><span class="n">ORTH</span><span class="p">:</span><span class="s1">&#39;luv&#39;</span><span class="p">,</span><span class="n">NORM</span><span class="p">:</span> <span class="s1">&#39;love&#39;</span><span class="p">}]}</span>
-
-<span class="n">nlp</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">rules</span> <span class="o">=</span> <span class="n">update_exc</span><span class="p">(</span><span class="n">BASE_EXCEPTIONS</span><span class="p">,</span> <span class="n">luv</span><span class="p">)</span>
-
-<span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="s1">&#39;I luv this!&#39;</span><span class="p">)</span>
-<span class="k">assert</span> <span class="n">doc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">norm_</span> <span class="o">==</span> <span class="s1">&#39;love&#39;</span>
-</pre></div>
-</div>
-<p><strong>Challenge</strong>:
-Add rules to the tokenizer so that this sentence “MAH TOKENIZR LOVEZ DIS SENTENCE” returns: [“My”,”tokenizer”,”loves”,”this”,”sentence”] <a class="reference external" href="https://speaklolcat.com/">or make your own!</a></p>
-<p>solution:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">exceptions</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span><span class="s2">&quot;MAH&quot;</span><span class="p">:[{</span><span class="n">ORTH</span><span class="p">:</span><span class="s1">&#39;MAH&#39;</span><span class="p">,</span><span class="n">NORM</span><span class="p">:</span> <span class="s1">&#39;My&#39;</span><span class="p">}]},</span>
-    <span class="p">{</span><span class="s2">&quot;TOKENIZR&quot;</span><span class="p">:[{</span><span class="n">ORTH</span><span class="p">:</span><span class="s1">&#39;TOKENIZR&#39;</span><span class="p">,</span><span class="n">NORM</span><span class="p">:</span> <span class="s1">&#39;tokenizer&#39;</span><span class="p">}]},</span>
-    <span class="p">{</span><span class="s2">&quot;LOVEZ&quot;</span><span class="p">:[{</span><span class="n">ORTH</span><span class="p">:</span><span class="s1">&#39;LOVEZ&#39;</span><span class="p">,</span><span class="n">NORM</span><span class="p">:</span> <span class="s1">&#39;loves&#39;</span><span class="p">}]},</span>
-    <span class="p">{</span><span class="s2">&quot;DIS&quot;</span><span class="p">:[{</span><span class="n">ORTH</span><span class="p">:</span><span class="s1">&#39;DIS&#39;</span><span class="p">,</span><span class="n">NORM</span><span class="p">:</span> <span class="s1">&#39;this&#39;</span><span class="p">}]},</span>
-    <span class="p">{</span><span class="s2">&quot;SENTENCE&quot;</span><span class="p">:[{</span><span class="n">ORTH</span><span class="p">:</span><span class="s1">&#39;SENTENCE&#39;</span><span class="p">,</span><span class="n">NORM</span><span class="p">:</span> <span class="s1">&#39;sentence&#39;</span><span class="p">}]},</span>
-<span class="p">]</span>
-
-<span class="n">TOKENIZER_EXCEPTIONS</span> <span class="o">=</span> <span class="n">update_exc</span><span class="p">(</span><span class="n">BASE_EXCEPTIONS</span><span class="p">,</span> <span class="o">*</span><span class="n">exceptions</span><span class="p">)</span>
-
-<span class="n">nlp</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">rules</span> <span class="o">=</span> <span class="n">TOKENIZER_EXCEPTIONS</span>
-
-<span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="s1">&#39;MAH TOKENIZR LOVEZ DIS SENTENCE&#39;</span><span class="p">)</span>
-<span class="k">assert</span> <span class="p">[</span><span class="n">token</span><span class="o">.</span><span class="n">norm_</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;My&#39;</span><span class="p">,</span> <span class="s1">&#39;tokenizer&#39;</span><span class="p">,</span> <span class="s1">&#39;loves&#39;</span><span class="p">,</span> <span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;sentence&#39;</span><span class="p">]</span>
-
-</pre></div>
-</div>
-</div>
 </div>
 <div class="section" id="separate-a-word-into-two-tokens">
 <h2><span class="section-number">3.5. </span>Separate a word into two tokens<a class="headerlink" href="#separate-a-word-into-two-tokens" title="Permalink to this headline">¶</a></h2>
