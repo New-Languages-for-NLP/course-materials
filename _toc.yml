@@ -6,9 +6,16 @@
 
 - part: Preparation
   chapters:  
-  - file: content
-  - file: core-technologies
-  - file: markdown
+  - file: prep/introduction
+  - file: prep/ml
+  - file: prep/nlp
+  - file: prep/spacy
+  - file: prep/tei
+  - file: prep/yaml
+  - file: prep/github
+  - file: prep/jupyter-notebooks
+  - file: prep/python
+  
 
 - part: Workshop I Annotation and Linguistic Data
   chapters:
@@ -18,3 +25,6 @@
   - file: w1/annotation
 
 
+- part: Workshop II Model Training 
+  chapters:
+  - file: w2/overview

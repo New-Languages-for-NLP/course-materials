@@ -57,13 +57,17 @@ The [spaCy documentation](https://spacy.io/usage/linguistic-features/#tokenizati
 
 ## spaCy's Tokenizer 
 
-spaCy's tokenization begins by splitting tokens on spaces. It's nearly identical what you'd get from `"Siberia has many rivers.".split()`, which is `['Siberia','has','many','rivers.']`  Keep a close eye on the period in this sentence.  Once again, Python had trouble identifying the period as a distinct token. Once the text is split on the spaces, spaCy applies as series of checks.  
+spaCy's tokenization begins by splitting tokens on spaces. It's nearly identical what you'd get from `"Siberia has many rivers.".split()`, which is `['Siberia','has','many','rivers.']`  Keep a close eye on the period in this sentence. On its own, Python has trouble identifying the period as a distinct token. 
 
-Exceptions are a list of specific patterns to look for and what to do with them. The exceptions for your language are most often found in `spacy/lang` directory in a `tokenizer_exceptions.py` file. For example, here are the exceptions for English to handle shortened forms of 'because' such as 'cause. These exception prevent the tokenizer from splitting off the `'` from `coz`. 
+To address this problem, spaCy has rules for how to split these chunks into tokens. In this case, it has a list of punctuation symbols.  If any of those symbols are at the end of a chunk, a suffix rule separates the word from the punctuation.  These rules cover a lot of ground and are very powerful. However, there are many cases where we need to tell spaCy to handle things differently.   
+
+Exceptions are a list of patterns to look for and what to do with them. The exceptions for your language are most often found in `spacy/lang` directory in a `tokenizer_exceptions.py` file. For example, here are the exceptions for English to handle shortened forms of `because` such as `'cause`. These exception prevent the tokenizer from splitting off the `'` from `coz`. 
+
 
 __[tokenizer_exceptions.py](https://github.com/explosion/spaCy/blob/34e13c1161f7d42b961026b12d2eb3d3165bae27/spacy/lang/en/tokenizer_exceptions.py#L392)__
 
 ```python
+...
 {ORTH: "'Cause", NORM: "because"},
 {ORTH: "'cause", NORM: "because"},
 {ORTH: "'cos", NORM: "because"},
@@ -72,11 +76,14 @@ __[tokenizer_exceptions.py](https://github.com/explosion/spaCy/blob/34e13c1161f7
 {ORTH: "'Coz", NORM: "because"},
 {ORTH: "'cuz", NORM: "because"},
 {ORTH: "'Cuz", NORM: "because"},
+...
 ```
 
-Note that the spaCy developers have accounted for the most common variations of 'because' and deliberately decided to incorporate slang and idomatic usage. They have added a normalized form (NORM) of `because`. If we're interested in word frequencies and not variation, this can be a very useful. This is available to you as `token.norm_`.     
+Note that the spaCy developers have accounted for the most common variations of 'because' and deliberately decided to incorporate slang and idiomatic usage. They have added a normalized form (NORM) of `because`. If we're interested in word frequencies and not variation, this can be a very useful. This is available to you as `token.norm_`.     
 
 If you look at the `tokenizer_exceptions.py` files for the existing languages, you'll see a wide range of exceptions and ways of writing the rules. For the sake of simplicity, we'll discuss the two most common ways to add exceptions for your language.
+
+> What are ORTH and NORM? They are token attributes. When your exception becomes a token, it will have a `token.text` attribute: that's ORTH. NORM is `token.norm_` LEMMA is `token.lemma_`, `IS_STOP:True` will mark the token as a stop word; `token.is_stop`.
 
 ## Adding new exceptions for your language 
 
@@ -97,6 +104,12 @@ You'll find that `BASE_EXCEPTIONS` is a Python dictionary.
  '(ಠ_ಠ)': [{65: '(ಠ_ಠ)'}],
  '(>_<)': [{65: '(>_<)'}],
  ... 
+```
+
+If one of the base exceptions is causing problems for your language, it's easy to remove it. To remove the `'C++'` exception above:  
+
+```python 
+BASE_EXCEPTIONS.pop('C++')
 ```
 
 spaCy also comes with a nice utility function that lets you add new exceptions to the defaults: `update_exc()`.
@@ -123,7 +136,7 @@ TOKENIZER_EXCEPTIONS = update_exc(BASE_EXCEPTIONS, yikes)
 
 
 ```
-Let's test to confirm that our the lemmatizer is acting as we'd expect. 
+Let's test to confirm that our the tokenizer is acting as we'd expect. 
 
 ```python 
 from spacy.lang.en import English
@@ -151,41 +164,6 @@ That's exciting! We've made a change to the tokenization rules and it worked. Ju
 
 To build on our momentum, let's discuss several other common types of tokenizer exceptions.
 
-### Normalized forms for variations and abbreviations 
-
-If you look at the `tokenizer_exceptions.py` files in the spacy/langs directory you'll see that the most common use of exceptions is add a normalized form to slang, misspellings and common abbreviations for words. 
-
-For example, "I luv this!"  We want spaCy to recognize that "luv" is a derivative of "love."
-```python
-luv = {"luv":[{ORTH:'luv',NORM: 'love'}]}
-
-nlp.tokenizer.rules = update_exc(BASE_EXCEPTIONS, luv)
-
-doc = nlp('I luv this!')
-assert doc[1].norm_ == 'love'
-```
-
-Challenge:
-Add rules to the tokenizer so that this sentence "MAH TOKENIZR LOVEZ DIS SENTENCE" returns: ["My","tokenizer","loves","this","sentence"] [or make your own!](https://speaklolcat.com/)
-
-solution:
-```python 
-exceptions = [
-    {"MAH":[{ORTH:'MAH',NORM: 'My'}]},
-    {"TOKENIZR":[{ORTH:'TOKENIZR',NORM: 'tokenizer'}]},
-    {"LOVEZ":[{ORTH:'LOVEZ',NORM: 'loves'}]},
-    {"DIS":[{ORTH:'DIS',NORM: 'this'}]},
-    {"SENTENCE":[{ORTH:'SENTENCE',NORM: 'sentence'}]},
-]
-
-TOKENIZER_EXCEPTIONS = update_exc(BASE_EXCEPTIONS, *exceptions)
-
-nlp.tokenizer.rules = TOKENIZER_EXCEPTIONS
-
-doc = nlp('MAH TOKENIZR LOVEZ DIS SENTENCE')
-assert [token.norm_ for token in doc] == ['My', 'tokenizer', 'loves', 'this', 'sentence']
-
-```
 
 ## Separate a word into two tokens 
 
@@ -227,14 +205,14 @@ TOKENIZER_PREFIXES = (
 )
 ```
 
-A third approach uses regular expressions. Regex is a serious pain in the butt.  There are regex masters out there, but most people Google helplessly until they get it to work.  A very helpful resource is [regex101](https://regex101.com/).  This is a website that let's you build a regular expression see its matches in a text.  There are also very helpful explainations to get you started. For the current example, we want to create a tokenization exception for a `$` followed by numbers.  One way of expressing that is `"\$\d*"`, which will match any string with the charachter `$` followed by digits (`\d`) repeating any number of times (`*`).  If you try it out in regex101, you'll see that we get matches on `$1`,`$10000` and `$10000000`.  
+A third approach uses regular expressions. Regex is a serious pain in the butt.  There are regex masters out there, but most people Google helplessly until they get it to work.  A very helpful resource is [regex101](https://regex101.com/).  This is a website that let's you build a regular expression see its matches in a text.  There are also very helpful explainations to get you started. For the current example, we want to create a tokenization exception for a `$` followed by numbers.  One way of expressing that is `"\$\d*"`, which will match any string with the charachter `$` followed by digits (`\d`) repeating any number of times (`*`).  If you try it out in regex101, you'll see that we get matches on `$1`, `$10000` and `$10000000`.  
 
 ```python
 TOKENIZER_PREFIXES = (
     r"\$\d*" 
 )
 ```
-Wondering what the r is for?  It's Python's raw string, which treats a backslash as a literal character and won't mistake it for a new line \n or tab \t or other escape charachters with a "\" in them. 
+Wondering what the r is for?  It's Python's raw string, which treats a backslash as a literal character and won't mistake it for a new line \n or tab \t or other escape charachters with a `\` in them. 
 
 We can also add a rule for all of the currency symbols
 ```python
@@ -289,6 +267,7 @@ spaCy works well with RTL langauges, but the tokenizer moves from left to right.
 Off-pitch
 
 ### Suffix 
+
 
 # Building A New Language Tokenizer
 
