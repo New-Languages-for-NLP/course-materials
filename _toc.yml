@@ -17,7 +17,7 @@
   - file: prep/python
   
 
-- part: Workshop I Annotation and Linguistic Data
+- part: Workshop I Annotation and Linguistic Data ~ June 21-25, 2021.
   chapters:
   - file: w1/overview
   - file: w1/intro-to-linguistic-data
@@ -25,6 +25,10 @@
   - file: w1/annotation
 
 
-- part: Workshop II Model Training 
+- part: Workshop II Model Training ~ January 10-14, 2022
   chapters:
   - file: w2/overview
+
+- part: Workshop III  Presentations and Publications ~ May 12-13, 2022
+  chapters: 
+  - file: w3/overview
