@@ -20,3 +20,13 @@ p {
 body {
     font-family: "Open Sans", sans-serif";   
    }
+
+main.bd-content #main-content a, main.bd-content #main-content a:visited {
+    color: black;
+}
+
+.prev-next-bottom a.left-prev, .prev-next-bottom a.right-next {
+    border: 2px solid #00EDFF;
+    border-radius: 50px;
+}
+
