@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3. Neural Networks and Machine Learning &#8212; New Languages for NLP</title>
+    <title>2. Data Formats &#8212; New Languages for NLP</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -56,8 +56,8 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. NLP" href="nlp.html" />
-    <link rel="prev" title="2. Data Formats" href="data.html" />
+    <link rel="next" title="3. Neural Networks and Machine Learning" href="ml.html" />
+    <link rel="prev" title="1. Getting Ready for the Workshops" href="introduction.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -105,13 +105,13 @@
    1. Getting Ready for the Workshops
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="data.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    2. Data Formats
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ml.html">
    3. Neural Networks and Machine Learning
   </a>
  </li>
@@ -241,7 +241,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/prep/ml.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/prep/data.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -266,6 +266,26 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#json-javascript-object-notation">
+   2.1. JSON  (JavaScript Object Notation)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tabular-data">
+   2.2. Tabular Data
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
         </div>
     </div>
 </div>
@@ -274,9 +294,33 @@
         
               <div>
                 
-  <div class="section" id="neural-networks-and-machine-learning">
-<h1><span class="section-number">3. </span>Neural Networks and Machine Learning<a class="headerlink" href="#neural-networks-and-machine-learning" title="Permalink to this headline">¶</a></h1>
-<p>What you need to know about Neural Networks and Machine Learning for the workshops.</p>
+  <div class="section" id="data-formats">
+<h1><span class="section-number">2. </span>Data Formats<a class="headerlink" href="#data-formats" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="json-javascript-object-notation">
+<h2><span class="section-number">2.1. </span>JSON  (JavaScript Object Notation)<a class="headerlink" href="#json-javascript-object-notation" title="Permalink to this headline">¶</a></h2>
+<p>The vast majority of our data will be in the JSON format. This format begins and ends with curly braces <code class="docutils literal notranslate"><span class="pre">{}</span></code>. Within the braces, we add pairs of keys and values. The key is contained within double quotes and is separated from the value by a colon. For example, <code class="docutils literal notranslate"><span class="pre">{&quot;key&quot;:&quot;value&quot;}</span></code>. We can add more “key”:value pairs by separating them with a comma.  For example, <code class="docutils literal notranslate"><span class="pre">{&quot;first_name&quot;:&quot;Valentina&quot;,&quot;last_name&quot;:&quot;Tereshkova&quot;}</span></code> You can add as many “key”:value pairs as you like.</p>
+<p>The most common place you’ll find JSON data is in lookups tables.  We use these tables to look up information about a word. We’ll use them with part of speech, lemmata and entity lookups.  In that context, the key is the term that we’re searching for and the value is the result. For example, <code class="docutils literal notranslate"><span class="pre">{&quot;be&quot;:&quot;VERB&quot;}</span></code> or <code class="docutils literal notranslate"><span class="pre">{&quot;bee&quot;:&quot;NOUN&quot;}</span></code>. We can store thousands of “key”:value pairs in a file.</p>
+<p>For more information on JSON, we recommend the <a class="reference external" href="https://www.w3schools.com/js/js_json_intro.asp">W3 Schools</a> and this <a class="reference external" href="https://jsonformatter.curiousconcept.com/">json formatter</a>.</p>
+</div>
+<div class="section" id="tabular-data">
+<h2><span class="section-number">2.2. </span>Tabular Data<a class="headerlink" href="#tabular-data" title="Permalink to this headline">¶</a></h2>
+<p>If you’ve used a spreadsheet program like Excel or Google Sheets, then you’re familiar with tabular data. This is structured information that has rows and columns. To store tabular data in a simple format, programmers often use comma-separated value files. These are simple text files with symbols that split the text into rows and columns. Rows are separated by the new line charachter <code class="docutils literal notranslate"><span class="pre">\n</span></code>. The row is then split into columns by splitting on the commas. For example,</p>
+<p><code class="docutils literal notranslate"><span class="pre">first_name,last_name\nValentina,Tereshkova</span></code></p>
+<p>becomes</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>first_name</p></th>
+<th class="head"><p>last_name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Valentina</p></td>
+<td><p>Tereshkova</p></td>
+</tr>
+</tbody>
+</table>
+<p>CSV/TSV CoNLL CoNLL-u</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -304,8 +348,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="data.html" title="previous page"><span class="section-number">2. </span>Data Formats</a>
-    <a class='right-next' id="next-link" href="nlp.html" title="next page"><span class="section-number">4. </span>NLP</a>
+    <a class='left-prev' id="prev-link" href="introduction.html" title="previous page"><span class="section-number">1. </span>Getting Ready for the Workshops</a>
+    <a class='right-next' id="next-link" href="ml.html" title="next page"><span class="section-number">3. </span>Neural Networks and Machine Learning</a>
 
         </div>
         

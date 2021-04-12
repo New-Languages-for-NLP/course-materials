@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6. YAML &#8212; New Languages for NLP</title>
+    <title>The spaCy Language Object &#8212; New Languages for NLP</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -56,8 +56,6 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7. GitHub" href="github.html" />
-    <link rel="prev" title="5. Text Encoding Initiative (TEI)" href="tei.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -96,52 +94,52 @@
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
-  Preparation
+  Prerequisite Skills and Knowledge
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="introduction.html">
+  <a class="reference internal" href="../prep/introduction.html">
    1. Getting Ready for the Workshops
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="ml.html">
-   2. Neural Networks and Machine Learning
+  <a class="reference internal" href="../prep/data.html">
+   2. Data Formats
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="nlp.html">
-   3. NLP
+  <a class="reference internal" href="../prep/ml.html">
+   3. Neural Networks and Machine Learning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="spacy.html">
-   4. spaCy
+  <a class="reference internal" href="../prep/nlp.html">
+   4. NLP
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="tei.html">
-   5. Text Encoding Initiative (TEI)
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   6. YAML
+  <a class="reference internal" href="../prep/spacy.html">
+   5. spaCy
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="github.html">
+  <a class="reference internal" href="../prep/tei.html">
+   6. Text Encoding Initiative (TEI)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../prep/github.html">
    7. GitHub
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="jupyter-notebooks.html">
+  <a class="reference internal" href="../prep/jupyter-notebooks.html">
    8. Jupyter Notebooks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="python.html">
+  <a class="reference internal" href="../prep/python.html">
    9. Python
   </a>
  </li>
@@ -153,27 +151,27 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../w1/overview.html">
+  <a class="reference internal" href="overview.html">
    1. Welcome to Workshop I
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../w1/intro-to-linguistic-data.html">
+  <a class="reference internal" href="intro-to-linguistic-data.html">
    2. Introduction to Linguistic Data
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../w1/tokenization.html">
+  <a class="reference internal" href="tokenization.html">
    3. Tokenization
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../w1/tokenization.html#building-a-new-language-tokenizer">
+  <a class="reference internal" href="tokenization.html#building-a-new-language-tokenizer">
    4. Building A New Language Tokenizer
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../w1/annotation.html">
+  <a class="reference internal" href="annotation.html">
    5. Annotation with INCEpTION
   </a>
  </li>
@@ -241,7 +239,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/prep/yaml.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/w1/language_object.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -274,10 +272,19 @@
         
               <div>
                 
-  <div class="section" id="yaml">
-<h1><span class="section-number">6. </span>YAML<a class="headerlink" href="#yaml" title="Permalink to this headline">¶</a></h1>
-<p>yaml! <a class="reference external" href="https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started/">https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started/</a></p>
-<p>Some more changes</p>
+  <div class="section" id="the-spacy-language-object">
+<h1>The spaCy Language Object<a class="headerlink" href="#the-spacy-language-object" title="Permalink to this headline">¶</a></h1>
+<p>One of the most important things to learn about and understand in the process of adding a language to spaCy is the Language object.</p>
+<p>While Cadet provides a convenience layer for creating a new language object, it is essential that you understand how Language works and how to create and configure it.</p>
+<p><strong><strong>init</strong>.py</strong>
+You new language is defined in the module’s init file. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@spacy</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">languages</span><span class="p">(</span><span class="s2">&quot;yo&quot;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Yoruba</span><span class="p">(</span><span class="n">Language</span><span class="p">):</span>
+    <span class="n">lang</span> <span class="o">=</span> <span class="s2">&quot;yo&quot;</span>
+    <span class="n">Defaults</span> <span class="o">=</span> <span class="n">YorubaDefaults</span>
+</pre></div>
+</div>
+<p>Your Language is a Python object that inherits all the attributes from spaCy’s base Language object: <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">Yoruba(Language)</span></code>. The decorator <a class="reference external" href="https://nightly.spacy.io/api/top-level#registry"><code class="docutils literal notranslate"><span class="pre">&#64;spacy.registry...</span></code></a> connects your new language to spaCy so that it knows that a new language has been added.  But what is YorubaDefaults?</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -293,7 +300,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./prep"
+            path: "./w1"
         },
         predefinedOutput: true
     }
@@ -305,8 +312,6 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="tei.html" title="previous page"><span class="section-number">5. </span>Text Encoding Initiative (TEI)</a>
-    <a class='right-next' id="next-link" href="github.html" title="next page"><span class="section-number">7. </span>GitHub</a>
 
         </div>
         

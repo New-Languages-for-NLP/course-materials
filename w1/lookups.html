@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3. Neural Networks and Machine Learning &#8212; New Languages for NLP</title>
+    <title>Lookups Data &#8212; New Languages for NLP</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -56,8 +56,6 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. NLP" href="nlp.html" />
-    <link rel="prev" title="2. Data Formats" href="data.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -99,49 +97,49 @@
   Prerequisite Skills and Knowledge
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="introduction.html">
+  <a class="reference internal" href="../prep/introduction.html">
    1. Getting Ready for the Workshops
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="data.html">
+  <a class="reference internal" href="../prep/data.html">
    2. Data Formats
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../prep/ml.html">
    3. Neural Networks and Machine Learning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="nlp.html">
+  <a class="reference internal" href="../prep/nlp.html">
    4. NLP
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="spacy.html">
+  <a class="reference internal" href="../prep/spacy.html">
    5. spaCy
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="tei.html">
+  <a class="reference internal" href="../prep/tei.html">
    6. Text Encoding Initiative (TEI)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="github.html">
+  <a class="reference internal" href="../prep/github.html">
    7. GitHub
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="jupyter-notebooks.html">
+  <a class="reference internal" href="../prep/jupyter-notebooks.html">
    8. Jupyter Notebooks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="python.html">
+  <a class="reference internal" href="../prep/python.html">
    9. Python
   </a>
  </li>
@@ -153,27 +151,27 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../w1/overview.html">
+  <a class="reference internal" href="overview.html">
    1. Welcome to Workshop I
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../w1/intro-to-linguistic-data.html">
+  <a class="reference internal" href="intro-to-linguistic-data.html">
    2. Introduction to Linguistic Data
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../w1/tokenization.html">
+  <a class="reference internal" href="tokenization.html">
    3. Tokenization
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../w1/tokenization.html#building-a-new-language-tokenizer">
+  <a class="reference internal" href="tokenization.html#building-a-new-language-tokenizer">
    4. Building A New Language Tokenizer
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../w1/annotation.html">
+  <a class="reference internal" href="annotation.html">
    5. Annotation with INCEpTION
   </a>
  </li>
@@ -241,7 +239,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/prep/ml.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/w1/lookups.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -274,9 +272,44 @@
         
               <div>
                 
-  <div class="section" id="neural-networks-and-machine-learning">
-<h1><span class="section-number">3. </span>Neural Networks and Machine Learning<a class="headerlink" href="#neural-networks-and-machine-learning" title="Permalink to this headline">¶</a></h1>
-<p>What you need to know about Neural Networks and Machine Learning for the workshops.</p>
+  <div class="section" id="lookups-data">
+<h1>Lookups Data<a class="headerlink" href="#lookups-data" title="Permalink to this headline">¶</a></h1>
+<p>While spaCy can learn to predict part of speech, entities and other features using context, sometimes all you need to a lookups table.  This is a dictionary that you can search and retrieve the information you need. Simple.</p>
+<p>In Cadet, we have three types of lookups.  You can add part of speech, lemmata, and entities.  Each has its own json file that is loaded when your language object is intialized.</p>
+<p>To get comfortable with how spaCy handles lookups, let’s work from their <a class="reference external" href="https://spacy.io/api/lookups#tables">documentation</a>.  Lookups are just an object that can be imported.  You can add new tables to the lookups</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">from</span> <span class="nn">spacy.lookups</span> <span class="kn">import</span> <span class="n">Lookups</span>
+
+<span class="n">lookups</span> <span class="o">=</span> <span class="n">Lookups</span><span class="p">()</span>
+<span class="n">lookups</span><span class="o">.</span><span class="n">add_table</span><span class="p">(</span><span class="s1">&#39;pos&#39;</span><span class="p">)</span>
+
+<span class="n">pos_table</span> <span class="o">=</span> <span class="n">lookups</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="s1">&#39;pos&#39;</span><span class="p">)</span>
+<span class="n">pos_table</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;be&quot;</span><span class="p">,</span> <span class="s2">&quot;VERB&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">pos_table</span><span class="p">[</span><span class="s1">&#39;be&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;VERB&quot;</span>
+</pre></div>
+</div>
+<p>The code above adds a single value to the lookups.  More often, you’ll bulk update with a full dictionary of lookups.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;lemma_lookup&#39;</span><span class="p">:</span><span class="s1">&#39;path/to/lookup.json&#39;</span><span class="p">,</span><span class="s1">&#39;pos_lookup&#39;</span><span class="p">:</span><span class="s1">&#39;path/to/lookup.json&#39;</span><span class="p">,</span><span class="s1">&#39;ner_lookup&#39;</span><span class="p">:</span><span class="s1">&#39;/path/to/lookup.json&#39;</span><span class="p">}</span>
+
+<span class="n">lookups</span> <span class="o">=</span> <span class="n">Lookups</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">language_data</span> <span class="o">=</span> <span class="n">srsly</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">table</span><span class="p">])</span>
+    <span class="n">lookups</span><span class="o">.</span><span class="n">add_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">language_data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is great of one-time updates to the lookups, but we’re in the buisness of creating new language models.  How can we add a lookup table to a new language?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@spacy</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">lookups</span><span class="p">(</span><span class="s2">&quot;new&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_lookups</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;lookups_table_name&quot;</span><span class="p">:</span><span class="s2">&quot;path/to/file.json&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.pipeline</span> <span class="kn">import</span> <span class="n">Lemmatizer</span> 
+
+<span class="n">l</span> <span class="o">=</span> <span class="n">Lemmatizer</span><span class="p">(</span><span class="n">nlp</span><span class="o">.</span><span class="n">vocab</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+</pre></div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -292,7 +325,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./prep"
+            path: "./w1"
         },
         predefinedOutput: true
     }
@@ -304,8 +337,6 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="data.html" title="previous page"><span class="section-number">2. </span>Data Formats</a>
-    <a class='right-next' id="next-link" href="nlp.html" title="next page"><span class="section-number">4. </span>NLP</a>
 
         </div>
         
