@@ -4,14 +4,14 @@
 - file: intro
   numbered: true
 
-- part: Preparation
+- part: Prerequisite Skills and Knowledge 
   chapters:  
   - file: prep/introduction
+  - file: prep/data
   - file: prep/ml
   - file: prep/nlp
   - file: prep/spacy
   - file: prep/tei
-  - file: prep/yaml
   - file: prep/github
   - file: prep/jupyter-notebooks
   - file: prep/python
