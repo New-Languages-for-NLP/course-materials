@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>7. GitHub &#8212; New Languages for NLP</title>
+    <title>Fair Use and Copyright &#8212; New Languages for NLP</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -53,8 +53,6 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8. Jupyter Notebooks" href="jupyter-notebooks.html" />
-    <link rel="prev" title="6. Text Encoding Initiative (TEI)" href="tei.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -96,7 +94,7 @@
   Prerequisite Skills and Knowledge
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="introduction.html">
    1. Getting Ready for the Workshops
@@ -127,8 +125,8 @@
    6. Text Encoding Initiative (TEI)
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="github.html">
    7. GitHub
   </a>
  </li>
@@ -234,7 +232,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/prep/github.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/prep/fairuse.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -259,6 +257,19 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#corpus-documentation">
+   Corpus Documentation
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -267,9 +278,36 @@
         
               <div>
                 
-  <div class="section" id="github">
-<h1><span class="section-number">7. </span>GitHub<a class="headerlink" href="#github" title="Permalink to this headline">¶</a></h1>
-<p>What you need to know about GutHub for the workshops.</p>
+  <div class="section" id="fair-use-and-copyright">
+<h1>Fair Use and Copyright<a class="headerlink" href="#fair-use-and-copyright" title="Permalink to this headline">¶</a></h1>
+<p>When building your training corpus, you will gather many types of texts from the Internet, from libraries, from existing linguistic resources and other places. We will tokenize and annotate these texts and eventually publish them as linguistic data. This raises an important question.  Does your data violate copyright laws?</p>
+<p>There’s no one good answer to this question and we encourage you to seek answers that are specific to the texts in your corpus, their authors, and the copyright laws specific to them. That said, it is common practice to omit sections of in-copyright materials such that it would be impossible to reconstruct the original work from your data. This might be, for example, the removal of a few words every 200 words. You can also choose to sample a certain percentage of the text. In the United States, less thant 10% of a work or no more than one chapter of a book is considered “fair use” for educational purposes. For more specific suggestions, there is a helpful chapter on copyright in <a class="reference external" href="https://www.lancaster.ac.uk/fass/projects/corpus/ZJU/xCBLS/chapters/A09.pdf">Corpus-Based Language Studies: An Advanced Resource Book</a>.</p>
+<div class="section" id="corpus-documentation">
+<h2>Corpus Documentation<a class="headerlink" href="#corpus-documentation" title="Permalink to this headline">¶</a></h2>
+<p>Your corpus could easily contain text from hundreds of different texts. You’re not likely to remember the specifics, so we recommend recording certain information each time you add a new text to the corpus. In the long term, this data will give you the means to manage the kinds of texts that are in the corpus. If a copyright violation notice appears in your inbox, you’ll have good answers to address their concerns.</p>
+<ol class="simple">
+<li><p>Provenance of the text</p>
+<ul class="simple">
+<li><p>Where the text was found and how it was accessed (for example, were university credentials used to access the materials?)</p></li>
+<li><p>The original format of the text (PDF, image, HTML)</p></li>
+<li><p>How the text was collected (downloaded, requested, emailed…)</p></li>
+</ul>
+</li>
+<li><p>Rights and licenses of the text</p>
+<ul class="simple">
+<li><p>Is the text in the <a class="reference external" href="https://fairuse.stanford.edu/overview/public-domain/welcome/">public domain</a> or in copyright?</p></li>
+<li><p>For books published after 1975, you can search the <a class="reference external" href="http://cocatalog.loc.gov.">Library of Congress copyright database</a></p></li>
+</ul>
+</li>
+<li><p>Sampling and processing of the text</p>
+<ul class="simple">
+<li><p>What portion of the original text was added to the corpus?</p></li>
+<li><p>Were any sampling or deletion techniques used?</p></li>
+</ul>
+</li>
+</ol>
+<p>Finally, there is an entire NEH institute dedicated to legal literacies for text mining. Further information on the institute can be found <a class="reference external" href="https://buildinglltdm.org/">here</a>.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -297,8 +335,6 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="tei.html" title="previous page"><span class="section-number">6. </span>Text Encoding Initiative (TEI)</a>
-    <a class='right-next' id="next-link" href="jupyter-notebooks.html" title="next page"><span class="section-number">8. </span>Jupyter Notebooks</a>
 
         </div>
         
