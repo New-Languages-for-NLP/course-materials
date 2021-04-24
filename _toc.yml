@@ -9,7 +9,6 @@
   - file: prep/introduction
   - file: prep/ml
   - file: prep/nlp
-  - file: prep/spacy
   - file: prep/fairuse
 
 - part: Prerequisite Skills
