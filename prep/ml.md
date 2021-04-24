@@ -5,7 +5,7 @@ Neural networks have been an important form of computation since the first "perc
 
 ![](https://miro.medium.com/max/645/0*LJBO8UbtzK_SKMog)
 
-In the late 1980s, neural networks became briefly cool when it became possible to "back propagate" and update the weights based on the error in the model's predictions. Together with gradient descent, back propagation enabled machine learning models to automatically improve their predictions without handwritten rules and criteria. Since 1999, advances in processing and big data have sparked a period of rapid innovation and heightened expectations. Many-layered networks with increasingly complex architectures are able to learn how to complete computer vision and natural language tasks with near- or super-human precision.         
+In the late 1980s, it became possible to "back propagate" and update the weights based on the error in the model's predictions. Together with gradient descent, back propagation enabled machine learning models to automatically improve their predictions without handwritten rules and criteria. Since 1999, advances in processing and big data have sparked a period of rapid innovation and heightened expectations. Many-layered networks with increasingly complex architectures are able to complete computer vision and natural language tasks with near- or super-human precision.         
 
 ![](https://miro.medium.com/max/3840/1*5K-1CSOB2mb5Jn2L8K3f9Q.gif)
 

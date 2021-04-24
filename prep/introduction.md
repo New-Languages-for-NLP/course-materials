@@ -1,4 +1,4 @@
 Getting Ready for the Workshops
 =======================
 
-In this section, we have provided learning materials to help you assess what skills and knowledge you already have and what you may need to learn in order to get the most from the workshops. You'll find one section for "knowledge" which has more conceptual and background information that you can reference whenever you wonder "wait, what is a ...?" The "skills" section helps with practical tasks and "how do I?" questions. We recommend that you look over both sections.  If a section is unfamiliar, please take some time to acquaint yourself with the topic or skill.     
+In this section, we have provided learning materials to help you assess what skills and knowledge you already have and what you may need to learn in order to get the most from the workshops. You'll find one section for "knowledge" which has more conceptual and background information. The "skills" section helps with practical tasks and how-to questions. We recommend that you look over both sections.  If a section is unfamiliar, please take some time to acquaint yourself with the topic or skill.     
