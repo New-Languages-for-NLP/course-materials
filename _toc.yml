@@ -13,6 +13,7 @@
   - file: prep/fairuse
 
 - part: Prerequisite Skills
+  chapters:
   - file: prep/data
   - file: prep/tei
   - file: prep/github

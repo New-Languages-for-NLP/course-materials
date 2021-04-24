@@ -1,11 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3. Tokenization &#8212; New Languages for NLP Building Linguistic Diversity in the Digital Humanities</title>
+    <title>3. Tokenization &#8212; New Languages for NLP</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -25,8 +24,8 @@
     href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -37,24 +36,25 @@
     
   <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/togglebutton.js"></script>
+    <script type="text/javascript" src="../_static/clipboard.min.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
+    <script type="text/javascript">var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script type="text/javascript" src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script type="text/javascript">
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" type="text/javascript" src="../_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -81,7 +81,7 @@
   <img src="../_static/logo.svg" class="logo" alt="logo">
   
   
-  <h1 class="site-logo" id="site-title">New Languages for NLP Building Linguistic Diversity in the Digital Humanities</h1>
+  <h1 class="site-logo" id="site-title">New Languages for NLP</h1>
   
 </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -98,7 +98,7 @@
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
-  Preparation
+  Prerequisite Knowledge
  </span>
 </p>
 <ul class="nav sidenav_l1">
@@ -123,28 +123,40 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../prep/tei.html">
-   5. Text Encoding Initiative (TEI)
+  <a class="reference internal" href="../prep/fairuse.html">
+   5. Fair Use and Copyright
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Prerequisite Skills
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../prep/data.html">
+   1. Data Formats
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../prep/yaml.html">
-   6. YAML
+  <a class="reference internal" href="../prep/tei.html">
+   2. Text Encoding Initiative (TEI)
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../prep/github.html">
-   7. GitHub
+   3. GitHub
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../prep/jupyter-notebooks.html">
-   8. Jupyter Notebooks
+   4. Jupyter Notebooks
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../prep/python.html">
-   9. Python
+   5. Python
   </a>
  </li>
 </ul>
@@ -351,11 +363,11 @@
               <div>
                 
   <div class="section" id="tokenization">
-<h1><span class="section-number">3. </span>Tokenization<a class="headerlink" href="#tokenization" title="Permalink to this headline">¶</a></h1>
+<h1>3. Tokenization<a class="headerlink" href="#tokenization" title="Permalink to this headline">¶</a></h1>
 <p>From your computer’s perspective, text is nothing more than a sequence of characters. If you ask Python to iterate over a snippet of text, you’ll see that it returns just one letter at a time. Note that the index starts at 0, not 1 and that spaces are part of the sequence.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Siberia has many rivers.&quot;</span>
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">char</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">char</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">char</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>  <span class="n">S</span>
@@ -394,13 +406,13 @@
 </div>
 <p>Keep in mind that computers are very precise and picky.  Any messiness in the text will cause the word to be missed, so <code class="docutils literal notranslate"><span class="pre">text.find(&quot;Rivers&quot;)</span></code> returns -1, which means that the sequence could not be found. You can also accidentally match characters that are part of the sequence, but not part of a word.  Try <code class="docutils literal notranslate"><span class="pre">text.find(&quot;y</span> <span class="pre">riv&quot;)</span></code>.  You get 15 as the answer because that is the beginning of the “y riv” sequence, which is present in the text, but isn’t a thing that you’d normally want to find.</p>
 <div class="section" id="natural-language-processing-tokenization">
-<h2><span class="section-number">3.1. </span>Natural language processing &amp; Tokenization<a class="headerlink" href="#natural-language-processing-tokenization" title="Permalink to this headline">¶</a></h2>
+<h2>3.1. Natural language processing &amp; Tokenization<a class="headerlink" href="#natural-language-processing-tokenization" title="Permalink to this headline">¶</a></h2>
 <p>While pure Python is sufficient for many tasks, natural language processing (NLP) libraries allow us to work computationally with the text as language. NLP reveals a whole host of linguistic attributes of the text that can be used for analysis.  For example, the machine will know if a word is a noun or a verb with part of speech tagging.  We can find the direct object of a verb to determine who is speaking and the subject of that speech.  NLP gives your programs an instant boost of information that opens new forms of analysis.</p>
 <p>Our first NLP task is tokenization. This is where our text is split into meaningful parts; usually word tokens, spans (“New York City”) or sentences. The sentence, “Siberia has many rivers.” can be split into five tokens: <code class="docutils literal notranslate"><span class="pre">&lt;Siberia&gt;&lt;has&gt;&lt;many&gt;&lt;rivers&gt;&lt;.&gt;</span></code>  Note that the ending punctuation is now distinct from the word rivers. The rules for tokenization depend on the language your are using. For English and other languages with spaces between words, you often get good results simply by splitting the tokens on spaces. However, a host of rules are also needed to separate punctuation from a token, to split and normalize words (ex. “Let’s” = “Let us”) as well as specific exceptions that don’t follow regular patterns.</p>
 <p>The <a class="reference external" href="https://spacy.io/usage/linguistic-features/#tokenization">spaCy documentation</a> is really excellent on this topic and I recommend that you start there. When you’re done come back and we’ll cover some practical topics and processes that you’ll need when creating a new language object.</p>
 </div>
 <div class="section" id="spacy-s-tokenizer">
-<h2><span class="section-number">3.2. </span>spaCy’s Tokenizer<a class="headerlink" href="#spacy-s-tokenizer" title="Permalink to this headline">¶</a></h2>
+<h2>3.2. spaCy’s Tokenizer<a class="headerlink" href="#spacy-s-tokenizer" title="Permalink to this headline">¶</a></h2>
 <p>spaCy’s tokenization begins by splitting tokens on spaces. It’s nearly identical what you’d get from <code class="docutils literal notranslate"><span class="pre">&quot;Siberia</span> <span class="pre">has</span> <span class="pre">many</span> <span class="pre">rivers.&quot;.split()</span></code>, which is <code class="docutils literal notranslate"><span class="pre">['Siberia','has','many','rivers.']</span></code>  Keep a close eye on the period in this sentence. On its own, Python has trouble identifying the period as a distinct token.</p>
 <p>To address this problem, spaCy has rules for how to split these chunks into tokens. In this case, it has a list of punctuation symbols.  If any of those symbols are at the end of a chunk, a suffix rule separates the word from the punctuation.  These rules cover a lot of ground and are very powerful. However, there are many cases where we need to tell spaCy to handle things differently.</p>
 <p>Exceptions are a list of patterns to look for and what to do with them. The exceptions for your language are most often found in <code class="docutils literal notranslate"><span class="pre">spacy/lang</span></code> directory in a <code class="docutils literal notranslate"><span class="pre">tokenizer_exceptions.py</span></code> file. For example, here are the exceptions for English to handle shortened forms of <code class="docutils literal notranslate"><span class="pre">because</span></code> such as <code class="docutils literal notranslate"><span class="pre">'cause</span></code>. These exception prevent the tokenizer from splitting off the <code class="docutils literal notranslate"><span class="pre">'</span></code> from <code class="docutils literal notranslate"><span class="pre">coz</span></code>.</p>
@@ -424,7 +436,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="adding-new-exceptions-for-your-language">
-<h2><span class="section-number">3.3. </span>Adding new exceptions for your language<a class="headerlink" href="#adding-new-exceptions-for-your-language" title="Permalink to this headline">¶</a></h2>
+<h2>3.3. Adding new exceptions for your language<a class="headerlink" href="#adding-new-exceptions-for-your-language" title="Permalink to this headline">¶</a></h2>
 <p>spaCy comes with a lot of opinions and defaults right from the beginning.  In most cases, this will save you time. You can find the default tokenizer exceptions by importing them.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.lang.tokenizer_exceptions</span> <span class="kn">import</span> <span class="n">BASE_EXCEPTIONS</span>
 </pre></div>
@@ -451,7 +463,7 @@
 <p>The lesson here is that it’s up to you when to use specific exceptions and when to use rule-based exceptions.</p>
 </div>
 <div class="section" id="specific-exceptions">
-<h2><span class="section-number">3.4. </span>Specific Exceptions<a class="headerlink" href="#specific-exceptions" title="Permalink to this headline">¶</a></h2>
+<h2>3.4. Specific Exceptions<a class="headerlink" href="#specific-exceptions" title="Permalink to this headline">¶</a></h2>
 <p>To add a new exception, pass a dictionary with a key with the string to match and a list with instructions on how to transform it.</p>
 <p>For example:
 “BIG YIKES” would normally be split into two tokens <code class="docutils literal notranslate"><span class="pre">&lt;BIG&gt;&lt;YIKES&gt;</span></code>. To prevent this from happening, we can create an exception.</p>
@@ -489,7 +501,7 @@
 <p>To build on our momentum, let’s discuss several other common types of tokenizer exceptions.</p>
 </div>
 <div class="section" id="separate-a-word-into-two-tokens">
-<h2><span class="section-number">3.5. </span>Separate a word into two tokens<a class="headerlink" href="#separate-a-word-into-two-tokens" title="Permalink to this headline">¶</a></h2>
+<h2>3.5. Separate a word into two tokens<a class="headerlink" href="#separate-a-word-into-two-tokens" title="Permalink to this headline">¶</a></h2>
 <p>It’s very common to have words that should be split into separate tokens, but there isn’t a regular infix that will make the cut.  Here we need an exception. As an example, let’s explore Kummerspeck (‘grief bacon’) the German name for weight from emotional eating.</p>
 <p>Here we can use the exceptions list to split the word into parts and detail how to handle each of the new tokens: <code class="docutils literal notranslate"><span class="pre">'matchword':[{match}{word}]</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">grief_bacon</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Kummerspeck&#39;</span><span class="p">:[{</span><span class="n">ORTH</span><span class="p">:</span><span class="s2">&quot;Kummer&quot;</span><span class="p">},{</span><span class="n">ORTH</span><span class="p">:</span><span class="s2">&quot;speck&quot;</span><span class="p">}]}</span>
@@ -507,7 +519,7 @@
 <p>The three use cases covered above are the most common types of tokenizer exceptions: adding normalizations, combining words, splitting words. Exceptions can be extremely useful for one-time problems for which there just aren’t any rules or common patterns. However, it’s simply impractical to handle everything with specific exceptions. The next section cover ways that you can handle common patterns and rule-based exceptions.</p>
 </div>
 <div class="section" id="rule-based-exceptions">
-<h2><span class="section-number">3.6. </span>Rule-based exceptions<a class="headerlink" href="#rule-based-exceptions" title="Permalink to this headline">¶</a></h2>
+<h2>3.6. Rule-based exceptions<a class="headerlink" href="#rule-based-exceptions" title="Permalink to this headline">¶</a></h2>
 <p>To handle regular patterns, spaCy has three kinds of rule-based exceptions. They are:</p>
 <ul class="simple">
 <li><p>Prefix: A section at the start of a word that should be separated into its own token.</p></li>
@@ -533,14 +545,14 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.lang.char_classes</span> <span class="kn">import</span> <span class="n">CURRENCY</span>
 
 <span class="n">TOKENIZER_PREFIXES</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="sa">r</span><span class="s2">&quot;\</span><span class="si">{c}</span><span class="s2">\d*&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="n">CURRENCY</span><span class="p">)</span>
+    <span class="sa">r</span><span class="s2">&quot;\{c}\d*&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="n">CURRENCY</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 <p>The code above will take each individual symbol in CURRENCY and add a regular expression rule for it by replacing {c} with the symbol.</p>
 </div>
 <div class="section" id="extending-defaults">
-<h2><span class="section-number">3.7. </span>Extending defaults<a class="headerlink" href="#extending-defaults" title="Permalink to this headline">¶</a></h2>
+<h2>3.7. Extending defaults<a class="headerlink" href="#extending-defaults" title="Permalink to this headline">¶</a></h2>
 <p>As you develop a language object for a new language, you can delegate much of the work to the existing defaults, but it’s quite likely that your language has its own specific symbols and charachters. You can add them to your language’s <code class="docutils literal notranslate"><span class="pre">punctuation.py</span></code> file.</p>
 <p>For example, the default list of currency symbols does not include the Sheckel ₪. We can add our new prefix by adding a list of new symbols to our TOKENIZER_PREFIXES.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.lang.punctuation</span> <span class="kn">import</span> <span class="n">TOKENIZER_PREFIXES</span> <span class="k">as</span> <span class="n">BASE_TOKENIZER_PREFIXES</span>
@@ -550,7 +562,7 @@
 </div>
 <p>The prefixes are added to the language object in <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code></p>
 <div class="section" id="prefixes-in-action">
-<h3><span class="section-number">3.7.1. </span>Prefixes in action<a class="headerlink" href="#prefixes-in-action" title="Permalink to this headline">¶</a></h3>
+<h3>3.7.1. Prefixes in action<a class="headerlink" href="#prefixes-in-action" title="Permalink to this headline">¶</a></h3>
 <p>The addition of prefixes will usually be added to the language object. However, you may want to make adjustments on the fly. It’s also a good way to check that the new prefix is really what you need <a class="reference external" href="https://spacy.io/usage/linguistic-features#native-tokenizer-additions">docs</a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy</span> <span class="kn">import</span> <span class="n">util</span>
 <span class="kn">from</span> <span class="nn">spacy.lang.he</span> <span class="kn">import</span> <span class="n">Hebrew</span>
@@ -572,16 +584,16 @@
 spaCy works well with RTL langauges, but the tokenizer moves from left to right.  Even though ₪ follows 181 in the sentence, spaCy considers it a prefix.</p>
 </div>
 <div class="section" id="infix">
-<h3><span class="section-number">3.7.2. </span>Infix<a class="headerlink" href="#infix" title="Permalink to this headline">¶</a></h3>
+<h3>3.7.2. Infix<a class="headerlink" href="#infix" title="Permalink to this headline">¶</a></h3>
 <p>Off-pitch</p>
 </div>
 <div class="section" id="suffix">
-<h3><span class="section-number">3.7.3. </span>Suffix<a class="headerlink" href="#suffix" title="Permalink to this headline">¶</a></h3>
+<h3>3.7.3. Suffix<a class="headerlink" href="#suffix" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="section" id="building-a-new-language-tokenizer">
-<h1><span class="section-number">4. </span>Building A New Language Tokenizer<a class="headerlink" href="#building-a-new-language-tokenizer" title="Permalink to this headline">¶</a></h1>
+<h1>4. Building A New Language Tokenizer<a class="headerlink" href="#building-a-new-language-tokenizer" title="Permalink to this headline">¶</a></h1>
 <p>In the previous section, we covered the key concepts that you need to create a tokenizer for your new language.  However, knowing what a brick is does not tell you how to build a house.  In this section, we’ll cover the process of building a new language object’s tokenizer. This process includes identifying term variations in your corpus</p>
 </div>
 
@@ -610,8 +622,8 @@ spaCy works well with RTL langauges, but the tokenizer moves from left to right.
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="intro-to-linguistic-data.html" title="previous page"><span class="section-number">2. </span>Introduction to Linguistic Data</a>
-    <a class='right-next' id="next-link" href="annotation.html" title="next page"><span class="section-number">5. </span>Annotation with INCEpTION</a>
+    <a class='left-prev' id="prev-link" href="intro-to-linguistic-data.html" title="previous page">2. Introduction to Linguistic Data</a>
+    <a class='right-next' id="next-link" href="annotation.html" title="next page">5. Annotation with INCEpTION</a>
 
         </div>
         
