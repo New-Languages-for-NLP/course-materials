@@ -23,6 +23,7 @@ body {
 
 main.bd-content #main-content a, main.bd-content #main-content a:visited {
     color: black;
+    text-decoration: underline;
 }
 
 .prev-next-bottom a.left-prev, .prev-next-bottom a.right-next {
