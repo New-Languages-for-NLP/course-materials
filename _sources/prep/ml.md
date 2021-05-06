@@ -1,11 +1,18 @@
 Neural Networks and Machine Learning
 =======================
 
-Neural networks have been an important form of computation since the first "perceptron" was invented in 1958. In its most basic form, a neural network is a graph composed of nodes and edges. Information flows in one direction making for a directed graph (DAG). Each connecting edge has a weight value that can be adjusted to complete a variety of classification and regression tasks.
+Neural networks have become the most important method of Machine Learning since the first "perceptron" was invented in 1958. In its most basic form, a neural network is a graph composed of nodes and edges that are typically structured as layers. During inference, information flows, layer by layer, in one direction making for a directed graph (DAG). 
+There are different types of layers, for example *fully connected* or *convolutional* that characterize the structure of the connections between layers.
+Each connecting edge has a weight value that can be adjusted. With this, the network is able to memorize to either emphasize or discard certain inputs. Additionally, before passing the weighted inputs forward to the next node, an (typically non-linear) activation function is applied.
 
+![A visual introduction to Neural Networks](https://youtu.be/UOvPeC8WOt8)
 ![](https://miro.medium.com/max/645/0*LJBO8UbtzK_SKMog)
 
-In the late 1980s, it became possible to "back propagate" and update the weights based on the error in the model's predictions. Together with gradient descent, back propagation enabled machine learning models to automatically improve their predictions without handwritten rules and criteria. Since 1999, advances in processing and big data have sparked a period of rapid innovation and heightened expectations. Many-layered networks with increasingly complex architectures are able to complete computer vision and natural language tasks with near- or super-human precision.         
+In the late 1980s, it became possible to "back propagate" and update the weights based on the error in the model's predictions. Together with gradient descent, back propagation enabled models to automatically improve their predictions without handwritten rules and criteria. 
+
+![Code intro to backprop and layer chaining](https://thinc.ai/docs/concept)
+
+As the computations could be parallelized on GPUs, more data became available, it has sparked a period of rapid innovation and heightened expectations. Many-layered networks with increasingly complex architectures are able to complete computer vision and natural language tasks with near- or super-human precision.
 
 ![](https://miro.medium.com/max/3840/1*5K-1CSOB2mb5Jn2L8K3f9Q.gif)
 
