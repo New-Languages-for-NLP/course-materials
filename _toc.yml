@@ -16,7 +16,6 @@
   - file: prep/data
   - file: prep/tei
   - file: prep/github
-  - file: prep/jupyter-notebooks
   - file: prep/python
   
 
