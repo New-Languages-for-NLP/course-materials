@@ -5,12 +5,13 @@ Neural networks have become the most important method of Machine Learning since 
 There are different types of layers, for example *fully connected* or *convolutional* that characterize the structure of the connections between layers.
 Each connecting edge has a weight value that can be adjusted. With this, the network is able to memorize to either emphasize or discard certain inputs. Additionally, before passing the weighted inputs forward to the next node, an (typically non-linear) activation function is applied.
 
-![A visual introduction to Neural Networks](https://youtu.be/UOvPeC8WOt8)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UOvPeC8WOt8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+
 ![](https://miro.medium.com/max/645/0*LJBO8UbtzK_SKMog)
 
 In the late 1980s, it became possible to "back propagate" and update the weights based on the error in the model's predictions. Together with gradient descent, back propagation enabled models to automatically improve their predictions without handwritten rules and criteria. 
 
-![Code intro to backprop and layer chaining](https://thinc.ai/docs/concept)
+[Code intro to backprop and layer chaining](https://thinc.ai/docs/concept)
 
 As the computations could be parallelized on GPUs, more data became available, it has sparked a period of rapid innovation and heightened expectations. Many-layered networks with increasingly complex architectures are able to complete computer vision and natural language tasks with near- or super-human precision.
 
