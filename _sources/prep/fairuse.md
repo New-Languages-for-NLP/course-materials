@@ -9,6 +9,7 @@ When building your training corpus, you will gather many types of texts from the
 
     - [Section on data statements](https://www.aclweb.org/anthology/Q18-1041/)
 
+- [Datasheets for Datasets](Datasheets_Template.pdf)
 - Does your data violate copyright laws?  
 
 There's no one good answer to this question and we encourage you to seek answers that are specific to the texts in your corpus, their authors, and the copyright laws specific to them. That said, it is common practice to omit sections of in-copyright materials such that it would be impossible to reconstruct the original work from your data. This might be, for example, the removal of a few words every 200 words. You can also choose to sample a certain percentage of the text. In the United States, less thant 10% of a work or no more than one chapter of a book is considered "fair use" for educational purposes. For more specific suggestions, there is a helpful chapter on copyright in [Corpus-Based Language Studies: An Advanced Resource Book](https://www.lancaster.ac.uk/fass/projects/corpus/ZJU/xCBLS/chapters/A09.pdf). 
