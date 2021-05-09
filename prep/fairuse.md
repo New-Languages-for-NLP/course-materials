@@ -1,7 +1,15 @@
 Fair Use and Copyright
 =======================
 
-When building your training corpus, you will gather many types of texts from the Internet, from libraries, from existing linguistic resources and other places. We will tokenize and annotate these texts and eventually publish them as linguistic data. This raises an important question.  Does your data violate copyright laws?  
+When building your training corpus, you will gather many types of texts from the Internet, from libraries, from existing linguistic resources and other places. We will tokenize and annotate these texts and eventually publish them as linguistic data. The creation of these datasets raises several important questions.  
+
+- Have we gathered a diverse and representative collection of texts? Did we simply gather what was available, or did we follow a clear dataset development plan? 
+
+- Is the process of data collection and curation documented? Could an outsider assess the provenance of your texts and how they were collected? 
+
+    - [Section on data statements](https://www.aclweb.org/anthology/Q18-1041/)
+
+- Does your data violate copyright laws?  
 
 There's no one good answer to this question and we encourage you to seek answers that are specific to the texts in your corpus, their authors, and the copyright laws specific to them. That said, it is common practice to omit sections of in-copyright materials such that it would be impossible to reconstruct the original work from your data. This might be, for example, the removal of a few words every 200 words. You can also choose to sample a certain percentage of the text. In the United States, less thant 10% of a work or no more than one chapter of a book is considered "fair use" for educational purposes. For more specific suggestions, there is a helpful chapter on copyright in [Corpus-Based Language Studies: An Advanced Resource Book](https://www.lancaster.ac.uk/fass/projects/corpus/ZJU/xCBLS/chapters/A09.pdf). 
 
