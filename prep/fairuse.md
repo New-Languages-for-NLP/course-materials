@@ -1,16 +1,20 @@
 Fair Use and Copyright
 =======================
 
-When building your training corpus, you will gather many types of texts from the Internet, from libraries, from existing linguistic resources and other places. We will tokenize and annotate these texts and eventually publish them as linguistic data. The creation of these datasets raises several important questions.  
+When building your training corpus, you will gather many types of texts from the Internet, from libraries, and existing linguistic resources. We will tokenize and annotate these texts and eventually publish them as linguistic data. The creation of these datasets raises several vital questions.  
 
-- Have we gathered a diverse and representative collection of texts? Did we simply gather what was available, or did we follow a clear dataset development plan? 
+- Have we gathered a diverse and representative collection of texts? 
 
-- Is the process of data collection and curation documented? Could an outsider assess the provenance of your texts and how they were collected? 
-    - [Section on data statements](https://www.aclweb.org/anthology/Q18-1041/)
-    - Datasheets for data sets
-        - [Article](https://arxiv.org/abs/1803.09010)
-        - [Template](https://github.com/AudreyBeard/Datasheets-for-Datasets-Template/blob/master/Datasheet_for_Datasets.pdf)
-        - <a href="Datasheets_Template.pdf">Worksheet</a>
+- Is the process of data collection and curation documented? 
+
+- Could an outsider assess the provenance of your texts and how they were collected? 
+
+To assure that the answers to these questions are available both for your project as well as future reuse, we recommend documenting the process of gathering and preparing your texts. A thriving are of research focuses on what may be an entirely new profession dedicated to the gathering, curating, processing, and publishing research data for machine learning. Several exemplary texts are linked below and offer some practical guidance.  
+- [Data Statements for Natural Language Processing: Toward Mitigating System Bias and Enabling Better Science](https://www.aclweb.org/anthology/Q18-1041/)
+- Datasheets for Datasets
+    - [Article](https://arxiv.org/abs/1803.09010)
+    - [Template](https://github.com/AudreyBeard/Datasheets-for-Datasets-Template/blob/master/Datasheet_for_Datasets.pdf)
+    - <a href="Datasheets_Template.pdf">Worksheet</a>
 
 - Does your data violate copyright laws?  
 
