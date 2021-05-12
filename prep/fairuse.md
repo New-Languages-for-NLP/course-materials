@@ -3,7 +3,7 @@ Corpus Documentation
 
 When building your training corpus, you will gather many types of texts from the Internet, from libraries, and existing linguistic resources. We will tokenize and annotate these texts and eventually publish them as linguistic data. The creation of these datasets raises several vital questions.  
 
-- Have we gathered a diverse and representative collection of texts? 
+- Have we gathered a diverse and representative collection of texts? What kinds of texts are overrepresented? Where are there gaps? 
 
 - Is the process of data collection and curation documented? 
 
@@ -15,7 +15,8 @@ To assure that the answers to these questions are available both for your projec
     - [Article](https://arxiv.org/abs/1803.09010)
     - [Template](https://github.com/AudreyBeard/Datasheets-for-Datasets-Template/blob/master/Datasheet_for_Datasets.pdf)
     - <a href="Datasheets_Template.pdf">Worksheet</a>
-
+    - [post45 criteria](https://data.post45.org/#peer-review) 
+    
 Your corpus could easily contain text from hundreds of different texts. You're not likely to remember the specifics, so we recommend recording information each time you add a new text to the corpus. In the long term, this data will give you the means to manage the kinds of texts that are in the corpus. 
 
 1. Provenance of the text
