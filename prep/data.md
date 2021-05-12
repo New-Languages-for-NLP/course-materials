@@ -10,7 +10,7 @@ The most common place you'll find JSON data is in lookups tables.  We use these 
 For more information on JSON, we recommend the [W3 Schools](https://www.w3schools.com/js/js_json_intro.asp) and this [json formatter](https://jsonformatter.curiousconcept.com/).
 
 
-## Tabular Data 
+## Tabular Data (CSV and TSV)
 
 If you've used a spreadsheet program like Excel or Google Sheets, then you're familiar with tabular data. This is structured information that has rows and columns. To store tabular data in a simple format, programmers often use comma-separated value files. These are simple text files with symbols that split the text into rows and columns. Rows are separated by the new line character `\n`. The row is split into columns by commas. For example, 
 
