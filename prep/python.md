@@ -1,7 +1,7 @@
 Python 
 =======================
 
-<img style="height:50%;" src="https://images.emojiterra.com/google/android-11/512px/1f40d.png" />
+<img style="height:100px;" src="https://images.emojiterra.com/google/android-11/512px/1f40d.png" />
  
 Creating, training, and using spaCy natural language processing (NLP) models requires code in the Python programming language. For this workshop, we don’t expect that you’ll be comfortable writing that code on your own. We’ve tried to put together tools with user interfaces that you can use instead of writing Python code. These tools are experimental, and they might not work in all situations. As a backup, we’ve prepared Jupyter notebooks where you can access the Python code directly.
 

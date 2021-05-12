@@ -1,7 +1,7 @@
 GitHub
 =======================
 
-<img style="height:50%;" src="https://octodex.github.com/images/Professortocat_v2.png" />
+<img style="height:100px;" src="https://octodex.github.com/images/Professortocat_v2.png" />
 
 
 During the workshops we will use GitHub as a common space to store data and scripts related to your project. GitHub is also an important tool for collaboration, project management and documentation.    
