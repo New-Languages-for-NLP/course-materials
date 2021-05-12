@@ -3,20 +3,23 @@ Corpus Documentation
 
 When building your training corpus, you will gather many types of texts from the Internet, from libraries, and existing linguistic resources. We will tokenize and annotate these texts and eventually publish them as linguistic data. The creation of these datasets raises several vital questions.  
 
-- Have we gathered a diverse and representative collection of texts? What kinds of texts are overrepresented? Where are there gaps? 
+- Could an outsider assess the provenance of your texts and how they were collected? 
+
+- Have you gathered a diverse and representative collection of texts? 
 
 - Is the process of data collection and curation documented? 
 
-- Could an outsider assess the provenance of your texts and how they were collected? 
 
-To assure that the answers to these questions are available both for your project as well as future reuse, we recommend documenting the process of gathering and preparing your texts. A thriving are of research focuses on what may be an entirely new profession dedicated to the gathering, curating, processing, and publishing research data for machine learning. Several exemplary texts are linked below and offer some practical guidance.  
+
+To assure that the answers to these questions are available both for your project as well as future reuse, we recommend documenting the process of gathering and preparing your texts. A thriving area of research focuses on what may be an entirely new profession dedicated to the gathering, curating, processing, and publishing research data for machine learning. Several exemplary texts are linked below and offer some practical guidance.  
+
 - [Data Statements for Natural Language Processing: Toward Mitigating System Bias and Enabling Better Science](https://www.aclweb.org/anthology/Q18-1041/)
 - Datasheets for Datasets
     - [Article](https://arxiv.org/abs/1803.09010)
     - [Template](https://github.com/AudreyBeard/Datasheets-for-Datasets-Template/blob/master/Datasheet_for_Datasets.pdf)
     - <a href="Datasheets_Template.pdf">Worksheet</a>
     - [post45 criteria](https://data.post45.org/#peer-review) 
-    
+
 Your corpus could easily contain text from hundreds of different texts. You're not likely to remember the specifics, so we recommend recording information each time you add a new text to the corpus. In the long term, this data will give you the means to manage the kinds of texts that are in the corpus. 
 
 1. Provenance of the text
