@@ -16,7 +16,7 @@
   - file: prep/data
   - file: prep/tei
   - file: prep/github
-  - file: prep/python
+  - file: prep/jupyter
   
 
 - part: Workshop I Annotation and Linguistic Data ~ June 21-25, 2021.
