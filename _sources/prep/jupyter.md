@@ -1,3 +1,6 @@
+Python 
+=======================
+
 Creating, training, and using spaCy natural language processing (NLP) models requires code in the Python programming language. For this workshop, we don't expect that you'll be comfortable writing that code on your own. We've tried to put together tools with user interfaces that you can use instead of writing Python code. These tools are experimental, and they might not work in all situations. As a backup, we've prepared Jupyter notebooks where you can access the Python code directly.
 
 Jupyter notebooks provide an environment for reading, writing, and running code in a number of languages, including Python. What sets them apart from other environments is that they make it easy to juxtapose (even lengthy) explanations in human-readable text and images along with the code. You can read more [about Jupyter Notebooks in theory and practice on Programming Historian](https://programminghistorian.org/en/lessons/jupyter-notebooks). The notebooks we prepare will explain every step, along with what parameters you need to change, depending on what you're trying to do. If there's something you don't understand in our notebooks, please ask! We'll be improving them based on your feedback. If something isn't clear to you (regardless of your technical background), we need to do a better job explaining it.
