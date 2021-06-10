@@ -12,3 +12,9 @@ spaCy is an open-source NLP library for Python designed for quick experimentatio
 First, the goal of a spaCy model is not state-of-the-art performance (SOTA). spaCy's developers, Matthew Honnibal and Ines Montani, will frequently favor speed, memory usage, and practicality over small gains in accuracy. The goal is a practical, opinionated tool that delivers results in production.  As a result, spaCy offers a library that works well on laptops and consumer devices. It works efficiently on a CPU and does not require GPUs. For our methods to be accessible, we cannot require research computing resources. Whenever possible, we tailor our exercises and tasks to perform on a standard laptop or Colab notebook.  spaCy is also a very extensible library designed for the addition of new pipeline components and custom attributes.  
 
 Additionally, spaCy offers several useful command-line tools for language model training. There is a debug data command that will validate and inspect training data.  The debug tool offers users some bearing on gaps in the data and how the model is likely to perform given the current data. There is a train command that loads a base spaCy language object and then either creates or updates a statistical language model using the data provided.  While it is possible to add and train individual pipelines, this offers a simple CLI for users to create an initial language model from data with parser, tagger, and ner pipelines from the CoNLL-U data.  
+
+##  Further Reading
+
+- Ines Montani has a wonderful free online course to learn spaCy at [course.spacy.io](https://course.spacy.io)
+- There's also [spaCy 101](https://spacy.io/usage/spacy-101)
+
