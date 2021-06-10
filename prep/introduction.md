@@ -5,9 +5,9 @@ In this section, we provide learning materials to help you assess what skills an
 
 Preparation TODO list:  
 
-- [x] Install Python version 3
-- [x] Download Lisa Tagliaferri's fantastic [Python book](https://www.digitalocean.com/community/books/digitalocean-ebook-how-to-code-in-python)
-- [x] [Install Anaconda](https://docs.anaconda.com/anaconda/install/) or [install pip](https://pip.pypa.io/en/stable/installing/) to manage dependencies
-- [x] Install a code editor such as [VSCode](https://code.visualstudio.com/)
-- [x] Create a [GitHub account](https://github.com/)
+- Install Python version 3
+- Download Lisa Tagliaferri's fantastic [Python book](https://www.digitalocean.com/community/books/digitalocean-ebook-how-to-code-in-python)
+- [Install Anaconda](https://docs.anaconda.com/anaconda/install/) or [install pip](https://pip.pypa.io/en/stable/installing/) to manage dependencies
+- Install a code editor such as [VSCode](https://code.visualstudio.com/)
+- Create a [GitHub account](https://github.com/)
 
