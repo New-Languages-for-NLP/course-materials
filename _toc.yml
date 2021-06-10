@@ -1,36 +1,32 @@
-# Table of content
-# Learn more at https://jupyterbook.org/customize/toc.html
-#
-- file: intro
+format: jb-book
+root: intro
+parts:
+- caption: Prerequisite Knowledge
   numbered: true
-
-- part: Prerequisite Knowledge 
-  chapters:  
+  chapters:
   - file: prep/introduction
   - file: prep/ml
   - file: prep/nlp
   - file: prep/fairuse
-
-- part: Prerequisite Skills
+- caption: Prerequisite Skills
+  numbered: true
   chapters:
   - file: prep/data
   - file: prep/tei
   - file: prep/github
   - file: prep/jupyter
-  
-
-- part: Workshop I Annotation and Linguistic Data ~ June 21-25, 2021.
+- caption: Workshop I Annotation and Linguistic Data ~ June 21-25, 2021.
+  numbered: true
   chapters:
   - file: w1/overview
   - file: w1/intro-to-linguistic-data
   - file: w1/tokenization
   - file: w1/annotation
-
-
-- part: Workshop II Model Training ~ January 10-14, 2022
+- caption: Workshop II Model Training ~ January 10-14, 2022
+  numbered: true
   chapters:
   - file: w2/overview
-
-- part: Workshop III  Presentations and Publications ~ May 12-13, 2022
-  chapters: 
+- caption: Workshop III  Presentations and Publications ~ May 12-13, 2022
+  numbered: true
+  chapters:
   - file: w3/overview
