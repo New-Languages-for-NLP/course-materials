@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4. Corpus Documentation &#8212; New Languages for NLP</title>
+    <title>2. Cadet &#8212; New Languages for NLP</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -53,8 +53,8 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. Data Formats" href="data.html" />
-    <link rel="prev" title="3. NLP and spaCy" href="nlp.html" />
+    <link rel="next" title="4. INCEpTION" href="inception.html" />
+    <link rel="prev" title="1. Welcome to Workshop I" href="overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -96,24 +96,24 @@
   Prerequisite Knowledge
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="introduction.html">
+  <a class="reference internal" href="../prep/introduction.html">
    1. Getting Ready for the Workshops
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="ml.html">
+  <a class="reference internal" href="../prep/ml.html">
    2. Neural Networks and Machine Learning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="nlp.html">
+  <a class="reference internal" href="../prep/nlp.html">
    3. NLP and spaCy
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../prep/fairuse.html">
    4. Corpus Documentation
   </a>
  </li>
@@ -125,22 +125,22 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="data.html">
+  <a class="reference internal" href="../prep/data.html">
    1. Data Formats
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="tei.html">
+  <a class="reference internal" href="../prep/tei.html">
    2. Text Encoding Initiative (TEI)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="github.html">
+  <a class="reference internal" href="../prep/github.html">
    3. GitHub
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="jupyter.html">
+  <a class="reference internal" href="../prep/jupyter.html">
    4. Python
   </a>
  </li>
@@ -150,24 +150,24 @@
   Workshop I Annotation and Linguistic Data ~ June 21-25, 2021.
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../w1/overview.html">
+  <a class="reference internal" href="overview.html">
    1. Welcome to Workshop I
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../w1/cadet.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    2. Cadet
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../w1/inception.html">
+  <a class="reference internal" href="inception.html">
    4. INCEpTION
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../w1/tokenization.html">
+  <a class="reference internal" href="tokenization.html">
    5. Tokenization
   </a>
  </li>
@@ -236,7 +236,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/prep/fairuse.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/w1/cadet.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -266,9 +266,14 @@
             </div>
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#copyright">
-   4.1. Copyright
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   2. Cadet
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-cadet">
+   3. Overview of Cadet
   </a>
  </li>
 </ul>
@@ -282,54 +287,13 @@
         
               <div>
                 
-  <div class="section" id="corpus-documentation">
-<h1><span class="section-number">4. </span>Corpus Documentation<a class="headerlink" href="#corpus-documentation" title="Permalink to this headline">¶</a></h1>
-<p>When building your training corpus, you will gather many types of texts from the Internet, from libraries, and existing linguistic resources. We will tokenize and annotate these texts and eventually publish them as linguistic data. The creation of these datasets raises several vital questions.</p>
-<ul class="simple">
-<li><p>Could an outsider assess the provenance of your texts and how they were collected?</p></li>
-<li><p>Have you gathered a diverse and representative collection of texts?</p></li>
-<li><p>Is the process of data collection and curation documented?</p></li>
-</ul>
-<p>To assure that the answers to these questions are available both for your project as well as future reuse, we recommend documenting the process of gathering and preparing your texts. A thriving area of research focuses on what may be an entirely new profession dedicated to the gathering, curating, processing, and publishing research data for machine learning. Several exemplary texts are linked below and offer some practical guidance.</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.aclweb.org/anthology/Q18-1041/">Data Statements for Natural Language Processing: Toward Mitigating System Bias and Enabling Better Science</a></p></li>
-<li><p>Datasheets for Datasets</p>
-<ul>
-<li><p><a class="reference external" href="https://arxiv.org/abs/1803.09010">Article</a></p></li>
-<li><p><a class="reference external" href="https://github.com/AudreyBeard/Datasheets-for-Datasets-Template/blob/master/Datasheet_for_Datasets.pdf">Template</a></p></li>
-<li><p><a href="Datasheets_Template.pdf">Worksheet</a></p></li>
-<li><p><a class="reference external" href="https://data.post45.org/#peer-review">post45 criteria</a></p></li>
-</ul>
-</li>
-</ul>
-<p>Your corpus could easily contain text from hundreds of different texts. You’re not likely to remember the specifics, so we recommend recording information each time you add a new text to the corpus. In the long term, this data will give you the means to manage the kinds of texts that are in the corpus.</p>
-<ol class="simple">
-<li><p>Provenance of the text</p>
-<ul class="simple">
-<li><p>Where the text was found and how it was accessed (for example, were university credentials used to access the materials?)</p></li>
-<li><p>The original format of the text (PDF, image, HTML)</p></li>
-<li><p>How the text was collected (downloaded, requested, emailed…)</p></li>
-</ul>
-</li>
-<li><p>Rights and licenses of the text</p>
-<ul class="simple">
-<li><p>Is the text in the <a class="reference external" href="https://fairuse.stanford.edu/overview/public-domain/welcome/">public domain</a> or in copyright?</p></li>
-<li><p>For books published after 1975, you can search the <a class="reference external" href="http://cocatalog.loc.gov.">Library of Congress copyright database</a></p></li>
-</ul>
-</li>
-<li><p>Sampling and processing of the text</p>
-<ul class="simple">
-<li><p>What portion of the original text was added to the corpus?</p></li>
-<li><p>Were any sampling or deletion techniques used?</p></li>
-</ul>
-</li>
-</ol>
-<p>There is an entire NEH institute dedicated to legal literacies for text mining. Further information on the institute can be found <a class="reference external" href="https://buildinglltdm.org/">here</a>.</p>
-<div class="section" id="copyright">
-<h2><span class="section-number">4.1. </span>Copyright<a class="headerlink" href="#copyright" title="Permalink to this headline">¶</a></h2>
-<p><strong>Does your data violate copyright laws?</strong></p>
-<p>There’s no one good answer to this question and we encourage you to seek answers that are specific to the texts in your corpus, their authors, and the copyright laws specific to them. That said, it is common practice to omit sections of in-copyright materials such that it would be impossible to reconstruct the original work from your data. You might choose to sample a certain percentage of the text. In the United States, less thant 10% of a work or no more than one chapter of a book is considered “fair use” for educational purposes. For more specific suggestions, there is a helpful chapter on copyright in <a class="reference external" href="https://www.lancaster.ac.uk/fass/projects/corpus/ZJU/xCBLS/chapters/A09.pdf">Corpus-Based Language Studies: An Advanced Resource Book</a>.</p>
+  <div class="section" id="cadet">
+<h1><span class="section-number">2. </span>Cadet<a class="headerlink" href="#cadet" title="Permalink to this headline">¶</a></h1>
 </div>
+<div class="section" id="overview-of-cadet">
+<h1><span class="section-number">3. </span>Overview of Cadet<a class="headerlink" href="#overview-of-cadet" title="Permalink to this headline">¶</a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yoUQLLzOC_E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<hr class="docutils" />
 </div>
 
     <script type="text/x-thebe-config">
@@ -345,7 +309,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./prep"
+            path: "./w1"
         },
         predefinedOutput: true
     }
@@ -357,8 +321,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="nlp.html" title="previous page"><span class="section-number">3. </span>NLP and spaCy</a>
-    <a class='right-next' id="next-link" href="data.html" title="next page"><span class="section-number">1. </span>Data Formats</a>
+    <a class='left-prev' id="prev-link" href="overview.html" title="previous page"><span class="section-number">1. </span>Welcome to Workshop I</a>
+    <a class='right-next' id="next-link" href="inception.html" title="next page"><span class="section-number">4. </span>INCEpTION</a>
 
         </div>
         
