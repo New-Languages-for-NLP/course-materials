@@ -22,7 +22,7 @@ parts:
   - file: w1/intro-to-linguistic-data
   - file: w1/inception
   - file: w1/tokenization
-  - file: w1/annotation
+ 
 - caption: Workshop II Model Training ~ January 10-14, 2022
   numbered: true
   chapters:
