@@ -20,6 +20,7 @@ parts:
   chapters:
   - file: w1/overview
   - file: w1/cadet
+  - file: w1/cadet-notebook
   - file: w1/inception
   - file: w1/tokenization
  
