@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. Neural Networks and Machine Learning &#8212; New Languages for NLP</title>
+    <title>3. Cadet the Notebook &#8212; New Languages for NLP</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -53,8 +53,8 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. NLP and spaCy" href="nlp.html" />
-    <link rel="prev" title="1. Getting Ready for the Workshops" href="introduction.html" />
+    <link rel="next" title="4. INCEpTION" href="inception.html" />
+    <link rel="prev" title="2. Cadet" href="cadet.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -96,24 +96,24 @@
   Prerequisite Knowledge
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="introduction.html">
+  <a class="reference internal" href="../prep/introduction.html">
    1. Getting Ready for the Workshops
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../prep/ml.html">
    2. Neural Networks and Machine Learning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="nlp.html">
+  <a class="reference internal" href="../prep/nlp.html">
    3. NLP and spaCy
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="fairuse.html">
+  <a class="reference internal" href="../prep/fairuse.html">
    4. Corpus Documentation
   </a>
  </li>
@@ -125,22 +125,22 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="data.html">
+  <a class="reference internal" href="../prep/data.html">
    1. Data Formats
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="tei.html">
+  <a class="reference internal" href="../prep/tei.html">
    2. Text Encoding Initiative (TEI)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="github.html">
+  <a class="reference internal" href="../prep/github.html">
    3. GitHub
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="jupyter.html">
+  <a class="reference internal" href="../prep/jupyter.html">
    4. Python
   </a>
  </li>
@@ -150,29 +150,29 @@
   Workshop I Annotation and Linguistic Data ~ June 21-25, 2021.
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../w1/overview.html">
+  <a class="reference internal" href="overview.html">
    1. Welcome to Workshop I
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../w1/cadet.html">
+  <a class="reference internal" href="cadet.html">
    2. Cadet
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../w1/cadet-notebook.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    3. Cadet the Notebook
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../w1/inception.html">
+  <a class="reference internal" href="inception.html">
    4. INCEpTION
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../w1/tokenization.html">
+  <a class="reference internal" href="tokenization.html">
    5. Tokenization
   </a>
  </li>
@@ -241,7 +241,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/prep/ml.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/w1/cadet-notebook.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -266,19 +266,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#further-reading">
-   2.1. Further Reading
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -287,23 +274,19 @@
         
               <div>
                 
-  <div class="section" id="neural-networks-and-machine-learning">
-<h1><span class="section-number">2. </span>Neural Networks and Machine Learning<a class="headerlink" href="#neural-networks-and-machine-learning" title="Permalink to this headline">¶</a></h1>
-<p>Neural networks have become an essential method of Machine Learning since the first “perceptron” was invented in 1958. A neural network is a graph composed of nodes and edges that are typically structured as layers in their most basic form. During inference, information flows, layer by layer, in one direction making for a directed graph (DAG). There are different types of layers, for example, fully connected or convolutional, that characterize the connections between layers. Each connecting edge has a weight value that can be adjusted. By deliberately improving these weights, the network can either emphasize or discard specific inputs. Additionally, before passing the weighted inputs forward to the next node, a non-linear activation function is applied.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/UOvPeC8WOt8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
-<p><img alt="" src="https://miro.medium.com/max/645/0*LJBO8UbtzK_SKMog" /></p>
-<p>In the late 1980s, it became possible to “backpropagate” and update the weights based on the error in the model’s predictions. Together with gradient descent, backpropagation enabled models to automatically improve their predictions without handwritten rules and criteria.</p>
-<p><a class="reference external" href="https://thinc.ai/docs/concept">Code intro to backprop and layer chaining</a></p>
-<p>As the computations could be parallelized on GPUs and more data became available, it has sparked a period of rapid innovation and heightened expectations. Many-layered networks with increasingly complex architectures can complete computer vision and natural language tasks with near- or super-human precision.</p>
-<p><img alt="" src="https://miro.medium.com/max/3840/1*5K-1CSOB2mb5Jn2L8K3f9Q.gif" /></p>
-<p>As models become more complex, they require more processing power, training time, and memory. In addition to the exciting new potential and new capabilities of machine learning, scholars are also beginning to evaluate the environmental and social costs of models built in person-years using petabytes of data (<a class="reference external" href="https://faculty.washington.edu/ebender/papers/Stochastic_Parrots.pdf">1</a>,<a class="reference external" href="https://arxiv.org/pdf/1906.02243.pdf">2</a>).</p>
-<div class="section" id="further-reading">
-<h2><span class="section-number">2.1. </span>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="cadet-the-notebook">
+<h1><span class="section-number">3. </span>Cadet the Notebook<a class="headerlink" href="#cadet-the-notebook" title="Permalink to this headline">¶</a></h1>
+<p>The Cadet application offers a convenient wrapper over spaCy to help with new language development. However, some users prefer a more direct engagement with the code and are more comfortable working in a Jupyter notebook. For you, there is a notebook version of Cadet that can be run locally or in Google Colab. Note that Colab containers are not persistent and that you will lose any data and files that you do not export during the session.</p>
+<ol class="simple">
+<li><p>For Colab: <a class="reference external" href="https://colab.research.google.com/github/New-Languages-for-NLP/cadet-the-notebook/blob/main/New_Language.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p></li>
+<li><p>To run locally</p>
 <ul class="simple">
-<li><p>Andrew Trask, <a class="reference external" href="https://www.manning.com/books/grokking-deep-learning">Grokking Deep Learning</a></p></li>
-<li><p>Ian Goodfellow et al., <a class="reference external" href="https://www.deeplearningbook.org/">Deep Learning</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/New-Languages-for-NLP/cadet-the-notebook</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">cadet-the-notebook</span></code>, activate a virtual environment and then <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code></p></li>
 </ul>
-</div>
+</li>
+</ol>
 </div>
 
     <script type="text/x-thebe-config">
@@ -319,7 +302,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./prep"
+            path: "./w1"
         },
         predefinedOutput: true
     }
@@ -331,8 +314,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="introduction.html" title="previous page"><span class="section-number">1. </span>Getting Ready for the Workshops</a>
-    <a class='right-next' id="next-link" href="nlp.html" title="next page"><span class="section-number">3. </span>NLP and spaCy</a>
+    <a class='left-prev' id="prev-link" href="cadet.html" title="previous page"><span class="section-number">2. </span>Cadet</a>
+    <a class='right-next' id="next-link" href="inception.html" title="next page"><span class="section-number">4. </span>INCEpTION</a>
 
         </div>
         
