@@ -23,7 +23,8 @@ parts:
   - file: w1/cadet-notebook
   - file: w1/inception
   - file: w1/tokenization
- 
+  - file: w1/ud
+
 - caption: Workshop II Model Training ~ January 10-14, 2022
   numbered: true
   chapters:
