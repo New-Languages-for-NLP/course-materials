@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction to Linguistic Data &#8212; New Languages for NLP</title>
+    <title>7. Universal features &#8212; New Languages for NLP</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -53,6 +53,8 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Welcome to Workshop II" href="../w2/overview.html" />
+    <link rel="prev" title="5. Tokenization" href="tokenization.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -148,7 +150,7 @@
   Workshop I Annotation and Linguistic Data ~ June 21-25, 2021.
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="overview.html">
    1. Welcome to Workshop I
@@ -174,8 +176,8 @@
    5. Tokenization
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ud.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    7. Universal features
   </a>
  </li>
@@ -244,7 +246,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/w1/intro-to-linguistic-data.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/w1/ud.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -277,9 +279,23 @@
         
               <div>
                 
-  <div class="section" id="introduction-to-linguistic-data">
-<h1>Introduction to Linguistic Data<a class="headerlink" href="#introduction-to-linguistic-data" title="Permalink to this headline">¶</a></h1>
-<p>This is the first session!</p>
+  <div class="section" id="universal-features">
+<h1><span class="section-number">7. </span>Universal features<a class="headerlink" href="#universal-features" title="Permalink to this headline">¶</a></h1>
+<p>The Universal Dependencies site offers an essential handbook and reference on the UD standards.  The section on <a class="reference external" href="https://universaldependencies.org/u/feat/index.html">universal features</a> can be useful when annotating the morphological features of the tokens in your texts.</p>
+<p>For example:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>ID  FORM    lemma   pos xpos    feats
+221	Claudia	Claudia	PROPN	_	NounType=Prop|Number=Sing	_	_	_	_
+222	rolls	roll	VERB	_	Number=Sing|Person=Three|Tense=Pres|VerbForm=Fin	_	_	_	_
+223	her	she	PRON	_	Case=Acc|Gender=Fem|Number=Sing|Person=3|PronType=Prs	_	_	_	_
+224	eyes	eye	NOUN	_	Number=Plur	_	_	_	_
+</pre></div>
+</div>
+<p>The features column allows you to mark important aspects of the token such as its case, number, tense and form.
+The syntax for features is a UD feature label (such as <code class="docutils literal notranslate"><span class="pre">Number</span></code>) followed by an equal sign and then the value.  If you have several features, they should be ordered alphabetically and separated by a pipe (<code class="docutils literal notranslate"><span class="pre">|</span></code>).</p>
+<ul class="simple">
+<li><p>A full list of features can be found here: <a class="reference external" href="https://universaldependencies.org/u/feat/index.html">https://universaldependencies.org/u/feat/index.html</a></p></li>
+<li><p>Further details on feature standards can be found here: <a class="reference external" href="https://universaldependencies.org/format.html#morphological-annotation">https://universaldependencies.org/format.html#morphological-annotation</a></p></li>
+</ul>
 </div>
 
     <script type="text/x-thebe-config">
@@ -307,6 +323,8 @@
         
         <div class='prev-next-bottom'>
             
+    <a class='left-prev' id="prev-link" href="tokenization.html" title="previous page"><span class="section-number">5. </span>Tokenization</a>
+    <a class='right-next' id="next-link" href="../w2/overview.html" title="next page"><span class="section-number">1. </span>Welcome to Workshop II</a>
 
         </div>
         
