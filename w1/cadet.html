@@ -296,6 +296,11 @@
    2.4. Steps Four to Six
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-do-you-add-new-punctuation-in-spacy">
+   2.5. How do you add new punctuation in spaCy?
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -340,6 +345,29 @@
 <div class="section" id="steps-four-to-six">
 <h2><span class="section-number">2.4. </span>Steps Four to Six<a class="headerlink" href="#steps-four-to-six" title="Permalink to this headline">¶</a></h2>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RXEZ4YLFxs8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<hr class="docutils" />
+<div class="section" id="how-do-you-add-new-punctuation-in-spacy">
+<h2><span class="section-number">2.5. </span>How do you add new punctuation in spaCy?<a class="headerlink" href="#how-do-you-add-new-punctuation-in-spacy" title="Permalink to this headline">¶</a></h2>
+<p>So the idea is that there are different types of punctuations relevant for tokenization. It is described in the spacy documentation: <a class="reference external" href="https://spacy.io/usage/linguistic-features#tokenization">https://spacy.io/usage/linguistic-features#tokenization</a></p>
+<p>There are Prefix, Suffix and Infix:
+Tokenizer exception: Special-case rule to split a string into several tokens or prevent a token from being split when punctuation rules are applied.
+Prefix: Character(s) at the beginning, e.g. $, (, “, ¿.
+Suffix: Character(s) at the end, e.g. km, ), “, !.
+Infix: Character(s) in between, e.g. -, –, /, ….
+In the punctuation file in cadet, you see something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">_prefixes</span> <span class="o">=</span> <span class="n">BASE_TOKENIZER_PREFIXES</span>
+<span class="n">_suffixes</span> <span class="o">=</span> <span class="n">BASE_TOKENIZER_SUFFIXES</span>
+<span class="n">_infixes</span> <span class="o">=</span> <span class="n">BASE_TOKENIZER_INFIXES</span>
+<span class="n">TOKENIZER_PREFIXES</span> <span class="o">=</span> <span class="n">_prefixes</span>
+<span class="n">TOKENIZER_SUFFIXES</span> <span class="o">=</span> <span class="n">_suffixes</span>
+<span class="n">TOKENIZER_INFIXES</span> <span class="o">=</span> <span class="n">_infixes</span>
+</pre></div>
+</div>
+<p>and you can extend all the lists from the base_tokenizer_* with with additional characters. To see how this might look like, here is the english punctuations from the existing spacy model
+<a class="reference external" href="https://github.com/explosion/spaCy/blob/master/spacy/lang/en/punctuation.py">https://github.com/explosion/spaCy/blob/master/spacy/lang/en/punctuation.py</a>
+there, you see that <code class="docutils literal notranslate"><span class="pre">LIST_ELLIPSES</span></code>  is added to the <code class="docutils literal notranslate"><span class="pre">_infixes</span></code>. And this is what LIST_ELLIPSES  looks like:
+<code class="docutils literal notranslate"><span class="pre">LIST_ELLIPSES</span> <span class="pre">=</span> <span class="pre">[r&quot;\.\.+&quot;,</span> <span class="pre">&quot;…&quot;]</span></code></p>
 </div>
 </div>
 
