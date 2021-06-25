@@ -10,6 +10,63 @@ The most common place you'll find JSON data is in lookups tables.  We use these 
 For more information on JSON, we recommend the [W3 Schools](https://www.w3schools.com/js/js_json_intro.asp) and this [json formatter](https://jsonformatter.curiousconcept.com/).
 
 
+### Debugging and Validating JSON
+
+
+Working with JSON can be tricky, especially when you are have large files and you do not know exactly where the error occurs. An open source web application called **[JSONLint](https://jsonlint.com/)** can come handy in this regard. It is designed to help users to debug and validate their JSON files.
+
+To use JSONLint, simply copy your JSON code to the editor and click **Validate JSON**. For example, when the following code  
+
+```json
+{
+	"be": "VERB"
+	"bee": "NOUN"
+}
+
+```
+
+is copied to JSONLint and validated, we see this error.
+
+```json
+Error: Parse error on line 2:
+{	"be": "VERB"	"bee": "NOUN"}
+---------------^
+Expecting 'EOF', '}', ':', ',', ']', got 'STRING'
+
+```
+
+As it states, the error occurs near the word **"VERB"** and the editor was expecting one of these characters: '}', ':', ',', ']' but received a string. If you have figured it out, we were missing a comma (,) in line 2. When the comma issue is fixed in this example, JSON should validate successfully and you should see a **"Valid JSON"** message in JSONLint.
+
+```json
+{
+	"be": "VERB",
+	"bee": "NOUN"
+}
+
+```
+
+From the JSONLint website, here are some rules to consider to ensure your JSON is properly formatted:
+
+* Data is in name/value pairs
+* Data is separated by commas
+* Objects are encapsulated within the opening and closing curly brackets
+* An empty object can be represented by {}
+* Arrays are encapsulated within opening and closing square brackets
+* An empty array can be represented by []
+* A member is represented by a key-value pair, contained in double quotes
+* Each member should have a unique key within an object structure
+* The value of a member must be contained in double quotes, if it's a string
+* Boolean values are represented using the true or false literals in lower case
+* Number values are represented using double-precision floating-point format and shouldn't have leading zeroes
+* "Offensive" characters in a string need to be escaped using the backslash character \
+* Null values are represented by the null literal in lower case
+* Dates, and similar object types, aren't adequately supported and should be converted to strings
+* Each member of an object or array value must be followed by a comma, except for the last one
+* The standard extension for the JSON file is '.json'
+* The mime type for JSON files is 'application/json'
+
+
+
 ## Tabular Data (CSV and TSV)
 
 If you've used a spreadsheet program like Excel or Google Sheets, then you're familiar with tabular data. This is structured information that has rows and columns. To store tabular data in a simple format, programmers often use comma-separated value files. These are simple text files with symbols that split the text into rows and columns. Rows are separated by the new line character `\n`. The row is split into columns by commas. For example, 
