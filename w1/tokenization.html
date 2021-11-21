@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>13. Tokenization &#8212; New Languages for NLP</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -32,21 +32,21 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -55,10 +55,13 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="15. Universal features" href="ud.html" />
+    <link rel="next" title="14. Universal features" href="ud.html" />
     <link rel="prev" title="12. INCEpTION" href="inception.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -74,6 +77,10 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="../_static/logo.svg" class="logo" alt="logo">
       
@@ -93,7 +100,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Prerequisite Knowledge
  </span>
@@ -120,7 +127,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Prerequisite Skills
  </span>
@@ -147,7 +154,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Workshop I Annotation and Linguistic Data ~ June 21-25, 2021.
  </span>
@@ -180,16 +187,16 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ud.html">
-   15. Universal features
+   14. Universal features
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="InstituteGlossary.html">
-   16. Institute Glossary
+   15. Institute Glossary
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Workshop II Model Training ~ January 10-14, 2022
  </span>
@@ -197,11 +204,11 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../w2/overview.html">
-   17. Welcome to Workshop II
+   16. Welcome to Workshop II
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Workshop III  Presentations and Publications ~ May 12-13, 2022
  </span>
@@ -209,7 +216,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../w3/overview.html">
-   18. Welcome to Workshop III
+   17. Welcome to Workshop III
   </a>
  </li>
 </ul>
@@ -283,69 +290,47 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   13. Tokenization
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#natural-language-processing-tokenization">
+   13.1. Natural language processing &amp; Tokenization
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#natural-language-processing-tokenization">
-     13.1. Natural language processing &amp; Tokenization
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spacy-s-tokenizer">
+   13.2. spaCy’s Tokenizer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-new-exceptions-for-your-language">
+   13.3. Adding new exceptions for your language
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#specific-exceptions">
+   13.4. Specific Exceptions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#separate-a-word-into-two-tokens">
+   13.5. Separate a word into two tokens
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rule-based-exceptions">
+   13.6. Rule-based exceptions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extending-defaults">
+   13.7. Extending defaults
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prefixes-in-action">
+     13.7.1. Prefixes in action
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spacy-s-tokenizer">
-     13.2. spaCy’s Tokenizer
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#adding-new-exceptions-for-your-language">
-     13.3. Adding new exceptions for your language
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#specific-exceptions">
-     13.4. Specific Exceptions
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#separate-a-word-into-two-tokens">
-     13.5. Separate a word into two tokens
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rule-based-exceptions">
-     13.6. Rule-based exceptions
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extending-defaults">
-     13.7. Extending defaults
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#prefixes-in-action">
-       13.7.1. Prefixes in action
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#infix">
-       13.7.2. Infix
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#suffix">
-       13.7.3. Suffix
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#building-a-new-language-tokenizer">
-   14. Building A New Language Tokenizer
-  </a>
  </li>
 </ul>
 
@@ -358,7 +343,7 @@
         
               <div>
                 
-  <div class="section" id="tokenization">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tokenization">
 <h1><span class="section-number">13. </span>Tokenization<a class="headerlink" href="#tokenization" title="Permalink to this headline">¶</a></h1>
 <p>From your computer’s perspective, text is nothing more than a sequence of characters. If you ask Python to iterate over a snippet of text, you’ll see that it returns just one letter at a time. Note that the index starts at 0, not 1 and that spaces are part of the sequence.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Siberia has many rivers.&quot;</span>
@@ -411,21 +396,13 @@
 <h2><span class="section-number">13.2. </span>spaCy’s Tokenizer<a class="headerlink" href="#spacy-s-tokenizer" title="Permalink to this headline">¶</a></h2>
 <p>spaCy’s tokenization begins by splitting tokens on spaces. It’s nearly identical what you’d get from <code class="docutils literal notranslate"><span class="pre">&quot;Siberia</span> <span class="pre">has</span> <span class="pre">many</span> <span class="pre">rivers.&quot;.split()</span></code>, which is <code class="docutils literal notranslate"><span class="pre">['Siberia','has','many','rivers.']</span></code>  Keep a close eye on the period in this sentence. On its own, Python has trouble identifying the period as a distinct token.</p>
 <p>To address this problem, spaCy has rules for how to split these chunks into tokens. In this case, it has a list of punctuation symbols.  If any of those symbols are at the end of a chunk, a suffix rule separates the word from the punctuation.  These rules cover a lot of ground and are very powerful. However, there are many cases where we need to tell spaCy to handle things differently.</p>
-<p>Exceptions are a list of patterns to look for and what to do with them. The exceptions for your language are most often found in <code class="docutils literal notranslate"><span class="pre">spacy/lang</span></code> directory in a <code class="docutils literal notranslate"><span class="pre">tokenizer_exceptions.py</span></code> file. For example, here are the exceptions for English to handle shortened forms of <code class="docutils literal notranslate"><span class="pre">because</span></code> such as <code class="docutils literal notranslate"><span class="pre">'cause</span></code>. These exception prevent the tokenizer from splitting off the <code class="docutils literal notranslate"><span class="pre">'</span></code> from <code class="docutils literal notranslate"><span class="pre">coz</span></code>.</p>
-<p><strong><a class="reference external" href="https://github.com/explosion/spaCy/blob/34e13c1161f7d42b961026b12d2eb3d3165bae27/spacy/lang/en/tokenizer_exceptions.py#L392">tokenizer_exceptions.py</a></strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
-<span class="p">{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;&#39;Cause&quot;</span><span class="p">,</span> <span class="n">NORM</span><span class="p">:</span> <span class="s2">&quot;because&quot;</span><span class="p">},</span>
-<span class="p">{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;&#39;cause&quot;</span><span class="p">,</span> <span class="n">NORM</span><span class="p">:</span> <span class="s2">&quot;because&quot;</span><span class="p">},</span>
-<span class="p">{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;&#39;cos&quot;</span><span class="p">,</span> <span class="n">NORM</span><span class="p">:</span> <span class="s2">&quot;because&quot;</span><span class="p">},</span>
-<span class="p">{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;&#39;Cos&quot;</span><span class="p">,</span> <span class="n">NORM</span><span class="p">:</span> <span class="s2">&quot;because&quot;</span><span class="p">},</span>
-<span class="p">{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;&#39;coz&quot;</span><span class="p">,</span> <span class="n">NORM</span><span class="p">:</span> <span class="s2">&quot;because&quot;</span><span class="p">},</span>
-<span class="p">{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;&#39;Coz&quot;</span><span class="p">,</span> <span class="n">NORM</span><span class="p">:</span> <span class="s2">&quot;because&quot;</span><span class="p">},</span>
-<span class="p">{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;&#39;cuz&quot;</span><span class="p">,</span> <span class="n">NORM</span><span class="p">:</span> <span class="s2">&quot;because&quot;</span><span class="p">},</span>
-<span class="p">{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;&#39;Cuz&quot;</span><span class="p">,</span> <span class="n">NORM</span><span class="p">:</span> <span class="s2">&quot;because&quot;</span><span class="p">},</span>
-<span class="o">...</span>
+<p>Exceptions are a list of patterns to look for and what to do with them. The exceptions for your language are most often found in <code class="docutils literal notranslate"><span class="pre">spacy/lang</span></code> directory in a <code class="docutils literal notranslate"><span class="pre">tokenizer_exceptions.py</span></code> file. For example, here are the exceptions for English to handle shortened forms of <code class="docutils literal notranslate"><span class="pre">you</span> <span class="pre">all</span></code> such as <code class="docutils literal notranslate"><span class="pre">y'all</span></code>. These exceptions cause the tokenizer to split the “y’all” into two tokens.</p>
+<p><strong><a class="reference external" href="https://github.com/explosion/spaCy/blob/34e13c1161f7d42b961026b12d2eb3d3165bae27/spacy/lang/en/tokenizer_exceptions.py#L361">tokenizer_exceptions.py</a></strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;y&#39;all&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;y&#39;&quot;</span><span class="p">,</span> <span class="n">NORM</span><span class="p">:</span> <span class="s2">&quot;you&quot;</span><span class="p">},</span> <span class="p">{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">}],</span>
+<span class="s2">&quot;yall&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">NORM</span><span class="p">:</span> <span class="s2">&quot;you&quot;</span><span class="p">},</span> <span class="p">{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">}],</span>
 </pre></div>
 </div>
-<p>Note that the spaCy developers have accounted for the most common variations of ‘because’ and deliberately decided to incorporate slang and idiomatic usage. They have added a normalized form (NORM) of <code class="docutils literal notranslate"><span class="pre">because</span></code>. If we’re interested in word frequencies and not variation, this can be a very useful. This is available to you as <code class="docutils literal notranslate"><span class="pre">token.norm_</span></code>.</p>
+<p>Note that the spaCy developers have accounted for the most common variations of ‘you all’ and deliberately decided to incorporate slang and idiomatic usage. They have added a normalized form (NORM). If we’re interested in word frequencies and not variation, this can be a very useful. This is available to you as <code class="docutils literal notranslate"><span class="pre">token.norm_</span></code>.</p>
 <p>If you look at the <code class="docutils literal notranslate"><span class="pre">tokenizer_exceptions.py</span></code> files for the existing languages, you’ll see a wide range of exceptions and ways of writing the rules. For the sake of simplicity, we’ll discuss the two most common ways to add exceptions for your language.</p>
 <blockquote>
 <div><p>What are ORTH and NORM? They are token attributes. When your exception becomes a token, it will have a <code class="docutils literal notranslate"><span class="pre">token.text</span></code> attribute: that’s ORTH. NORM is <code class="docutils literal notranslate"><span class="pre">token.norm_</span></code> LEMMA is <code class="docutils literal notranslate"><span class="pre">token.lemma_</span></code>, <code class="docutils literal notranslate"><span class="pre">IS_STOP:True</span></code> will mark the token as a stop word; <code class="docutils literal notranslate"><span class="pre">token.is_stop</span></code>.</p>
@@ -439,13 +416,9 @@
 </div>
 <p>You’ll find that <code class="docutils literal notranslate"><span class="pre">BASE_EXCEPTIONS</span></code> is a Python dictionary.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
-<span class="s1">&#39;C++&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="mi">65</span><span class="p">:</span> <span class="s1">&#39;C++&#39;</span><span class="p">}],</span>
+ <span class="s1">&#39;C++&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="mi">65</span><span class="p">:</span> <span class="s1">&#39;C++&#39;</span><span class="p">}],</span>
  <span class="s1">&#39;a.&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="mi">65</span><span class="p">:</span> <span class="s1">&#39;a.&#39;</span><span class="p">}],</span>
  <span class="s1">&#39;b.&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="mi">65</span><span class="p">:</span> <span class="s1">&#39;b.&#39;</span><span class="p">}],</span>
- <span class="s1">&#39;c.&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="mi">65</span><span class="p">:</span> <span class="s1">&#39;c.&#39;</span><span class="p">}],</span>
- <span class="s1">&#39;d.&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="mi">65</span><span class="p">:</span> <span class="s1">&#39;d.&#39;</span><span class="p">}],</span>
- <span class="s1">&#39;(ಠ_ಠ)&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="mi">65</span><span class="p">:</span> <span class="s1">&#39;(ಠ_ಠ)&#39;</span><span class="p">}],</span>
- <span class="s1">&#39;(&gt;_&lt;)&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="mi">65</span><span class="p">:</span> <span class="s1">&#39;(&gt;_&lt;)&#39;</span><span class="p">}],</span>
  <span class="o">...</span> 
 </pre></div>
 </div>
@@ -579,18 +552,7 @@
 <p>Extra brain teaser: Hebrew is written from right to left, so why isn’t ₪ a suffix?
 spaCy works well with RTL langauges, but the tokenizer moves from left to right.  Even though ₪ follows 181 in the sentence, spaCy considers it a prefix.</p>
 </div>
-<div class="section" id="infix">
-<h3><span class="section-number">13.7.2. </span>Infix<a class="headerlink" href="#infix" title="Permalink to this headline">¶</a></h3>
-<p>Off-pitch</p>
 </div>
-<div class="section" id="suffix">
-<h3><span class="section-number">13.7.3. </span>Suffix<a class="headerlink" href="#suffix" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
-</div>
-<div class="section" id="building-a-new-language-tokenizer">
-<h1><span class="section-number">14. </span>Building A New Language Tokenizer<a class="headerlink" href="#building-a-new-language-tokenizer" title="Permalink to this headline">¶</a></h1>
-<p>In the previous section, we covered the key concepts that you need to create a tokenizer for your new language.  However, knowing what a brick is does not tell you how to build a house.  In this section, we’ll cover the process of building a new language object’s tokenizer. This process includes identifying term variations in your corpus</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -616,36 +578,27 @@ spaCy works well with RTL langauges, but the tokenizer moves from left to right.
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="inception.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">12. </span>INCEpTION</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="inception.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">12. </span>INCEpTION</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="ud.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>Universal features</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="ud.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">15. </span>Universal features</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
@@ -669,8 +622,7 @@ spaCy works well with RTL langauges, but the tokenizer moves from left to right.
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

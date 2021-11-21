@@ -61,25 +61,17 @@ spaCy's tokenization begins by splitting tokens on spaces. It's nearly identical
 
 To address this problem, spaCy has rules for how to split these chunks into tokens. In this case, it has a list of punctuation symbols.  If any of those symbols are at the end of a chunk, a suffix rule separates the word from the punctuation.  These rules cover a lot of ground and are very powerful. However, there are many cases where we need to tell spaCy to handle things differently.   
 
-Exceptions are a list of patterns to look for and what to do with them. The exceptions for your language are most often found in `spacy/lang` directory in a `tokenizer_exceptions.py` file. For example, here are the exceptions for English to handle shortened forms of `because` such as `'cause`. These exception prevent the tokenizer from splitting off the `'` from `coz`. 
+Exceptions are a list of patterns to look for and what to do with them. The exceptions for your language are most often found in `spacy/lang` directory in a `tokenizer_exceptions.py` file. For example, here are the exceptions for English to handle shortened forms of `you all` such as `y'all`. These exceptions cause the tokenizer to split the "y'all" into two tokens. 
 
 
-__[tokenizer_exceptions.py](https://github.com/explosion/spaCy/blob/34e13c1161f7d42b961026b12d2eb3d3165bae27/spacy/lang/en/tokenizer_exceptions.py#L392)__
+__[tokenizer_exceptions.py](https://github.com/explosion/spaCy/blob/34e13c1161f7d42b961026b12d2eb3d3165bae27/spacy/lang/en/tokenizer_exceptions.py#L361)__
 
 ```python
-...
-{ORTH: "'Cause", NORM: "because"},
-{ORTH: "'cause", NORM: "because"},
-{ORTH: "'cos", NORM: "because"},
-{ORTH: "'Cos", NORM: "because"},
-{ORTH: "'coz", NORM: "because"},
-{ORTH: "'Coz", NORM: "because"},
-{ORTH: "'cuz", NORM: "because"},
-{ORTH: "'Cuz", NORM: "because"},
-...
+"y'all": [{ORTH: "y'", NORM: "you"}, {ORTH: "all"}],
+"yall": [{ORTH: "y", NORM: "you"}, {ORTH: "all"}],
 ```
 
-Note that the spaCy developers have accounted for the most common variations of 'because' and deliberately decided to incorporate slang and idiomatic usage. They have added a normalized form (NORM) of `because`. If we're interested in word frequencies and not variation, this can be a very useful. This is available to you as `token.norm_`.     
+Note that the spaCy developers have accounted for the most common variations of 'you all' and deliberately decided to incorporate slang and idiomatic usage. They have added a normalized form (NORM). If we're interested in word frequencies and not variation, this can be a very useful. This is available to you as `token.norm_`.     
 
 If you look at the `tokenizer_exceptions.py` files for the existing languages, you'll see a wide range of exceptions and ways of writing the rules. For the sake of simplicity, we'll discuss the two most common ways to add exceptions for your language.
 
@@ -96,13 +88,9 @@ from spacy.lang.tokenizer_exceptions import BASE_EXCEPTIONS
 You'll find that `BASE_EXCEPTIONS` is a Python dictionary. 
 ```python
 ...
-'C++': [{65: 'C++'}],
+ 'C++': [{65: 'C++'}],
  'a.': [{65: 'a.'}],
  'b.': [{65: 'b.'}],
- 'c.': [{65: 'c.'}],
- 'd.': [{65: 'd.'}],
- '(ಠ_ಠ)': [{65: '(ಠ_ಠ)'}],
- '(>_<)': [{65: '(>_<)'}],
  ... 
 ```
 
@@ -260,16 +248,4 @@ doc = nlp("₪181 בלבד! משלוח חינם!") #"Only NIS 181! Free Shipping
 [₪, 181, בלבד, !, משלוח, חינם, !]
 ```
 Extra brain teaser: Hebrew is written from right to left, so why isn't ₪ a suffix? 
-spaCy works well with RTL langauges, but the tokenizer moves from left to right.  Even though ₪ follows 181 in the sentence, spaCy considers it a prefix. 
-
-
-### Infix
-Off-pitch
-
-### Suffix 
-
-
-# Building A New Language Tokenizer
-
-In the previous section, we covered the key concepts that you need to create a tokenizer for your new language.  However, knowing what a brick is does not tell you how to build a house.  In this section, we'll cover the process of building a new language object's tokenizer. This process includes identifying term variations in your corpus 
-
+spaCy works well with RTL langauges, but the tokenizer moves from left to right.  Even though ₪ follows 181 in the sentence, spaCy considers it a prefix.   
