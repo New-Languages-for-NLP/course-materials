@@ -248,4 +248,4 @@ doc = nlp("₪181 בלבד! משלוח חינם!") #"Only NIS 181! Free Shipping
 [₪, 181, בלבד, !, משלוח, חינם, !]
 ```
 Extra brain teaser: Hebrew is written from right to left, so why isn't ₪ a suffix? 
-spaCy works well with RTL langauges, but the tokenizer moves from left to right.  Even though ₪ follows 181 in the sentence, spaCy considers it a prefix. 
+spaCy works well with RTL langauges, but the tokenizer moves from left to right.  Even though ₪ follows 181 in the sentence, spaCy considers it a prefix.   
