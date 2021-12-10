@@ -13,8 +13,6 @@ Preparation for Workshop II
 
 ## Export from Cadet
 - Step #8 in Cadet is "Export for Model Training."  This will generate a zip file and download it to your local computer. If you run into any problems during export please write to [Andy](mailto:apjanco@haverford.edu).
-![Creating a new project](export.png)
-
 
 - On your computer, unzip the file and save the files in a place that you can find easily such as the Desktop or a projects directory.  
 
@@ -30,9 +28,8 @@ Preparation for Workshop II
 - Go to Projects and select your project
 - For your files to be available in the Curation menu, you will need to close them in Annotation. To do this, go to Annotation, then open the file.  Click on the little lock icon to “Close File.” This can take a few seconds to complete. You can always re-open to continue work. 
 
-![Creating a new project](export3.png)
 
-- Open each text individually in the Curate menu. When you’re ready to export, click on the “Export Document” button . If you are exporting annotations for tokenization, part of speech, lemmata, and features, choose the conllu format.  For named entities, you can select CoNLL CoreNLP.  
+- Open each text individually in the Curate menu. When you’re ready to export, click on the “Export Document” button. If you are exporting annotations for tokenization, part of speech, lemmata, and features, choose the conllu format.  For named entities, you can select CoNLL CoreNLP.  
 - Download your files to the 3_inception_export folder
 - Commit and push everything to Github
 
