@@ -288,6 +288,34 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spacy-course">
+   17.1. spaCy course
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#github-repository-for-your-data">
+   17.2. GitHub repository for your data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#export-from-cadet">
+   17.3. Export from Cadet
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#export-from-inception">
+   17.4. Export from inception
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -298,7 +326,45 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="preparation-for-workshop-ii">
 <h1><span class="section-number">17. </span>Preparation for Workshop II<a class="headerlink" href="#preparation-for-workshop-ii" title="Permalink to this headline">¶</a></h1>
-<p>more to come</p>
+<div class="section" id="spacy-course">
+<h2><span class="section-number">17.1. </span>spaCy course<a class="headerlink" href="#spacy-course" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>If you are eager to get started or feel you might need some extra time to get aquanted with model training, Ines Montani recently updated her online course here <a class="reference external" href="https://course.spacy.io/en/chapter4">https://course.spacy.io/en/chapter4</a></p></li>
+</ul>
+</div>
+<div class="section" id="github-repository-for-your-data">
+<h2><span class="section-number">17.2. </span>GitHub repository for your data<a class="headerlink" href="#github-repository-for-your-data" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>In the <a class="reference external" href="https://github.com/orgs/New-Languages-for-NLP">New Languages for NLP GitHub organization</a>, you will find a repository template with your language’s name on it.</p></li>
+<li><p>Clone the repository to your local machine. The GitHub docs have great instructions if this is an unfamiliar task: <a class="reference external" href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository">https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository</a></p></li>
+<li><p>Confirm that you can access and push data to repo. Here’s an helpful how-to tutorial for this task with VSCode: <a class="reference external" href="https://zeroesandones.medium.com/how-to-commit-and-push-your-changes-to-your-github-repository-in-vscode-77a7a3d7dd02">https://zeroesandones.medium.com/how-to-commit-and-push-your-changes-to-your-github-repository-in-vscode-77a7a3d7dd02</a></p></li>
+</ul>
+</div>
+<div class="section" id="export-from-cadet">
+<h2><span class="section-number">17.3. </span>Export from Cadet<a class="headerlink" href="#export-from-cadet" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Step #8 in Cadet is “Export for Model Training.”  This will generate a zip file and download it to your local computer. If you run into any problems during export please write to <a class="reference external" href="mailto:apjanco&#37;&#52;&#48;haverford&#46;edu">Andy</a>.</p></li>
+<li><p>On your computer, unzip the file and save the files in a place that you can find easily such as the Desktop or a projects directory.  It should be your language name .zip.</p></li>
+<li><p>Move the files in texts to 0_original_texts</p></li>
+<li><p>Move the file in lookups to 1_lookups_data</p></li>
+<li><p>Move everything else but corpus_json to 2_new_language_object</p></li>
+<li><p>Track these new files with git and push them to the repository.</p></li>
+</ul>
+</div>
+<div class="section" id="export-from-inception">
+<h2><span class="section-number">17.4. </span>Export from inception<a class="headerlink" href="#export-from-inception" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Go to inception.slovo.world and login</p></li>
+<li><p>Go to Projects and select your project</p></li>
+<li><p>For your files to be available in the Curation menu, you will need to close them in Annotation. To do this, go to Annotation, then open the file.  Click on the little lock icon to “Close File.” This can take a few seconds to complete. You can always re-open to continue work.</p></li>
+<li><p>Open each text individually in the Curate menu. When you’re ready to export, click on the “Export Document” button . If you are exporting annotations for tokenization, part of speech, lemmata, and features, choose the conllu format.  For named entities, you can select CoNLL CoreNLP.</p></li>
+<li><p>Download your files to the 3_inception_export folder</p></li>
+<li><p>Commit and push everything to Github</p></li>
+</ul>
+<blockquote>
+<div><p>It is possible to download all of the project files all at once from Project&gt;Settings. If you strongly prefer this approach, please be sure to rename the CURATION_USER.conllu files to match the original names.</p>
+</div></blockquote>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
