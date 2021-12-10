@@ -30,6 +30,7 @@ parts:
   numbered: true
   chapters:
   - file: w2/overview
+  - file: w2/prep
 - caption: Workshop III  Presentations and Publications ~ May 12-13, 2022
   numbered: true
   chapters:
