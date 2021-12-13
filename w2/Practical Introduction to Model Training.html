@@ -1,0 +1,1598 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Outline &#8212; New Languages for NLP</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">New Languages for NLP</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome!
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Prerequisite Knowledge
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../prep/introduction.html">
+   1. Getting Ready for the Workshops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../prep/ml.html">
+   2. Neural Networks and Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../prep/nlp.html">
+   3. NLP and spaCy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../prep/fairuse.html">
+   4. Corpus Documentation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Prerequisite Skills
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../prep/data.html">
+   5. Data Formats
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../prep/tei.html">
+   6. Text Encoding Initiative (TEI)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../prep/github.html">
+   7. GitHub
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../prep/jupyter.html">
+   8. Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Workshop I Annotation and Linguistic Data ~ June 21-25, 2021.
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../w1/overview.html">
+   9. Welcome to Workshop I
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../w1/cadet.html">
+   10. Cadet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../w1/cadet-notebook.html">
+   11. Cadet the Notebook
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../w1/inception.html">
+   12. INCEpTION
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../w1/tokenization.html">
+   13. Tokenization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../w1/ud.html">
+   14. Universal features
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../w1/InstituteGlossary.html">
+   15. Institute Glossary
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Workshop II Model Training ~ January 10-14, 2022
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
+   16. Welcome to Workshop II
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="prep.html">
+   17. Preparation for Workshop II
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Workshop III  Presentations and Publications ~ May 12-13, 2022
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../w3/overview.html">
+   18. Welcome to Workshop III
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/w2/Practical Introduction to Model Training.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/New-Languages-for-NLP/course-materials/gh-pages?urlpath=tree/w2/Practical Introduction to Model Training.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="outline">
+<h1>Outline<a class="headerlink" href="#outline" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Project file that loads data from LitBank, texts from … AO3</p>
+<ul>
+<li><p>Goal is to use litbank data to train model to study fan fiction</p></li>
+</ul>
+</li>
+<li><p>Create train and validation sets</p></li>
+<li><p>Identify entities in text using Matcher (note missed ents in val set, not learning, just matching)</p></li>
+<li><p>Train NER from scratch using only language object</p></li>
+<li><p>Train NER from scratch  for small en model</p></li>
+<li><p>Fine-tune existing NER pipeline</p></li>
+<li><p>Assess results for various approaches</p></li>
+<li><p>Where do we see improvement? When is the model sufficiently useful in research?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install ao3_api
+
+<span class="o">!</span>git clone https://github.com/dbamman/litbank.git
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting ao3_api
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading ao3_api-2.2.0-py3-none-any.whl (40 kB)
+?25l
+
+     |████████                        | 10 kB 24.5 MB/s eta 0:00:01
+     |████████████████▏               | 20 kB 11.3 MB/s eta 0:00:01
+     |████████████████████████▏       | 30 kB 7.0 MB/s eta 0:00:01 
+     |████████████████████████████████| 40 kB 5.2 MB/s             
+?25hRequirement already satisfied: BeautifulSoup4 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from ao3_api) (4.10.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting lxml
+  Downloading lxml-4.6.5-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl (6.9 MB)
+?25l
+
+     |                                | 10 kB 39.0 MB/s eta 0:00:01
+     |                                | 20 kB 46.9 MB/s eta 0:00:01
+     |▏                               | 30 kB 14.0 MB/s eta 0:00:01
+     |▏                               | 40 kB 13.5 MB/s eta 0:00:01
+     |▎                               | 51 kB 16.2 MB/s eta 0:00:01
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |▎                               | 61 kB 5.7 MB/s eta 0:00:02 
+     |▍                               | 71 kB 5.9 MB/s eta 0:00:02 
+     |▍                               | 81 kB 6.7 MB/s eta 0:00:02 
+     |▍                               | 92 kB 7.4 MB/s eta 0:00:01 
+     |▌                               | 102 kB 7.4 MB/s eta 0:00:01
+     |▌                               | 112 kB 7.4 MB/s eta 0:00:01
+     |▋                               | 122 kB 7.4 MB/s eta 0:00:01
+     |▋                               | 133 kB 7.4 MB/s eta 0:00:01
+     |▊                               | 143 kB 7.4 MB/s eta 0:00:01
+     |▊                               | 153 kB 7.4 MB/s eta 0:00:01
+     |▊                               | 163 kB 7.4 MB/s eta 0:00:01
+     |▉                               | 174 kB 7.4 MB/s eta 0:00:01
+     |▉                               | 184 kB 7.4 MB/s eta 0:00:01
+     |█                               | 194 kB 7.4 MB/s eta 0:00:01
+     |█                               | 204 kB 7.4 MB/s eta 0:00:01
+     |█                               | 215 kB 7.4 MB/s eta 0:00:01
+     |█                               | 225 kB 7.4 MB/s eta 0:00:01
+     |█                               | 235 kB 7.4 MB/s eta 0:00:01
+     |█▏                              | 245 kB 7.4 MB/s eta 0:00:01
+     |█▏                              | 256 kB 7.4 MB/s eta 0:00:01
+     |█▎                              | 266 kB 7.4 MB/s eta 0:00:01
+     |█▎                              | 276 kB 7.4 MB/s eta 0:00:01
+     |█▍                              | 286 kB 7.4 MB/s eta 0:00:01
+     |█▍                              | 296 kB 7.4 MB/s eta 0:00:01
+     |█▍                              | 307 kB 7.4 MB/s eta 0:00:01
+     |█▌                              | 317 kB 7.4 MB/s eta 0:00:01
+     |█▌                              | 327 kB 7.4 MB/s eta 0:00:01
+     |█▋                              | 337 kB 7.4 MB/s eta 0:00:01
+     |█▋                              | 348 kB 7.4 MB/s eta 0:00:01
+     |█▊                              | 358 kB 7.4 MB/s eta 0:00:01
+     |█▊                              | 368 kB 7.4 MB/s eta 0:00:01
+     |█▊                              | 378 kB 7.4 MB/s eta 0:00:01
+     |█▉                              | 389 kB 7.4 MB/s eta 0:00:01
+     |█▉                              | 399 kB 7.4 MB/s eta 0:00:01
+     |██                              | 409 kB 7.4 MB/s eta 0:00:01
+     |██                              | 419 kB 7.4 MB/s eta 0:00:01
+     |██                              | 430 kB 7.4 MB/s eta 0:00:01
+     |██                              | 440 kB 7.4 MB/s eta 0:00:01
+     |██                              | 450 kB 7.4 MB/s eta 0:00:01
+     |██▏                             | 460 kB 7.4 MB/s eta 0:00:01
+     |██▏                             | 471 kB 7.4 MB/s eta 0:00:01
+     |██▎                             | 481 kB 7.4 MB/s eta 0:00:01
+     |██▎                             | 491 kB 7.4 MB/s eta 0:00:01
+     |██▍                             | 501 kB 7.4 MB/s eta 0:00:01
+     |██▍                             | 512 kB 7.4 MB/s eta 0:00:01
+     |██▍                             | 522 kB 7.4 MB/s eta 0:00:01
+     |██▌                             | 532 kB 7.4 MB/s eta 0:00:01
+     |██▌                             | 542 kB 7.4 MB/s eta 0:00:01
+     |██▋                             | 552 kB 7.4 MB/s eta 0:00:01
+     |██▋                             | 563 kB 7.4 MB/s eta 0:00:01
+     |██▊                             | 573 kB 7.4 MB/s eta 0:00:01
+     |██▊                             | 583 kB 7.4 MB/s eta 0:00:01
+     |██▊                             | 593 kB 7.4 MB/s eta 0:00:01
+     |██▉                             | 604 kB 7.4 MB/s eta 0:00:01
+     |██▉                             | 614 kB 7.4 MB/s eta 0:00:01
+     |███                             | 624 kB 7.4 MB/s eta 0:00:01
+     |███                             | 634 kB 7.4 MB/s eta 0:00:01
+     |███                             | 645 kB 7.4 MB/s eta 0:00:01
+     |███                             | 655 kB 7.4 MB/s eta 0:00:01
+     |███                             | 665 kB 7.4 MB/s eta 0:00:01
+     |███▏                            | 675 kB 7.4 MB/s eta 0:00:01
+     |███▏                            | 686 kB 7.4 MB/s eta 0:00:01
+     |███▎                            | 696 kB 7.4 MB/s eta 0:00:01
+     |███▎                            | 706 kB 7.4 MB/s eta 0:00:01
+     |███▍                            | 716 kB 7.4 MB/s eta 0:00:01
+     |███▍                            | 727 kB 7.4 MB/s eta 0:00:01
+     |███▍                            | 737 kB 7.4 MB/s eta 0:00:01
+     |███▌                            | 747 kB 7.4 MB/s eta 0:00:01
+     |███▌                            | 757 kB 7.4 MB/s eta 0:00:01
+     |███▋                            | 768 kB 7.4 MB/s eta 0:00:01
+     |███▋                            | 778 kB 7.4 MB/s eta 0:00:01
+     |███▊                            | 788 kB 7.4 MB/s eta 0:00:01
+     |███▊                            | 798 kB 7.4 MB/s eta 0:00:01
+     |███▊                            | 808 kB 7.4 MB/s eta 0:00:01
+     |███▉                            | 819 kB 7.4 MB/s eta 0:00:01
+     |███▉                            | 829 kB 7.4 MB/s eta 0:00:01
+     |████                            | 839 kB 7.4 MB/s eta 0:00:01
+     |████                            | 849 kB 7.4 MB/s eta 0:00:01
+     |████                            | 860 kB 7.4 MB/s eta 0:00:01
+     |████                            | 870 kB 7.4 MB/s eta 0:00:01
+     |████                            | 880 kB 7.4 MB/s eta 0:00:01
+     |████▏                           | 890 kB 7.4 MB/s eta 0:00:01
+     |████▏                           | 901 kB 7.4 MB/s eta 0:00:01
+     |████▎                           | 911 kB 7.4 MB/s eta 0:00:01
+     |████▎                           | 921 kB 7.4 MB/s eta 0:00:01
+     |████▍                           | 931 kB 7.4 MB/s eta 0:00:01
+     |████▍                           | 942 kB 7.4 MB/s eta 0:00:01
+     |████▍                           | 952 kB 7.4 MB/s eta 0:00:01
+     |████▌                           | 962 kB 7.4 MB/s eta 0:00:01
+     |████▌                           | 972 kB 7.4 MB/s eta 0:00:01
+     |████▋                           | 983 kB 7.4 MB/s eta 0:00:01
+     |████▋                           | 993 kB 7.4 MB/s eta 0:00:01
+     |████▊                           | 1.0 MB 7.4 MB/s eta 0:00:01
+     |████▊                           | 1.0 MB 7.4 MB/s eta 0:00:01
+     |████▊                           | 1.0 MB 7.4 MB/s eta 0:00:01
+     |████▉                           | 1.0 MB 7.4 MB/s eta 0:00:01
+     |████▉                           | 1.0 MB 7.4 MB/s eta 0:00:01
+     |█████                           | 1.1 MB 7.4 MB/s eta 0:00:01
+     |█████                           | 1.1 MB 7.4 MB/s eta 0:00:01
+     |█████                           | 1.1 MB 7.4 MB/s eta 0:00:01
+     |█████                           | 1.1 MB 7.4 MB/s eta 0:00:01
+     |█████                           | 1.1 MB 7.4 MB/s eta 0:00:01
+     |█████▏                          | 1.1 MB 7.4 MB/s eta 0:00:01
+     |█████▏                          | 1.1 MB 7.4 MB/s eta 0:00:01
+     |█████▎                          | 1.1 MB 7.4 MB/s eta 0:00:01
+     |█████▎                          | 1.1 MB 7.4 MB/s eta 0:00:01
+     |█████▍                          | 1.1 MB 7.4 MB/s eta 0:00:01
+     |█████▍                          | 1.2 MB 7.4 MB/s eta 0:00:01
+     |█████▍                          | 1.2 MB 7.4 MB/s eta 0:00:01
+     |█████▌                          | 1.2 MB 7.4 MB/s eta 0:00:01
+     |█████▌                          | 1.2 MB 7.4 MB/s eta 0:00:01
+     |█████▋                          | 1.2 MB 7.4 MB/s eta 0:00:01
+     |█████▋                          | 1.2 MB 7.4 MB/s eta 0:00:01
+     |█████▊                          | 1.2 MB 7.4 MB/s eta 0:00:01
+     |█████▊                          | 1.2 MB 7.4 MB/s eta 0:00:01
+     |█████▊                          | 1.2 MB 7.4 MB/s eta 0:00:01
+     |█████▉                          | 1.2 MB 7.4 MB/s eta 0:00:01
+     |█████▉                          | 1.3 MB 7.4 MB/s eta 0:00:01
+     |██████                          | 1.3 MB 7.4 MB/s eta 0:00:01
+     |██████                          | 1.3 MB 7.4 MB/s eta 0:00:01
+     |██████                          | 1.3 MB 7.4 MB/s eta 0:00:01
+     |██████                          | 1.3 MB 7.4 MB/s eta 0:00:01
+     |██████                          | 1.3 MB 7.4 MB/s eta 0:00:01
+     |██████▏                         | 1.3 MB 7.4 MB/s eta 0:00:01
+     |██████▏                         | 1.3 MB 7.4 MB/s eta 0:00:01
+     |██████▎                         | 1.3 MB 7.4 MB/s eta 0:00:01
+     |██████▎                         | 1.4 MB 7.4 MB/s eta 0:00:01
+     |██████▍                         | 1.4 MB 7.4 MB/s eta 0:00:01
+     |██████▍                         | 1.4 MB 7.4 MB/s eta 0:00:01
+     |██████▍                         | 1.4 MB 7.4 MB/s eta 0:00:01
+     |██████▌                         | 1.4 MB 7.4 MB/s eta 0:00:01
+     |██████▌                         | 1.4 MB 7.4 MB/s eta 0:00:01
+     |██████▋                         | 1.4 MB 7.4 MB/s eta 0:00:01
+     |██████▋                         | 1.4 MB 7.4 MB/s eta 0:00:01
+     |██████▊                         | 1.4 MB 7.4 MB/s eta 0:00:01
+     |██████▊                         | 1.4 MB 7.4 MB/s eta 0:00:01
+     |██████▊                         | 1.5 MB 7.4 MB/s eta 0:00:01
+     |██████▉                         | 1.5 MB 7.4 MB/s eta 0:00:01
+     |██████▉                         | 1.5 MB 7.4 MB/s eta 0:00:01
+     |███████                         | 1.5 MB 7.4 MB/s eta 0:00:01
+     |███████                         | 1.5 MB 7.4 MB/s eta 0:00:01
+     |███████                         | 1.5 MB 7.4 MB/s eta 0:00:01
+     |███████                         | 1.5 MB 7.4 MB/s eta 0:00:01
+     |███████▏                        | 1.5 MB 7.4 MB/s eta 0:00:01
+     |███████▏                        | 1.5 MB 7.4 MB/s eta 0:00:01
+     |███████▏                        | 1.5 MB 7.4 MB/s eta 0:00:01
+     |███████▎                        | 1.6 MB 7.4 MB/s eta 0:00:01
+     |███████▎                        | 1.6 MB 7.4 MB/s eta 0:00:01
+     |███████▍                        | 1.6 MB 7.4 MB/s eta 0:00:01
+     |███████▍                        | 1.6 MB 7.4 MB/s eta 0:00:01
+     |███████▌                        | 1.6 MB 7.4 MB/s eta 0:00:01
+     |███████▌                        | 1.6 MB 7.4 MB/s eta 0:00:01
+     |███████▌                        | 1.6 MB 7.4 MB/s eta 0:00:01
+     |███████▋                        | 1.6 MB 7.4 MB/s eta 0:00:01
+     |███████▋                        | 1.6 MB 7.4 MB/s eta 0:00:01
+     |███████▊                        | 1.6 MB 7.4 MB/s eta 0:00:01
+     |███████▊                        | 1.7 MB 7.4 MB/s eta 0:00:01
+     |███████▉                        | 1.7 MB 7.4 MB/s eta 0:00:01
+     |███████▉                        | 1.7 MB 7.4 MB/s eta 0:00:01
+     |███████▉                        | 1.7 MB 7.4 MB/s eta 0:00:01
+     |████████                        | 1.7 MB 7.4 MB/s eta 0:00:01
+     |████████                        | 1.7 MB 7.4 MB/s eta 0:00:01
+     |████████                        | 1.7 MB 7.4 MB/s eta 0:00:01
+     |████████                        | 1.7 MB 7.4 MB/s eta 0:00:01
+     |████████▏                       | 1.7 MB 7.4 MB/s eta 0:00:01
+     |████████▏                       | 1.8 MB 7.4 MB/s eta 0:00:01
+     |████████▏                       | 1.8 MB 7.4 MB/s eta 0:00:01
+     |████████▎                       | 1.8 MB 7.4 MB/s eta 0:00:01
+     |████████▎                       | 1.8 MB 7.4 MB/s eta 0:00:01
+     |████████▍                       | 1.8 MB 7.4 MB/s eta 0:00:01
+     |████████▍                       | 1.8 MB 7.4 MB/s eta 0:00:01
+     |████████▌                       | 1.8 MB 7.4 MB/s eta 0:00:01
+     |████████▌                       | 1.8 MB 7.4 MB/s eta 0:00:01
+     |████████▌                       | 1.8 MB 7.4 MB/s eta 0:00:01
+     |████████▋                       | 1.8 MB 7.4 MB/s eta 0:00:01
+     |████████▋                       | 1.9 MB 7.4 MB/s eta 0:00:01
+     |████████▊                       | 1.9 MB 7.4 MB/s eta 0:00:01
+     |████████▊                       | 1.9 MB 7.4 MB/s eta 0:00:01
+     |████████▉                       | 1.9 MB 7.4 MB/s eta 0:00:01
+     |████████▉                       | 1.9 MB 7.4 MB/s eta 0:00:01
+     |████████▉                       | 1.9 MB 7.4 MB/s eta 0:00:01
+     |█████████                       | 1.9 MB 7.4 MB/s eta 0:00:01
+     |█████████                       | 1.9 MB 7.4 MB/s eta 0:00:01
+     |█████████                       | 1.9 MB 7.4 MB/s eta 0:00:01
+     |█████████                       | 1.9 MB 7.4 MB/s eta 0:00:01
+     |█████████▏                      | 2.0 MB 7.4 MB/s eta 0:00:01
+     |█████████▏                      | 2.0 MB 7.4 MB/s eta 0:00:01
+     |█████████▏                      | 2.0 MB 7.4 MB/s eta 0:00:01
+     |█████████▎                      | 2.0 MB 7.4 MB/s eta 0:00:01
+     |█████████▎                      | 2.0 MB 7.4 MB/s eta 0:00:01
+     |█████████▍                      | 2.0 MB 7.4 MB/s eta 0:00:01
+     |█████████▍                      | 2.0 MB 7.4 MB/s eta 0:00:01
+     |█████████▌                      | 2.0 MB 7.4 MB/s eta 0:00:01
+     |█████████▌                      | 2.0 MB 7.4 MB/s eta 0:00:01
+     |█████████▌                      | 2.0 MB 7.4 MB/s eta 0:00:01
+     |█████████▋                      | 2.1 MB 7.4 MB/s eta 0:00:01
+     |█████████▋                      | 2.1 MB 7.4 MB/s eta 0:00:01
+     |█████████▊                      | 2.1 MB 7.4 MB/s eta 0:00:01
+     |█████████▊                      | 2.1 MB 7.4 MB/s eta 0:00:01
+     |█████████▉                      | 2.1 MB 7.4 MB/s eta 0:00:01
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |█████████▉                      | 2.1 MB 7.4 MB/s eta 0:00:01
+     |█████████▉                      | 2.1 MB 7.4 MB/s eta 0:00:01
+     |██████████                      | 2.1 MB 7.4 MB/s eta 0:00:01
+     |██████████                      | 2.1 MB 7.4 MB/s eta 0:00:01
+     |██████████                      | 2.2 MB 7.4 MB/s eta 0:00:01
+     |██████████                      | 2.2 MB 7.4 MB/s eta 0:00:01
+     |██████████▏                     | 2.2 MB 7.4 MB/s eta 0:00:01
+     |██████████▏                     | 2.2 MB 7.4 MB/s eta 0:00:01
+     |██████████▏                     | 2.2 MB 7.4 MB/s eta 0:00:01
+     |██████████▎                     | 2.2 MB 7.4 MB/s eta 0:00:01
+     |██████████▎                     | 2.2 MB 7.4 MB/s eta 0:00:01
+     |██████████▍                     | 2.2 MB 7.4 MB/s eta 0:00:01
+     |██████████▍                     | 2.2 MB 7.4 MB/s eta 0:00:01
+     |██████████▌                     | 2.2 MB 7.4 MB/s eta 0:00:01
+     |██████████▌                     | 2.3 MB 7.4 MB/s eta 0:00:01
+     |██████████▌                     | 2.3 MB 7.4 MB/s eta 0:00:01
+     |██████████▋                     | 2.3 MB 7.4 MB/s eta 0:00:01
+     |██████████▋                     | 2.3 MB 7.4 MB/s eta 0:00:01
+     |██████████▊                     | 2.3 MB 7.4 MB/s eta 0:00:01
+     |██████████▊                     | 2.3 MB 7.4 MB/s eta 0:00:01
+     |██████████▉                     | 2.3 MB 7.4 MB/s eta 0:00:01
+     |██████████▉                     | 2.3 MB 7.4 MB/s eta 0:00:01
+     |██████████▉                     | 2.3 MB 7.4 MB/s eta 0:00:01
+     |███████████                     | 2.3 MB 7.4 MB/s eta 0:00:01
+     |███████████                     | 2.4 MB 7.4 MB/s eta 0:00:01
+     |███████████                     | 2.4 MB 7.4 MB/s eta 0:00:01
+     |███████████                     | 2.4 MB 7.4 MB/s eta 0:00:01
+     |███████████▏                    | 2.4 MB 7.4 MB/s eta 0:00:01
+     |███████████▏                    | 2.4 MB 7.4 MB/s eta 0:00:01
+     |███████████▏                    | 2.4 MB 7.4 MB/s eta 0:00:01
+     |███████████▎                    | 2.4 MB 7.4 MB/s eta 0:00:01
+     |███████████▎                    | 2.4 MB 7.4 MB/s eta 0:00:01
+     |███████████▍                    | 2.4 MB 7.4 MB/s eta 0:00:01
+     |███████████▍                    | 2.4 MB 7.4 MB/s eta 0:00:01
+     |███████████▌                    | 2.5 MB 7.4 MB/s eta 0:00:01
+     |███████████▌                    | 2.5 MB 7.4 MB/s eta 0:00:01
+     |███████████▌                    | 2.5 MB 7.4 MB/s eta 0:00:01
+     |███████████▋                    | 2.5 MB 7.4 MB/s eta 0:00:01
+     |███████████▋                    | 2.5 MB 7.4 MB/s eta 0:00:01
+     |███████████▊                    | 2.5 MB 7.4 MB/s eta 0:00:01
+     |███████████▊                    | 2.5 MB 7.4 MB/s eta 0:00:01
+     |███████████▉                    | 2.5 MB 7.4 MB/s eta 0:00:01
+     |███████████▉                    | 2.5 MB 7.4 MB/s eta 0:00:01
+     |███████████▉                    | 2.5 MB 7.4 MB/s eta 0:00:01
+     |████████████                    | 2.6 MB 7.4 MB/s eta 0:00:01
+     |████████████                    | 2.6 MB 7.4 MB/s eta 0:00:01
+     |████████████                    | 2.6 MB 7.4 MB/s eta 0:00:01
+     |████████████                    | 2.6 MB 7.4 MB/s eta 0:00:01
+     |████████████▏                   | 2.6 MB 7.4 MB/s eta 0:00:01
+     |████████████▏                   | 2.6 MB 7.4 MB/s eta 0:00:01
+     |████████████▏                   | 2.6 MB 7.4 MB/s eta 0:00:01
+     |████████████▎                   | 2.6 MB 7.4 MB/s eta 0:00:01
+     |████████████▎                   | 2.6 MB 7.4 MB/s eta 0:00:01
+     |████████████▍                   | 2.7 MB 7.4 MB/s eta 0:00:01
+     |████████████▍                   | 2.7 MB 7.4 MB/s eta 0:00:01
+     |████████████▌                   | 2.7 MB 7.4 MB/s eta 0:00:01
+     |████████████▌                   | 2.7 MB 7.4 MB/s eta 0:00:01
+     |████████████▌                   | 2.7 MB 7.4 MB/s eta 0:00:01
+     |████████████▋                   | 2.7 MB 7.4 MB/s eta 0:00:01
+     |████████████▋                   | 2.7 MB 7.4 MB/s eta 0:00:01
+     |████████████▊                   | 2.7 MB 7.4 MB/s eta 0:00:01
+     |████████████▊                   | 2.7 MB 7.4 MB/s eta 0:00:01
+     |████████████▉                   | 2.7 MB 7.4 MB/s eta 0:00:01
+     |████████████▉                   | 2.8 MB 7.4 MB/s eta 0:00:01
+     |████████████▉                   | 2.8 MB 7.4 MB/s eta 0:00:01
+     |█████████████                   | 2.8 MB 7.4 MB/s eta 0:00:01
+     |█████████████                   | 2.8 MB 7.4 MB/s eta 0:00:01
+     |█████████████                   | 2.8 MB 7.4 MB/s eta 0:00:01
+     |█████████████                   | 2.8 MB 7.4 MB/s eta 0:00:01
+     |█████████████▏                  | 2.8 MB 7.4 MB/s eta 0:00:01
+     |█████████████▏                  | 2.8 MB 7.4 MB/s eta 0:00:01
+     |█████████████▏                  | 2.8 MB 7.4 MB/s eta 0:00:01
+     |█████████████▎                  | 2.8 MB 7.4 MB/s eta 0:00:01
+     |█████████████▎                  | 2.9 MB 7.4 MB/s eta 0:00:01
+     |█████████████▍                  | 2.9 MB 7.4 MB/s eta 0:00:01
+     |█████████████▍                  | 2.9 MB 7.4 MB/s eta 0:00:01
+     |█████████████▌                  | 2.9 MB 7.4 MB/s eta 0:00:01
+     |█████████████▌                  | 2.9 MB 7.4 MB/s eta 0:00:01
+     |█████████████▌                  | 2.9 MB 7.4 MB/s eta 0:00:01
+     |█████████████▋                  | 2.9 MB 7.4 MB/s eta 0:00:01
+     |█████████████▋                  | 2.9 MB 7.4 MB/s eta 0:00:01
+     |█████████████▊                  | 2.9 MB 7.4 MB/s eta 0:00:01
+     |█████████████▊                  | 2.9 MB 7.4 MB/s eta 0:00:01
+     |█████████████▉                  | 3.0 MB 7.4 MB/s eta 0:00:01
+     |█████████████▉                  | 3.0 MB 7.4 MB/s eta 0:00:01
+     |█████████████▉                  | 3.0 MB 7.4 MB/s eta 0:00:01
+     |██████████████                  | 3.0 MB 7.4 MB/s eta 0:00:01
+     |██████████████                  | 3.0 MB 7.4 MB/s eta 0:00:01
+     |██████████████                  | 3.0 MB 7.4 MB/s eta 0:00:01
+     |██████████████                  | 3.0 MB 7.4 MB/s eta 0:00:01
+     |██████████████▏                 | 3.0 MB 7.4 MB/s eta 0:00:01
+     |██████████████▏                 | 3.0 MB 7.4 MB/s eta 0:00:01
+     |██████████████▎                 | 3.1 MB 7.4 MB/s eta 0:00:01
+     |██████████████▎                 | 3.1 MB 7.4 MB/s eta 0:00:01
+     |██████████████▎                 | 3.1 MB 7.4 MB/s eta 0:00:01
+     |██████████████▍                 | 3.1 MB 7.4 MB/s eta 0:00:01
+     |██████████████▍                 | 3.1 MB 7.4 MB/s eta 0:00:01
+     |██████████████▌                 | 3.1 MB 7.4 MB/s eta 0:00:01
+     |██████████████▌                 | 3.1 MB 7.4 MB/s eta 0:00:01
+     |██████████████▋                 | 3.1 MB 7.4 MB/s eta 0:00:01
+     |██████████████▋                 | 3.1 MB 7.4 MB/s eta 0:00:01
+     |██████████████▋                 | 3.1 MB 7.4 MB/s eta 0:00:01
+     |██████████████▊                 | 3.2 MB 7.4 MB/s eta 0:00:01
+     |██████████████▊                 | 3.2 MB 7.4 MB/s eta 0:00:01
+     |██████████████▉                 | 3.2 MB 7.4 MB/s eta 0:00:01
+     |██████████████▉                 | 3.2 MB 7.4 MB/s eta 0:00:01
+     |███████████████                 | 3.2 MB 7.4 MB/s eta 0:00:01
+     |███████████████                 | 3.2 MB 7.4 MB/s eta 0:00:01
+     |███████████████                 | 3.2 MB 7.4 MB/s eta 0:00:01
+     |███████████████                 | 3.2 MB 7.4 MB/s eta 0:00:01
+     |███████████████                 | 3.2 MB 7.4 MB/s eta 0:00:01
+     |███████████████▏                | 3.2 MB 7.4 MB/s eta 0:00:01
+     |███████████████▏                | 3.3 MB 7.4 MB/s eta 0:00:01
+     |███████████████▎                | 3.3 MB 7.4 MB/s eta 0:00:01
+     |███████████████▎                | 3.3 MB 7.4 MB/s eta 0:00:01
+     |███████████████▎                | 3.3 MB 7.4 MB/s eta 0:00:01
+     |███████████████▍                | 3.3 MB 7.4 MB/s eta 0:00:01
+     |███████████████▍                | 3.3 MB 7.4 MB/s eta 0:00:01
+     |███████████████▌                | 3.3 MB 7.4 MB/s eta 0:00:01
+     |███████████████▌                | 3.3 MB 7.4 MB/s eta 0:00:01
+     |███████████████▋                | 3.3 MB 7.4 MB/s eta 0:00:01
+     |███████████████▋                | 3.3 MB 7.4 MB/s eta 0:00:01
+     |███████████████▋                | 3.4 MB 7.4 MB/s eta 0:00:01
+     |███████████████▊                | 3.4 MB 7.4 MB/s eta 0:00:01
+     |███████████████▊                | 3.4 MB 7.4 MB/s eta 0:00:01
+     |███████████████▉                | 3.4 MB 7.4 MB/s eta 0:00:01
+     |███████████████▉                | 3.4 MB 7.4 MB/s eta 0:00:01
+     |████████████████                | 3.4 MB 7.4 MB/s eta 0:00:01
+     |████████████████                | 3.4 MB 7.4 MB/s eta 0:00:01
+     |████████████████                | 3.4 MB 7.4 MB/s eta 0:00:01
+     |████████████████                | 3.4 MB 7.4 MB/s eta 0:00:01
+     |████████████████                | 3.5 MB 7.4 MB/s eta 0:00:01
+     |████████████████▏               | 3.5 MB 7.4 MB/s eta 0:00:01
+     |████████████████▏               | 3.5 MB 7.4 MB/s eta 0:00:01
+     |████████████████▎               | 3.5 MB 7.4 MB/s eta 0:00:01
+     |████████████████▎               | 3.5 MB 7.4 MB/s eta 0:00:01
+     |████████████████▎               | 3.5 MB 7.4 MB/s eta 0:00:01
+     |████████████████▍               | 3.5 MB 7.4 MB/s eta 0:00:01
+     |████████████████▍               | 3.5 MB 7.4 MB/s eta 0:00:01
+     |████████████████▌               | 3.5 MB 7.4 MB/s eta 0:00:01
+     |████████████████▌               | 3.5 MB 7.4 MB/s eta 0:00:01
+     |████████████████▋               | 3.6 MB 7.4 MB/s eta 0:00:01
+     |████████████████▋               | 3.6 MB 7.4 MB/s eta 0:00:01
+     |████████████████▋               | 3.6 MB 7.4 MB/s eta 0:00:01
+     |████████████████▊               | 3.6 MB 7.4 MB/s eta 0:00:01
+     |████████████████▊               | 3.6 MB 7.4 MB/s eta 0:00:01
+     |████████████████▉               | 3.6 MB 7.4 MB/s eta 0:00:01
+     |████████████████▉               | 3.6 MB 7.4 MB/s eta 0:00:01
+     |█████████████████               | 3.6 MB 7.4 MB/s eta 0:00:01
+     |█████████████████               | 3.6 MB 7.4 MB/s eta 0:00:01
+     |█████████████████               | 3.6 MB 7.4 MB/s eta 0:00:01
+     |█████████████████               | 3.7 MB 7.4 MB/s eta 0:00:01
+     |█████████████████               | 3.7 MB 7.4 MB/s eta 0:00:01
+     |█████████████████▏              | 3.7 MB 7.4 MB/s eta 0:00:01
+     |█████████████████▏              | 3.7 MB 7.4 MB/s eta 0:00:01
+     |█████████████████▎              | 3.7 MB 7.4 MB/s eta 0:00:01
+     |█████████████████▎              | 3.7 MB 7.4 MB/s eta 0:00:01
+     |█████████████████▎              | 3.7 MB 7.4 MB/s eta 0:00:01
+     |█████████████████▍              | 3.7 MB 7.4 MB/s eta 0:00:01
+     |█████████████████▍              | 3.7 MB 7.4 MB/s eta 0:00:01
+     |█████████████████▌              | 3.7 MB 7.4 MB/s eta 0:00:01
+     |█████████████████▌              | 3.8 MB 7.4 MB/s eta 0:00:01
+     |█████████████████▋              | 3.8 MB 7.4 MB/s eta 0:00:01
+     |█████████████████▋              | 3.8 MB 7.4 MB/s eta 0:00:01
+     |█████████████████▋              | 3.8 MB 7.4 MB/s eta 0:00:01
+     |█████████████████▊              | 3.8 MB 7.4 MB/s eta 0:00:01
+     |█████████████████▊              | 3.8 MB 7.4 MB/s eta 0:00:01
+     |█████████████████▉              | 3.8 MB 7.4 MB/s eta 0:00:01
+     |█████████████████▉              | 3.8 MB 7.4 MB/s eta 0:00:01
+     |██████████████████              | 3.8 MB 7.4 MB/s eta 0:00:01
+     |██████████████████              | 3.9 MB 7.4 MB/s eta 0:00:01
+     |██████████████████              | 3.9 MB 7.4 MB/s eta 0:00:01
+     |██████████████████              | 3.9 MB 7.4 MB/s eta 0:00:01
+     |██████████████████              | 3.9 MB 7.4 MB/s eta 0:00:01
+     |██████████████████▏             | 3.9 MB 7.4 MB/s eta 0:00:01
+     |██████████████████▏             | 3.9 MB 7.4 MB/s eta 0:00:01
+     |██████████████████▎             | 3.9 MB 7.4 MB/s eta 0:00:01
+     |██████████████████▎             | 3.9 MB 7.4 MB/s eta 0:00:01
+     |██████████████████▎             | 3.9 MB 7.4 MB/s eta 0:00:01
+     |██████████████████▍             | 3.9 MB 7.4 MB/s eta 0:00:01
+     |██████████████████▍             | 4.0 MB 7.4 MB/s eta 0:00:01
+     |██████████████████▌             | 4.0 MB 7.4 MB/s eta 0:00:01
+     |██████████████████▌             | 4.0 MB 7.4 MB/s eta 0:00:01
+     |██████████████████▋             | 4.0 MB 7.4 MB/s eta 0:00:01
+     |██████████████████▋             | 4.0 MB 7.4 MB/s eta 0:00:01
+     |██████████████████▋             | 4.0 MB 7.4 MB/s eta 0:00:01
+     |██████████████████▊             | 4.0 MB 7.4 MB/s eta 0:00:01
+     |██████████████████▊             | 4.0 MB 7.4 MB/s eta 0:00:01
+     |██████████████████▉             | 4.0 MB 7.4 MB/s eta 0:00:01
+     |██████████████████▉             | 4.0 MB 7.4 MB/s eta 0:00:01
+     |███████████████████             | 4.1 MB 7.4 MB/s eta 0:00:01
+     |███████████████████             | 4.1 MB 7.4 MB/s eta 0:00:01
+     |███████████████████             | 4.1 MB 7.4 MB/s eta 0:00:01
+     |███████████████████             | 4.1 MB 7.4 MB/s eta 0:00:01
+     |███████████████████             | 4.1 MB 7.4 MB/s eta 0:00:01
+     |███████████████████▏            | 4.1 MB 7.4 MB/s eta 0:00:01
+     |███████████████████▏            | 4.1 MB 7.4 MB/s eta 0:00:01
+     |███████████████████▎            | 4.1 MB 7.4 MB/s eta 0:00:01
+     |███████████████████▎            | 4.1 MB 7.4 MB/s eta 0:00:01
+     |███████████████████▎            | 4.1 MB 7.4 MB/s eta 0:00:01
+     |███████████████████▍            | 4.2 MB 7.4 MB/s eta 0:00:01
+     |███████████████████▍            | 4.2 MB 7.4 MB/s eta 0:00:01
+     |███████████████████▌            | 4.2 MB 7.4 MB/s eta 0:00:01
+     |███████████████████▌            | 4.2 MB 7.4 MB/s eta 0:00:01
+     |███████████████████▋            | 4.2 MB 7.4 MB/s eta 0:00:01
+     |███████████████████▋            | 4.2 MB 7.4 MB/s eta 0:00:01
+     |███████████████████▋            | 4.2 MB 7.4 MB/s eta 0:00:01
+     |███████████████████▊            | 4.2 MB 7.4 MB/s eta 0:00:01
+     |███████████████████▊            | 4.2 MB 7.4 MB/s eta 0:00:01
+     |███████████████████▉            | 4.2 MB 7.4 MB/s eta 0:00:01
+     |███████████████████▉            | 4.3 MB 7.4 MB/s eta 0:00:01
+     |████████████████████            | 4.3 MB 7.4 MB/s eta 0:00:01
+     |████████████████████            | 4.3 MB 7.4 MB/s eta 0:00:01
+     |████████████████████            | 4.3 MB 7.4 MB/s eta 0:00:01
+     |████████████████████            | 4.3 MB 7.4 MB/s eta 0:00:01
+     |████████████████████            | 4.3 MB 7.4 MB/s eta 0:00:01
+     |████████████████████▏           | 4.3 MB 7.4 MB/s eta 0:00:01
+     |████████████████████▏           | 4.3 MB 7.4 MB/s eta 0:00:01
+     |████████████████████▎           | 4.3 MB 7.4 MB/s eta 0:00:01
+     |████████████████████▎           | 4.4 MB 7.4 MB/s eta 0:00:01
+     |████████████████████▎           | 4.4 MB 7.4 MB/s eta 0:00:01
+     |████████████████████▍           | 4.4 MB 7.4 MB/s eta 0:00:01
+     |████████████████████▍           | 4.4 MB 7.4 MB/s eta 0:00:01
+     |████████████████████▌           | 4.4 MB 7.4 MB/s eta 0:00:01
+     |████████████████████▌           | 4.4 MB 7.4 MB/s eta 0:00:01
+     |████████████████████▋           | 4.4 MB 7.4 MB/s eta 0:00:01
+     |████████████████████▋           | 4.4 MB 7.4 MB/s eta 0:00:01
+     |████████████████████▋           | 4.4 MB 7.4 MB/s eta 0:00:01
+     |████████████████████▊           | 4.4 MB 7.4 MB/s eta 0:00:01
+     |████████████████████▊           | 4.5 MB 7.4 MB/s eta 0:00:01
+     |████████████████████▉           | 4.5 MB 7.4 MB/s eta 0:00:01
+     |████████████████████▉           | 4.5 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████           | 4.5 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████           | 4.5 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████           | 4.5 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████           | 4.5 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████           | 4.5 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████▏          | 4.5 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████▏          | 4.5 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████▎          | 4.6 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████▎          | 4.6 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████▍          | 4.6 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████▍          | 4.6 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████▍          | 4.6 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████▌          | 4.6 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████▌          | 4.6 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████▋          | 4.6 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████▋          | 4.6 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████▊          | 4.6 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████▊          | 4.7 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████▊          | 4.7 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████▉          | 4.7 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████▉          | 4.7 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████          | 4.7 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████          | 4.7 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████          | 4.7 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████          | 4.7 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████          | 4.7 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████▏         | 4.8 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████▏         | 4.8 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████▎         | 4.8 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████▎         | 4.8 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████▍         | 4.8 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████▍         | 4.8 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████▍         | 4.8 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████▌         | 4.8 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████▌         | 4.8 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████▋         | 4.8 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████▋         | 4.9 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████▊         | 4.9 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████▊         | 4.9 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████▊         | 4.9 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████▉         | 4.9 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████▉         | 4.9 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████         | 4.9 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████         | 4.9 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████         | 4.9 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████         | 4.9 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████         | 5.0 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████▏        | 5.0 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████▏        | 5.0 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████▎        | 5.0 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████▎        | 5.0 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████▍        | 5.0 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████▍        | 5.0 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████▍        | 5.0 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████▌        | 5.0 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████▌        | 5.0 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████▋        | 5.1 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████▋        | 5.1 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████▊        | 5.1 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████▊        | 5.1 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████▊        | 5.1 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████▉        | 5.1 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████▉        | 5.1 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████        | 5.1 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████        | 5.1 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████        | 5.2 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████        | 5.2 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████        | 5.2 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████▏       | 5.2 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████▏       | 5.2 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████▎       | 5.2 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████▎       | 5.2 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████▍       | 5.2 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████▍       | 5.2 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████▍       | 5.2 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████▌       | 5.3 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████▌       | 5.3 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████▋       | 5.3 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████▋       | 5.3 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████▊       | 5.3 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████▊       | 5.3 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████▊       | 5.3 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████▉       | 5.3 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████▉       | 5.3 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████       | 5.3 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████       | 5.4 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████       | 5.4 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████       | 5.4 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████       | 5.4 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████▏      | 5.4 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████▏      | 5.4 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████▎      | 5.4 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████▎      | 5.4 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████▍      | 5.4 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████▍      | 5.4 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████▍      | 5.5 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████▌      | 5.5 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████▌      | 5.5 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████▋      | 5.5 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████▋      | 5.5 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████▊      | 5.5 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████▊      | 5.5 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████▊      | 5.5 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████▉      | 5.5 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████▉      | 5.6 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████      | 5.6 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████      | 5.6 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████      | 5.6 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████      | 5.6 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████      | 5.6 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████▏     | 5.6 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████▏     | 5.6 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████▎     | 5.6 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████▎     | 5.6 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████▍     | 5.7 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████▍     | 5.7 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████▍     | 5.7 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████▌     | 5.7 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████▌     | 5.7 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████▋     | 5.7 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████▋     | 5.7 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████▊     | 5.7 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████▊     | 5.7 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████▊     | 5.7 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████▉     | 5.8 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████▉     | 5.8 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████     | 5.8 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████     | 5.8 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████     | 5.8 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████     | 5.8 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████     | 5.8 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████▏    | 5.8 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████▏    | 5.8 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████▎    | 5.8 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████▎    | 5.9 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████▍    | 5.9 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████▍    | 5.9 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████▍    | 5.9 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████▌    | 5.9 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████▌    | 5.9 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████▋    | 5.9 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████▋    | 5.9 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████▊    | 5.9 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████▊    | 5.9 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████▊    | 6.0 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████▉    | 6.0 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████▉    | 6.0 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████    | 6.0 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████    | 6.0 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████    | 6.0 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████    | 6.0 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████    | 6.0 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████▏   | 6.0 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████▏   | 6.1 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████▎   | 6.1 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████▎   | 6.1 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████▍   | 6.1 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████▍   | 6.1 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████▌   | 6.1 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████▌   | 6.1 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████▌   | 6.1 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████▋   | 6.1 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████▋   | 6.1 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████▊   | 6.2 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████▊   | 6.2 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████▉   | 6.2 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████▉   | 6.2 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████▉   | 6.2 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████   | 6.2 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████   | 6.2 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████   | 6.2 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████   | 6.2 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████▏  | 6.2 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████▏  | 6.3 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████▏  | 6.3 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████▎  | 6.3 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████▎  | 6.3 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████▍  | 6.3 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████▍  | 6.3 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████▌  | 6.3 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████▌  | 6.3 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████▌  | 6.3 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████▋  | 6.3 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████▋  | 6.4 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████▊  | 6.4 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████▊  | 6.4 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████▉  | 6.4 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████▉  | 6.4 MB 7.4 MB/s eta 0:00:01
+     |█████████████████████████████▉  | 6.4 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████  | 6.4 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████  | 6.4 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████  | 6.4 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████  | 6.5 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████▏ | 6.5 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████▏ | 6.5 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████▏ | 6.5 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████▎ | 6.5 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████▎ | 6.5 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████▍ | 6.5 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████▍ | 6.5 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████▌ | 6.5 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████▌ | 6.5 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████▌ | 6.6 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████▋ | 6.6 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████▋ | 6.6 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████▊ | 6.6 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████▊ | 6.6 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████▉ | 6.6 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████▉ | 6.6 MB 7.4 MB/s eta 0:00:01
+     |██████████████████████████████▉ | 6.6 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████ | 6.6 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████ | 6.6 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████ | 6.7 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████ | 6.7 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████▏| 6.7 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████▏| 6.7 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████▏| 6.7 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████▎| 6.7 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████▎| 6.7 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████▍| 6.7 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████▍| 6.7 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████▌| 6.7 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████▌| 6.8 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████▌| 6.8 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████▋| 6.8 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████▋| 6.8 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████▊| 6.8 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████▊| 6.8 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████▉| 6.8 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████▉| 6.8 MB 7.4 MB/s eta 0:00:01
+     |███████████████████████████████▉| 6.8 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████████| 6.9 MB 7.4 MB/s eta 0:00:01
+     |████████████████████████████████| 6.9 MB 7.4 MB/s eta 0:00:01
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |████████████████████████████████| 6.9 MB 7.4 MB/s            
+?25hRequirement already satisfied: requests in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from ao3_api) (2.26.0)
+Requirement already satisfied: soupsieve&gt;1.2 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from BeautifulSoup4-&gt;ao3_api) (2.3.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: certifi&gt;=2017.4.17 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from requests-&gt;ao3_api) (2021.10.8)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from requests-&gt;ao3_api) (3.3)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from requests-&gt;ao3_api) (2.0.9)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from requests-&gt;ao3_api) (1.26.7)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: lxml, ao3-api
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed ao3-api-2.2.0 lxml-4.6.5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cloning into &#39;litbank&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>remote: Enumerating objects: 1179, done.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>remote: Counting objects:   0% (1/123)
+remote: Counting objects:   1% (2/123)
+remote: Counting objects:   2% (3/123)
+remote: Counting objects:   3% (4/123)
+remote: Counting objects:   4% (5/123)
+remote: Counting objects:   5% (7/123)
+remote: Counting objects:   6% (8/123)
+remote: Counting objects:   7% (9/123)
+remote: Counting objects:   8% (10/123)
+remote: Counting objects:   9% (12/123)
+remote: Counting objects:  10% (13/123)
+remote: Counting objects:  11% (14/123)
+remote: Counting objects:  12% (15/123)
+remote: Counting objects:  13% (16/123)
+remote: Counting objects:  14% (18/123)
+remote: Counting objects:  15% (19/123)
+remote: Counting objects:  16% (20/123)
+remote: Counting objects:  17% (21/123)
+remote: Counting objects:  18% (23/123)
+remote: Counting objects:  19% (24/123)
+remote: Counting objects:  20% (25/123)
+remote: Counting objects:  21% (26/123)
+remote: Counting objects:  22% (28/123)
+remote: Counting objects:  23% (29/123)
+remote: Counting objects:  24% (30/123)
+remote: Counting objects:  25% (31/123)
+remote: Counting objects:  26% (32/123)
+remote: Counting objects:  27% (34/123)
+remote: Counting objects:  28% (35/123)
+remote: Counting objects:  29% (36/123)
+remote: Counting objects:  30% (37/123)
+remote: Counting objects:  31% (39/123)
+remote: Counting objects:  32% (40/123)
+remote: Counting objects:  33% (41/123)
+remote: Counting objects:  34% (42/123)
+remote: Counting objects:  35% (44/123)
+remote: Counting objects:  36% (45/123)
+remote: Counting objects:  37% (46/123)
+remote: Counting objects:  38% (47/123)
+remote: Counting objects:  39% (48/123)
+remote: Counting objects:  40% (50/123)
+remote: Counting objects:  41% (51/123)
+remote: Counting objects:  42% (52/123)
+remote: Counting objects:  43% (53/123)
+remote: Counting objects:  44% (55/123)
+remote: Counting objects:  45% (56/123)
+remote: Counting objects:  46% (57/123)
+remote: Counting objects:  47% (58/123)
+remote: Counting objects:  48% (60/123)
+remote: Counting objects:  49% (61/123)
+remote: Counting objects:  50% (62/123)
+remote: Counting objects:  51% (63/123)
+remote: Counting objects:  52% (64/123)
+remote: Counting objects:  53% (66/123)
+remote: Counting objects:  54% (67/123)
+remote: Counting objects:  55% (68/123)
+remote: Counting objects:  56% (69/123)
+remote: Counting objects:  57% (71/123)
+remote: Counting objects:  58% (72/123)
+remote: Counting objects:  59% (73/123)
+remote: Counting objects:  60% (74/123)
+remote: Counting objects:  61% (76/123)
+remote: Counting objects:  62% (77/123)
+remote: Counting objects:  63% (78/123)
+remote: Counting objects:  64% (79/123)
+remote: Counting objects:  65% (80/123)
+remote: Counting objects:  66% (82/123)
+remote: Counting objects:  67% (83/123)
+remote: Counting objects:  68% (84/123)
+remote: Counting objects:  69% (85/123)
+remote: Counting objects:  70% (87/123)
+remote: Counting objects:  71% (88/123)
+remote: Counting objects:  72% (89/123)
+remote: Counting objects:  73% (90/123)
+remote: Counting objects:  74% (92/123)
+remote: Counting objects:  75% (93/123)
+remote: Counting objects:  76% (94/123)
+remote: Counting objects:  77% (95/123)
+remote: Counting objects:  78% (96/123)
+remote: Counting objects:  79% (98/123)
+remote: Counting objects:  80% (99/123)
+remote: Counting objects:  81% (100/123)
+remote: Counting objects:  82% (101/123)
+remote: Counting objects:  83% (103/123)
+remote: Counting objects:  84% (104/123)
+remote: Counting objects:  85% (105/123)
+remote: Counting objects:  86% (106/123)
+remote: Counting objects:  87% (108/123)
+remote: Counting objects:  88% (109/123)
+remote: Counting objects:  89% (110/123)
+remote: Counting objects:  90% (111/123)
+remote: Counting objects:  91% (112/123)
+remote: Counting objects:  92% (114/123)
+remote: Counting objects:  93% (115/123)
+remote: Counting objects:  94% (116/123)
+remote: Counting objects:  95% (117/123)
+remote: Counting objects:  96% (119/123)
+remote: Counting objects:  97% (120/123)
+remote: Counting objects:  98% (121/123)
+remote: Counting objects:  99% (122/123)
+remote: Counting objects: 100% (123/123)
+remote: Counting objects: 100% (123/123), done.
+remote: Compressing objects:   0% (1/118)
+remote: Compressing objects:   1% (2/118)
+remote: Compressing objects:   2% (3/118)
+remote: Compressing objects:   3% (4/118)
+remote: Compressing objects:   4% (5/118)
+remote: Compressing objects:   5% (6/118)
+remote: Compressing objects:   6% (8/118)
+remote: Compressing objects:   7% (9/118)
+remote: Compressing objects:   8% (10/118)
+remote: Compressing objects:   9% (11/118)
+remote: Compressing objects:  10% (12/118)
+remote: Compressing objects:  11% (13/118)
+remote: Compressing objects:  12% (15/118)
+remote: Compressing objects:  13% (16/118)
+remote: Compressing objects:  14% (17/118)
+remote: Compressing objects:  15% (18/118)
+remote: Compressing objects:  16% (19/118)
+remote: Compressing objects:  17% (21/118)
+remote: Compressing objects:  18% (22/118)
+remote: Compressing objects:  19% (23/118)
+remote: Compressing objects:  20% (24/118)
+remote: Compressing objects:  21% (25/118)
+remote: Compressing objects:  22% (26/118)
+remote: Compressing objects:  23% (28/118)
+remote: Compressing objects:  24% (29/118)
+remote: Compressing objects:  25% (30/118)
+remote: Compressing objects:  26% (31/118)
+remote: Compressing objects:  27% (32/118)
+remote: Compressing objects:  28% (34/118)
+remote: Compressing objects:  29% (35/118)
+remote: Compressing objects:  30% (36/118)
+remote: Compressing objects:  31% (37/118)
+remote: Compressing objects:  32% (38/118)
+remote: Compressing objects:  33% (39/118)
+remote: Compressing objects:  34% (41/118)
+remote: Compressing objects:  35% (42/118)
+remote: Compressing objects:  36% (43/118)
+remote: Compressing objects:  37% (44/118)
+remote: Compressing objects:  38% (45/118)
+remote: Compressing objects:  39% (47/118)
+remote: Compressing objects:  40% (48/118)
+remote: Compressing objects:  41% (49/118)
+remote: Compressing objects:  42% (50/118)
+remote: Compressing objects:  43% (51/118)
+remote: Compressing objects:  44% (52/118)
+remote: Compressing objects:  45% (54/118)
+remote: Compressing objects:  46% (55/118)
+remote: Compressing objects:  47% (56/118)
+remote: Compressing objects:  48% (57/118)
+remote: Compressing objects:  49% (58/118)
+remote: Compressing objects:  50% (59/118)
+remote: Compressing objects:  51% (61/118)
+remote: Compressing objects:  52% (62/118)
+remote: Compressing objects:  53% (63/118)
+remote: Compressing objects:  54% (64/118)
+remote: Compressing objects:  55% (65/118)
+remote: Compressing objects:  56% (67/118)
+remote: Compressing objects:  57% (68/118)
+remote: Compressing objects:  58% (69/118)
+remote: Compressing objects:  59% (70/118)
+remote: Compressing objects:  60% (71/118)
+remote: Compressing objects:  61% (72/118)
+remote: Compressing objects:  62% (74/118)
+remote: Compressing objects:  63% (75/118)
+remote: Compressing objects:  64% (76/118)
+remote: Compressing objects:  65% (77/118)
+remote: Compressing objects:  66% (78/118)
+remote: Compressing objects:  67% (80/118)
+remote: Compressing objects:  68% (81/118)
+remote: Compressing objects:  69% (82/118)
+remote: Compressing objects:  70% (83/118)
+remote: Compressing objects:  71% (84/118)
+remote: Compressing objects:  72% (85/118)
+remote: Compressing objects:  73% (87/118)
+remote: Compressing objects:  74% (88/118)
+remote: Compressing objects:  75% (89/118)
+remote: Compressing objects:  76% (90/118)
+remote: Compressing objects:  77% (91/118)
+remote: Compressing objects:  78% (93/118)
+remote: Compressing objects:  79% (94/118)
+remote: Compressing objects:  80% (95/118)
+remote: Compressing objects:  81% (96/118)
+remote: Compressing objects:  82% (97/118)
+remote: Compressing objects:  83% (98/118)
+remote: Compressing objects:  84% (100/118)
+remote: Compressing objects:  85% (101/118)
+remote: Compressing objects:  86% (102/118)
+remote: Compressing objects:  87% (103/118)
+remote: Compressing objects:  88% (104/118)
+remote: Compressing objects:  89% (106/118)
+remote: Compressing objects:  90% (107/118)
+remote: Compressing objects:  91% (108/118)
+remote: Compressing objects:  92% (109/118)
+remote: Compressing objects:  93% (110/118)
+remote: Compressing objects:  94% (111/118)
+remote: Compressing objects:  95% (113/118)
+remote: Compressing objects:  96% (114/118)
+remote: Compressing objects:  97% (115/118)
+remote: Compressing objects:  98% (116/118)
+remote: Compressing objects:  99% (117/118)
+remote: Compressing objects: 100% (118/118)
+remote: Compressing objects: 100% (118/118), done.
+Receiving objects:   0% (1/1179)
+Receiving objects:   1% (12/1179)
+Receiving objects:   2% (24/1179)
+Receiving objects:   3% (36/1179)
+Receiving objects:   4% (48/1179)
+Receiving objects:   5% (59/1179)
+Receiving objects:   6% (71/1179)
+Receiving objects:   7% (83/1179)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:   8% (95/1179)
+Receiving objects:   9% (107/1179)
+Receiving objects:  10% (118/1179)
+Receiving objects:  11% (130/1179)
+Receiving objects:  12% (142/1179)
+Receiving objects:  13% (154/1179)
+Receiving objects:  14% (166/1179)
+Receiving objects:  15% (177/1179)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  16% (189/1179)
+Receiving objects:  17% (201/1179)
+Receiving objects:  18% (213/1179)
+Receiving objects:  19% (225/1179)
+Receiving objects:  20% (236/1179)
+Receiving objects:  21% (248/1179)
+Receiving objects:  22% (260/1179)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  23% (272/1179)
+Receiving objects:  24% (283/1179)
+Receiving objects:  25% (295/1179)
+Receiving objects:  26% (307/1179)
+Receiving objects:  27% (319/1179)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  28% (331/1179)
+Receiving objects:  29% (342/1179)
+Receiving objects:  30% (354/1179)
+Receiving objects:  31% (366/1179)
+Receiving objects:  32% (378/1179)
+Receiving objects:  33% (390/1179)
+Receiving objects:  34% (401/1179)
+Receiving objects:  35% (413/1179)
+Receiving objects:  36% (425/1179)
+Receiving objects:  37% (437/1179)
+Receiving objects:  38% (449/1179)
+Receiving objects:  39% (460/1179)
+Receiving objects:  40% (472/1179)
+Receiving objects:  41% (484/1179)
+Receiving objects:  42% (496/1179)
+Receiving objects:  43% (507/1179)
+Receiving objects:  44% (519/1179)
+Receiving objects:  45% (531/1179)
+Receiving objects:  46% (543/1179)
+Receiving objects:  47% (555/1179)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  48% (566/1179)
+Receiving objects:  49% (578/1179)
+Receiving objects:  50% (590/1179)
+Receiving objects:  51% (602/1179)
+Receiving objects:  52% (614/1179)
+Receiving objects:  53% (625/1179)
+Receiving objects:  54% (637/1179)
+Receiving objects:  55% (649/1179)
+Receiving objects:  56% (661/1179)
+Receiving objects:  57% (673/1179)
+Receiving objects:  58% (684/1179)
+Receiving objects:  59% (696/1179)
+Receiving objects:  60% (708/1179)
+Receiving objects:  61% (720/1179)
+Receiving objects:  62% (731/1179)
+Receiving objects:  63% (743/1179)
+Receiving objects:  64% (755/1179)
+Receiving objects:  65% (767/1179)
+Receiving objects:  66% (779/1179)
+Receiving objects:  67% (790/1179)
+Receiving objects:  68% (802/1179)
+Receiving objects:  69% (814/1179)
+Receiving objects:  70% (826/1179)
+Receiving objects:  71% (838/1179)
+Receiving objects:  72% (849/1179)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  73% (861/1179)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  74% (873/1179)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  75% (885/1179), 9.36 MiB | 18.71 MiB/s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  76% (897/1179), 9.36 MiB | 18.71 MiB/s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  77% (908/1179), 9.36 MiB | 18.71 MiB/s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  78% (920/1179), 9.36 MiB | 18.71 MiB/s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  79% (932/1179), 9.36 MiB | 18.71 MiB/s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  79% (934/1179), 22.13 MiB | 22.12 MiB/s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  80% (944/1179), 22.13 MiB | 22.12 MiB/s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  81% (955/1179), 22.13 MiB | 22.12 MiB/s
+Receiving objects:  82% (967/1179), 22.13 MiB | 22.12 MiB/s
+Receiving objects:  83% (979/1179), 22.13 MiB | 22.12 MiB/s
+Receiving objects:  84% (991/1179), 22.13 MiB | 22.12 MiB/s
+Receiving objects:  85% (1003/1179), 22.13 MiB | 22.12 MiB/s
+Receiving objects:  86% (1014/1179), 22.13 MiB | 22.12 MiB/s
+Receiving objects:  87% (1026/1179), 22.13 MiB | 22.12 MiB/s
+Receiving objects:  88% (1038/1179), 22.13 MiB | 22.12 MiB/s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Receiving objects:  89% (1050/1179), 22.13 MiB | 22.12 MiB/s
+Receiving objects:  90% (1062/1179), 22.13 MiB | 22.12 MiB/s
+Receiving objects:  91% (1073/1179), 22.13 MiB | 22.12 MiB/s
+Receiving objects:  92% (1085/1179), 22.13 MiB | 22.12 MiB/s
+Receiving objects:  93% (1097/1179), 22.13 MiB | 22.12 MiB/s
+remote: Total 1179 (delta 12), reused 104 (delta 5), pack-reused 1056
+Receiving objects:  94% (1109/1179), 22.13 MiB | 22.12 MiB/s
+Receiving objects:  95% (1121/1179), 22.13 MiB | 22.12 MiB/s
+Receiving objects:  96% (1132/1179), 22.13 MiB | 22.12 MiB/s
+Receiving objects:  97% (1144/1179), 22.13 MiB | 22.12 MiB/s
+Receiving objects:  98% (1156/1179), 22.13 MiB | 22.12 MiB/s
+Receiving objects:  99% (1168/1179), 22.13 MiB | 22.12 MiB/s
+Receiving objects: 100% (1179/1179), 22.13 MiB | 22.12 MiB/s
+Receiving objects: 100% (1179/1179), 40.71 MiB | 29.19 MiB/s, done.
+Resolving deltas:   0% (0/129)
+Resolving deltas:   1% (2/129)
+Resolving deltas:   2% (3/129)
+Resolving deltas:   3% (4/129)
+Resolving deltas:   4% (6/129)
+Resolving deltas:   5% (7/129)
+Resolving deltas:   6% (8/129)
+Resolving deltas:   7% (10/129)
+Resolving deltas:   8% (11/129)
+Resolving deltas:   9% (12/129)
+Resolving deltas:  10% (13/129)
+Resolving deltas:  11% (15/129)
+Resolving deltas:  12% (16/129)
+Resolving deltas:  13% (17/129)
+Resolving deltas:  14% (19/129)
+Resolving deltas:  15% (20/129)
+Resolving deltas:  16% (21/129)
+Resolving deltas:  17% (22/129)
+Resolving deltas:  18% (24/129)
+Resolving deltas:  19% (25/129)
+Resolving deltas:  20% (26/129)
+Resolving deltas:  21% (28/129)
+Resolving deltas:  22% (29/129)
+Resolving deltas:  23% (30/129)
+Resolving deltas:  24% (31/129)
+Resolving deltas:  25% (33/129)
+Resolving deltas:  26% (34/129)
+Resolving deltas:  27% (35/129)
+Resolving deltas:  28% (37/129)
+Resolving deltas:  29% (38/129)
+Resolving deltas:  30% (39/129)
+Resolving deltas:  31% (40/129)
+Resolving deltas:  32% (42/129)
+Resolving deltas:  33% (43/129)
+Resolving deltas:  34% (44/129)
+Resolving deltas:  35% (46/129)
+Resolving deltas:  36% (47/129)
+Resolving deltas:  37% (48/129)
+Resolving deltas:  38% (50/129)
+Resolving deltas:  39% (51/129)
+Resolving deltas:  40% (52/129)
+Resolving deltas:  41% (53/129)
+Resolving deltas:  42% (55/129)
+Resolving deltas:  43% (56/129)
+Resolving deltas:  44% (57/129)
+Resolving deltas:  45% (59/129)
+Resolving deltas:  46% (60/129)
+Resolving deltas:  47% (61/129)
+Resolving deltas:  48% (62/129)
+Resolving deltas:  49% (64/129)
+Resolving deltas:  50% (65/129)
+Resolving deltas:  51% (66/129)
+Resolving deltas:  52% (68/129)
+Resolving deltas:  53% (69/129)
+Resolving deltas:  54% (70/129)
+Resolving deltas:  55% (71/129)
+Resolving deltas:  56% (73/129)
+Resolving deltas:  57% (74/129)
+Resolving deltas:  58% (75/129)
+Resolving deltas:  59% (77/129)
+Resolving deltas:  60% (78/129)
+Resolving deltas:  61% (79/129)
+Resolving deltas:  62% (80/129)
+Resolving deltas:  63% (82/129)
+Resolving deltas:  64% (83/129)
+Resolving deltas:  65% (84/129)
+Resolving deltas:  66% (86/129)
+Resolving deltas:  67% (87/129)
+Resolving deltas:  68% (88/129)
+Resolving deltas:  69% (90/129)
+Resolving deltas:  70% (91/129)
+Resolving deltas:  71% (92/129)
+Resolving deltas:  72% (93/129)
+Resolving deltas:  73% (95/129)
+Resolving deltas:  74% (96/129)
+Resolving deltas:  75% (97/129)
+Resolving deltas:  76% (99/129)
+Resolving deltas:  77% (100/129)
+Resolving deltas:  78% (101/129)
+Resolving deltas:  79% (102/129)
+Resolving deltas:  80% (104/129)
+Resolving deltas:  81% (105/129)
+Resolving deltas:  82% (106/129)
+Resolving deltas:  83% (108/129)
+Resolving deltas:  85% (110/129)
+Resolving deltas:  86% (111/129)
+Resolving deltas:  87% (113/129)
+Resolving deltas:  88% (114/129)
+Resolving deltas:  89% (115/129)
+Resolving deltas:  90% (117/129)
+Resolving deltas:  91% (118/129)
+Resolving deltas:  92% (119/129)
+Resolving deltas:  93% (120/129)
+Resolving deltas:  94% (122/129)
+Resolving deltas:  95% (123/129)
+Resolving deltas:  96% (124/129)
+Resolving deltas:  97% (126/129)
+Resolving deltas:  98% (127/129)
+Resolving deltas:  99% (128/129)
+Resolving deltas: 100% (129/129)
+Resolving deltas: 100% (129/129), done.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">AO3</span> <span class="c1">#docs https://ao3-api.readthedocs.io/</span>
+
+<span class="n">search_query</span><span class="o">=</span><span class="s2">&quot;Moomin&quot;</span>
+
+<span class="n">search</span> <span class="o">=</span> <span class="n">AO3</span><span class="o">.</span><span class="n">Search</span><span class="p">(</span><span class="n">any_field</span><span class="o">=</span><span class="n">search_query</span><span class="p">,</span> <span class="n">word_count</span><span class="o">=</span><span class="n">AO3</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="mi">5000</span><span class="p">,</span> <span class="mi">15000</span><span class="p">))</span>
+<span class="n">search</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">total_results</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">search</span><span class="o">.</span><span class="n">results</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>248
+&lt;Work [Return to Moomin Valley]&gt;
+&lt;Work [A Stranger in Moomin Valley]&gt;
+&lt;Work [Christmas comes to Moomin Valley]&gt;
+&lt;Work [The Faint Ache of a Moomin Heart]&gt;
+&lt;Work [the care and feeding of your pet moomin]&gt;
+&lt;Work [boy you got my heartbeat drumming]&gt;
+&lt;Work [Life, Imitates]&gt;
+&lt;Work [Friendship is Magic]&gt;
+&lt;Work [My boyfriend who lives in canada]&gt;
+&lt;Work [be still my dead (beating) heart]&gt;
+&lt;Work [there is no me (without you)]&gt;
+&lt;Work [Possession]&gt;
+&lt;Work [You Bring Spring Right to my Door]&gt;
+&lt;Work [A Silent Return]&gt;
+&lt;Work [Lilacs Only Bloom In Spring and Sunflowers Can Only Face The Sun]&gt;
+&lt;Work [First Time For Everything]&gt;
+&lt;Work [Our Turn to Watch Over You]&gt;
+&lt;Work [Sounds of Laughter, Needn&#39;t be Heard, Loved Nonetheless]&gt;
+&lt;Work [Dizzy]&gt;
+&lt;Work [Formal Affair]&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./w2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
+        
+          <div class="extra_footer">
+            <p>
+<a target="_blank" href="https://www.neh.gov/divisions/odh"><img style="height:10%; width:10%" src="https://www.neh.gov/sites/default/files/inline-files/NEH-Horizontal-Stk-Seal-Black820.jpg" /></a>
+<a target="_blank" href="https://cdh.princeton.edu"><img style="height:10%; width:10%" src="https://cdh.princeton.edu/static/img/CDH_logo.svg" /></a>
+<a target="_blank" href="https://www.dariah.eu/"><img style="height:19%; width:19%" src="https://www.dariah.eu/wp-content/uploads/2017/02/logo.png" /></a>
+
+</p>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
