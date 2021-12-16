@@ -1,0 +1,2119 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Now let’s run the project! &#8212; New Languages for NLP</title>
+    
+  <link href="../../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../../_static/logo.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">New Languages for NLP</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../intro.html">
+   Welcome!
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Prerequisite Knowledge
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../prep/introduction.html">
+   1. Getting Ready for the Workshops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../prep/ml.html">
+   2. Neural Networks and Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../prep/nlp.html">
+   3. NLP and spaCy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../prep/fairuse.html">
+   4. Corpus Documentation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Prerequisite Skills
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../prep/data.html">
+   5. Data Formats
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../prep/tei.html">
+   6. Text Encoding Initiative (TEI)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../prep/github.html">
+   7. GitHub
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../prep/jupyter.html">
+   8. Python
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Workshop I Annotation and Linguistic Data ~ June 21-25, 2021.
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../w1/overview.html">
+   9. Welcome to Workshop I
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../w1/cadet.html">
+   10. Cadet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../w1/cadet-notebook.html">
+   11. Cadet the Notebook
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../w1/inception.html">
+   12. INCEpTION
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../w1/tokenization.html">
+   13. Tokenization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../w1/ud.html">
+   14. Universal features
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../w1/InstituteGlossary.html">
+   15. Institute Glossary
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Workshop II Model Training ~ January 10-14, 2022
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../overview.html">
+   16. Welcome to Workshop II
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../prep.html">
+   17. Preparation for Workshop II
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Workshop III  Presentations and Publications ~ May 12-13, 2022
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../w3/overview.html">
+   18. Welcome to Workshop III
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../../_sources/w2/practical-intro/ner_projects/ner_finetune/Finetune-NER.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/New-Languages-for-NLP/course-materials/gh-pages?urlpath=tree/w2/practical-intro/ner_projects/ner_finetune/Finetune-NER.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p>src: <a class="reference external" href="https://github.com/explosion/projects/tree/v3/pipelines/ner_demo">https://github.com/explosion/projects/tree/v3/pipelines/ner_demo</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%writefile</span> project.yml
+
+<span class="n">title</span><span class="p">:</span> <span class="s2">&quot;Fine-tune the NER component in a pretrained pipeline&quot;</span>
+<span class="n">description</span><span class="p">:</span> <span class="s2">&quot;Rather than training from scratch, we will fine-tune the ner pipeline of a pre-trained model.&quot;</span>
+<span class="n">spacy_version</span><span class="p">:</span> <span class="s2">&quot;&gt;=3.0.6,&lt;4.0.0&quot;</span>
+<span class="c1"># Variables can be referenced across the project.yml using ${vars.var_name}</span>
+<span class="nb">vars</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;ner_finetune&quot;</span>
+  <span class="n">lang</span><span class="p">:</span> <span class="s2">&quot;en&quot;</span>
+  <span class="c1"># for en_core_web_trf or other trf pipeline, use spacy-transformers&gt;=1.1.1</span>
+  <span class="n">pipeline</span><span class="p">:</span> <span class="s2">&quot;en_core_web_sm&quot;</span>
+  <span class="n">train</span><span class="p">:</span> <span class="s2">&quot;train.json&quot;</span>
+  <span class="n">dev</span><span class="p">:</span> <span class="s2">&quot;dev.json&quot;</span>
+  <span class="n">version</span><span class="p">:</span> <span class="s2">&quot;0.0.0&quot;</span>
+  <span class="c1"># Set your GPU ID, -1 is CPU</span>
+  <span class="n">gpu_id</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="c1"># These are the directories that the project needs. The project CLI will make</span>
+<span class="c1"># sure that they always exist.</span>
+<span class="n">directories</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;corpus&quot;</span><span class="p">,</span> <span class="s2">&quot;configs&quot;</span><span class="p">,</span> <span class="s2">&quot;training&quot;</span><span class="p">,</span> <span class="s2">&quot;scripts&quot;</span><span class="p">,</span> <span class="s2">&quot;packages&quot;</span><span class="p">]</span>
+
+<span class="c1"># Fetch the litbank data from GitHub and save to the assets folder</span>
+
+<span class="n">assets</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">dest</span><span class="p">:</span> <span class="s2">&quot;assets/litbank&quot;</span>
+    <span class="n">git</span><span class="p">:</span>
+      <span class="n">repo</span><span class="p">:</span> <span class="s2">&quot;https://github.com/dbamman/litbank&quot;</span>
+      <span class="n">branch</span><span class="p">:</span> <span class="s2">&quot;master&quot;</span>
+      <span class="n">path</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+        
+<span class="c1"># Workflows are sequences of commands (see below) executed in order. You can</span>
+<span class="c1"># run them via &quot;spacy project run [workflow]&quot;. If a commands&#39;s inputs/outputs</span>
+<span class="c1"># haven&#39;t changed, it won&#39;t be re-run.</span>
+<span class="n">workflows</span><span class="p">:</span>
+  <span class="nb">all</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">convert</span>
+    <span class="o">-</span> <span class="n">create</span><span class="o">-</span><span class="n">config</span>
+    <span class="o">-</span> <span class="n">train</span>
+    <span class="o">-</span> <span class="n">evaluate</span>
+
+<span class="c1"># Project commands, specified in a style similar to CI config files (e.g. Azure</span>
+<span class="c1"># pipelines). The name is the command name that lets you trigger the command</span>
+<span class="c1"># via &quot;spacy project run [command] [path]&quot;. The help message is optional and</span>
+<span class="c1"># shown when executing &quot;spacy project run [optional command] [path] --help&quot;.</span>
+<span class="n">commands</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;download&quot;</span>
+    <span class="n">help</span><span class="p">:</span> <span class="s2">&quot;Download the pretrained pipeline&quot;</span>
+    <span class="n">script</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;python -m spacy download $</span><span class="si">{vars.pipeline}</span><span class="s2">&quot;</span>
+    
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;convert&quot;</span>
+    <span class="n">help</span><span class="p">:</span> <span class="s2">&quot;Convert the data to spaCy&#39;s binary format&quot;</span>
+    <span class="n">script</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;python scripts/convert.py $</span><span class="si">{vars.lang}</span><span class="s2"> 0.2&quot;</span>
+    <span class="n">deps</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;scripts/convert.py&quot;</span>
+    <span class="n">outputs</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;corpus/train.spacy&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;corpus/dev.spacy&quot;</span>
+
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;create-config&quot;</span>
+    <span class="n">help</span><span class="p">:</span> <span class="s2">&quot;Create a config for updating only NER from an existing pipeline&quot;</span>
+    <span class="n">script</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;python scripts/create_config.py $</span><span class="si">{vars.pipeline}</span><span class="s2"> ner configs/config.cfg&quot;</span>
+    <span class="n">deps</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;scripts/create_config.py&quot;</span>
+    <span class="n">outputs</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;configs/config.cfg&quot;</span>
+
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;train&quot;</span>
+    <span class="n">help</span><span class="p">:</span> <span class="s2">&quot;Update the NER model&quot;</span>
+    <span class="n">script</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;python -m spacy train configs/config.cfg --output training/ --paths.train corpus/train.spacy --paths.dev corpus/dev.spacy --training.eval_frequency 10 --training.max_steps 500 --training.patience 50 --gpu-id $</span><span class="si">{vars.gpu_id}</span><span class="s2">&quot;</span>
+    <span class="n">deps</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;configs/config.cfg&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;corpus/train.spacy&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;corpus/dev.spacy&quot;</span>
+    <span class="n">outputs</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;training/model-best&quot;</span>
+
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;evaluate&quot;</span>
+    <span class="n">help</span><span class="p">:</span> <span class="s2">&quot;Evaluate the model and export metrics&quot;</span>
+    <span class="n">script</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;python -m spacy evaluate training/model-best corpus/dev.spacy --output training/metrics.json&quot;</span>
+    <span class="n">deps</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;corpus/dev.spacy&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;training/model-best&quot;</span>
+    <span class="n">outputs</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;training/metrics.json&quot;</span>
+
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">package</span>
+    <span class="n">help</span><span class="p">:</span> <span class="s2">&quot;Package the trained model as a pip package&quot;</span>
+    <span class="n">script</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;python -m spacy package training/model-best packages --name $</span><span class="si">{vars.name}</span><span class="s2"> --version $</span><span class="si">{vars.version}</span><span class="s2"> --force&quot;</span>
+    <span class="n">deps</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;training/model-best&quot;</span>
+    <span class="n">outputs_no_cache</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;packages/$</span><span class="si">{vars.lang}</span><span class="s2">_$</span><span class="si">{vars.name}</span><span class="s2">-$</span><span class="si">{vars.version}</span><span class="s2">/dist/$</span><span class="si">{vars.lang}</span><span class="s2">_$</span><span class="si">{vars.name}</span><span class="s2">-$</span><span class="si">{vars.version}</span><span class="s2">.tar.gz&quot;</span>
+
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">visualize</span><span class="o">-</span><span class="n">model</span>
+    <span class="n">help</span><span class="p">:</span> <span class="n">Visualize</span> <span class="n">the</span> <span class="n">model</span><span class="s1">&#39;s output interactively using Streamlit</span>
+    <span class="n">script</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;streamlit run scripts/visualize_model.py training/model-best </span><span class="se">\&quot;</span><span class="s2">I saw Shaka Khan in London. I like horses.</span><span class="se">\&quot;</span><span class="s2">&quot;</span>
+    <span class="n">deps</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;scripts/visualize_model.py&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;training/model-best&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Overwriting project.yml
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%writefile</span> ./scripts/convert.py
+
+<span class="sd">&quot;&quot;&quot;Convert LitBank data to spaCy v3</span>
+<span class="sd">.spacy format.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">srsly</span>
+<span class="kn">import</span> <span class="nn">typer</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span> <span class="nn">spacy</span>
+<span class="kn">from</span> <span class="nn">spacy.tokens</span> <span class="kn">import</span> <span class="n">DocBin</span>
+<span class="kn">from</span> <span class="nn">spacy.util</span> <span class="kn">import</span> <span class="n">filter_spans</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+
+
+<span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">lang</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">test_size</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span>
+    <span class="n">entities_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;assets&#39;</span> <span class="o">/</span> <span class="s1">&#39;litbank&#39;</span> <span class="o">/</span> <span class="s1">&#39;entities&#39;</span> <span class="o">/</span> <span class="s1">&#39;brat&#39;</span>
+    <span class="k">assert</span> <span class="n">entities_path</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+    
+    <span class="n">text_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">entities_path</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s1">&#39;.txt&#39;</span><span class="p">]</span>
+
+    <span class="n">docs</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1">#note: not using pretrained model because it adds predictions, just want LitBank data</span>
+    <span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">blank</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">text_file</span> <span class="ow">in</span> <span class="n">text_files</span><span class="p">:</span>
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="o">.</span><span class="n">make_doc</span><span class="p">(</span><span class="n">text_file</span><span class="o">.</span><span class="n">read_text</span><span class="p">())</span>
+        <span class="n">annotation_file</span> <span class="o">=</span> <span class="p">(</span><span class="n">entities_path</span> <span class="o">/</span> <span class="p">(</span><span class="n">text_file</span><span class="o">.</span><span class="n">stem</span> <span class="o">+</span><span class="s1">&#39;.ann&#39;</span><span class="p">))</span>
+        <span class="n">annotations</span> <span class="o">=</span> <span class="n">annotation_file</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">ents</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">annotation</span> <span class="ow">in</span> <span class="n">annotations</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">label</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="n">span</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">char_span</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">start</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">end</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">span</span><span class="p">:</span> <span class="c1"># when start and end do not match a valid string, spaCy returns a NoneType span</span>
+                <span class="n">ents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">span</span><span class="p">)</span>
+
+        <span class="n">filtered</span> <span class="o">=</span> <span class="n">filter_spans</span><span class="p">(</span><span class="n">ents</span><span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">ents</span> <span class="o">=</span> <span class="n">filtered</span>
+        <span class="n">docs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+
+    <span class="n">train_set</span><span class="p">,</span> <span class="n">validation_set</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="n">test_size</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Created </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">train_set</span><span class="p">)</span><span class="si">}</span><span class="s1"> training docs&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Created </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">validation_set</span><span class="p">)</span><span class="si">}</span><span class="s1"> validation docs&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># the DocBin will store the training documents</span>
+    <span class="n">train_db</span> <span class="o">=</span> <span class="n">DocBin</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">train_set</span><span class="p">:</span>
+        <span class="n">train_db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+    <span class="n">train_db</span><span class="o">.</span><span class="n">to_disk</span><span class="p">((</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;corpus&#39;</span> <span class="o">/</span><span class="s2">&quot;train.spacy&quot;</span><span class="p">))</span>
+
+    <span class="c1"># Save the validation Docs to disk </span>
+    <span class="n">validation_db</span> <span class="o">=</span> <span class="n">DocBin</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">validation_set</span><span class="p">:</span>
+        <span class="n">validation_db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+
+    <span class="n">validation_db</span><span class="o">.</span><span class="n">to_disk</span><span class="p">((</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;corpus&#39;</span> <span class="o">/</span> <span class="s2">&quot;dev.spacy&quot;</span><span class="p">))</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">typer</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">convert</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Overwriting ./scripts/convert.py
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="now-let-s-run-the-project">
+<h1>Now let’s run the project!<a class="headerlink" href="#now-let-s-run-the-project" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download the pretrained model</span>
+<span class="o">!</span>spacy project run download 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold">================================== download ==================================</span>
+Running command: /opt/hostedtoolcache/Python/3.8.12/x64/bin/python -m spacy download en_core_web_sm
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting en-core-web-sm==3.2.0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.2.0/en_core_web_sm-3.2.0-py3-none-any.whl (13.9 MB)
+?25l
+
+     |                                | 10 kB 26.3 MB/s eta 0:00:01
+     |                                | 20 kB 32.7 MB/s eta 0:00:01
+     |                                | 30 kB 23.9 MB/s eta 0:00:01
+     |                                | 40 kB 17.8 MB/s eta 0:00:01
+     |▏                               | 51 kB 12.3 MB/s eta 0:00:02
+     |▏                               | 61 kB 12.7 MB/s eta 0:00:02
+     |▏                               | 71 kB 11.4 MB/s eta 0:00:02
+     |▏                               | 81 kB 11.5 MB/s eta 0:00:02
+     |▏                               | 92 kB 12.6 MB/s eta 0:00:02
+     |▎                               | 102 kB 10.6 MB/s eta 0:00:02
+     |▎                               | 112 kB 10.6 MB/s eta 0:00:02
+     |▎                               | 122 kB 10.6 MB/s eta 0:00:02
+     |▎                               | 133 kB 10.6 MB/s eta 0:00:02
+     |▎                               | 143 kB 10.6 MB/s eta 0:00:02
+     |▍                               | 153 kB 10.6 MB/s eta 0:00:02
+     |▍                               | 163 kB 10.6 MB/s eta 0:00:02
+     |▍                               | 174 kB 10.6 MB/s eta 0:00:02
+     |▍                               | 184 kB 10.6 MB/s eta 0:00:02
+     |▌                               | 194 kB 10.6 MB/s eta 0:00:02
+     |▌                               | 204 kB 10.6 MB/s eta 0:00:02
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |▌                               | 215 kB 10.6 MB/s eta 0:00:02
+     |▌                               | 225 kB 10.6 MB/s eta 0:00:02
+     |▌                               | 235 kB 10.6 MB/s eta 0:00:02
+     |▋                               | 245 kB 10.6 MB/s eta 0:00:02
+     |▋                               | 256 kB 10.6 MB/s eta 0:00:02
+     |▋                               | 266 kB 10.6 MB/s eta 0:00:02
+     |▋                               | 276 kB 10.6 MB/s eta 0:00:02
+     |▋                               | 286 kB 10.6 MB/s eta 0:00:02
+     |▊                               | 296 kB 10.6 MB/s eta 0:00:02
+     |▊                               | 307 kB 10.6 MB/s eta 0:00:02
+     |▊                               | 317 kB 10.6 MB/s eta 0:00:02
+     |▊                               | 327 kB 10.6 MB/s eta 0:00:02
+     |▉                               | 337 kB 10.6 MB/s eta 0:00:02
+     |▉                               | 348 kB 10.6 MB/s eta 0:00:02
+     |▉                               | 358 kB 10.6 MB/s eta 0:00:02
+     |▉                               | 368 kB 10.6 MB/s eta 0:00:02
+     |▉                               | 378 kB 10.6 MB/s eta 0:00:02
+     |█                               | 389 kB 10.6 MB/s eta 0:00:02
+     |█                               | 399 kB 10.6 MB/s eta 0:00:02
+     |█                               | 409 kB 10.6 MB/s eta 0:00:02
+     |█                               | 419 kB 10.6 MB/s eta 0:00:02
+     |█                               | 430 kB 10.6 MB/s eta 0:00:02
+     |█                               | 440 kB 10.6 MB/s eta 0:00:02
+     |█                               | 450 kB 10.6 MB/s eta 0:00:02
+     |█                               | 460 kB 10.6 MB/s eta 0:00:02
+     |█                               | 471 kB 10.6 MB/s eta 0:00:02
+     |█                               | 481 kB 10.6 MB/s eta 0:00:02
+     |█▏                              | 491 kB 10.6 MB/s eta 0:00:02
+     |█▏                              | 501 kB 10.6 MB/s eta 0:00:02
+     |█▏                              | 512 kB 10.6 MB/s eta 0:00:02
+     |█▏                              | 522 kB 10.6 MB/s eta 0:00:02
+     |█▎                              | 532 kB 10.6 MB/s eta 0:00:02
+     |█▎                              | 542 kB 10.6 MB/s eta 0:00:02
+     |█▎                              | 552 kB 10.6 MB/s eta 0:00:02
+     |█▎                              | 563 kB 10.6 MB/s eta 0:00:02
+     |█▎                              | 573 kB 10.6 MB/s eta 0:00:02
+     |█▍                              | 583 kB 10.6 MB/s eta 0:00:02
+     |█▍                              | 593 kB 10.6 MB/s eta 0:00:02
+     |█▍                              | 604 kB 10.6 MB/s eta 0:00:02
+     |█▍                              | 614 kB 10.6 MB/s eta 0:00:02
+     |█▍                              | 624 kB 10.6 MB/s eta 0:00:02
+     |█▌                              | 634 kB 10.6 MB/s eta 0:00:02
+     |█▌                              | 645 kB 10.6 MB/s eta 0:00:02
+     |█▌                              | 655 kB 10.6 MB/s eta 0:00:02
+     |█▌                              | 665 kB 10.6 MB/s eta 0:00:02
+     |█▋                              | 675 kB 10.6 MB/s eta 0:00:02
+     |█▋                              | 686 kB 10.6 MB/s eta 0:00:02
+     |█▋                              | 696 kB 10.6 MB/s eta 0:00:02
+     |█▋                              | 706 kB 10.6 MB/s eta 0:00:02
+     |█▋                              | 716 kB 10.6 MB/s eta 0:00:02
+     |█▊                              | 727 kB 10.6 MB/s eta 0:00:02
+     |█▊                              | 737 kB 10.6 MB/s eta 0:00:02
+     |█▊                              | 747 kB 10.6 MB/s eta 0:00:02
+     |█▊                              | 757 kB 10.6 MB/s eta 0:00:02
+     |█▊                              | 768 kB 10.6 MB/s eta 0:00:02
+     |█▉                              | 778 kB 10.6 MB/s eta 0:00:02
+     |█▉                              | 788 kB 10.6 MB/s eta 0:00:02
+     |█▉                              | 798 kB 10.6 MB/s eta 0:00:02
+     |█▉                              | 808 kB 10.6 MB/s eta 0:00:02
+     |█▉                              | 819 kB 10.6 MB/s eta 0:00:02
+     |██                              | 829 kB 10.6 MB/s eta 0:00:02
+     |██                              | 839 kB 10.6 MB/s eta 0:00:02
+     |██                              | 849 kB 10.6 MB/s eta 0:00:02
+     |██                              | 860 kB 10.6 MB/s eta 0:00:02
+     |██                              | 870 kB 10.6 MB/s eta 0:00:02
+     |██                              | 880 kB 10.6 MB/s eta 0:00:02
+     |██                              | 890 kB 10.6 MB/s eta 0:00:02
+     |██                              | 901 kB 10.6 MB/s eta 0:00:02
+     |██                              | 911 kB 10.6 MB/s eta 0:00:02
+     |██▏                             | 921 kB 10.6 MB/s eta 0:00:02
+     |██▏                             | 931 kB 10.6 MB/s eta 0:00:02
+     |██▏                             | 942 kB 10.6 MB/s eta 0:00:02
+     |██▏                             | 952 kB 10.6 MB/s eta 0:00:02
+     |██▏                             | 962 kB 10.6 MB/s eta 0:00:02
+     |██▎                             | 972 kB 10.6 MB/s eta 0:00:02
+     |██▎                             | 983 kB 10.6 MB/s eta 0:00:02
+     |██▎                             | 993 kB 10.6 MB/s eta 0:00:02
+     |██▎                             | 1.0 MB 10.6 MB/s eta 0:00:02
+     |██▍                             | 1.0 MB 10.6 MB/s eta 0:00:02
+     |██▍                             | 1.0 MB 10.6 MB/s eta 0:00:02
+     |██▍                             | 1.0 MB 10.6 MB/s eta 0:00:02
+     |██▍                             | 1.0 MB 10.6 MB/s eta 0:00:02
+     |██▍                             | 1.1 MB 10.6 MB/s eta 0:00:02
+     |██▌                             | 1.1 MB 10.6 MB/s eta 0:00:02
+     |██▌                             | 1.1 MB 10.6 MB/s eta 0:00:02
+     |██▌                             | 1.1 MB 10.6 MB/s eta 0:00:02
+     |██▌                             | 1.1 MB 10.6 MB/s eta 0:00:02
+     |██▌                             | 1.1 MB 10.6 MB/s eta 0:00:02
+     |██▋                             | 1.1 MB 10.6 MB/s eta 0:00:02
+     |██▋                             | 1.1 MB 10.6 MB/s eta 0:00:02
+     |██▋                             | 1.1 MB 10.6 MB/s eta 0:00:02
+     |██▋                             | 1.1 MB 10.6 MB/s eta 0:00:02
+     |██▋                             | 1.2 MB 10.6 MB/s eta 0:00:02
+     |██▊                             | 1.2 MB 10.6 MB/s eta 0:00:02
+     |██▊                             | 1.2 MB 10.6 MB/s eta 0:00:02
+     |██▊                             | 1.2 MB 10.6 MB/s eta 0:00:02
+     |██▊                             | 1.2 MB 10.6 MB/s eta 0:00:02
+     |██▉                             | 1.2 MB 10.6 MB/s eta 0:00:02
+     |██▉                             | 1.2 MB 10.6 MB/s eta 0:00:02
+     |██▉                             | 1.2 MB 10.6 MB/s eta 0:00:02
+     |██▉                             | 1.2 MB 10.6 MB/s eta 0:00:02
+     |██▉                             | 1.2 MB 10.6 MB/s eta 0:00:02
+     |███                             | 1.3 MB 10.6 MB/s eta 0:00:02
+     |███                             | 1.3 MB 10.6 MB/s eta 0:00:02
+     |███                             | 1.3 MB 10.6 MB/s eta 0:00:02
+     |███                             | 1.3 MB 10.6 MB/s eta 0:00:02
+     |███                             | 1.3 MB 10.6 MB/s eta 0:00:02
+     |███                             | 1.3 MB 10.6 MB/s eta 0:00:02
+     |███                             | 1.3 MB 10.6 MB/s eta 0:00:02
+     |███                             | 1.3 MB 10.6 MB/s eta 0:00:02
+     |███                             | 1.3 MB 10.6 MB/s eta 0:00:02
+     |███▏                            | 1.4 MB 10.6 MB/s eta 0:00:02
+     |███▏                            | 1.4 MB 10.6 MB/s eta 0:00:02
+     |███▏                            | 1.4 MB 10.6 MB/s eta 0:00:02
+     |███▏                            | 1.4 MB 10.6 MB/s eta 0:00:02
+     |███▏                            | 1.4 MB 10.6 MB/s eta 0:00:02
+     |███▎                            | 1.4 MB 10.6 MB/s eta 0:00:02
+     |███▎                            | 1.4 MB 10.6 MB/s eta 0:00:02
+     |███▎                            | 1.4 MB 10.6 MB/s eta 0:00:02
+     |███▎                            | 1.4 MB 10.6 MB/s eta 0:00:02
+     |███▎                            | 1.4 MB 10.6 MB/s eta 0:00:02
+     |███▍                            | 1.5 MB 10.6 MB/s eta 0:00:02
+     |███▍                            | 1.5 MB 10.6 MB/s eta 0:00:02
+     |███▍                            | 1.5 MB 10.6 MB/s eta 0:00:02
+     |███▍                            | 1.5 MB 10.6 MB/s eta 0:00:02
+     |███▍                            | 1.5 MB 10.6 MB/s eta 0:00:02
+     |███▌                            | 1.5 MB 10.6 MB/s eta 0:00:02
+     |███▌                            | 1.5 MB 10.6 MB/s eta 0:00:02
+     |███▌                            | 1.5 MB 10.6 MB/s eta 0:00:02
+     |███▌                            | 1.5 MB 10.6 MB/s eta 0:00:02
+     |███▋                            | 1.5 MB 10.6 MB/s eta 0:00:02
+     |███▋                            | 1.6 MB 10.6 MB/s eta 0:00:02
+     |███▋                            | 1.6 MB 10.6 MB/s eta 0:00:02
+     |███▋                            | 1.6 MB 10.6 MB/s eta 0:00:02
+     |███▋                            | 1.6 MB 10.6 MB/s eta 0:00:02
+     |███▊                            | 1.6 MB 10.6 MB/s eta 0:00:02
+     |███▊                            | 1.6 MB 10.6 MB/s eta 0:00:02
+     |███▊                            | 1.6 MB 10.6 MB/s eta 0:00:02
+     |███▊                            | 1.6 MB 10.6 MB/s eta 0:00:02
+     |███▊                            | 1.6 MB 10.6 MB/s eta 0:00:02
+     |███▉                            | 1.6 MB 10.6 MB/s eta 0:00:02
+     |███▉                            | 1.7 MB 10.6 MB/s eta 0:00:02
+     |███▉                            | 1.7 MB 10.6 MB/s eta 0:00:02
+     |███▉                            | 1.7 MB 10.6 MB/s eta 0:00:02
+     |████                            | 1.7 MB 10.6 MB/s eta 0:00:02
+     |████                            | 1.7 MB 10.6 MB/s eta 0:00:02
+     |████                            | 1.7 MB 10.6 MB/s eta 0:00:02
+     |████                            | 1.7 MB 10.6 MB/s eta 0:00:02
+     |████                            | 1.7 MB 10.6 MB/s eta 0:00:02
+     |████                            | 1.7 MB 10.6 MB/s eta 0:00:02
+     |████                            | 1.8 MB 10.6 MB/s eta 0:00:02
+     |████                            | 1.8 MB 10.6 MB/s eta 0:00:02
+     |████                            | 1.8 MB 10.6 MB/s eta 0:00:02
+     |████                            | 1.8 MB 10.6 MB/s eta 0:00:02
+     |████▏                           | 1.8 MB 10.6 MB/s eta 0:00:02
+     |████▏                           | 1.8 MB 10.6 MB/s eta 0:00:02
+     |████▏                           | 1.8 MB 10.6 MB/s eta 0:00:02
+     |████▏                           | 1.8 MB 10.6 MB/s eta 0:00:02
+     |████▏                           | 1.8 MB 10.6 MB/s eta 0:00:02
+     |████▎                           | 1.8 MB 10.6 MB/s eta 0:00:02
+     |████▎                           | 1.9 MB 10.6 MB/s eta 0:00:02
+     |████▎                           | 1.9 MB 10.6 MB/s eta 0:00:02
+     |████▎                           | 1.9 MB 10.6 MB/s eta 0:00:02
+     |████▍                           | 1.9 MB 10.6 MB/s eta 0:00:02
+     |████▍                           | 1.9 MB 10.6 MB/s eta 0:00:02
+     |████▍                           | 1.9 MB 10.6 MB/s eta 0:00:02
+     |████▍                           | 1.9 MB 10.6 MB/s eta 0:00:02
+     |████▍                           | 1.9 MB 10.6 MB/s eta 0:00:02
+     |████▌                           | 1.9 MB 10.6 MB/s eta 0:00:02
+     |████▌                           | 1.9 MB 10.6 MB/s eta 0:00:02
+     |████▌                           | 2.0 MB 10.6 MB/s eta 0:00:02
+     |████▌                           | 2.0 MB 10.6 MB/s eta 0:00:02
+     |████▌                           | 2.0 MB 10.6 MB/s eta 0:00:02
+     |████▋                           | 2.0 MB 10.6 MB/s eta 0:00:02
+     |████▋                           | 2.0 MB 10.6 MB/s eta 0:00:02
+     |████▋                           | 2.0 MB 10.6 MB/s eta 0:00:02
+     |████▋                           | 2.0 MB 10.6 MB/s eta 0:00:02
+     |████▊                           | 2.0 MB 10.6 MB/s eta 0:00:02
+     |████▊                           | 2.0 MB 10.6 MB/s eta 0:00:02
+     |████▊                           | 2.0 MB 10.6 MB/s eta 0:00:02
+     |████▊                           | 2.1 MB 10.6 MB/s eta 0:00:02
+     |████▊                           | 2.1 MB 10.6 MB/s eta 0:00:02
+     |████▉                           | 2.1 MB 10.6 MB/s eta 0:00:02
+     |████▉                           | 2.1 MB 10.6 MB/s eta 0:00:02
+     |████▉                           | 2.1 MB 10.6 MB/s eta 0:00:02
+     |████▉                           | 2.1 MB 10.6 MB/s eta 0:00:02
+     |████▉                           | 2.1 MB 10.6 MB/s eta 0:00:02
+     |█████                           | 2.1 MB 10.6 MB/s eta 0:00:02
+     |█████                           | 2.1 MB 10.6 MB/s eta 0:00:02
+     |█████                           | 2.2 MB 10.6 MB/s eta 0:00:02
+     |█████                           | 2.2 MB 10.6 MB/s eta 0:00:02
+     |█████                           | 2.2 MB 10.6 MB/s eta 0:00:02
+     |█████                           | 2.2 MB 10.6 MB/s eta 0:00:02
+     |█████                           | 2.2 MB 10.6 MB/s eta 0:00:02
+     |█████                           | 2.2 MB 10.6 MB/s eta 0:00:02
+     |█████                           | 2.2 MB 10.6 MB/s eta 0:00:02
+     |█████▏                          | 2.2 MB 10.6 MB/s eta 0:00:02
+     |█████▏                          | 2.2 MB 10.6 MB/s eta 0:00:02
+     |█████▏                          | 2.2 MB 10.6 MB/s eta 0:00:02
+     |█████▏                          | 2.3 MB 10.6 MB/s eta 0:00:02
+     |█████▏                          | 2.3 MB 10.6 MB/s eta 0:00:02
+     |█████▎                          | 2.3 MB 10.6 MB/s eta 0:00:02
+     |█████▎                          | 2.3 MB 10.6 MB/s eta 0:00:02
+     |█████▎                          | 2.3 MB 10.6 MB/s eta 0:00:02
+     |█████▎                          | 2.3 MB 10.6 MB/s eta 0:00:02
+     |█████▎                          | 2.3 MB 10.6 MB/s eta 0:00:02
+     |█████▍                          | 2.3 MB 10.6 MB/s eta 0:00:02
+     |█████▍                          | 2.3 MB 10.6 MB/s eta 0:00:02
+     |█████▍                          | 2.3 MB 10.6 MB/s eta 0:00:02
+     |█████▍                          | 2.4 MB 10.6 MB/s eta 0:00:02
+     |█████▌                          | 2.4 MB 10.6 MB/s eta 0:00:02
+     |█████▌                          | 2.4 MB 10.6 MB/s eta 0:00:02
+     |█████▌                          | 2.4 MB 10.6 MB/s eta 0:00:02
+     |█████▌                          | 2.4 MB 10.6 MB/s eta 0:00:02
+     |█████▌                          | 2.4 MB 10.6 MB/s eta 0:00:02
+     |█████▋                          | 2.4 MB 10.6 MB/s eta 0:00:02
+     |█████▋                          | 2.4 MB 10.6 MB/s eta 0:00:02
+     |█████▋                          | 2.4 MB 10.6 MB/s eta 0:00:02
+     |█████▋                          | 2.4 MB 10.6 MB/s eta 0:00:02
+     |█████▋                          | 2.5 MB 10.6 MB/s eta 0:00:02
+     |█████▊                          | 2.5 MB 10.6 MB/s eta 0:00:02
+     |█████▊                          | 2.5 MB 10.6 MB/s eta 0:00:02
+     |█████▊                          | 2.5 MB 10.6 MB/s eta 0:00:02
+     |█████▊                          | 2.5 MB 10.6 MB/s eta 0:00:02
+     |█████▊                          | 2.5 MB 10.6 MB/s eta 0:00:02
+     |█████▉                          | 2.5 MB 10.6 MB/s eta 0:00:02
+     |█████▉                          | 2.5 MB 10.6 MB/s eta 0:00:02
+     |█████▉                          | 2.5 MB 10.6 MB/s eta 0:00:02
+     |█████▉                          | 2.5 MB 10.6 MB/s eta 0:00:02
+     |██████                          | 2.6 MB 10.6 MB/s eta 0:00:02
+     |██████                          | 2.6 MB 10.6 MB/s eta 0:00:02
+     |██████                          | 2.6 MB 10.6 MB/s eta 0:00:02
+     |██████                          | 2.6 MB 10.6 MB/s eta 0:00:02
+     |██████                          | 2.6 MB 10.6 MB/s eta 0:00:02
+     |██████                          | 2.6 MB 10.6 MB/s eta 0:00:02
+     |██████                          | 2.6 MB 10.6 MB/s eta 0:00:02
+     |██████                          | 2.6 MB 10.6 MB/s eta 0:00:02
+     |██████                          | 2.6 MB 10.6 MB/s eta 0:00:02
+     |██████                          | 2.7 MB 10.6 MB/s eta 0:00:02
+     |██████▏                         | 2.7 MB 10.6 MB/s eta 0:00:02
+     |██████▏                         | 2.7 MB 10.6 MB/s eta 0:00:02
+     |██████▏                         | 2.7 MB 10.6 MB/s eta 0:00:02
+     |██████▏                         | 2.7 MB 10.6 MB/s eta 0:00:02
+     |██████▎                         | 2.7 MB 10.6 MB/s eta 0:00:02
+     |██████▎                         | 2.7 MB 10.6 MB/s eta 0:00:02
+     |██████▎                         | 2.7 MB 10.6 MB/s eta 0:00:02
+     |██████▎                         | 2.7 MB 10.6 MB/s eta 0:00:02
+     |██████▎                         | 2.7 MB 10.6 MB/s eta 0:00:02
+     |██████▍                         | 2.8 MB 10.6 MB/s eta 0:00:02
+     |██████▍                         | 2.8 MB 10.6 MB/s eta 0:00:02
+     |██████▍                         | 2.8 MB 10.6 MB/s eta 0:00:02
+     |██████▍                         | 2.8 MB 10.6 MB/s eta 0:00:02
+     |██████▍                         | 2.8 MB 10.6 MB/s eta 0:00:02
+     |██████▌                         | 2.8 MB 10.6 MB/s eta 0:00:02
+     |██████▌                         | 2.8 MB 10.6 MB/s eta 0:00:02
+     |██████▌                         | 2.8 MB 10.6 MB/s eta 0:00:02
+     |██████▌                         | 2.8 MB 10.6 MB/s eta 0:00:02
+     |██████▌                         | 2.8 MB 10.6 MB/s eta 0:00:02
+     |██████▋                         | 2.9 MB 10.6 MB/s eta 0:00:02
+     |██████▋                         | 2.9 MB 10.6 MB/s eta 0:00:02
+     |██████▋                         | 2.9 MB 10.6 MB/s eta 0:00:02
+     |██████▋                         | 2.9 MB 10.6 MB/s eta 0:00:02
+     |██████▊                         | 2.9 MB 10.6 MB/s eta 0:00:02
+     |██████▊                         | 2.9 MB 10.6 MB/s eta 0:00:02
+     |██████▊                         | 2.9 MB 10.6 MB/s eta 0:00:02
+     |██████▊                         | 2.9 MB 10.6 MB/s eta 0:00:02
+     |██████▊                         | 2.9 MB 10.6 MB/s eta 0:00:02
+     |██████▉                         | 2.9 MB 10.6 MB/s eta 0:00:02
+     |██████▉                         | 3.0 MB 10.6 MB/s eta 0:00:02
+     |██████▉                         | 3.0 MB 10.6 MB/s eta 0:00:02
+     |██████▉                         | 3.0 MB 10.6 MB/s eta 0:00:02
+     |██████▉                         | 3.0 MB 10.6 MB/s eta 0:00:02
+     |███████                         | 3.0 MB 10.6 MB/s eta 0:00:02
+     |███████                         | 3.0 MB 10.6 MB/s eta 0:00:02
+     |███████                         | 3.0 MB 10.6 MB/s eta 0:00:02
+     |███████                         | 3.0 MB 10.6 MB/s eta 0:00:02
+     |███████                         | 3.0 MB 10.6 MB/s eta 0:00:02
+     |███████                         | 3.1 MB 10.6 MB/s eta 0:00:02
+     |███████                         | 3.1 MB 10.6 MB/s eta 0:00:02
+     |███████                         | 3.1 MB 10.6 MB/s eta 0:00:02
+     |███████                         | 3.1 MB 10.6 MB/s eta 0:00:02
+     |███████▏                        | 3.1 MB 10.6 MB/s eta 0:00:02
+     |███████▏                        | 3.1 MB 10.6 MB/s eta 0:00:02
+     |███████▏                        | 3.1 MB 10.6 MB/s eta 0:00:02
+     |███████▏                        | 3.1 MB 10.6 MB/s eta 0:00:02
+     |███████▏                        | 3.1 MB 10.6 MB/s eta 0:00:02
+     |███████▎                        | 3.1 MB 10.6 MB/s eta 0:00:02
+     |███████▎                        | 3.2 MB 10.6 MB/s eta 0:00:02
+     |███████▎                        | 3.2 MB 10.6 MB/s eta 0:00:02
+     |███████▎                        | 3.2 MB 10.6 MB/s eta 0:00:02
+     |███████▎                        | 3.2 MB 10.6 MB/s eta 0:00:02
+     |███████▍                        | 3.2 MB 10.6 MB/s eta 0:00:02
+     |███████▍                        | 3.2 MB 10.6 MB/s eta 0:00:02
+     |███████▍                        | 3.2 MB 10.6 MB/s eta 0:00:02
+     |███████▍                        | 3.2 MB 10.6 MB/s eta 0:00:02
+     |███████▌                        | 3.2 MB 10.6 MB/s eta 0:00:02
+     |███████▌                        | 3.2 MB 10.6 MB/s eta 0:00:02
+     |███████▌                        | 3.3 MB 10.6 MB/s eta 0:00:02
+     |███████▌                        | 3.3 MB 10.6 MB/s eta 0:00:02
+     |███████▌                        | 3.3 MB 10.6 MB/s eta 0:00:02
+     |███████▋                        | 3.3 MB 10.6 MB/s eta 0:00:02
+     |███████▋                        | 3.3 MB 10.6 MB/s eta 0:00:02
+     |███████▋                        | 3.3 MB 10.6 MB/s eta 0:00:02
+     |███████▋                        | 3.3 MB 10.6 MB/s eta 0:00:02
+     |███████▋                        | 3.3 MB 10.6 MB/s eta 0:00:02
+     |███████▊                        | 3.3 MB 10.6 MB/s eta 0:00:01
+     |███████▊                        | 3.3 MB 10.6 MB/s eta 0:00:01
+     |███████▊                        | 3.4 MB 10.6 MB/s eta 0:00:01
+     |███████▊                        | 3.4 MB 10.6 MB/s eta 0:00:01
+     |███████▉                        | 3.4 MB 10.6 MB/s eta 0:00:01
+     |███████▉                        | 3.4 MB 10.6 MB/s eta 0:00:01
+     |███████▉                        | 3.4 MB 10.6 MB/s eta 0:00:01
+     |███████▉                        | 3.4 MB 10.6 MB/s eta 0:00:01
+     |███████▉                        | 3.4 MB 10.6 MB/s eta 0:00:01
+     |████████                        | 3.4 MB 10.6 MB/s eta 0:00:01
+     |████████                        | 3.4 MB 10.6 MB/s eta 0:00:01
+     |████████                        | 3.5 MB 10.6 MB/s eta 0:00:01
+     |████████                        | 3.5 MB 10.6 MB/s eta 0:00:01
+     |████████                        | 3.5 MB 10.6 MB/s eta 0:00:01
+     |████████                        | 3.5 MB 10.6 MB/s eta 0:00:01
+     |████████                        | 3.5 MB 10.6 MB/s eta 0:00:01
+     |████████                        | 3.5 MB 10.6 MB/s eta 0:00:01
+     |████████                        | 3.5 MB 10.6 MB/s eta 0:00:01
+     |████████                        | 3.5 MB 10.6 MB/s eta 0:00:01
+     |████████▏                       | 3.5 MB 10.6 MB/s eta 0:00:01
+     |████████▏                       | 3.5 MB 10.6 MB/s eta 0:00:01
+     |████████▏                       | 3.6 MB 10.6 MB/s eta 0:00:01
+     |████████▏                       | 3.6 MB 10.6 MB/s eta 0:00:01
+     |████████▎                       | 3.6 MB 10.6 MB/s eta 0:00:01
+     |████████▎                       | 3.6 MB 10.6 MB/s eta 0:00:01
+     |████████▎                       | 3.6 MB 10.6 MB/s eta 0:00:01
+     |████████▎                       | 3.6 MB 10.6 MB/s eta 0:00:01
+     |████████▎                       | 3.6 MB 10.6 MB/s eta 0:00:01
+     |████████▍                       | 3.6 MB 10.6 MB/s eta 0:00:01
+     |████████▍                       | 3.6 MB 10.6 MB/s eta 0:00:01
+     |████████▍                       | 3.6 MB 10.6 MB/s eta 0:00:01
+     |████████▍                       | 3.7 MB 10.6 MB/s eta 0:00:01
+     |████████▍                       | 3.7 MB 10.6 MB/s eta 0:00:01
+     |████████▌                       | 3.7 MB 10.6 MB/s eta 0:00:01
+     |████████▌                       | 3.7 MB 10.6 MB/s eta 0:00:01
+     |████████▌                       | 3.7 MB 10.6 MB/s eta 0:00:01
+     |████████▌                       | 3.7 MB 10.6 MB/s eta 0:00:01
+     |████████▋                       | 3.7 MB 10.6 MB/s eta 0:00:01
+     |████████▋                       | 3.7 MB 10.6 MB/s eta 0:00:01
+     |████████▋                       | 3.7 MB 10.6 MB/s eta 0:00:01
+     |████████▋                       | 3.7 MB 10.6 MB/s eta 0:00:01
+     |████████▋                       | 3.8 MB 10.6 MB/s eta 0:00:01
+     |████████▊                       | 3.8 MB 10.6 MB/s eta 0:00:01
+     |████████▊                       | 3.8 MB 10.6 MB/s eta 0:00:01
+     |████████▊                       | 3.8 MB 10.6 MB/s eta 0:00:01
+     |████████▊                       | 3.8 MB 10.6 MB/s eta 0:00:01
+     |████████▊                       | 3.8 MB 10.6 MB/s eta 0:00:01
+     |████████▉                       | 3.8 MB 10.6 MB/s eta 0:00:01
+     |████████▉                       | 3.8 MB 10.6 MB/s eta 0:00:01
+     |████████▉                       | 3.8 MB 10.6 MB/s eta 0:00:01
+     |████████▉                       | 3.9 MB 10.6 MB/s eta 0:00:01
+     |████████▉                       | 3.9 MB 10.6 MB/s eta 0:00:01
+     |█████████                       | 3.9 MB 10.6 MB/s eta 0:00:01
+     |█████████                       | 3.9 MB 10.6 MB/s eta 0:00:01
+     |█████████                       | 3.9 MB 10.6 MB/s eta 0:00:01
+     |█████████                       | 3.9 MB 10.6 MB/s eta 0:00:01
+     |█████████                       | 3.9 MB 10.6 MB/s eta 0:00:01
+     |█████████                       | 3.9 MB 10.6 MB/s eta 0:00:01
+     |█████████                       | 3.9 MB 10.6 MB/s eta 0:00:01
+     |█████████                       | 3.9 MB 10.6 MB/s eta 0:00:01
+     |█████████                       | 4.0 MB 10.6 MB/s eta 0:00:01
+     |█████████▏                      | 4.0 MB 10.6 MB/s eta 0:00:01
+     |█████████▏                      | 4.0 MB 10.6 MB/s eta 0:00:01
+     |█████████▏                      | 4.0 MB 10.6 MB/s eta 0:00:01
+     |█████████▏                      | 4.0 MB 10.6 MB/s eta 0:00:01
+     |█████████▏                      | 4.0 MB 10.6 MB/s eta 0:00:01
+     |█████████▎                      | 4.0 MB 10.6 MB/s eta 0:00:01
+     |█████████▎                      | 4.0 MB 10.6 MB/s eta 0:00:01
+     |█████████▎                      | 4.0 MB 10.6 MB/s eta 0:00:01
+     |█████████▎                      | 4.0 MB 10.6 MB/s eta 0:00:01
+     |█████████▍                      | 4.1 MB 10.6 MB/s eta 0:00:01
+     |█████████▍                      | 4.1 MB 10.6 MB/s eta 0:00:01
+     |█████████▍                      | 4.1 MB 10.6 MB/s eta 0:00:01
+     |█████████▍                      | 4.1 MB 10.6 MB/s eta 0:00:01
+     |█████████▍                      | 4.1 MB 10.6 MB/s eta 0:00:01
+     |█████████▌                      | 4.1 MB 10.6 MB/s eta 0:00:01
+     |█████████▌                      | 4.1 MB 10.6 MB/s eta 0:00:01
+     |█████████▌                      | 4.1 MB 10.6 MB/s eta 0:00:01
+     |█████████▌                      | 4.1 MB 10.6 MB/s eta 0:00:01
+     |█████████▌                      | 4.1 MB 10.6 MB/s eta 0:00:01
+     |█████████▋                      | 4.2 MB 10.6 MB/s eta 0:00:01
+     |█████████▋                      | 4.2 MB 10.6 MB/s eta 0:00:01
+     |█████████▋                      | 4.2 MB 10.6 MB/s eta 0:00:01
+     |█████████▋                      | 4.2 MB 10.6 MB/s eta 0:00:01
+     |█████████▋                      | 4.2 MB 10.6 MB/s eta 0:00:01
+     |█████████▊                      | 4.2 MB 10.6 MB/s eta 0:00:01
+     |█████████▊                      | 4.2 MB 10.6 MB/s eta 0:00:01
+     |█████████▊                      | 4.2 MB 10.6 MB/s eta 0:00:01
+     |█████████▊                      | 4.2 MB 10.6 MB/s eta 0:00:01
+     |█████████▉                      | 4.2 MB 10.6 MB/s eta 0:00:01
+     |█████████▉                      | 4.3 MB 10.6 MB/s eta 0:00:01
+     |█████████▉                      | 4.3 MB 10.6 MB/s eta 0:00:01
+     |█████████▉                      | 4.3 MB 10.6 MB/s eta 0:00:01
+     |█████████▉                      | 4.3 MB 10.6 MB/s eta 0:00:01
+     |██████████                      | 4.3 MB 10.6 MB/s eta 0:00:01
+     |██████████                      | 4.3 MB 10.6 MB/s eta 0:00:01
+     |██████████                      | 4.3 MB 10.6 MB/s eta 0:00:01
+     |██████████                      | 4.3 MB 10.6 MB/s eta 0:00:01
+     |██████████                      | 4.3 MB 10.6 MB/s eta 0:00:01
+     |██████████                      | 4.4 MB 10.6 MB/s eta 0:00:01
+     |██████████                      | 4.4 MB 10.6 MB/s eta 0:00:01
+     |██████████                      | 4.4 MB 10.6 MB/s eta 0:00:01
+     |██████████                      | 4.4 MB 10.6 MB/s eta 0:00:01
+     |██████████▏                     | 4.4 MB 10.6 MB/s eta 0:00:01
+     |██████████▏                     | 4.4 MB 10.6 MB/s eta 0:00:01
+     |██████████▏                     | 4.4 MB 10.6 MB/s eta 0:00:01
+     |██████████▏                     | 4.4 MB 10.6 MB/s eta 0:00:01
+     |██████████▏                     | 4.4 MB 10.6 MB/s eta 0:00:01
+     |██████████▎                     | 4.4 MB 10.6 MB/s eta 0:00:01
+     |██████████▎                     | 4.5 MB 10.6 MB/s eta 0:00:01
+     |██████████▎                     | 4.5 MB 10.6 MB/s eta 0:00:01
+     |██████████▎                     | 4.5 MB 10.6 MB/s eta 0:00:01
+     |██████████▎                     | 4.5 MB 10.6 MB/s eta 0:00:01
+     |██████████▍                     | 4.5 MB 10.6 MB/s eta 0:00:01
+     |██████████▍                     | 4.5 MB 10.6 MB/s eta 0:00:01
+     |██████████▍                     | 4.5 MB 10.6 MB/s eta 0:00:01
+     |██████████▍                     | 4.5 MB 10.6 MB/s eta 0:00:01
+     |██████████▍                     | 4.5 MB 10.6 MB/s eta 0:00:01
+     |██████████▌                     | 4.5 MB 10.6 MB/s eta 0:00:01
+     |██████████▌                     | 4.6 MB 10.6 MB/s eta 0:00:01
+     |██████████▌                     | 4.6 MB 10.6 MB/s eta 0:00:01
+     |██████████▌                     | 4.6 MB 10.6 MB/s eta 0:00:01
+     |██████████▋                     | 4.6 MB 10.6 MB/s eta 0:00:01
+     |██████████▋                     | 4.6 MB 10.6 MB/s eta 0:00:01
+     |██████████▋                     | 4.6 MB 10.6 MB/s eta 0:00:01
+     |██████████▋                     | 4.6 MB 10.6 MB/s eta 0:00:01
+     |██████████▋                     | 4.6 MB 10.6 MB/s eta 0:00:01
+     |██████████▊                     | 4.6 MB 10.6 MB/s eta 0:00:01
+     |██████████▊                     | 4.6 MB 10.6 MB/s eta 0:00:01
+     |██████████▊                     | 4.7 MB 10.6 MB/s eta 0:00:01
+     |██████████▊                     | 4.7 MB 10.6 MB/s eta 0:00:01
+     |██████████▊                     | 4.7 MB 10.6 MB/s eta 0:00:01
+     |██████████▉                     | 4.7 MB 10.6 MB/s eta 0:00:01
+     |██████████▉                     | 4.7 MB 10.6 MB/s eta 0:00:01
+     |██████████▉                     | 4.7 MB 10.6 MB/s eta 0:00:01
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |██████████▉                     | 4.7 MB 10.6 MB/s eta 0:00:01
+     |███████████                     | 4.7 MB 10.6 MB/s eta 0:00:01
+     |███████████                     | 4.7 MB 10.6 MB/s eta 0:00:01
+     |███████████                     | 4.8 MB 10.6 MB/s eta 0:00:01
+     |███████████                     | 4.8 MB 10.6 MB/s eta 0:00:01
+     |███████████                     | 4.8 MB 10.6 MB/s eta 0:00:01
+     |███████████                     | 4.8 MB 10.6 MB/s eta 0:00:01
+     |███████████                     | 4.8 MB 10.6 MB/s eta 0:00:01
+     |███████████                     | 4.8 MB 10.6 MB/s eta 0:00:01
+     |███████████                     | 4.8 MB 10.6 MB/s eta 0:00:01
+     |███████████                     | 4.8 MB 10.6 MB/s eta 0:00:01
+     |███████████▏                    | 4.8 MB 10.6 MB/s eta 0:00:01
+     |███████████▏                    | 4.8 MB 10.6 MB/s eta 0:00:01
+     |███████████▏                    | 4.9 MB 10.6 MB/s eta 0:00:01
+     |███████████▏                    | 4.9 MB 10.6 MB/s eta 0:00:01
+     |███████████▏                    | 4.9 MB 10.6 MB/s eta 0:00:01
+     |███████████▎                    | 4.9 MB 10.6 MB/s eta 0:00:01
+     |███████████▎                    | 4.9 MB 10.6 MB/s eta 0:00:01
+     |███████████▎                    | 4.9 MB 10.6 MB/s eta 0:00:01
+     |███████████▎                    | 4.9 MB 10.6 MB/s eta 0:00:01
+     |███████████▍                    | 4.9 MB 10.6 MB/s eta 0:00:01
+     |███████████▍                    | 4.9 MB 10.6 MB/s eta 0:00:01
+     |███████████▍                    | 4.9 MB 10.6 MB/s eta 0:00:01
+     |███████████▍                    | 5.0 MB 10.6 MB/s eta 0:00:01
+     |███████████▍                    | 5.0 MB 10.6 MB/s eta 0:00:01
+     |███████████▌                    | 5.0 MB 10.6 MB/s eta 0:00:01
+     |███████████▌                    | 5.0 MB 10.6 MB/s eta 0:00:01
+     |███████████▌                    | 5.0 MB 10.6 MB/s eta 0:00:01
+     |███████████▌                    | 5.0 MB 10.6 MB/s eta 0:00:01
+     |███████████▌                    | 5.0 MB 10.6 MB/s eta 0:00:01
+     |███████████▋                    | 5.0 MB 10.6 MB/s eta 0:00:01
+     |███████████▋                    | 5.0 MB 10.6 MB/s eta 0:00:01
+     |███████████▋                    | 5.0 MB 10.6 MB/s eta 0:00:01
+     |███████████▋                    | 5.1 MB 10.6 MB/s eta 0:00:01
+     |███████████▊                    | 5.1 MB 10.6 MB/s eta 0:00:01
+     |███████████▊                    | 5.1 MB 10.6 MB/s eta 0:00:01
+     |███████████▊                    | 5.1 MB 10.6 MB/s eta 0:00:01
+     |███████████▊                    | 5.1 MB 10.6 MB/s eta 0:00:01
+     |███████████▊                    | 5.1 MB 10.6 MB/s eta 0:00:01
+     |███████████▉                    | 5.1 MB 10.6 MB/s eta 0:00:01
+     |███████████▉                    | 5.1 MB 10.6 MB/s eta 0:00:01
+     |███████████▉                    | 5.1 MB 10.6 MB/s eta 0:00:01
+     |███████████▉                    | 5.2 MB 10.6 MB/s eta 0:00:01
+     |███████████▉                    | 5.2 MB 10.6 MB/s eta 0:00:01
+     |████████████                    | 5.2 MB 10.6 MB/s eta 0:00:01
+     |████████████                    | 5.2 MB 10.6 MB/s eta 0:00:01
+     |████████████                    | 5.2 MB 10.6 MB/s eta 0:00:01
+     |████████████                    | 5.2 MB 10.6 MB/s eta 0:00:01
+     |████████████                    | 5.2 MB 10.6 MB/s eta 0:00:01
+     |████████████                    | 5.2 MB 10.6 MB/s eta 0:00:01
+     |████████████                    | 5.2 MB 10.6 MB/s eta 0:00:01
+     |████████████                    | 5.2 MB 10.6 MB/s eta 0:00:01
+     |████████████                    | 5.3 MB 10.6 MB/s eta 0:00:01
+     |████████████▏                   | 5.3 MB 10.6 MB/s eta 0:00:01
+     |████████████▏                   | 5.3 MB 10.6 MB/s eta 0:00:01
+     |████████████▏                   | 5.3 MB 10.6 MB/s eta 0:00:01
+     |████████████▏                   | 5.3 MB 10.6 MB/s eta 0:00:01
+     |████████████▏                   | 5.3 MB 10.6 MB/s eta 0:00:01
+     |████████████▎                   | 5.3 MB 10.6 MB/s eta 0:00:01
+     |████████████▎                   | 5.3 MB 10.6 MB/s eta 0:00:01
+     |████████████▎                   | 5.3 MB 10.6 MB/s eta 0:00:01
+     |████████████▎                   | 5.3 MB 10.6 MB/s eta 0:00:01
+     |████████████▎                   | 5.4 MB 10.6 MB/s eta 0:00:01
+     |████████████▍                   | 5.4 MB 10.6 MB/s eta 0:00:01
+     |████████████▍                   | 5.4 MB 10.6 MB/s eta 0:00:01
+     |████████████▍                   | 5.4 MB 10.6 MB/s eta 0:00:01
+     |████████████▍                   | 5.4 MB 10.6 MB/s eta 0:00:01
+     |████████████▌                   | 5.4 MB 10.6 MB/s eta 0:00:01
+     |████████████▌                   | 5.4 MB 10.6 MB/s eta 0:00:01
+     |████████████▌                   | 5.4 MB 10.6 MB/s eta 0:00:01
+     |████████████▌                   | 5.4 MB 10.6 MB/s eta 0:00:01
+     |████████████▌                   | 5.4 MB 10.6 MB/s eta 0:00:01
+     |████████████▋                   | 5.5 MB 10.6 MB/s eta 0:00:01
+     |████████████▋                   | 5.5 MB 10.6 MB/s eta 0:00:01
+     |████████████▋                   | 5.5 MB 10.6 MB/s eta 0:00:01
+     |████████████▋                   | 5.5 MB 10.6 MB/s eta 0:00:01
+     |████████████▋                   | 5.5 MB 10.6 MB/s eta 0:00:01
+     |████████████▊                   | 5.5 MB 10.6 MB/s eta 0:00:01
+     |████████████▊                   | 5.5 MB 10.6 MB/s eta 0:00:01
+     |████████████▊                   | 5.5 MB 10.6 MB/s eta 0:00:01
+     |████████████▊                   | 5.5 MB 10.6 MB/s eta 0:00:01
+     |████████████▊                   | 5.6 MB 10.6 MB/s eta 0:00:01
+     |████████████▉                   | 5.6 MB 10.6 MB/s eta 0:00:01
+     |████████████▉                   | 5.6 MB 10.6 MB/s eta 0:00:01
+     |████████████▉                   | 5.6 MB 10.6 MB/s eta 0:00:01
+     |████████████▉                   | 5.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████                   | 5.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████                   | 5.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████                   | 5.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████                   | 5.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████                   | 5.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████                   | 5.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████                   | 5.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████                   | 5.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████                   | 5.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████                   | 5.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████▏                  | 5.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████▏                  | 5.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████▏                  | 5.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████▏                  | 5.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████▎                  | 5.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████▎                  | 5.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████▎                  | 5.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████▎                  | 5.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████▎                  | 5.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████▍                  | 5.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████▍                  | 5.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████▍                  | 5.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████▍                  | 5.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████▍                  | 5.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████▌                  | 5.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████▌                  | 5.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████▌                  | 5.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████▌                  | 5.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████▌                  | 5.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████▋                  | 5.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████▋                  | 5.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████▋                  | 5.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████▋                  | 5.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████▊                  | 5.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████▊                  | 5.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████▊                  | 6.0 MB 10.6 MB/s eta 0:00:01
+     |█████████████▊                  | 6.0 MB 10.6 MB/s eta 0:00:01
+     |█████████████▊                  | 6.0 MB 10.6 MB/s eta 0:00:01
+     |█████████████▉                  | 6.0 MB 10.6 MB/s eta 0:00:01
+     |█████████████▉                  | 6.0 MB 10.6 MB/s eta 0:00:01
+     |█████████████▉                  | 6.0 MB 10.6 MB/s eta 0:00:01
+     |█████████████▉                  | 6.0 MB 10.6 MB/s eta 0:00:01
+     |█████████████▉                  | 6.0 MB 10.6 MB/s eta 0:00:01
+     |██████████████                  | 6.0 MB 10.6 MB/s eta 0:00:01
+     |██████████████                  | 6.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████                  | 6.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████                  | 6.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████                  | 6.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████                  | 6.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████                  | 6.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████                  | 6.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████                  | 6.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████▏                 | 6.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████▏                 | 6.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████▏                 | 6.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████▏                 | 6.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████▏                 | 6.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████▎                 | 6.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████▎                 | 6.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████▎                 | 6.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████▎                 | 6.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████▎                 | 6.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████▍                 | 6.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████▍                 | 6.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████▍                 | 6.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████▍                 | 6.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████▌                 | 6.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████▌                 | 6.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████▌                 | 6.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████▌                 | 6.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████▌                 | 6.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████▋                 | 6.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████▋                 | 6.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████▋                 | 6.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████▋                 | 6.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████▋                 | 6.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████▊                 | 6.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████▊                 | 6.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████▊                 | 6.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████▊                 | 6.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████▉                 | 6.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████▉                 | 6.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████▉                 | 6.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████▉                 | 6.5 MB 10.6 MB/s eta 0:00:01
+     |██████████████▉                 | 6.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████                 | 6.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████                 | 6.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████                 | 6.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████                 | 6.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████                 | 6.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████                 | 6.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████                 | 6.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████                 | 6.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████                 | 6.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████                 | 6.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████▏                | 6.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████▏                | 6.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████▏                | 6.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████▏                | 6.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████▎                | 6.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████▎                | 6.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████▎                | 6.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████▎                | 6.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████▎                | 6.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████▍                | 6.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████▍                | 6.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████▍                | 6.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████▍                | 6.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████▍                | 6.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████▌                | 6.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████▌                | 6.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████▌                | 6.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████▌                | 6.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████▋                | 6.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████▋                | 6.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████▋                | 6.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████▋                | 6.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████▋                | 6.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████▊                | 6.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████▊                | 6.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████▊                | 6.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████▊                | 6.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████▊                | 6.9 MB 10.6 MB/s eta 0:00:01
+     |███████████████▉                | 6.9 MB 10.6 MB/s eta 0:00:01
+     |███████████████▉                | 6.9 MB 10.6 MB/s eta 0:00:01
+     |███████████████▉                | 6.9 MB 10.6 MB/s eta 0:00:01
+     |███████████████▉                | 6.9 MB 10.6 MB/s eta 0:00:01
+     |███████████████▉                | 6.9 MB 10.6 MB/s eta 0:00:01
+     |████████████████                | 6.9 MB 10.6 MB/s eta 0:00:01
+     |████████████████                | 6.9 MB 10.6 MB/s eta 0:00:01
+     |████████████████                | 6.9 MB 10.6 MB/s eta 0:00:01
+     |████████████████                | 6.9 MB 10.6 MB/s eta 0:00:01
+     |████████████████                | 7.0 MB 10.6 MB/s eta 0:00:01
+     |████████████████                | 7.0 MB 10.6 MB/s eta 0:00:01
+     |████████████████                | 7.0 MB 10.6 MB/s eta 0:00:01
+     |████████████████                | 7.0 MB 10.6 MB/s eta 0:00:01
+     |████████████████                | 7.0 MB 10.6 MB/s eta 0:00:01
+     |████████████████▏               | 7.0 MB 10.6 MB/s eta 0:00:01
+     |████████████████▏               | 7.0 MB 10.6 MB/s eta 0:00:01
+     |████████████████▏               | 7.0 MB 10.6 MB/s eta 0:00:01
+     |████████████████▏               | 7.0 MB 10.6 MB/s eta 0:00:01
+     |████████████████▏               | 7.0 MB 10.6 MB/s eta 0:00:01
+     |████████████████▎               | 7.1 MB 10.6 MB/s eta 0:00:01
+     |████████████████▎               | 7.1 MB 10.6 MB/s eta 0:00:01
+     |████████████████▎               | 7.1 MB 10.6 MB/s eta 0:00:01
+     |████████████████▎               | 7.1 MB 10.6 MB/s eta 0:00:01
+     |████████████████▍               | 7.1 MB 10.6 MB/s eta 0:00:01
+     |████████████████▍               | 7.1 MB 10.6 MB/s eta 0:00:01
+     |████████████████▍               | 7.1 MB 10.6 MB/s eta 0:00:01
+     |████████████████▍               | 7.1 MB 10.6 MB/s eta 0:00:01
+     |████████████████▍               | 7.1 MB 10.6 MB/s eta 0:00:01
+     |████████████████▌               | 7.1 MB 10.6 MB/s eta 0:00:01
+     |████████████████▌               | 7.2 MB 10.6 MB/s eta 0:00:01
+     |████████████████▌               | 7.2 MB 10.6 MB/s eta 0:00:01
+     |████████████████▌               | 7.2 MB 10.6 MB/s eta 0:00:01
+     |████████████████▌               | 7.2 MB 10.6 MB/s eta 0:00:01
+     |████████████████▋               | 7.2 MB 10.6 MB/s eta 0:00:01
+     |████████████████▋               | 7.2 MB 10.6 MB/s eta 0:00:01
+     |████████████████▋               | 7.2 MB 10.6 MB/s eta 0:00:01
+     |████████████████▋               | 7.2 MB 10.6 MB/s eta 0:00:01
+     |████████████████▋               | 7.2 MB 10.6 MB/s eta 0:00:01
+     |████████████████▊               | 7.2 MB 10.6 MB/s eta 0:00:01
+     |████████████████▊               | 7.3 MB 10.6 MB/s eta 0:00:01
+     |████████████████▊               | 7.3 MB 10.6 MB/s eta 0:00:01
+     |████████████████▊               | 7.3 MB 10.6 MB/s eta 0:00:01
+     |████████████████▉               | 7.3 MB 10.6 MB/s eta 0:00:01
+     |████████████████▉               | 7.3 MB 10.6 MB/s eta 0:00:01
+     |████████████████▉               | 7.3 MB 10.6 MB/s eta 0:00:01
+     |████████████████▉               | 7.3 MB 10.6 MB/s eta 0:00:01
+     |████████████████▉               | 7.3 MB 10.6 MB/s eta 0:00:01
+     |█████████████████               | 7.3 MB 10.6 MB/s eta 0:00:01
+     |█████████████████               | 7.4 MB 10.6 MB/s eta 0:00:01
+     |█████████████████               | 7.4 MB 10.6 MB/s eta 0:00:01
+     |█████████████████               | 7.4 MB 10.6 MB/s eta 0:00:01
+     |█████████████████               | 7.4 MB 10.6 MB/s eta 0:00:01
+     |█████████████████               | 7.4 MB 10.6 MB/s eta 0:00:01
+     |█████████████████               | 7.4 MB 10.6 MB/s eta 0:00:01
+     |█████████████████               | 7.4 MB 10.6 MB/s eta 0:00:01
+     |█████████████████               | 7.4 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▏              | 7.4 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▏              | 7.4 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▏              | 7.5 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▏              | 7.5 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▏              | 7.5 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▎              | 7.5 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▎              | 7.5 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▎              | 7.5 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▎              | 7.5 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▎              | 7.5 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▍              | 7.5 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▍              | 7.5 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▍              | 7.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▍              | 7.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▌              | 7.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▌              | 7.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▌              | 7.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▌              | 7.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▌              | 7.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▋              | 7.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▋              | 7.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▋              | 7.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▋              | 7.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▋              | 7.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▊              | 7.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▊              | 7.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▊              | 7.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▊              | 7.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▊              | 7.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▉              | 7.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▉              | 7.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▉              | 7.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████████▉              | 7.8 MB 10.6 MB/s eta 0:00:01
+     |██████████████████              | 7.8 MB 10.6 MB/s eta 0:00:01
+     |██████████████████              | 7.8 MB 10.6 MB/s eta 0:00:01
+     |██████████████████              | 7.8 MB 10.6 MB/s eta 0:00:01
+     |██████████████████              | 7.8 MB 10.6 MB/s eta 0:00:01
+     |██████████████████              | 7.8 MB 10.6 MB/s eta 0:00:01
+     |██████████████████              | 7.8 MB 10.6 MB/s eta 0:00:01
+     |██████████████████              | 7.8 MB 10.6 MB/s eta 0:00:01
+     |██████████████████              | 7.8 MB 10.6 MB/s eta 0:00:01
+     |██████████████████              | 7.9 MB 10.6 MB/s eta 0:00:01
+     |██████████████████              | 7.9 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▏             | 7.9 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▏             | 7.9 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▏             | 7.9 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▏             | 7.9 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▎             | 7.9 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▎             | 7.9 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▎             | 7.9 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▎             | 7.9 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▎             | 8.0 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▍             | 8.0 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▍             | 8.0 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▍             | 8.0 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▍             | 8.0 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▍             | 8.0 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▌             | 8.0 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▌             | 8.0 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▌             | 8.0 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▌             | 8.0 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▌             | 8.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▋             | 8.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▋             | 8.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▋             | 8.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▋             | 8.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▊             | 8.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▊             | 8.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▊             | 8.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▊             | 8.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▊             | 8.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▉             | 8.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▉             | 8.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▉             | 8.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▉             | 8.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████████▉             | 8.2 MB 10.6 MB/s eta 0:00:01
+     |███████████████████             | 8.2 MB 10.6 MB/s eta 0:00:01
+     |███████████████████             | 8.2 MB 10.6 MB/s eta 0:00:01
+     |███████████████████             | 8.2 MB 10.6 MB/s eta 0:00:01
+     |███████████████████             | 8.2 MB 10.6 MB/s eta 0:00:01
+     |███████████████████             | 8.3 MB 10.6 MB/s eta 0:00:01
+     |███████████████████             | 8.3 MB 10.6 MB/s eta 0:00:01
+     |███████████████████             | 8.3 MB 10.6 MB/s eta 0:00:01
+     |███████████████████             | 8.3 MB 10.6 MB/s eta 0:00:01
+     |███████████████████             | 8.3 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▏            | 8.3 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▏            | 8.3 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▏            | 8.3 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▏            | 8.3 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▏            | 8.3 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▎            | 8.4 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▎            | 8.4 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▎            | 8.4 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▎            | 8.4 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▎            | 8.4 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▍            | 8.4 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▍            | 8.4 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▍            | 8.4 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▍            | 8.4 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▌            | 8.4 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▌            | 8.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▌            | 8.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▌            | 8.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▌            | 8.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▋            | 8.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▋            | 8.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▋            | 8.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▋            | 8.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▋            | 8.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▊            | 8.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▊            | 8.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▊            | 8.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▊            | 8.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▉            | 8.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▉            | 8.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▉            | 8.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▉            | 8.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████████▉            | 8.6 MB 10.6 MB/s eta 0:00:01
+     |████████████████████            | 8.6 MB 10.6 MB/s eta 0:00:01
+     |████████████████████            | 8.7 MB 10.6 MB/s eta 0:00:01
+     |████████████████████            | 8.7 MB 10.6 MB/s eta 0:00:01
+     |████████████████████            | 8.7 MB 10.6 MB/s eta 0:00:01
+     |████████████████████            | 8.7 MB 10.6 MB/s eta 0:00:01
+     |████████████████████            | 8.7 MB 10.6 MB/s eta 0:00:01
+     |████████████████████            | 8.7 MB 10.6 MB/s eta 0:00:01
+     |████████████████████            | 8.7 MB 10.6 MB/s eta 0:00:01
+     |████████████████████            | 8.7 MB 10.6 MB/s eta 0:00:01
+     |████████████████████            | 8.7 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▏           | 8.7 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▏           | 8.8 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▏           | 8.8 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▏           | 8.8 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▎           | 8.8 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▎           | 8.8 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▎           | 8.8 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▎           | 8.8 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▎           | 8.8 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▍           | 8.8 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▍           | 8.8 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▍           | 8.9 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▍           | 8.9 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▍           | 8.9 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▌           | 8.9 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▌           | 8.9 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▌           | 8.9 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▌           | 8.9 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▋           | 8.9 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▋           | 8.9 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▋           | 8.9 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▋           | 9.0 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▋           | 9.0 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▊           | 9.0 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▊           | 9.0 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▊           | 9.0 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▊           | 9.0 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▊           | 9.0 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▉           | 9.0 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▉           | 9.0 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▉           | 9.1 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▉           | 9.1 MB 10.6 MB/s eta 0:00:01
+     |████████████████████▉           | 9.1 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████           | 9.1 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████           | 9.1 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████           | 9.1 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████           | 9.1 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████           | 9.1 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████           | 9.1 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████           | 9.1 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████           | 9.2 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████           | 9.2 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▏          | 9.2 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▏          | 9.2 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▏          | 9.2 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▏          | 9.2 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▏          | 9.2 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▎          | 9.2 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▎          | 9.2 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▎          | 9.2 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▎          | 9.3 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▍          | 9.3 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▍          | 9.3 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▍          | 9.3 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▍          | 9.3 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▍          | 9.3 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▌          | 9.3 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▌          | 9.3 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▌          | 9.3 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▌          | 9.3 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▌          | 9.4 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▋          | 9.4 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▋          | 9.4 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▋          | 9.4 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▋          | 9.4 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▋          | 9.4 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▊          | 9.4 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▊          | 9.4 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▊          | 9.4 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▊          | 9.5 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▉          | 9.5 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▉          | 9.5 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▉          | 9.5 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▉          | 9.5 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████▉          | 9.5 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████          | 9.5 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████          | 9.5 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████          | 9.5 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████          | 9.5 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████          | 9.6 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████          | 9.6 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████          | 9.6 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████          | 9.6 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████          | 9.6 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▏         | 9.6 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▏         | 9.6 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▏         | 9.6 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▏         | 9.6 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▏         | 9.6 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▎         | 9.7 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▎         | 9.7 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▎         | 9.7 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▎         | 9.7 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▎         | 9.7 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▍         | 9.7 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▍         | 9.7 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▍         | 9.7 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▍         | 9.7 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▍         | 9.7 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▌         | 9.8 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▌         | 9.8 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▌         | 9.8 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▌         | 9.8 MB 10.6 MB/s eta 0:00:01
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |██████████████████████▋         | 9.8 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▋         | 9.8 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▋         | 9.8 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▋         | 9.8 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▋         | 9.8 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▊         | 9.9 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▊         | 9.9 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▊         | 9.9 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▊         | 9.9 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▊         | 9.9 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▉         | 9.9 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▉         | 9.9 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▉         | 9.9 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████▉         | 9.9 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████         | 9.9 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████         | 10.0 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████         | 10.0 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████         | 10.0 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████         | 10.0 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████         | 10.0 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████         | 10.0 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████         | 10.0 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████         | 10.0 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████         | 10.0 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▏        | 10.0 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▏        | 10.1 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▏        | 10.1 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▏        | 10.1 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▏        | 10.1 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▎        | 10.1 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▎        | 10.1 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▎        | 10.1 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▎        | 10.1 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▍        | 10.1 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▍        | 10.1 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▍        | 10.2 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▍        | 10.2 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▍        | 10.2 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▌        | 10.2 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▌        | 10.2 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▌        | 10.2 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▌        | 10.2 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▌        | 10.2 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▋        | 10.2 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▋        | 10.3 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▋        | 10.3 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▋        | 10.3 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▊        | 10.3 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▊        | 10.3 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▊        | 10.3 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▊        | 10.3 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▊        | 10.3 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▉        | 10.3 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▉        | 10.3 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▉        | 10.4 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▉        | 10.4 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████▉        | 10.4 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████        | 10.4 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████        | 10.4 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████        | 10.4 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████        | 10.4 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████        | 10.4 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████        | 10.4 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████        | 10.4 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████        | 10.5 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████        | 10.5 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▏       | 10.5 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▏       | 10.5 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▏       | 10.5 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▏       | 10.5 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▏       | 10.5 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▎       | 10.5 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▎       | 10.5 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▎       | 10.5 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▎       | 10.6 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▎       | 10.6 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▍       | 10.6 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▍       | 10.6 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▍       | 10.6 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▍       | 10.6 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▌       | 10.6 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▌       | 10.6 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▌       | 10.6 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▌       | 10.6 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▌       | 10.7 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▋       | 10.7 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▋       | 10.7 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▋       | 10.7 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▋       | 10.7 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▋       | 10.7 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▊       | 10.7 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▊       | 10.7 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▊       | 10.7 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▊       | 10.8 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▊       | 10.8 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▉       | 10.8 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▉       | 10.8 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▉       | 10.8 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████▉       | 10.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████       | 10.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████       | 10.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████       | 10.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████       | 10.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████       | 10.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████       | 10.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████       | 10.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████       | 10.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████       | 10.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████       | 10.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▏      | 10.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▏      | 10.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▏      | 10.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▏      | 10.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▎      | 11.0 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▎      | 11.0 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▎      | 11.0 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▎      | 11.0 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▎      | 11.0 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▍      | 11.0 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▍      | 11.0 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▍      | 11.0 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▍      | 11.0 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▍      | 11.0 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▌      | 11.1 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▌      | 11.1 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▌      | 11.1 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▌      | 11.1 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▌      | 11.1 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▋      | 11.1 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▋      | 11.1 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▋      | 11.1 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▋      | 11.1 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▊      | 11.2 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▊      | 11.2 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▊      | 11.2 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▊      | 11.2 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▊      | 11.2 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▉      | 11.2 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▉      | 11.2 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▉      | 11.2 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▉      | 11.2 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████▉      | 11.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████      | 11.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████      | 11.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████      | 11.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████      | 11.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████      | 11.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████      | 11.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████      | 11.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████      | 11.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████      | 11.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▏     | 11.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▏     | 11.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▏     | 11.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▏     | 11.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▏     | 11.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▎     | 11.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▎     | 11.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▎     | 11.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▎     | 11.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▎     | 11.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▍     | 11.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▍     | 11.5 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▍     | 11.5 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▍     | 11.5 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▌     | 11.5 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▌     | 11.5 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▌     | 11.5 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▌     | 11.5 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▌     | 11.5 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▋     | 11.5 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▋     | 11.6 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▋     | 11.6 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▋     | 11.6 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▋     | 11.6 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▊     | 11.6 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▊     | 11.6 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▊     | 11.6 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▊     | 11.6 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▉     | 11.6 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▉     | 11.6 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▉     | 11.7 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▉     | 11.7 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████▉     | 11.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████     | 11.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████     | 11.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████     | 11.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████     | 11.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████     | 11.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████     | 11.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████     | 11.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████     | 11.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████     | 11.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████     | 11.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▏    | 11.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▏    | 11.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▏    | 11.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▏    | 11.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▎    | 11.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▎    | 11.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▎    | 11.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▎    | 11.9 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▎    | 11.9 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▍    | 11.9 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▍    | 11.9 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▍    | 11.9 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▍    | 11.9 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▍    | 11.9 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▌    | 11.9 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▌    | 11.9 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▌    | 12.0 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▌    | 12.0 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▋    | 12.0 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▋    | 12.0 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▋    | 12.0 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▋    | 12.0 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▋    | 12.0 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▊    | 12.0 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▊    | 12.0 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▊    | 12.0 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▊    | 12.1 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▊    | 12.1 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▉    | 12.1 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▉    | 12.1 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▉    | 12.1 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▉    | 12.1 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████▉    | 12.1 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████    | 12.1 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████    | 12.1 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████    | 12.1 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████    | 12.2 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████    | 12.2 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████    | 12.2 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████    | 12.2 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████    | 12.2 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████    | 12.2 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▏   | 12.2 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▏   | 12.2 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▏   | 12.2 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▏   | 12.2 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▏   | 12.3 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▎   | 12.3 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▎   | 12.3 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▎   | 12.3 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▎   | 12.3 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▍   | 12.3 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▍   | 12.3 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▍   | 12.3 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▍   | 12.3 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▍   | 12.3 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▌   | 12.4 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▌   | 12.4 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▌   | 12.4 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▌   | 12.4 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▌   | 12.4 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▋   | 12.4 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▋   | 12.4 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▋   | 12.4 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▋   | 12.4 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▋   | 12.5 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▊   | 12.5 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▊   | 12.5 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▊   | 12.5 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▊   | 12.5 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▉   | 12.5 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▉   | 12.5 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▉   | 12.5 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▉   | 12.5 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████▉   | 12.5 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████   | 12.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████   | 12.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████   | 12.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████   | 12.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████   | 12.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████   | 12.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████   | 12.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████   | 12.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████   | 12.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▏  | 12.6 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▏  | 12.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▏  | 12.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▏  | 12.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▏  | 12.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▎  | 12.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▎  | 12.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▎  | 12.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▎  | 12.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▎  | 12.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▍  | 12.7 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▍  | 12.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▍  | 12.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▍  | 12.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▍  | 12.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▌  | 12.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▌  | 12.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▌  | 12.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▌  | 12.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▋  | 12.8 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▋  | 12.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▋  | 12.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▋  | 12.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▋  | 12.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▊  | 12.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▊  | 12.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▊  | 12.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▊  | 12.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▊  | 12.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▉  | 12.9 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▉  | 13.0 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▉  | 13.0 MB 10.6 MB/s eta 0:00:01
+     |█████████████████████████████▉  | 13.0 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████  | 13.0 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████  | 13.0 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████  | 13.0 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████  | 13.0 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████  | 13.0 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████  | 13.0 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████  | 13.0 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████  | 13.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████  | 13.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████  | 13.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▏ | 13.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▏ | 13.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▏ | 13.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▏ | 13.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▏ | 13.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▎ | 13.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▎ | 13.1 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▎ | 13.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▎ | 13.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▍ | 13.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▍ | 13.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▍ | 13.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▍ | 13.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▍ | 13.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▌ | 13.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▌ | 13.2 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▌ | 13.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▌ | 13.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▌ | 13.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▋ | 13.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▋ | 13.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▋ | 13.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▋ | 13.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▊ | 13.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▊ | 13.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▊ | 13.3 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▊ | 13.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▊ | 13.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▉ | 13.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▉ | 13.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▉ | 13.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▉ | 13.4 MB 10.6 MB/s eta 0:00:01
+     |██████████████████████████████▉ | 13.4 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████ | 13.4 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████ | 13.4 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████ | 13.4 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████ | 13.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████ | 13.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████ | 13.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████ | 13.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████ | 13.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████ | 13.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▏| 13.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▏| 13.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▏| 13.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▏| 13.5 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▏| 13.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▎| 13.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▎| 13.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▎| 13.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▎| 13.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▎| 13.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▍| 13.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▍| 13.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▍| 13.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▍| 13.6 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▌| 13.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▌| 13.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▌| 13.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▌| 13.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▌| 13.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▋| 13.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▋| 13.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▋| 13.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▋| 13.7 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▋| 13.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▊| 13.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▊| 13.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▊| 13.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▊| 13.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▊| 13.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▉| 13.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▉| 13.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▉| 13.8 MB 10.6 MB/s eta 0:00:01
+     |███████████████████████████████▉| 13.8 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████████| 13.9 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████████| 13.9 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████████| 13.9 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████████| 13.9 MB 10.6 MB/s eta 0:00:01
+     |████████████████████████████████| 13.9 MB 10.6 MB/s eta 0:00:01
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     |████████████████████████████████| 13.9 MB 10.6 MB/s            
+?25hRequirement already satisfied: spacy&lt;3.3.0,&gt;=3.2.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from en-core-web-sm==3.2.0) (3.2.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.8 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (3.0.8)
+Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (1.0.6)
+Requirement already satisfied: spacy-loggers&lt;2.0.0,&gt;=1.0.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (1.0.1)
+Requirement already satisfied: typer&lt;0.5.0,&gt;=0.3.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (0.4.0)
+Requirement already satisfied: tqdm&lt;5.0.0,&gt;=4.38.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (4.62.3)
+Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (2.4.2)
+Requirement already satisfied: pathy&gt;=0.3.5 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (0.6.1)
+Requirement already satisfied: packaging&gt;=20.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (21.3)
+Requirement already satisfied: blis&lt;0.8.0,&gt;=0.4.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (0.7.5)
+Requirement already satisfied: wasabi&lt;1.1.0,&gt;=0.8.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (0.9.0)
+Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (3.0.6)
+Requirement already satisfied: setuptools in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (56.0.0)
+Requirement already satisfied: numpy&gt;=1.15.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (1.21.4)
+Requirement already satisfied: langcodes&lt;4.0.0,&gt;=3.2.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (3.3.0)
+Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.6 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (2.0.6)
+Requirement already satisfied: pydantic!=1.8,!=1.8.1,&lt;1.9.0,&gt;=1.7.4 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (1.8.2)
+Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (2.26.0)
+Requirement already satisfied: thinc&lt;8.1.0,&gt;=8.0.12 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (8.0.13)
+Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (2.0.6)
+Requirement already satisfied: jinja2 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (3.0.3)
+Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from packaging&gt;=20.0-&gt;spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (3.0.6)
+Requirement already satisfied: smart-open&lt;6.0.0,&gt;=5.0.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from pathy&gt;=0.3.5-&gt;spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (5.2.1)
+Requirement already satisfied: typing-extensions&gt;=3.7.4.3 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from pydantic!=1.8,!=1.8.1,&lt;1.9.0,&gt;=1.7.4-&gt;spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (4.0.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: charset-normalizer~=2.0.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (2.0.9)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (2021.10.8)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (3.3)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (1.26.7)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: click&lt;9.0.0,&gt;=7.1.1 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from typer&lt;0.5.0,&gt;=0.3.0-&gt;spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (7.1.2)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/site-packages (from jinja2-&gt;spacy&lt;3.3.0,&gt;=3.2.0-&gt;en-core-web-sm==3.2.0) (2.0.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: en-core-web-sm
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed en-core-web-sm-3.2.0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C2">✔ Download and installation successful</span>
+You can now load the package via spacy.load(&#39;en_core_web_sm&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fetch the LitBank data</span>
+<span class="o">!</span>spacy project assets 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C4">ℹ Fetching 1 asset(s)</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C2">✔ Downloaded asset</span>
+<span class=" -Color -Color-C2">/home/runner/work/course-materials/course-materials/w2/practical-intro/ner_projects/ner_finetune/assets/litbank</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert the LitBank data</span>
+<span class="o">!</span>spacy project run convert 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold">================================== convert ==================================</span>
+Running command: /opt/hostedtoolcache/Python/3.8.12/x64/bin/python scripts/convert.py en 0.2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Created 80 training docs
+Created 20 validation docs
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a config file using the create_config script</span>
+<span class="o">!</span>spacy project run create-config
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold">=============================== create-config ===============================</span>
+Running command: /opt/hostedtoolcache/Python/3.8.12/x64/bin/python scripts/create_config.py en_core_web_sm ner configs/config.cfg
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>spacy project run train
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold">=================================== train ===================================</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running command: /opt/hostedtoolcache/Python/3.8.12/x64/bin/python -m spacy train configs/config.cfg --output training/ --paths.train corpus/train.spacy --paths.dev corpus/dev.spacy --training.eval_frequency 10 --training.max_steps 500 --training.patience 50 --gpu-id -1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C4">ℹ Saving to output directory: training</span>
+<span class=" -Color -Color-C4">ℹ Using CPU</span>
+
+<span class=" -Color -Color-Bold">=========================== Initializing pipeline ===========================</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2021-12-16 20:09:55,722] [INFO] Set up nlp object from config
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2021-12-16 20:09:55,734] [INFO] Pipeline: [&#39;tok2vec&#39;, &#39;tagger&#39;, &#39;parser&#39;, &#39;attribute_ruler&#39;, &#39;lemmatizer&#39;, &#39;ner&#39;]
+[2021-12-16 20:09:55,735] [INFO] Resuming training for: [&#39;ner&#39;]
+[2021-12-16 20:09:55,750] [INFO] Copying tokenizer from: en_core_web_sm
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2021-12-16 20:09:56,329] [INFO] Copying vocab from: en_core_web_sm
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2021-12-16 20:09:56,475] [INFO] Created vocabulary
+[2021-12-16 20:09:56,476] [INFO] Finished initializing nlp object
+[2021-12-16 20:09:56,476] [INFO] Initialized pipeline components: []
+<span class=" -Color -Color-C2">✔ Initialized pipeline</span>
+
+<span class=" -Color -Color-Bold">============================= Training pipeline =============================</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C4">ℹ Pipeline: [&#39;tok2vec&#39;, &#39;tagger&#39;, &#39;parser&#39;, &#39;attribute_ruler&#39;,</span>
+<span class=" -Color -Color-C4">&#39;lemmatizer&#39;, &#39;ner&#39;]</span>
+<span class=" -Color -Color-C4">ℹ Frozen components: [&#39;tok2vec&#39;, &#39;tagger&#39;, &#39;parser&#39;, &#39;senter&#39;,</span>
+<span class=" -Color -Color-C4">&#39;attribute_ruler&#39;, &#39;lemmatizer&#39;]</span>
+<span class=" -Color -Color-C4">ℹ Initial learn rate: 0.001</span>
+E    #       LOSS NER  TAG_ACC  DEP_UAS  DEP_LAS  SENTS_F  LEMMA_ACC  ENTS_F  ENTS_P  ENTS_R  SPEED   SCORE 
+---  ------  --------  -------  -------  -------  -------  ---------  ------  ------  ------  ------  ------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0       0    405.37     0.00     0.00     0.00     0.00       0.00    3.11    5.41    2.18  8921.52    0.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0      10   3149.10     0.00     0.00     0.00     0.00       0.00    5.63   14.13    3.52  11247.67    0.01
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
+
+Aborted!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can run spacy project run visualize-model from the terminal (not in Jupyter)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./w2/practical-intro/ner_projects/ner_finetune"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
+        
+          <div class="extra_footer">
+            <p>
+<a target="_blank" href="https://www.neh.gov/divisions/odh"><img style="height:10%; width:10%" src="https://www.neh.gov/sites/default/files/inline-files/NEH-Horizontal-Stk-Seal-Black820.jpg" /></a>
+<a target="_blank" href="https://cdh.princeton.edu"><img style="height:10%; width:10%" src="https://cdh.princeton.edu/static/img/CDH_logo.svg" /></a>
+<a target="_blank" href="https://www.dariah.eu/"><img style="height:19%; width:19%" src="https://www.dariah.eu/wp-content/uploads/2017/02/logo.png" /></a>
+
+</p>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
