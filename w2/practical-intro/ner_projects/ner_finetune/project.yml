@@ -1,3 +1,4 @@
+
 title: "Fine-tune the NER component in a pretrained pipeline"
 description: "Rather than training from scratch, we will fine-tune the ner pipeline of a pre-trained model."
 spacy_version: ">=3.0.6,<4.0.0"
@@ -17,14 +18,15 @@ vars:
 # sure that they always exist.
 directories: ["assets", "corpus", "configs", "training", "scripts", "packages"]
 
-# Assets that should be downloaded or available in the directory. We're shipping
-# them with the project, so they won't have to be downloaded.
-assets:
-  - dest: "assets/train.spacy"
-    description: "Demo training data converted from the v2 example scripts with `srsly.write_json(\"train.json\", TRAIN_DATA)`"
-  - dest: "assets/dev.spacy"
-    description: "Demo development data"
+# Fetch the litbank data from GitHub and save to the assets folder
 
+assets:
+  - dest: "assets/litbank"
+    git:
+      repo: "https://github.com/dbamman/litbank"
+      branch: "master"
+      path: ""
+        
 # Workflows are sequences of commands (see below) executed in order. You can
 # run them via "spacy project run [workflow]". If a commands's inputs/outputs
 # haven't changed, it won't be re-run.
@@ -44,11 +46,11 @@ commands:
     help: "Download the pretrained pipeline"
     script:
       - "python -m spacy download ${vars.pipeline}"
-
+    
   - name: "convert"
     help: "Convert the data to spaCy's binary format"
     script:
-      - "python scripts/convert.py"
+      - "python scripts/convert.py ${vars.lang} 0.2"
     deps:
       - "scripts/convert.py"
     outputs:
