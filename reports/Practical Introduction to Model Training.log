@@ -33,6 +33,6 @@ The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
 %time 
-!python3 -m spacy train cpu_config.cfg --output ./cpu_output --paths.train train.spacy --paths.dev dev.spacy
+!python3 -m spacy train config.cfg --output ./output --paths.train train.spacy --paths.dev dev.spacy
 -------------------
 
