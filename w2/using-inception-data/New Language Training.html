@@ -321,6 +321,7 @@
                 
   <p>This notebook:</p>
 <ul class="simple">
+<li><p>Loads project file from GitHub</p></li>
 <li><p>Loads assets from GitHub repo</p></li>
 <li><p>installs the custom language object</p></li>
 <li><p>converts the training data to spaCy binary</p></li>
@@ -329,6 +330,49 @@
 <li><p>assess performance</p></li>
 <li><p>package the model (or push to huggingface)</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m spacy project clone newlang_project --repo https://github.com/New-Languages-for-NLP/repo-template --branch main
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C2">✔ Cloned &#39;newlang_project&#39; from New-Languages-for-NLP/repo-template</span>
+/home/runner/work/course-materials/course-materials/w2/using-inception-data/newlang_project
+<span class=" -Color -Color-C2">✔ Your project is now ready!</span>
+To fetch the assets, run:
+python -m spacy project assets /home/runner/work/course-materials/course-materials/w2/using-inception-data/newlang_project
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m spacy project assets /home/ds/projects/course-materials/w2/using-inception-data/newlang_project
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Usage: python -m spacy project assets [OPTIONS] [PROJECT_DIR]
+Try &#39;python -m spacy project assets --help&#39; for help.
+
+Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/home/ds/projects/course-materials/w2/using-inception-data/newlang_project&#39; does not exist.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls /home/ds/projects/course-materials/w2/using-inception-data/newlang_project/assets/yoruba
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ls: cannot access &#39;/home/ds/projects/course-materials/w2/using-inception-data/newlang_project/assets/yoruba&#39;: No such file or directory
+</pre></div>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
