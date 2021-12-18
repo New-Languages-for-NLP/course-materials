@@ -332,6 +332,14 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># temp to clear project folder</span>
+<span class="o">!</span>rm -rf /srv/projects/course-materials/w2/using-inception-data/newlang_project
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#TODO only works for public repos, otherwise it asks for username and password.  Just run in terminal?</span>
 <span class="c1">#TODO also assumes project.yml from GitHub, edit there? </span>
 <span class="c1"># Needs to work in Colab</span>
@@ -366,18 +374,6 @@ Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/srv/projects/c
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls /srv/projects/course-materials/w2/using-inception-data/newlang_project/assets/urban-giggle
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ls: cannot access &#39;/srv/projects/course-materials/w2/using-inception-data/newlang_project/assets/urban-giggle&#39;: No such file or directory
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install the custom language object from Cadet </span>
 <span class="o">!</span>python -m spacy project run install /srv/projects/course-materials/w2/using-inception-data/newlang_project
 </pre></div>
@@ -393,7 +389,42 @@ Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/srv/projects/c
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read data files, test/train split and convert to spaCy files</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls /srv/projects/course-materials/w2/using-inception-data/newlang_project/assets/urban-giggle/3_inception_export/
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ls: cannot access &#39;/srv/projects/course-materials/w2/using-inception-data/newlang_project/assets/urban-giggle/3_inception_export/&#39;: No such file or directory
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m spacy project run convert /srv/projects/course-materials/w2/using-inception-data/newlang_project -F
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Usage: python -m spacy project run [OPTIONS] [SUBCOMMAND] [PROJECT_DIR]
+
+Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/srv/projects/course-materials/w2/using-inception-data/newlang_project&#39; does not exist.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read data files, convert to spaCy files</span>
+<span class="c1"># test/train split </span>
+<span class="o">!</span>python -m spacy project run split /srv/projects/course-materials/w2/using-inception-data/newlang_project -F
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Usage: python -m spacy project run [OPTIONS] [SUBCOMMAND] [PROJECT_DIR]
+
+Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/srv/projects/course-materials/w2/using-inception-data/newlang_project&#39; does not exist.
 </pre></div>
 </div>
 </div>
@@ -415,14 +446,6 @@ Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/srv/projects/c
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluate the model </span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># temp to clear project folder</span>
-<span class="o">!</span>rm -rf /srv/projects/course-materials/w2/using-inception-data/newlang_project
 </pre></div>
 </div>
 </div>
@@ -460,8 +483,8 @@ Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/srv/projects/c
     &#39;branch&#39;: &#39;main&#39;,
     &#39;path&#39;: &#39;&#39;}}],
  &#39;workflows&#39;: {&#39;all&#39;: [&#39;install&#39;,
-   &#39;split&#39;,
    &#39;convert&#39;,
+   &#39;split&#39;,
    &#39;debug&#39;,
    &#39;train&#39;,
    &#39;evaluate&#39;,
@@ -470,21 +493,14 @@ Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/srv/projects/c
    &#39;help&#39;: &#39;Install the new language object from Cadet&#39;,
    &#39;script&#39;: [&#39;pip install -e assets/${vars.treebank}/2_new_language_object&#39;],
    &#39;deps&#39;: [&#39;assets/${vars.treebank}/2_new_language_object&#39;]},
+  {&#39;name&#39;: &#39;convert&#39;,
+   &#39;help&#39;: &quot;Convert the data to spaCy&#39;s format&quot;,
+   &#39;script&#39;: [&#39;python scripts/convert.py assets/${vars.treebank}/3_inception_export&#39;],
+   &#39;deps&#39;: [&#39;assets/${vars.treebank}/3_inception_export&#39;]},
   {&#39;name&#39;: &#39;split&#39;,
    &#39;help&#39;: &#39;Split the data into test and train sets&#39;,
    &#39;script&#39;: [&#39;python scripts/split.py assets/${vars.treebank}/3_inception_export ${vars.test_size} ${vars.random_state}&#39;],
    &#39;outputs&#39;: [&#39;assets/test.conllu&#39;, &#39;assets/train.conllu&#39;]},
-  {&#39;name&#39;: &#39;convert&#39;,
-   &#39;help&#39;: &quot;Convert the data to spaCy&#39;s format&quot;,
-   &#39;script&#39;: [&#39;mkdir -p corpus/${vars.treebank}&#39;,
-    &#39;python -m spacy convert assets/train.conllu corpus/${vars.treebank}/ --converter conllu --n-sents 10 --merge-subtokens&#39;,
-    &#39;python -m spacy convert assets/test.conllu corpus/${vars.treebank}/ --converter conllu --n-sents 10 --merge-subtokens&#39;,
-    &#39;mv corpus/${vars.treebank}/${vars.train_name}.spacy corpus/${vars.treebank}/train.spacy&#39;,
-    &#39;mv corpus/${vars.treebank}/${vars.test_name}.spacy corpus/${vars.treebank}/test.spacy&#39;],
-   &#39;deps&#39;: [&#39;assets/${vars.treebank}/${vars.train_name}.conllu&#39;,
-    &#39;assets/${vars.treebank}/${vars.test_name}.conllu&#39;],
-   &#39;outputs&#39;: [&#39;corpus/${vars.treebank}/train.spacy&#39;,
-    &#39;corpus/${vars.treebank}/test.spacy&#39;]},
   {&#39;name&#39;: &#39;debug&#39;,
    &#39;help&#39;: &quot;Assess data for training using spaCy&#39;s debug data&quot;,
    &#39;script&#39;: [&#39;python -m spacy --help&#39;]},
