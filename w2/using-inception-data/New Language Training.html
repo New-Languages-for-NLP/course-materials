@@ -332,7 +332,10 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m spacy project clone newlang_project --repo https://github.com/New-Languages-for-NLP/repo-template --branch main
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#TODO only works for public repos, otherwise it asks for username and password.  Just run in terminal?</span>
+<span class="c1">#TODO also assumes project.yml from GitHub, edit there? </span>
+<span class="c1"># Needs to work in Colab</span>
+<span class="o">!</span>python -m spacy project clone newlang_project --repo https://github.com/New-Languages-for-NLP/repo-template --branch main
 </pre></div>
 </div>
 </div>
@@ -348,131 +351,27 @@ python -m spacy project assets /home/runner/work/course-materials/course-materia
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load /home/ds/projects/course-materials/w2/using-inception-data/newlang_project/project.yml</span>
-<span class="n">title</span><span class="p">:</span> <span class="s2">&quot;Train new language model from cadet and inception data&quot;</span>
-<span class="n">description</span><span class="p">:</span> <span class="s2">&quot;This project template lets you train a part-of-speech tagger, morphologizer and dependency parser from your cadet and inception data.  Adapted from https://github.com/explosion/projects/blob/v3/pipelines/tagger_parser_ud/project.yml&quot;</span>
-
-<span class="c1"># Variables can be referenced across the project.yml using ${vars.var_name}</span>
-<span class="nb">vars</span><span class="p">:</span>
-  <span class="n">config</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span>
-  <span class="n">lang</span><span class="p">:</span> <span class="s2">&quot;yo&quot;</span>
-  <span class="n">treebank</span><span class="p">:</span> <span class="s2">&quot;yoruba&quot;</span>
-  <span class="n">train_name</span><span class="p">:</span> <span class="s2">&quot;en_ewt-ud-train&quot;</span>
-  <span class="n">dev_name</span><span class="p">:</span> <span class="s2">&quot;en_ewt-ud-dev&quot;</span>
-  <span class="n">test_name</span><span class="p">:</span> <span class="s2">&quot;en_ewt-ud-test&quot;</span>
-  <span class="n">package_name</span><span class="p">:</span> <span class="s2">&quot;new language&quot;</span>
-  <span class="n">package_version</span><span class="p">:</span> <span class="s2">&quot;0.0.0&quot;</span>
-  <span class="n">gpu</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
-
-<span class="c1"># These are the directories that the project needs. The project CLI will make</span>
-<span class="c1"># sure that they always exist.</span>
-<span class="n">directories</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;corpus&quot;</span><span class="p">,</span> <span class="s2">&quot;training&quot;</span><span class="p">,</span> <span class="s2">&quot;metrics&quot;</span><span class="p">,</span> <span class="s2">&quot;configs&quot;</span><span class="p">,</span> <span class="s2">&quot;packages&quot;</span><span class="p">]</span>
-
-<span class="n">assets</span><span class="p">:</span>
-  <span class="o">-</span> <span class="n">dest</span><span class="p">:</span> <span class="s2">&quot;assets/$</span><span class="si">{vars.treebank}</span><span class="s2">&quot;</span>
-    <span class="n">git</span><span class="p">:</span>
-      <span class="n">repo</span><span class="p">:</span> <span class="s2">&quot;https://github.com/New-Languages-for-NLP/$</span><span class="si">{vars.treebank}</span><span class="s2">&quot;</span>
-      <span class="n">branch</span><span class="p">:</span> <span class="s2">&quot;main&quot;</span>
-      <span class="n">path</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
-
-<span class="n">workflows</span><span class="p">:</span>
-  <span class="nb">all</span><span class="p">:</span>
-    <span class="o">-</span> <span class="n">preprocess</span>
-    <span class="o">-</span> <span class="n">train</span>
-    <span class="o">-</span> <span class="n">evaluate</span>
-    <span class="o">-</span> <span class="n">package</span>
-
-<span class="n">commands</span><span class="p">:</span>
-  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">preprocess</span>
-    <span class="n">help</span><span class="p">:</span> <span class="s2">&quot;Convert the data to spaCy&#39;s format&quot;</span>
-    <span class="n">script</span><span class="p">:</span>
-      <span class="o">-</span> <span class="s2">&quot;mkdir -p corpus/$</span><span class="si">{vars.treebank}</span><span class="s2">&quot;</span>
-      <span class="o">-</span> <span class="s2">&quot;python -m spacy convert assets/$</span><span class="si">{vars.treebank}</span><span class="s2">/$</span><span class="si">{vars.train_name}</span><span class="s2">.conllu corpus/$</span><span class="si">{vars.treebank}</span><span class="s2">/ --converter conllu --n-sents 10 --merge-subtokens&quot;</span>
-      <span class="o">-</span> <span class="s2">&quot;python -m spacy convert assets/$</span><span class="si">{vars.treebank}</span><span class="s2">/$</span><span class="si">{vars.dev_name}</span><span class="s2">.conllu corpus/$</span><span class="si">{vars.treebank}</span><span class="s2">/ --converter conllu --n-sents 10 --merge-subtokens&quot;</span>
-      <span class="o">-</span> <span class="s2">&quot;python -m spacy convert assets/$</span><span class="si">{vars.treebank}</span><span class="s2">/$</span><span class="si">{vars.test_name}</span><span class="s2">.conllu corpus/$</span><span class="si">{vars.treebank}</span><span class="s2">/ --converter conllu --n-sents 10 --merge-subtokens&quot;</span>
-      <span class="o">-</span> <span class="s2">&quot;mv corpus/$</span><span class="si">{vars.treebank}</span><span class="s2">/$</span><span class="si">{vars.train_name}</span><span class="s2">.spacy corpus/$</span><span class="si">{vars.treebank}</span><span class="s2">/train.spacy&quot;</span>
-      <span class="o">-</span> <span class="s2">&quot;mv corpus/$</span><span class="si">{vars.treebank}</span><span class="s2">/$</span><span class="si">{vars.dev_name}</span><span class="s2">.spacy corpus/$</span><span class="si">{vars.treebank}</span><span class="s2">/dev.spacy&quot;</span>
-      <span class="o">-</span> <span class="s2">&quot;mv corpus/$</span><span class="si">{vars.treebank}</span><span class="s2">/$</span><span class="si">{vars.test_name}</span><span class="s2">.spacy corpus/$</span><span class="si">{vars.treebank}</span><span class="s2">/test.spacy&quot;</span>
-    <span class="n">deps</span><span class="p">:</span>
-      <span class="o">-</span> <span class="s2">&quot;assets/$</span><span class="si">{vars.treebank}</span><span class="s2">/$</span><span class="si">{vars.train_name}</span><span class="s2">.conllu&quot;</span>
-      <span class="o">-</span> <span class="s2">&quot;assets/$</span><span class="si">{vars.treebank}</span><span class="s2">/$</span><span class="si">{vars.dev_name}</span><span class="s2">.conllu&quot;</span>
-      <span class="o">-</span> <span class="s2">&quot;assets/$</span><span class="si">{vars.treebank}</span><span class="s2">/$</span><span class="si">{vars.test_name}</span><span class="s2">.conllu&quot;</span>
-    <span class="n">outputs</span><span class="p">:</span>
-      <span class="o">-</span> <span class="s2">&quot;corpus/$</span><span class="si">{vars.treebank}</span><span class="s2">/train.spacy&quot;</span>
-      <span class="o">-</span> <span class="s2">&quot;corpus/$</span><span class="si">{vars.treebank}</span><span class="s2">/dev.spacy&quot;</span>
-      <span class="o">-</span> <span class="s2">&quot;corpus/$</span><span class="si">{vars.treebank}</span><span class="s2">/test.spacy&quot;</span>
-
-  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">train</span>
-    <span class="n">help</span><span class="p">:</span> <span class="s2">&quot;Train $</span><span class="si">{vars.treebank}</span><span class="s2">&quot;</span>
-    <span class="n">script</span><span class="p">:</span>
-      <span class="o">-</span> <span class="s2">&quot;python -m spacy train configs/$</span><span class="si">{vars.config}</span><span class="s2">.cfg --output training/$</span><span class="si">{vars.treebank}</span><span class="s2"> --gpu-id $</span><span class="si">{vars.gpu}</span><span class="s2"> --paths.train corpus/$</span><span class="si">{vars.treebank}</span><span class="s2">/train.spacy --paths.dev corpus/$</span><span class="si">{vars.treebank}</span><span class="s2">/dev.spacy --nlp.lang=$</span><span class="si">{vars.lang}</span><span class="s2">&quot;</span>
-    <span class="n">deps</span><span class="p">:</span>
-      <span class="o">-</span> <span class="s2">&quot;corpus/$</span><span class="si">{vars.treebank}</span><span class="s2">/train.spacy&quot;</span>
-      <span class="o">-</span> <span class="s2">&quot;corpus/$</span><span class="si">{vars.treebank}</span><span class="s2">/dev.spacy&quot;</span>
-      <span class="o">-</span> <span class="s2">&quot;configs/$</span><span class="si">{vars.config}</span><span class="s2">.cfg&quot;</span>
-    <span class="n">outputs</span><span class="p">:</span>
-      <span class="o">-</span> <span class="s2">&quot;training/$</span><span class="si">{vars.treebank}</span><span class="s2">/model-best&quot;</span>
-
-  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">evaluate</span>
-    <span class="n">help</span><span class="p">:</span> <span class="s2">&quot;Evaluate on the test data and save the metrics&quot;</span>
-    <span class="n">script</span><span class="p">:</span>
-      <span class="o">-</span> <span class="s2">&quot;python -m spacy evaluate ./training/$</span><span class="si">{vars.treebank}</span><span class="s2">/model-best ./corpus/$</span><span class="si">{vars.treebank}</span><span class="s2">/test.spacy --output ./metrics/$</span><span class="si">{vars.treebank}</span><span class="s2">.json --gpu-id $</span><span class="si">{vars.gpu}</span><span class="s2">&quot;</span>
-    <span class="n">deps</span><span class="p">:</span>
-      <span class="o">-</span> <span class="s2">&quot;training/$</span><span class="si">{vars.treebank}</span><span class="s2">/model-best&quot;</span>
-      <span class="o">-</span> <span class="s2">&quot;corpus/$</span><span class="si">{vars.treebank}</span><span class="s2">/test.spacy&quot;</span>
-    <span class="n">outputs</span><span class="p">:</span>
-      <span class="o">-</span> <span class="s2">&quot;metrics/$</span><span class="si">{vars.treebank}</span><span class="s2">.json&quot;</span>
-
-  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">package</span>
-    <span class="n">help</span><span class="p">:</span> <span class="s2">&quot;Package the trained model so it can be installed&quot;</span>
-    <span class="n">script</span><span class="p">:</span>
-      <span class="o">-</span> <span class="s2">&quot;python -m spacy package training/$</span><span class="si">{vars.treebank}</span><span class="s2">/model-best packages --name $</span><span class="si">{vars.package_name}</span><span class="s2"> --version $</span><span class="si">{vars.package_version}</span><span class="s2"> --force&quot;</span>
-    <span class="n">deps</span><span class="p">:</span>
-      <span class="o">-</span> <span class="s2">&quot;training/$</span><span class="si">{vars.treebank}</span><span class="s2">/model-best&quot;</span>
-    <span class="n">outputs_no_cache</span><span class="p">:</span>
-      <span class="o">-</span> <span class="s2">&quot;packages/$</span><span class="si">{vars.lang}</span><span class="s2">_$</span><span class="si">{vars.package_name}</span><span class="s2">-$</span><span class="si">{vars.package_version}</span><span class="s2">/dist/en_$</span><span class="si">{vars.package_name}</span><span class="s2">-$</span><span class="si">{vars.package_version}</span><span class="s2">.tar.gz&quot;</span>
-
-  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">clean</span>
-    <span class="n">help</span><span class="p">:</span> <span class="s2">&quot;Remove intermediate files&quot;</span>
-    <span class="n">script</span><span class="p">:</span>
-      <span class="o">-</span> <span class="s2">&quot;rm -rf training/*&quot;</span>
-      <span class="o">-</span> <span class="s2">&quot;rm -rf metrics/*&quot;</span>
-      <span class="o">-</span> <span class="s2">&quot;rm -rf corpus/*&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m spacy project assets /srv/projects/course-materials/w2/using-inception-data/newlang_project
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/tmp/ipykernel_1809/3401300288.py&quot;</span><span class="gt">, line </span><span class="mi">6</span>
-    <span class="nb">vars</span><span class="p">:</span>
-         <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Usage: python -m spacy project assets [OPTIONS] [PROJECT_DIR]
+Try &#39;python -m spacy project assets --help&#39; for help.
+
+Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/srv/projects/course-materials/w2/using-inception-data/newlang_project&#39; does not exist.
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m spacy project assets /home/ds/projects/course-materials/w2/using-inception-data/newlang_project
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls /srv/projects/course-materials/w2/using-inception-data/newlang_project/assets/urban-giggle
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C4">ℹ Fetching 1 asset(s)</span>
-<span class=" -Color -Color-C2">✔ Downloaded asset</span>
-<span class=" -Color -Color-C2">/home/ds/projects/course-materials/w2/using-inception-data/newlang_project/assets/yoruba</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls /home/ds/projects/course-materials/w2/using-inception-data/newlang_project/assets/yoruba
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0_original_texts  2_new_language_object  4_trained_models  README.md
-1_lookups_data	  3_inception_export	 LICENSE
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ls: cannot access &#39;/srv/projects/course-materials/w2/using-inception-data/newlang_project/assets/urban-giggle&#39;: No such file or directory
 </pre></div>
 </div>
 </div>
@@ -480,6 +379,14 @@ python -m spacy project assets /home/runner/work/course-materials/course-materia
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install the custom language object from Cadet </span>
+<span class="o">!</span>python -m spacy project run install /srv/projects/course-materials/w2/using-inception-data/newlang_project
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Usage: python -m spacy project run [OPTIONS] [SUBCOMMAND] [PROJECT_DIR]
+
+Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/srv/projects/course-materials/w2/using-inception-data/newlang_project&#39; does not exist.
 </pre></div>
 </div>
 </div>
@@ -515,7 +422,93 @@ python -m spacy project assets /home/runner/work/course-materials/course-materia
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># temp to clear project folder</span>
-<span class="o">!</span>rm -rf /home/ds/projects/course-materials/w2/using-inception-data/newlang_project
+<span class="o">!</span>rm -rf /srv/projects/course-materials/w2/using-inception-data/newlang_project
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#debug yaml </span>
+<span class="kn">import</span> <span class="nn">srsly</span>
+<span class="n">srsly</span><span class="o">.</span><span class="n">read_yaml</span><span class="p">(</span><span class="s2">&quot;./newlang_project/project.yml&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;title&#39;: &#39;Train new language model from cadet and inception data&#39;,
+ &#39;description&#39;: &#39;This project template lets you train a part-of-speech tagger, morphologizer and dependency parser from your cadet and inception data.&#39;,
+ &#39;vars&#39;: {&#39;config&#39;: &#39;config&#39;,
+  &#39;lang&#39;: &#39;yo&#39;,
+  &#39;treebank&#39;: &#39;urban-giggle&#39;,
+  &#39;test_size&#39;: 0.4,
+  &#39;random_state&#39;: 11,
+  &#39;train_name&#39;: &#39;en_ewt-ud-train&#39;,
+  &#39;dev_name&#39;: &#39;en_ewt-ud-dev&#39;,
+  &#39;test_name&#39;: &#39;en_ewt-ud-test&#39;,
+  &#39;package_name&#39;: &#39;new language&#39;,
+  &#39;package_version&#39;: &#39;0.0.0&#39;,
+  &#39;gpu&#39;: -1},
+ &#39;directories&#39;: [&#39;assets&#39;,
+  &#39;corpus&#39;,
+  &#39;training&#39;,
+  &#39;metrics&#39;,
+  &#39;configs&#39;,
+  &#39;packages&#39;],
+ &#39;assets&#39;: [{&#39;dest&#39;: &#39;assets/${vars.treebank}&#39;,
+   &#39;git&#39;: {&#39;repo&#39;: &#39;https://github.com/New-Languages-for-NLP/${vars.treebank}&#39;,
+    &#39;branch&#39;: &#39;main&#39;,
+    &#39;path&#39;: &#39;&#39;}}],
+ &#39;workflows&#39;: {&#39;all&#39;: [&#39;install&#39;,
+   &#39;split&#39;,
+   &#39;convert&#39;,
+   &#39;debug&#39;,
+   &#39;train&#39;,
+   &#39;evaluate&#39;,
+   &#39;package&#39;]},
+ &#39;commands&#39;: [{&#39;name&#39;: &#39;install&#39;,
+   &#39;help&#39;: &#39;Install the new language object from Cadet&#39;,
+   &#39;script&#39;: [&#39;pip install -e assets/${vars.treebank}/2_new_language_object&#39;],
+   &#39;deps&#39;: [&#39;assets/${vars.treebank}/2_new_language_object&#39;]},
+  {&#39;name&#39;: &#39;split&#39;,
+   &#39;help&#39;: &#39;Split the data into test and train sets&#39;,
+   &#39;script&#39;: [&#39;python scripts/split.py assets/${vars.treebank}/3_inception_export ${vars.test_size} ${vars.random_state}&#39;],
+   &#39;outputs&#39;: [&#39;assets/test.conllu&#39;, &#39;assets/train.conllu&#39;]},
+  {&#39;name&#39;: &#39;convert&#39;,
+   &#39;help&#39;: &quot;Convert the data to spaCy&#39;s format&quot;,
+   &#39;script&#39;: [&#39;mkdir -p corpus/${vars.treebank}&#39;,
+    &#39;python -m spacy convert assets/train.conllu corpus/${vars.treebank}/ --converter conllu --n-sents 10 --merge-subtokens&#39;,
+    &#39;python -m spacy convert assets/test.conllu corpus/${vars.treebank}/ --converter conllu --n-sents 10 --merge-subtokens&#39;,
+    &#39;mv corpus/${vars.treebank}/${vars.train_name}.spacy corpus/${vars.treebank}/train.spacy&#39;,
+    &#39;mv corpus/${vars.treebank}/${vars.test_name}.spacy corpus/${vars.treebank}/test.spacy&#39;],
+   &#39;deps&#39;: [&#39;assets/${vars.treebank}/${vars.train_name}.conllu&#39;,
+    &#39;assets/${vars.treebank}/${vars.test_name}.conllu&#39;],
+   &#39;outputs&#39;: [&#39;corpus/${vars.treebank}/train.spacy&#39;,
+    &#39;corpus/${vars.treebank}/test.spacy&#39;]},
+  {&#39;name&#39;: &#39;debug&#39;,
+   &#39;help&#39;: &quot;Assess data for training using spaCy&#39;s debug data&quot;,
+   &#39;script&#39;: [&#39;python -m spacy --help&#39;]},
+  {&#39;name&#39;: &#39;train&#39;,
+   &#39;help&#39;: &#39;Train ${vars.treebank}&#39;,
+   &#39;script&#39;: [&#39;python -m spacy train configs/${vars.config}.cfg --output training/${vars.treebank} --gpu-id ${vars.gpu} --paths.train corpus/${vars.treebank}/train.spacy --paths.dev corpus/${vars.treebank}/dev.spacy --nlp.lang=${vars.lang}&#39;],
+   &#39;deps&#39;: [&#39;corpus/${vars.treebank}/train.spacy&#39;,
+    &#39;corpus/${vars.treebank}/dev.spacy&#39;,
+    &#39;configs/${vars.config}.cfg&#39;],
+   &#39;outputs&#39;: [&#39;training/${vars.treebank}/model-best&#39;]},
+  {&#39;name&#39;: &#39;evaluate&#39;,
+   &#39;help&#39;: &#39;Evaluate on the test data and save the metrics&#39;,
+   &#39;script&#39;: [&#39;python -m spacy evaluate ./training/${vars.treebank}/model-best ./corpus/${vars.treebank}/test.spacy --output ./metrics/${vars.treebank}.json --gpu-id ${vars.gpu}&#39;],
+   &#39;deps&#39;: [&#39;training/${vars.treebank}/model-best&#39;,
+    &#39;corpus/${vars.treebank}/test.spacy&#39;],
+   &#39;outputs&#39;: [&#39;metrics/${vars.treebank}.json&#39;]},
+  {&#39;name&#39;: &#39;package&#39;,
+   &#39;help&#39;: &#39;Package the trained model so it can be installed&#39;,
+   &#39;script&#39;: [&#39;python -m spacy package training/${vars.treebank}/model-best packages --name ${vars.package_name} --version ${vars.package_version} --force&#39;],
+   &#39;deps&#39;: [&#39;training/${vars.treebank}/model-best&#39;],
+   &#39;outputs_no_cache&#39;: [&#39;packages/${vars.lang}_${vars.package_name}-${vars.package_version}/dist/en_${vars.package_name}-${vars.package_version}.tar.gz&#39;]},
+  {&#39;name&#39;: &#39;clean&#39;,
+   &#39;help&#39;: &#39;Remove intermediate files&#39;,
+   &#39;script&#39;: [&#39;rm -rf training/*&#39;, &#39;rm -rf metrics/*&#39;, &#39;rm -rf corpus/*&#39;]}]}
 </pre></div>
 </div>
 </div>
