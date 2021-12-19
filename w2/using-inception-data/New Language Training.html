@@ -341,7 +341,6 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#TODO only works for public repos, otherwise it asks for username and password.  Just run in terminal?</span>
-<span class="c1">#TODO also assumes project.yml from GitHub, edit there? </span>
 <span class="c1"># Needs to work in Colab</span>
 <span class="o">!</span>python -m spacy project clone newlang_project --repo https://github.com/New-Languages-for-NLP/repo-template --branch main
 </pre></div>
@@ -389,19 +388,12 @@ Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/srv/projects/c
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls /srv/projects/course-materials/w2/using-inception-data/newlang_project/assets/urban-giggle/3_inception_export/
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ls: cannot access &#39;/srv/projects/course-materials/w2/using-inception-data/newlang_project/assets/urban-giggle/3_inception_export/&#39;: No such file or directory
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m spacy project run convert /srv/projects/course-materials/w2/using-inception-data/newlang_project -F
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert the conllu files from inception to spaCy binary format</span>
+<span class="c1"># Currently requires edit to spacy/training/converters/conllu_to_docs.py line 194 </span>
+<span class="c1"># if pos == &quot;_&quot;:                                                                                                                  </span>
+<span class="c1">#     pos = &quot;&quot;</span>
+
+<span class="o">!</span>python -m spacy project run convert /srv/projects/course-materials/w2/using-inception-data/newlang_project -F
 </pre></div>
 </div>
 </div>
@@ -431,7 +423,91 @@ Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/srv/projects/c
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create training config</span>
+<span class="c1">#importlib.import_module(f&quot;.lang.{lang}&quot;, &quot;spacy&quot;)</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
+
+<span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="s2">&quot;urban-giggle.2_&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1834</span><span class="o">/</span><span class="mf">543821610.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">importlib</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="s2">&quot;urban-giggle.2_&quot;</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/importlib/__init__.py</span> in <span class="ni">import_module</span><span class="nt">(name, package)</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span>                 <span class="k">break</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span>             <span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="ne">--&gt; </span><span class="mi">127</span>     <span class="k">return</span> <span class="n">_bootstrap</span><span class="o">.</span><span class="n">_gcd_import</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">level</span><span class="p">:],</span> <span class="n">package</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">128</span> 
+<span class="g g-Whitespace">    </span><span class="mi">129</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/importlib/_bootstrap.py</span> in <span class="ni">_gcd_import</span><span class="nt">(name, package, level)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/importlib/_bootstrap.py</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/importlib/_bootstrap.py</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/importlib/_bootstrap.py</span> in <span class="ni">_call_with_frames_removed</span><span class="nt">(f, *args, **kwds)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/importlib/_bootstrap.py</span> in <span class="ni">_gcd_import</span><span class="nt">(name, package, level)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/importlib/_bootstrap.py</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/importlib/_bootstrap.py</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;urban-giggle&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Debug the data </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">/usr/local/lib/python3.8/dist-packages/spacy/util.py</span> in <span class="ni">get_lang_class</span><span class="nt">(lang)</span>
+<span class="g g-Whitespace">    </span><span class="mi">329</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">330</span>             <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;.lang.</span><span class="si">{</span><span class="n">lang</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;spacy&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">331</span>         <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+
+<span class="nn">/usr/lib/python3.8/importlib/__init__.py</span> in <span class="ni">import_module</span><span class="nt">(name, package)</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span>             <span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="ne">--&gt; </span><span class="mi">127</span>     <span class="k">return</span> <span class="n">_bootstrap</span><span class="o">.</span><span class="n">_gcd_import</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">level</span><span class="p">:],</span> <span class="n">package</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">128</span> 
+
+<span class="nn">/usr/lib/python3.8/importlib/_bootstrap.py</span> in <span class="ni">_gcd_import</span><span class="nt">(name, package, level)</span>
+
+<span class="nn">/usr/lib/python3.8/importlib/_bootstrap.py</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
+
+<span class="nn">/usr/lib/python3.8/importlib/_bootstrap.py</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;spacy.lang.clara&#39;
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_5256</span><span class="o">/</span><span class="mf">1060777287.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Debug the data</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">spacy</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">lang_cls</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">get_lang_class</span><span class="p">(</span><span class="s2">&quot;clara&quot;</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.8/dist-packages/spacy/util.py</span> in <span class="ni">get_lang_class</span><span class="nt">(lang)</span>
+<span class="g g-Whitespace">    </span><span class="mi">342</span>                 <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;.lang.</span><span class="si">{</span><span class="n">lang</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;spacy&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">343</span>             <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">344</span>                 <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="n">Errors</span><span class="o">.</span><span class="n">E048</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="n">lang</span><span class="p">,</span> <span class="n">err</span><span class="o">=</span><span class="n">err</span><span class="p">))</span> <span class="kn">from</span> <span class="nn">err</span>
+<span class="g g-Whitespace">    </span><span class="mi">345</span>         <span class="n">set_lang_class</span><span class="p">(</span><span class="n">lang</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">__all__</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  <span class="c1"># type: ignore[attr-defined]</span>
+<span class="g g-Whitespace">    </span><span class="mi">346</span>     <span class="k">return</span> <span class="n">registry</span><span class="o">.</span><span class="n">languages</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span>
+
+<span class="ne">ImportError</span>: [E048] Can&#39;t import language clara or any matching language from spacy.lang: No module named &#39;spacy.lang.clara&#39;
 </pre></div>
 </div>
 </div>
@@ -446,85 +522,6 @@ Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/srv/projects/c
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluate the model </span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#debug yaml </span>
-<span class="kn">import</span> <span class="nn">srsly</span>
-<span class="n">srsly</span><span class="o">.</span><span class="n">read_yaml</span><span class="p">(</span><span class="s2">&quot;./newlang_project/project.yml&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;title&#39;: &#39;Train new language model from cadet and inception data&#39;,
- &#39;description&#39;: &#39;This project template lets you train a part-of-speech tagger, morphologizer and dependency parser from your cadet and inception data.&#39;,
- &#39;vars&#39;: {&#39;config&#39;: &#39;config&#39;,
-  &#39;lang&#39;: &#39;yo&#39;,
-  &#39;treebank&#39;: &#39;urban-giggle&#39;,
-  &#39;test_size&#39;: 0.4,
-  &#39;random_state&#39;: 11,
-  &#39;train_name&#39;: &#39;en_ewt-ud-train&#39;,
-  &#39;dev_name&#39;: &#39;en_ewt-ud-dev&#39;,
-  &#39;test_name&#39;: &#39;en_ewt-ud-test&#39;,
-  &#39;package_name&#39;: &#39;new language&#39;,
-  &#39;package_version&#39;: &#39;0.0.0&#39;,
-  &#39;gpu&#39;: -1},
- &#39;directories&#39;: [&#39;assets&#39;,
-  &#39;corpus&#39;,
-  &#39;training&#39;,
-  &#39;metrics&#39;,
-  &#39;configs&#39;,
-  &#39;packages&#39;],
- &#39;assets&#39;: [{&#39;dest&#39;: &#39;assets/${vars.treebank}&#39;,
-   &#39;git&#39;: {&#39;repo&#39;: &#39;https://github.com/New-Languages-for-NLP/${vars.treebank}&#39;,
-    &#39;branch&#39;: &#39;main&#39;,
-    &#39;path&#39;: &#39;&#39;}}],
- &#39;workflows&#39;: {&#39;all&#39;: [&#39;install&#39;,
-   &#39;convert&#39;,
-   &#39;split&#39;,
-   &#39;debug&#39;,
-   &#39;train&#39;,
-   &#39;evaluate&#39;,
-   &#39;package&#39;]},
- &#39;commands&#39;: [{&#39;name&#39;: &#39;install&#39;,
-   &#39;help&#39;: &#39;Install the new language object from Cadet&#39;,
-   &#39;script&#39;: [&#39;pip install -e assets/${vars.treebank}/2_new_language_object&#39;],
-   &#39;deps&#39;: [&#39;assets/${vars.treebank}/2_new_language_object&#39;]},
-  {&#39;name&#39;: &#39;convert&#39;,
-   &#39;help&#39;: &quot;Convert the data to spaCy&#39;s format&quot;,
-   &#39;script&#39;: [&#39;python scripts/convert.py assets/${vars.treebank}/3_inception_export&#39;],
-   &#39;deps&#39;: [&#39;assets/${vars.treebank}/3_inception_export&#39;]},
-  {&#39;name&#39;: &#39;split&#39;,
-   &#39;help&#39;: &#39;Split the data into test and train sets&#39;,
-   &#39;script&#39;: [&#39;python scripts/split.py assets/${vars.treebank}/3_inception_export ${vars.test_size} ${vars.random_state}&#39;],
-   &#39;outputs&#39;: [&#39;assets/test.conllu&#39;, &#39;assets/train.conllu&#39;]},
-  {&#39;name&#39;: &#39;debug&#39;,
-   &#39;help&#39;: &quot;Assess data for training using spaCy&#39;s debug data&quot;,
-   &#39;script&#39;: [&#39;python -m spacy --help&#39;]},
-  {&#39;name&#39;: &#39;train&#39;,
-   &#39;help&#39;: &#39;Train ${vars.treebank}&#39;,
-   &#39;script&#39;: [&#39;python -m spacy train configs/${vars.config}.cfg --output training/${vars.treebank} --gpu-id ${vars.gpu} --paths.train corpus/${vars.treebank}/train.spacy --paths.dev corpus/${vars.treebank}/dev.spacy --nlp.lang=${vars.lang}&#39;],
-   &#39;deps&#39;: [&#39;corpus/${vars.treebank}/train.spacy&#39;,
-    &#39;corpus/${vars.treebank}/dev.spacy&#39;,
-    &#39;configs/${vars.config}.cfg&#39;],
-   &#39;outputs&#39;: [&#39;training/${vars.treebank}/model-best&#39;]},
-  {&#39;name&#39;: &#39;evaluate&#39;,
-   &#39;help&#39;: &#39;Evaluate on the test data and save the metrics&#39;,
-   &#39;script&#39;: [&#39;python -m spacy evaluate ./training/${vars.treebank}/model-best ./corpus/${vars.treebank}/test.spacy --output ./metrics/${vars.treebank}.json --gpu-id ${vars.gpu}&#39;],
-   &#39;deps&#39;: [&#39;training/${vars.treebank}/model-best&#39;,
-    &#39;corpus/${vars.treebank}/test.spacy&#39;],
-   &#39;outputs&#39;: [&#39;metrics/${vars.treebank}.json&#39;]},
-  {&#39;name&#39;: &#39;package&#39;,
-   &#39;help&#39;: &#39;Package the trained model so it can be installed&#39;,
-   &#39;script&#39;: [&#39;python -m spacy package training/${vars.treebank}/model-best packages --name ${vars.package_name} --version ${vars.package_version} --force&#39;],
-   &#39;deps&#39;: [&#39;training/${vars.treebank}/model-best&#39;],
-   &#39;outputs_no_cache&#39;: [&#39;packages/${vars.lang}_${vars.package_name}-${vars.package_version}/dist/en_${vars.package_name}-${vars.package_version}.tar.gz&#39;]},
-  {&#39;name&#39;: &#39;clean&#39;,
-   &#39;help&#39;: &#39;Remove intermediate files&#39;,
-   &#39;script&#39;: [&#39;rm -rf training/*&#39;, &#39;rm -rf metrics/*&#39;, &#39;rm -rf corpus/*&#39;]}]}
 </pre></div>
 </div>
 </div>
