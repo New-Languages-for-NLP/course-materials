@@ -340,33 +340,66 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#TODO only works for public repos, otherwise it asks for username and password.  Just run in terminal?</span>
-<span class="c1"># Needs to work in Colab</span>
-<span class="o">!</span>python -m spacy project clone newlang_project --repo https://github.com/New-Languages-for-NLP/repo-template --branch main
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C2">✔ Cloned &#39;newlang_project&#39; from New-Languages-for-NLP/repo-template</span>
-/home/runner/work/course-materials/course-materials/w2/using-inception-data/newlang_project
-<span class=" -Color -Color-C2">✔ Your project is now ready!</span>
-To fetch the assets, run:
-python -m spacy project assets /home/runner/work/course-materials/course-materials/w2/using-inception-data/newlang_project
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m spacy project assets /srv/projects/course-materials/w2/using-inception-data/newlang_project
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Usage: python -m spacy project assets [OPTIONS] [PROJECT_DIR]
-Try &#39;python -m spacy project assets --help&#39; for help.
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">private_repo</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1">#@param {type:&quot;boolean&quot;}</span>
+<span class="n">repo_name</span> <span class="o">=</span> <span class="s2">&quot;old-chinese&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
 
-Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/srv/projects/course-materials/w2/using-inception-data/newlang_project&#39; does not exist.
+<span class="o">!</span>rm -rf /content/newlang_project
+<span class="o">!</span>rm -rf <span class="nv">$repo_name</span>
+<span class="k">if</span> <span class="n">private_repo</span><span class="p">:</span>
+    <span class="n">git_access_token</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+    <span class="n">git_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://</span><span class="si">{</span><span class="n">git_access_token</span><span class="si">}</span><span class="s2">@github.com/New-Languages-for-NLP/</span><span class="si">{</span><span class="n">repo_name</span><span class="si">}</span><span class="s2">/&quot;</span>
+    <span class="o">!</span>git clone <span class="nv">$git_url</span>  -b main
+    <span class="o">!</span>cp -r ./<span class="nv">$repo_name</span>/newlang_project .  
+    <span class="o">!</span>mkdir newlang_project/assets/
+    <span class="o">!</span>mkdir newlang_project/configs/
+    <span class="o">!</span>mkdir newlang_project/corpus/
+    <span class="o">!</span>mkdir newlang_project/metrics/
+    <span class="o">!</span>mkdir newlang_project/packages/
+    <span class="o">!</span>mkdir newlang_project/training/
+    <span class="o">!</span>mkdir newlang_project/assets/<span class="nv">$repo_name</span>
+    <span class="o">!</span>cp -r ./<span class="nv">$repo_name</span>/* newlang_project/assets/<span class="nv">$repo_name</span>/
+    <span class="o">!</span>rm -rf ./<span class="nv">$repo_name</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="o">!</span>python -m spacy project clone newlang_project --repo https://github.com/New-Languages-for-NLP/<span class="nv">$repo_name</span> --branch main
+    <span class="o">!</span>python -m spacy project assets /content/newlang_project
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cloning into &#39;old-chinese&#39;...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Username for &#39;https://github.com&#39;: 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cp: cannot stat &#39;./old-chinese/newlang_project&#39;: No such file or directory
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: cannot create directory ‘newlang_project/assets/’: No such file or directory
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: cannot create directory ‘newlang_project/configs/’: No such file or directory
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: cannot create directory ‘newlang_project/corpus/’: No such file or directory
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: cannot create directory ‘newlang_project/metrics/’: No such file or directory
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: cannot create directory ‘newlang_project/packages/’: No such file or directory
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: cannot create directory ‘newlang_project/training/’: No such file or directory
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: cannot create directory ‘newlang_project/assets/old-chinese’: No such file or directory
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cp: cannot stat &#39;./old-chinese/*&#39;: No such file or directory
 </pre></div>
 </div>
 </div>
@@ -379,9 +412,36 @@ Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/srv/projects/c
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Usage: python -m spacy project run [OPTIONS] [SUBCOMMAND] [PROJECT_DIR]
-
-Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/srv/projects/course-materials/w2/using-inception-data/newlang_project&#39; does not exist.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/bin/bash: python: command not found
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create training config</span>
+<span class="o">!</span>python -m spacy project run config /srv/projects/course-materials/w2/using-inception-data/newlang_project
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold">=================================== config ===================================</span>
+Running command: /srv/projects/course-materials/temp/venv/bin/python -m spacy init config config.cfg --lang clara -F
+<span class=" -Color -Color-C3">⚠ To generate a more effective transformer-based config (GPU-only),</span>
+<span class=" -Color -Color-C3">install the spacy-transformers package and re-run this command. The config</span>
+<span class=" -Color -Color-C3">generated now does not use transformers.</span>
+<span class=" -Color -Color-C4">ℹ Generated config template specific for your use case</span>
+- Language: clara
+- Pipeline: tagger, parser, ner
+- Optimize for: efficiency
+- Hardware: CPU
+- Transformer: None
+<span class=" -Color -Color-C2">✔ Auto-filled config with all values</span>
+<span class=" -Color -Color-C2">✔ Saved config</span>
+config.cfg
+You can now add your data and train your pipeline:
+python -m spacy train config.cfg --paths.train ./train.spacy --paths.dev ./dev.spacy
 </pre></div>
 </div>
 </div>
@@ -398,9 +458,13 @@ Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/srv/projects/c
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Usage: python -m spacy project run [OPTIONS] [SUBCOMMAND] [PROJECT_DIR]
-
-Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/srv/projects/course-materials/w2/using-inception-data/newlang_project&#39; does not exist.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold">================================== convert ==================================</span>
+Running command: /srv/projects/course-materials/temp/venv/bin/python scripts/convert.py assets/urban-giggle/3_inception_export
+<span class=" -Color -Color-C4">ℹ Grouping every 10 sentences into a document.</span>
+<span class=" -Color -Color-C2">✔ Generated output file (106 documents): corpus/YorText2.spacy</span>
+<span class=" -Color -Color-C4">ℹ Grouping every 10 sentences into a document.</span>
+<span class=" -Color -Color-C2">✔ Generated output file (360 documents): corpus/YorText3.spacy</span>
 </pre></div>
 </div>
 </div>
@@ -414,107 +478,144 @@ Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/srv/projects/c
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Usage: python -m spacy project run [OPTIONS] [SUBCOMMAND] [PROJECT_DIR]
-
-Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/srv/projects/course-materials/w2/using-inception-data/newlang_project&#39; does not exist.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold">=================================== split ===================================</span>
+Running command: /srv/projects/course-materials/temp/venv/bin/python scripts/split.py 0.4 11
+😊 Created 279 training docs
+😊 Created 187 validation docs
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create training config</span>
-<span class="c1">#importlib.import_module(f&quot;.lang.{lang}&quot;, &quot;spacy&quot;)</span>
-<span class="kn">import</span> <span class="nn">importlib</span>
-
-<span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="s2">&quot;urban-giggle.2_&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Debug the data</span>
+<span class="o">!</span>python -m spacy project run debug  /srv/projects/course-materials/w2/using-inception-data/newlang_project
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1834</span><span class="o">/</span><span class="mf">543821610.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">importlib</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="s2">&quot;urban-giggle.2_&quot;</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold">=================================== debug ===================================</span>
+Running command: /srv/projects/course-materials/temp/venv/bin/python scripts/update_config.py
+Running command: /srv/projects/course-materials/temp/venv/bin/python -m spacy debug data ./config.cfg
 
-<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/importlib/__init__.py</span> in <span class="ni">import_module</span><span class="nt">(name, package)</span>
-<span class="g g-Whitespace">    </span><span class="mi">125</span>                 <span class="k">break</span>
-<span class="g g-Whitespace">    </span><span class="mi">126</span>             <span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="ne">--&gt; </span><span class="mi">127</span>     <span class="k">return</span> <span class="n">_bootstrap</span><span class="o">.</span><span class="n">_gcd_import</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">level</span><span class="p">:],</span> <span class="n">package</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">128</span> 
-<span class="g g-Whitespace">    </span><span class="mi">129</span> 
+<span class=" -Color -Color-Bold">============================ Data file validation ============================</span>
+<span class=" -Color -Color-C2">✔ Pipeline can be initialized with data</span>
+<span class=" -Color -Color-C2">✔ Corpus is loadable</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/importlib/_bootstrap.py</span> in <span class="ni">_gcd_import</span><span class="nt">(name, package, level)</span>
+<span class=" -Color -Color-Bold">=============================== Training stats ===============================</span>
+Language: clara
+Training pipeline: tok2vec, tagger, parser, ner
+279 training docs
+187 evaluation docs
+<span class=" -Color -Color-C2">✔ No overlap between training and evaluation data</span>
+<span class=" -Color -Color-C3">⚠ Low number of examples to train a new pipeline (279)</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/importlib/_bootstrap.py</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
+<span class=" -Color -Color-Bold">============================== Vocab &amp; Vectors ==============================</span>
+<span class=" -Color -Color-C4">ℹ 38701 total word(s) in the data (5648 unique)</span>
+<span class=" -Color -Color-C4">ℹ No word vectors present in the package</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/importlib/_bootstrap.py</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
+<span class=" -Color -Color-Bold">========================== Named Entity Recognition ==========================</span>
+<span class=" -Color -Color-C4">ℹ 0 label(s)</span>
+0 missing value(s) (tokens with &#39;-&#39; label)
+<span class=" -Color -Color-C2">✔ Good amount of examples for all labels</span>
+<span class=" -Color -Color-C2">✔ Examples without occurrences available for all labels</span>
+<span class=" -Color -Color-C2">✔ No entities consisting of or starting/ending with whitespace</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/importlib/_bootstrap.py</span> in <span class="ni">_call_with_frames_removed</span><span class="nt">(f, *args, **kwds)</span>
+<span class=" -Color -Color-Bold">=========================== Part-of-speech Tagging ===========================</span>
+<span class=" -Color -Color-C4">ℹ 1 label(s) in train data</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/importlib/_bootstrap.py</span> in <span class="ni">_gcd_import</span><span class="nt">(name, package, level)</span>
+<span class=" -Color -Color-Bold">============================= Dependency Parsing =============================</span>
+<span class=" -Color -Color-C4">ℹ Found 38691 sentence(s) with an average length of 1.0 words.</span>
+<span class=" -Color -Color-C4">ℹ 1 label(s) in train data</span>
+<span class=" -Color -Color-C4">ℹ 1 label(s) in projectivized train data</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/importlib/_bootstrap.py</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
-
-<span class="nn">/opt/hostedtoolcache/Python/3.8.12/x64/lib/python3.8/importlib/_bootstrap.py</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;urban-giggle&#39;
+<span class=" -Color -Color-Bold">================================== Summary ==================================</span>
+<span class=" -Color -Color-C2">✔ 6 checks passed</span>
+<span class=" -Color -Color-C3">⚠ 1 warning</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Debug the data </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train the model </span>
+<span class="o">!</span>python -m spacy project run train /srv/projects/course-materials/w2/using-inception-data/newlang_project
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">/usr/local/lib/python3.8/dist-packages/spacy/util.py</span> in <span class="ni">get_lang_class</span><span class="nt">(lang)</span>
-<span class="g g-Whitespace">    </span><span class="mi">329</span>         <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">330</span>             <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;.lang.</span><span class="si">{</span><span class="n">lang</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;spacy&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">331</span>         <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold">=================================== train ===================================</span>
+Running command: /srv/projects/course-materials/temp/venv/bin/python -m spacy train config.cfg --output training/urban-giggle --gpu-id -1 --nlp.lang=clara
+<span class=" -Color -Color-C2">✔ Created output directory: training/urban-giggle</span>
+<span class=" -Color -Color-C4">ℹ Saving to output directory: training/urban-giggle</span>
+<span class=" -Color -Color-C4">ℹ Using CPU</span>
 
-<span class="nn">/usr/lib/python3.8/importlib/__init__.py</span> in <span class="ni">import_module</span><span class="nt">(name, package)</span>
-<span class="g g-Whitespace">    </span><span class="mi">126</span>             <span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="ne">--&gt; </span><span class="mi">127</span>     <span class="k">return</span> <span class="n">_bootstrap</span><span class="o">.</span><span class="n">_gcd_import</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">level</span><span class="p">:],</span> <span class="n">package</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">128</span> 
+<span class=" -Color -Color-Bold">=========================== Initializing pipeline ===========================</span>
+[2021-12-19 20:17:02,411] [INFO] Set up nlp object from config
+[2021-12-19 20:17:02,416] [INFO] Pipeline: [&#39;tok2vec&#39;, &#39;tagger&#39;, &#39;parser&#39;, &#39;ner&#39;]
+[2021-12-19 20:17:02,419] [INFO] Created vocabulary
+[2021-12-19 20:17:02,419] [INFO] Finished initializing nlp object
+[2021-12-19 20:17:04,527] [INFO] Initialized pipeline components: [&#39;tok2vec&#39;, &#39;tagger&#39;, &#39;parser&#39;, &#39;ner&#39;]
+<span class=" -Color -Color-C2">✔ Initialized pipeline</span>
 
-<span class="nn">/usr/lib/python3.8/importlib/_bootstrap.py</span> in <span class="ni">_gcd_import</span><span class="nt">(name, package, level)</span>
-
-<span class="nn">/usr/lib/python3.8/importlib/_bootstrap.py</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
-
-<span class="nn">/usr/lib/python3.8/importlib/_bootstrap.py</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;spacy.lang.clara&#39;
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_5256</span><span class="o">/</span><span class="mf">1060777287.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Debug the data</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">spacy</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">lang_cls</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">get_lang_class</span><span class="p">(</span><span class="s2">&quot;clara&quot;</span><span class="p">)</span>
-
-<span class="nn">/usr/local/lib/python3.8/dist-packages/spacy/util.py</span> in <span class="ni">get_lang_class</span><span class="nt">(lang)</span>
-<span class="g g-Whitespace">    </span><span class="mi">342</span>                 <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;.lang.</span><span class="si">{</span><span class="n">lang</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;spacy&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">343</span>             <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">344</span>                 <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="n">Errors</span><span class="o">.</span><span class="n">E048</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="n">lang</span><span class="p">,</span> <span class="n">err</span><span class="o">=</span><span class="n">err</span><span class="p">))</span> <span class="kn">from</span> <span class="nn">err</span>
-<span class="g g-Whitespace">    </span><span class="mi">345</span>         <span class="n">set_lang_class</span><span class="p">(</span><span class="n">lang</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">__all__</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  <span class="c1"># type: ignore[attr-defined]</span>
-<span class="g g-Whitespace">    </span><span class="mi">346</span>     <span class="k">return</span> <span class="n">registry</span><span class="o">.</span><span class="n">languages</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span>
-
-<span class="ne">ImportError</span>: [E048] Can&#39;t import language clara or any matching language from spacy.lang: No module named &#39;spacy.lang.clara&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># train the model</span>
+<span class=" -Color -Color-Bold">============================= Training pipeline =============================</span>
+<span class=" -Color -Color-C4">ℹ Pipeline: [&#39;tok2vec&#39;, &#39;tagger&#39;, &#39;parser&#39;, &#39;ner&#39;]</span>
+<span class=" -Color -Color-C4">ℹ Initial learn rate: 0.001</span>
+E    #       LOSS TOK2VEC  LOSS TAGGER  LOSS PARSER  LOSS NER  TAG_ACC  DEP_UAS  DEP_LAS  SENTS_F  ENTS_F  ENTS_P  ENTS_R  SCORE 
+---  ------  ------------  -----------  -----------  --------  -------  -------  -------  -------  ------  ------  ------  ------
+(&#39;L-dep&#39;, 0, 9000.0)
+(&#39;R-dep&#39;, 0, 9000.0)
+(&#39;B-_&#39;, 0, 9000.0)
+(&#39;B-ROOT&#39;, 0, 9000.0)
+(&#39;Gold sent starts?&#39;, 1, 1)
+  0       0          0.00         0.00         0.00    107.00   100.00   100.00     0.00   100.00    0.00    0.00    0.00    0.50
+(&#39;L-dep&#39;, 0, 9000.0)
+(&#39;R-dep&#39;, 0, 9000.0)
+(&#39;B-_&#39;, 0, 9000.0)
+(&#39;B-ROOT&#39;, 0, 9000.0)
+(&#39;Gold sent starts?&#39;, 1, 1)
+<span class=" -Color -Color-C3">⚠ Aborting and saving the final best model. Encountered exception:</span>
+<span class=" -Color -Color-C3">ValueError(&#39;Could not find gold transition - see logs above.&#39;)</span>
+Traceback (most recent call last):
+  File &quot;/usr/lib/python3.8/runpy.py&quot;, line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File &quot;/usr/lib/python3.8/runpy.py&quot;, line 87, in _run_code
+    exec(code, run_globals)
+  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/spacy/__main__.py&quot;, line 4, in &lt;module&gt;
+    setup_cli()
+  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/spacy/cli/_util.py&quot;, line 71, in setup_cli
+    command(prog_name=COMMAND)
+  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/click/core.py&quot;, line 1128, in __call__
+    return self.main(*args, **kwargs)
+  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/click/core.py&quot;, line 1053, in main
+    rv = self.invoke(ctx)
+  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/click/core.py&quot;, line 1659, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/click/core.py&quot;, line 1395, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/click/core.py&quot;, line 754, in invoke
+    return __callback(*args, **kwargs)
+  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/typer/main.py&quot;, line 500, in wrapper
+    return callback(**use_params)  # type: ignore
+  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/spacy/cli/train.py&quot;, line 45, in train_cli
+    train(config_path, output_path, use_gpu=use_gpu, overrides=overrides)
+  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/spacy/cli/train.py&quot;, line 75, in train
+    train_nlp(nlp, output_path, use_gpu=use_gpu, stdout=sys.stdout, stderr=sys.stderr)
+  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/spacy/training/loop.py&quot;, line 122, in train
+    raise e
+  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/spacy/training/loop.py&quot;, line 105, in train
+    for batch, info, is_best_checkpoint in training_step_iterator:
+  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/spacy/training/loop.py&quot;, line 203, in train_while_improving
+    nlp.update(
+  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/spacy/language.py&quot;, line 1153, in update
+    proc.update(examples, sgd=None, losses=losses, **component_cfg[name])  # type: ignore
+  File &quot;spacy/pipeline/transition_parser.pyx&quot;, line 406, in spacy.pipeline.transition_parser.Parser.update
+  File &quot;spacy/pipeline/transition_parser.pyx&quot;, line 518, in spacy.pipeline.transition_parser.Parser.get_batch_loss
+  File &quot;spacy/pipeline/_parser_internals/arc_eager.pyx&quot;, line 827, in spacy.pipeline._parser_internals.arc_eager.ArcEager.set_costs
+ValueError: Could not find gold transition - see logs above.
 </pre></div>
 </div>
 </div>
@@ -522,6 +623,21 @@ Error: Invalid value for &#39;[PROJECT_DIR]&#39;: Directory &#39;/srv/projects/c
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluate the model </span>
+<span class="o">!</span>python -m spacy project run evaluate /srv/projects/course-materials/w2/using-inception-data/newlang_project
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Package the model </span>
+<span class="o">!</span>mkdir ./export 
+<span class="o">!</span>python -m spacy package ./newlang_project/training/urban-giggle/model-last ./export 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/bin/bash: python: command not found
 </pre></div>
 </div>
 </div>
