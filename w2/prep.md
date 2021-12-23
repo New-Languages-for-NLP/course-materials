@@ -29,7 +29,7 @@ Preparation for Workshop II
 - For your files to be available in the Curation menu, you will need to close them in Annotation. To do this, go to Annotation, then open the file.  Click on the little lock icon to “Close File.” This can take a few seconds to complete. You can always re-open to continue work. 
 
 
-- Open each text individually in the Curate menu. When you’re ready to export, click on the “Export Document” button. If you are exporting annotations for tokenization, part of speech, lemmata, and features, choose the conllu format.  For named entities, you can select CoNLL CoreNLP.  
+- Open each text individually in the Curate menu. When you’re ready to export, click on the “Export Document” button. If you are exporting annotations for tokenization, part of speech, lemmata, and features, choose the conllu format.  For named entities, you can select CoNLL 2002.  
 - Download your files to the 3_inception_export folder
 - Commit and push everything to Github
 
