@@ -31,6 +31,9 @@ parts:
   chapters:
   - file: w2/overview
   - file: w2/prep
+  - file: w2/intro-ml
+  - file: w2/practical-intro
+  
 - caption: Workshop III  Presentations and Publications ~ May 12-13, 2022
   numbered: true
   chapters:
