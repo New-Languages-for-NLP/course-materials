@@ -32,6 +32,8 @@ parts:
   - file: w2/overview
   - file: w2/prep
   - file: w2/intro-ml
+  - file: w2/project 
+  - file: w2/config
   - file: w2/practical-intro
     sections:
     - file: w2/practical-intro/Practical Introduction to Model Training.ipynb
