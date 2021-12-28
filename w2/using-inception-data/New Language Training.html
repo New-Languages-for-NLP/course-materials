@@ -213,9 +213,14 @@
    18. Introduction to Machine Learning
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../config.html">
+   19. The Config File
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../practical-intro.html">
-   19. Practical Introduction to Model Training
+   20. Practical Introduction to Model Training
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -225,7 +230,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../practical-intro/Practical%20Introduction%20to%20Model%20Training.html">
-     19.1. Practical Introduction to Model Training
+     20.1. Practical Introduction to Model Training
     </a>
    </li>
   </ul>
@@ -239,7 +244,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../w3/overview.html">
-   20. Welcome to Workshop III
+   21. Welcome to Workshop III
   </a>
  </li>
 </ul>
@@ -362,8 +367,8 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">private_repo</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1">#@param {type:&quot;boolean&quot;}</span>
-<span class="n">repo_name</span> <span class="o">=</span> <span class="s2">&quot;old-chinese&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">private_repo</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1">#@param {type:&quot;boolean&quot;}</span>
+<span class="n">repo_name</span> <span class="o">=</span> <span class="s2">&quot;repo-template&quot;</span> <span class="c1">#@param {type:&quot;string&quot;}</span>
 
 <span class="o">!</span>rm -rf /content/newlang_project
 <span class="o">!</span>rm -rf <span class="nv">$repo_name</span>
@@ -383,17 +388,19 @@
     <span class="o">!</span>rm -rf ./<span class="nv">$repo_name</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="o">!</span>python -m spacy project clone newlang_project --repo https://github.com/New-Languages-for-NLP/<span class="nv">$repo_name</span> --branch main
-    <span class="o">!</span>python -m spacy project assets /content/newlang_project
+    <span class="o">!</span>python -m spacy project assets /srv/projects/course-materials/w2/using-inception-data/newlang_project
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cloning into &#39;old-chinese&#39;...
-remote: Enumerating objects: 36, done.
-remote: Counting objects: 100% (36/36), done.
-remote: Compressing objects: 100% (27/27), done.
-remote: Total 36 (delta 9), reused 24 (delta 4), pack-reused 0
-Unpacking objects: 100% (36/36), 8.30 KiB | 99.00 KiB/s, done.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C2">✔ Cloned &#39;newlang_project&#39; from New-Languages-for-NLP/repo-template</span>
+/srv/projects/course-materials/w2/using-inception-data/newlang_project
+<span class=" -Color -Color-C2">✔ Your project is now ready!</span>
+To fetch the assets, run:
+python -m spacy project assets /srv/projects/course-materials/w2/using-inception-data/newlang_project
+<span class=" -Color -Color-C4">ℹ Fetching 1 asset(s)</span>
+<span class=" -Color -Color-C2">✔ Downloaded asset</span>
+<span class=" -Color -Color-C2">/srv/projects/course-materials/w2/using-inception-data/newlang_project/assets/urban-giggle</span>
 </pre></div>
 </div>
 </div>
@@ -406,7 +413,22 @@ Unpacking objects: 100% (36/36), 8.30 KiB | 99.00 KiB/s, done.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/bin/bash: python: command not found
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<span class=" -Color -Color-Bold">================================== install ==================================</span>
+Running command: rm -rf lang
+Running command: mkdir lang
+Running command: mkdir lang/yi
+Running command: cp -r assets/urban-giggle/2_new_language_object/ lang/yi/yi
+Running command: mv lang/yi/yi/setup.py lang/yi/
+Running command: /srv/projects/course-materials/w2/venv/bin/python -m pip install -e lang/yi
+Obtaining file:///srv/projects/course-materials/w2/using-inception-data/newlang_project/lang/yi
+Installing collected packages: yi
+  Attempting uninstall: yi
+    Found existing installation: yi 0.0.0
+    Uninstalling yi-0.0.0:
+      Successfully uninstalled yi-0.0.0
+  Running setup.py develop for yi
+Successfully installed yi
 </pre></div>
 </div>
 </div>
@@ -421,12 +443,12 @@ Unpacking objects: 100% (36/36), 8.30 KiB | 99.00 KiB/s, done.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 <span class=" -Color -Color-Bold">=================================== config ===================================</span>
-Running command: /srv/projects/course-materials/temp/venv/bin/python -m spacy init config config.cfg --lang clara -F
+Running command: /srv/projects/course-materials/w2/venv/bin/python -m spacy init config config.cfg --lang yi -F
 <span class=" -Color -Color-C3">⚠ To generate a more effective transformer-based config (GPU-only),</span>
 <span class=" -Color -Color-C3">install the spacy-transformers package and re-run this command. The config</span>
 <span class=" -Color -Color-C3">generated now does not use transformers.</span>
 <span class=" -Color -Color-C4">ℹ Generated config template specific for your use case</span>
-- Language: clara
+- Language: yi
 - Pipeline: tagger, parser, ner
 - Optimize for: efficiency
 - Hardware: CPU
@@ -436,6 +458,7 @@ Running command: /srv/projects/course-materials/temp/venv/bin/python -m spacy in
 config.cfg
 You can now add your data and train your pipeline:
 python -m spacy train config.cfg --paths.train ./train.spacy --paths.dev ./dev.spacy
+Running command: /srv/projects/course-materials/w2/venv/bin/python scripts/update_config.py urban-giggle false
 </pre></div>
 </div>
 </div>
@@ -454,11 +477,83 @@ python -m spacy train config.cfg --paths.train ./train.spacy --paths.dev ./dev.s
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 <span class=" -Color -Color-Bold">================================== convert ==================================</span>
-Running command: /srv/projects/course-materials/temp/venv/bin/python scripts/convert.py assets/urban-giggle/3_inception_export
+Running command: mkdir -p ./corpus/conllu
+Running command: mkdir -p ./corpus/conll
+Running command: mkdir -p ./corpus/converted
+Running command: /srv/projects/course-materials/w2/venv/bin/python scripts/convert.py assets/urban-giggle/3_inception_export 10 yi
 <span class=" -Color -Color-C4">ℹ Grouping every 10 sentences into a document.</span>
-<span class=" -Color -Color-C2">✔ Generated output file (106 documents): corpus/YorText2.spacy</span>
+<span class=" -Color -Color-C2">✔ Generated output file (108 documents):</span>
+<span class=" -Color -Color-C2">corpus/converted/cu_proiel-ud-dev.spacy</span>
 <span class=" -Color -Color-C4">ℹ Grouping every 10 sentences into a document.</span>
-<span class=" -Color -Color-C2">✔ Generated output file (360 documents): corpus/YorText3.spacy</span>
+<span class=" -Color -Color-C2">✔ Generated output file (115 documents):</span>
+<span class=" -Color -Color-C2">corpus/converted/cu_proiel-ud-test.spacy</span>
+<span class=" -Color -Color-C4">ℹ Grouping every 10 sentences into a document.</span>
+<span class=" -Color -Color-C2">✔ Generated output file (413 documents):</span>
+<span class=" -Color -Color-C2">corpus/converted/cu_proiel-ud-train.spacy</span>
+<span class=" -Color -Color-C4">ℹ Grouping every 10 sentences into a document.</span>
+Traceback (most recent call last):
+  File &quot;/usr/lib/python3.8/runpy.py&quot;, line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File &quot;/usr/lib/python3.8/runpy.py&quot;, line 87, in _run_code
+    exec(code, run_globals)
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/spacy/__main__.py&quot;, line 4, in &lt;module&gt;
+    setup_cli()
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/spacy/cli/_util.py&quot;, line 71, in setup_cli
+    command(prog_name=COMMAND)
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/click/core.py&quot;, line 829, in __call__
+    return self.main(*args, **kwargs)
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/click/core.py&quot;, line 782, in main
+    rv = self.invoke(ctx)
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/click/core.py&quot;, line 1259, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/click/core.py&quot;, line 1066, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/click/core.py&quot;, line 610, in invoke
+    return callback(*args, **kwargs)
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/typer/main.py&quot;, line 500, in wrapper
+    return callback(**use_params)  # type: ignore
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/spacy/cli/convert.py&quot;, line 75, in convert_cli
+    convert(
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/spacy/cli/convert.py&quot;, line 140, in convert
+    db = DocBin(docs=docs, store_user_data=True)
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/spacy/tokens/_serialize.py&quot;, line 86, in __init__
+    for doc in docs:
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/spacy/training/converters/conllu_to_docs.py&quot;, line 38, in conllu_to_docs
+    for sent_doc in sent_docs:
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/spacy/training/converters/conllu_to_docs.py&quot;, line 79, in read_conllx
+    doc = conllu_sentence_to_doc(
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/spacy/training/converters/conllu_to_docs.py&quot;, line 200, in conllu_sentence_to_doc
+    doc = Doc(
+  File &quot;spacy/tokens/doc.pyx&quot;, line 296, in spacy.tokens.doc.Doc.__init__
+ValueError: [E1021] `pos` value &quot;_&quot; is not a valid Universal Dependencies tag. Non-UD tags should use the `tag` property.
+<span class=" -Color -Color-C4">ℹ Grouping every 10 sentences into a document.</span>
+<span class=" -Color -Color-C2">✔ Generated output file (8 documents): corpus/conll/doggo.spacy</span>
+Traceback (most recent call last):
+  File &quot;scripts/convert.py&quot;, line 63, in &lt;module&gt;
+    typer.run(convert)
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/typer/main.py&quot;, line 864, in run
+    app()
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/typer/main.py&quot;, line 214, in __call__
+    return get_command(self)(*args, **kwargs)
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/click/core.py&quot;, line 829, in __call__
+    return self.main(*args, **kwargs)
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/click/core.py&quot;, line 782, in main
+    rv = self.invoke(ctx)
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/click/core.py&quot;, line 1066, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/click/core.py&quot;, line 610, in invoke
+    return callback(*args, **kwargs)
+  File &quot;/srv/projects/course-materials/w2/venv/lib/python3.8/site-packages/typer/main.py&quot;, line 500, in wrapper
+    return callback(**use_params)  # type: ignore
+  File &quot;scripts/convert.py&quot;, line 46, in convert
+    conllu_bin = DocBin().from_bytes(conllu_file.read_bytes())
+  File &quot;/usr/lib/python3.8/pathlib.py&quot;, line 1229, in read_bytes
+    with self.open(mode=&#39;rb&#39;) as f:
+  File &quot;/usr/lib/python3.8/pathlib.py&quot;, line 1222, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File &quot;/usr/lib/python3.8/pathlib.py&quot;, line 1078, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: &#39;/srv/projects/course-materials/w2/using-inception-data/newlang_project/corpus/converted/doggo.spacy&#39;
 </pre></div>
 </div>
 </div>
@@ -474,9 +569,10 @@ Running command: /srv/projects/course-materials/temp/venv/bin/python scripts/con
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 <span class=" -Color -Color-Bold">=================================== split ===================================</span>
-Running command: /srv/projects/course-materials/temp/venv/bin/python scripts/split.py 0.4 11
-😊 Created 279 training docs
-😊 Created 187 validation docs
+Running command: /srv/projects/course-materials/w2/venv/bin/python scripts/split.py 0.2 11 yi
+🚂 Created 1017 training docs
+😊 Created 204 validation docs
+🧪  Created 51 test docs
 </pre></div>
 </div>
 </div>
@@ -491,23 +587,22 @@ Running command: /srv/projects/course-materials/temp/venv/bin/python scripts/spl
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 <span class=" -Color -Color-Bold">=================================== debug ===================================</span>
-Running command: /srv/projects/course-materials/temp/venv/bin/python scripts/update_config.py
-Running command: /srv/projects/course-materials/temp/venv/bin/python -m spacy debug data ./config.cfg
+Running command: /srv/projects/course-materials/w2/venv/bin/python -m spacy debug data ./config.cfg
 
 <span class=" -Color -Color-Bold">============================ Data file validation ============================</span>
 <span class=" -Color -Color-C2">✔ Pipeline can be initialized with data</span>
 <span class=" -Color -Color-C2">✔ Corpus is loadable</span>
 
 <span class=" -Color -Color-Bold">=============================== Training stats ===============================</span>
-Language: clara
+Language: yi
 Training pipeline: tok2vec, tagger, parser, ner
-279 training docs
-187 evaluation docs
-<span class=" -Color -Color-C2">✔ No overlap between training and evaluation data</span>
-<span class=" -Color -Color-C3">⚠ Low number of examples to train a new pipeline (279)</span>
+1017 training docs
+204 evaluation docs
+<span class=" -Color -Color-C3">⚠ 166 training examples also in evaluation data</span>
+<span class=" -Color -Color-C3">⚠ Low number of examples to train a new pipeline (1017)</span>
 
 <span class=" -Color -Color-Bold">============================== Vocab &amp; Vectors ==============================</span>
-<span class=" -Color -Color-C4">ℹ 38701 total word(s) in the data (5648 unique)</span>
+<span class=" -Color -Color-C4">ℹ 92587 total word(s) in the data (9854 unique)</span>
 <span class=" -Color -Color-C4">ℹ No word vectors present in the package</span>
 
 <span class=" -Color -Color-Bold">========================== Named Entity Recognition ==========================</span>
@@ -518,16 +613,22 @@ Training pipeline: tok2vec, tagger, parser, ner
 <span class=" -Color -Color-C2">✔ No entities consisting of or starting/ending with whitespace</span>
 
 <span class=" -Color -Color-Bold">=========================== Part-of-speech Tagging ===========================</span>
-<span class=" -Color -Color-C4">ℹ 1 label(s) in train data</span>
+<span class=" -Color -Color-C4">ℹ 23 label(s) in train data</span>
 
 <span class=" -Color -Color-Bold">============================= Dependency Parsing =============================</span>
-<span class=" -Color -Color-C4">ℹ Found 38691 sentence(s) with an average length of 1.0 words.</span>
-<span class=" -Color -Color-C4">ℹ 1 label(s) in train data</span>
-<span class=" -Color -Color-C4">ℹ 1 label(s) in projectivized train data</span>
+<span class=" -Color -Color-C4">ℹ Found 10138 sentence(s) with an average length of 9.1 words.</span>
+<span class=" -Color -Color-C4">ℹ Found 824 nonprojective train sentence(s)</span>
+<span class=" -Color -Color-C4">ℹ 34 label(s) in train data</span>
+<span class=" -Color -Color-C4">ℹ 208 label(s) in projectivized train data</span>
+<span class=" -Color -Color-C3">⚠ Low number of examples for label &#39;csubj:pass&#39; (20)</span>
+<span class=" -Color -Color-C3">⚠ Low number of examples for label &#39;aux:pass&#39; (2)</span>
+<span class=" -Color -Color-C3">⚠ Low number of examples for 146 label(s) in the projectivized</span>
+<span class=" -Color -Color-C3">dependency trees used for training. You may want to projectivize labels such as</span>
+<span class=" -Color -Color-C3">punct before training in order to improve parser performance.</span>
 
 <span class=" -Color -Color-Bold">================================== Summary ==================================</span>
-<span class=" -Color -Color-C2">✔ 6 checks passed</span>
-<span class=" -Color -Color-C3">⚠ 1 warning</span>
+<span class=" -Color -Color-C2">✔ 5 checks passed</span>
+<span class=" -Color -Color-C3">⚠ 8 warnings</span>
 </pre></div>
 </div>
 </div>
@@ -542,17 +643,16 @@ Training pipeline: tok2vec, tagger, parser, ner
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 <span class=" -Color -Color-Bold">=================================== train ===================================</span>
-Running command: /srv/projects/course-materials/temp/venv/bin/python -m spacy train config.cfg --output training/urban-giggle --gpu-id -1 --nlp.lang=clara
-<span class=" -Color -Color-C2">✔ Created output directory: training/urban-giggle</span>
+Running command: /srv/projects/course-materials/w2/venv/bin/python -m spacy train config.cfg --output training/urban-giggle --gpu-id -1 --nlp.lang=yi
 <span class=" -Color -Color-C4">ℹ Saving to output directory: training/urban-giggle</span>
 <span class=" -Color -Color-C4">ℹ Using CPU</span>
 
 <span class=" -Color -Color-Bold">=========================== Initializing pipeline ===========================</span>
-[2021-12-19 20:17:02,411] [INFO] Set up nlp object from config
-[2021-12-19 20:17:02,416] [INFO] Pipeline: [&#39;tok2vec&#39;, &#39;tagger&#39;, &#39;parser&#39;, &#39;ner&#39;]
-[2021-12-19 20:17:02,419] [INFO] Created vocabulary
-[2021-12-19 20:17:02,419] [INFO] Finished initializing nlp object
-[2021-12-19 20:17:04,527] [INFO] Initialized pipeline components: [&#39;tok2vec&#39;, &#39;tagger&#39;, &#39;parser&#39;, &#39;ner&#39;]
+[2021-12-28 15:40:27,039] [INFO] Set up nlp object from config
+[2021-12-28 15:40:27,047] [INFO] Pipeline: [&#39;tok2vec&#39;, &#39;tagger&#39;, &#39;parser&#39;, &#39;ner&#39;]
+[2021-12-28 15:40:27,051] [INFO] Created vocabulary
+[2021-12-28 15:40:27,051] [INFO] Finished initializing nlp object
+[2021-12-28 15:40:31,912] [INFO] Initialized pipeline components: [&#39;tok2vec&#39;, &#39;tagger&#39;, &#39;parser&#39;, &#39;ner&#39;]
 <span class=" -Color -Color-C2">✔ Initialized pipeline</span>
 
 <span class=" -Color -Color-Bold">============================= Training pipeline =============================</span>
@@ -560,56 +660,10 @@ Running command: /srv/projects/course-materials/temp/venv/bin/python -m spacy tr
 <span class=" -Color -Color-C4">ℹ Initial learn rate: 0.001</span>
 E    #       LOSS TOK2VEC  LOSS TAGGER  LOSS PARSER  LOSS NER  TAG_ACC  DEP_UAS  DEP_LAS  SENTS_F  ENTS_F  ENTS_P  ENTS_R  SCORE 
 ---  ------  ------------  -----------  -----------  --------  -------  -------  -------  -------  ------  ------  ------  ------
-(&#39;L-dep&#39;, 0, 9000.0)
-(&#39;R-dep&#39;, 0, 9000.0)
-(&#39;B-_&#39;, 0, 9000.0)
-(&#39;B-ROOT&#39;, 0, 9000.0)
-(&#39;Gold sent starts?&#39;, 1, 1)
-  0       0          0.00         0.00         0.00    107.00   100.00   100.00     0.00   100.00    0.00    0.00    0.00    0.50
-(&#39;L-dep&#39;, 0, 9000.0)
-(&#39;R-dep&#39;, 0, 9000.0)
-(&#39;B-_&#39;, 0, 9000.0)
-(&#39;B-ROOT&#39;, 0, 9000.0)
-(&#39;Gold sent starts?&#39;, 1, 1)
-<span class=" -Color -Color-C3">⚠ Aborting and saving the final best model. Encountered exception:</span>
-<span class=" -Color -Color-C3">ValueError(&#39;Could not find gold transition - see logs above.&#39;)</span>
-Traceback (most recent call last):
-  File &quot;/usr/lib/python3.8/runpy.py&quot;, line 194, in _run_module_as_main
-    return _run_code(code, main_globals, None,
-  File &quot;/usr/lib/python3.8/runpy.py&quot;, line 87, in _run_code
-    exec(code, run_globals)
-  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/spacy/__main__.py&quot;, line 4, in &lt;module&gt;
-    setup_cli()
-  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/spacy/cli/_util.py&quot;, line 71, in setup_cli
-    command(prog_name=COMMAND)
-  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/click/core.py&quot;, line 1128, in __call__
-    return self.main(*args, **kwargs)
-  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/click/core.py&quot;, line 1053, in main
-    rv = self.invoke(ctx)
-  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/click/core.py&quot;, line 1659, in invoke
-    return _process_result(sub_ctx.command.invoke(sub_ctx))
-  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/click/core.py&quot;, line 1395, in invoke
-    return ctx.invoke(self.callback, **ctx.params)
-  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/click/core.py&quot;, line 754, in invoke
-    return __callback(*args, **kwargs)
-  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/typer/main.py&quot;, line 500, in wrapper
-    return callback(**use_params)  # type: ignore
-  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/spacy/cli/train.py&quot;, line 45, in train_cli
-    train(config_path, output_path, use_gpu=use_gpu, overrides=overrides)
-  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/spacy/cli/train.py&quot;, line 75, in train
-    train_nlp(nlp, output_path, use_gpu=use_gpu, stdout=sys.stdout, stderr=sys.stderr)
-  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/spacy/training/loop.py&quot;, line 122, in train
-    raise e
-  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/spacy/training/loop.py&quot;, line 105, in train
-    for batch, info, is_best_checkpoint in training_step_iterator:
-  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/spacy/training/loop.py&quot;, line 203, in train_while_improving
-    nlp.update(
-  File &quot;/srv/projects/course-materials/temp/venv/lib/python3.8/site-packages/spacy/language.py&quot;, line 1153, in update
-    proc.update(examples, sgd=None, losses=losses, **component_cfg[name])  # type: ignore
-  File &quot;spacy/pipeline/transition_parser.pyx&quot;, line 406, in spacy.pipeline.transition_parser.Parser.update
-  File &quot;spacy/pipeline/transition_parser.pyx&quot;, line 518, in spacy.pipeline.transition_parser.Parser.get_batch_loss
-  File &quot;spacy/pipeline/_parser_internals/arc_eager.pyx&quot;, line 827, in spacy.pipeline._parser_internals.arc_eager.ArcEager.set_costs
-ValueError: Could not find gold transition - see logs above.
+  0       0          0.00        69.83       113.08     37.00    20.74    12.35    11.30     0.48    0.00    0.00    0.00    0.11
+^C
+
+Aborted!
 </pre></div>
 </div>
 </div>
