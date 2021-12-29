@@ -162,16 +162,16 @@ Let's start with the **project.yml** file.
 You'll find a **metadata** section that you can update however you like using the yaml format.   
 
 The **vars** section will have some information that is specific to your team.  
-    - The `config` setting is the name and location of the config file.  We'll just have `config.cfg` in the project directory, so nothing fancy here. 
-    - `lang` is the ISO-style abbreviation for your language. 
-    - `treebank` is the name of your language's repository (and is ususally the same as the language name).
-    - `test_size` is the percentage of data that you want to set aside for model validation and testing. An 80/20 split is a good place to start, so you'll see it set initially to `0.2`. For more, this [stackoverflow discussion](https://stackoverflow.com/questions/13610074/is-there-a-rule-of-thumb-for-how-to-divide-a-dataset-into-training-and-validatio) is very informative. 
-    - We need to evenly distribute your texts between the training and validation datasets. We split each text into blocks of 10 sentences. This is defined by the `n_sents` variable.
-    - To ensure that the test and train split is consistent and reproducable, we use a number called `random_state`. More [here](https://scikit-learn.org/stable/glossary.html#term-random_state).
-    - The `package_name` is used during packaging and sets the package's metadata name. Basically, what is the name of your language model? 
-    - Similarly, `package_version` sets the package metadata for version.
-    - spaCy comes with some basic ways to log training data.  However, [Weights and Biases](https://wandb.ai/) provides an excellent way to record, manage and share experiment data. You'll need to create a free account and get an API key to use bandb.  When set to `true` your project will use bandb (we highly recommend). You can change this to `false` if you prefer spaCy defaul logging. 
-    - Finally, model training with graphics chips (GPUs) is often faster than with a standard CPU. We recommend using Colab for their free GPUs.  In such a case you'd change `-1` (CPU) to `0` (the GPU id).        
+- The `config` setting is the name and location of the config file.  We'll just have `config.cfg` in the project directory, so nothing fancy here. 
+- `lang` is the ISO-style abbreviation for your language. 
+- `treebank` is the name of your language's repository (and is ususally the same as the language name).
+- `test_size` is the percentage of data that you want to set aside for model validation and testing. An 80/20 split is a good place to start, so you'll see it set initially to `0.2`. For more, this [stackoverflow discussion](https://stackoverflow.com/questions/13610074/is-there-a-rule-of-thumb-for-how-to-divide-a-dataset-into-training-and-validatio) is very informative. 
+- We need to evenly distribute your texts between the training and validation datasets. We split each text into blocks of 10 sentences. This is defined by the `n_sents` variable.
+- To ensure that the test and train split is consistent and reproducable, we use a number called `random_state`. More [here](https://scikit-learn.org/stable/glossary.html#term-random_state).
+- The `package_name` is used during packaging and sets the package's metadata name. Basically, what is the name of your language model? 
+- Similarly, `package_version` sets the package metadata for version.
+- spaCy comes with some basic ways to log training data.  However, [Weights and Biases](https://wandb.ai/) provides an excellent way to record, manage and share experiment data. You'll need to create a free account and get an API key to use bandb.  When set to `true` your project will use bandb (we highly recommend). You can change this to `false` if you prefer spaCy defaul logging. 
+- Finally, model training with graphics chips (GPUs) is often faster than with a standard CPU. We recommend using Colab for their free GPUs.  In such a case you'd change `-1` (CPU) to `0` (the GPU id).        
 
 ```yaml 
 vars:
