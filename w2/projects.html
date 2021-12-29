@@ -360,14 +360,14 @@
 <h1><span class="section-number">19. </span>The Project File<a class="headerlink" href="#the-project-file" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2><span class="section-number">19.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>To help organize your work and to create a clear and explicit workflow, spaCy offers what they call “projects.” A “project” is a file that acts like a script to run various steps in your experiment. It’s a way to write everything down and explain the steps of your work. In this section, we’ll cover the syntax of the project file and its main parts.  We’ll then look over the main project file that we have provided you for this workshop, which will read the data in your github repository, pre-process the data and then train and package a model for your language.</p>
+<p>To help organize your work and to create a clear and explicit workflow, spaCy offers a feature called “projects.” A “project” is a file that acts like a template and script that runs various steps in your experiment. It’s a way to write everything down and clearly establish each step in your workflow. In this section, we’ll cover the syntax of the project file and its main parts.  We’ll then look over the main project file that we have provided you for this workshop, which will read the data in your github repository, prepare the data and then train and package a model for your language.</p>
 <blockquote>
 <div><p><a class="reference external" href="https://spacy.io/usage/projects">spaCy Projects docs</a></p>
 </div></blockquote>
 </div>
 <div class="section" id="syntax">
 <h2><span class="section-number">19.2. </span>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">project.yml</span></code> file follows a format called yaml which is a simplified and human-friendly form for common data types such as Python lists and dictionaries. If you’ve ever worked with markdown, that’s a simplified format for HTML content.YAML is to data what markdown is for content.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">project.yml</span></code> file follows a format called yaml which is a simplified and human-friendly form for common data types such as Python lists and dictionaries. If you’ve ever worked with markdown, that is a simplified format for HTML content.YAML is to data what markdown is for content.</p>
 <p>The simplest way to write yaml is to separate a key and value with a semi-colon:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Fred</span>
 </pre></div>
@@ -406,15 +406,52 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>There’s much more that you can do with yaml, but we’ve cover the basics that you’ll need to understand a spaCy project file.</p>
+<p>There’s much more that you can do with yaml, but this should be the basics that you’ll need to understand a spaCy project file.</p>
 <blockquote>
-<div><p>For more here’s the <a class="reference external" href="https://github.com/dreftymac/awesome-yaml">awesome yaml page</a>
-Here’s a great app to test how your yaml will be converted into data: <a class="reference external" href="https://yaml-online-parser.appspot.com/">https://yaml-online-parser.appspot.com/</a></p>
+<div><p>For more here’s the <a class="reference external" href="https://github.com/dreftymac/awesome-yaml">awesome yaml page</a></p>
+</div></blockquote>
+<blockquote>
+<div><p>Here’s a great app to test how your yaml will be converted into data: <a class="reference external" href="https://yaml-online-parser.appspot.com/">https://yaml-online-parser.appspot.com/</a></p>
 </div></blockquote>
 </div>
 <div class="section" id="project-file-sections">
 <h2><span class="section-number">19.3. </span>Project file sections<a class="headerlink" href="#project-file-sections" title="Permalink to this headline">¶</a></h2>
-<p>…</p>
+<ol class="simple">
+<li><p>Most project files begin with basic metadata about the project.  This is often a title and description.</p></li>
+</ol>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">title</span><span class="p">:</span> <span class="s">&quot;New</span><span class="nv"> </span><span class="s">Language</span><span class="nv"> </span><span class="s">Model</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">UD</span><span class="nv"> </span><span class="s">Data&quot;</span>
+<span class="nt">authors</span><span class="p">:</span> 
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Phil</span> 
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Emma</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Sudipta</span>
+<span class="nt">description</span><span class="p">:</span> <span class="s">&quot;This</span><span class="nv"> </span><span class="s">project...</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>The variables section lets you clearly declare project settings and variables. These variable can be called and reused with the format <code class="docutils literal notranslate"><span class="pre">${</span> <span class="pre">vars.your-variable}</span></code> You can also nest variables. We can use the train_file variable below by calling <code class="docutils literal notranslate"><span class="pre">${</span> <span class="pre">vars.files.train_file</span> <span class="pre">}</span></code>.  Using the variables section makes your project more consistent and easier to read.</p></li>
+</ol>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">vars</span><span class="p">:</span>
+  <span class="nt">config</span><span class="p">:</span> <span class="s">&quot;config.cfg&quot;</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="s">&quot;ner_fashion&quot;</span>
+  <span class="nt">version</span><span class="p">:</span> <span class="s">&quot;0.0.0&quot;</span>
+  <span class="c1"># Change this variable if you want to use the GPU (gpu_id: 0)</span>
+  <span class="nt">gpu_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-1</span>
+
+  <span class="nt">files</span><span class="p">:</span>
+    <span class="nt">train_file</span><span class="p">:</span> <span class="s">&quot;fashion_brands_training.jsonl&quot;</span>
+    <span class="nt">eval_file</span><span class="p">:</span> <span class="s">&quot;fashion_brands_eval.jsonl&quot;</span>
+
+  <span class="nt">prodigy</span><span class="p">:</span>
+    <span class="nt">train_dataset</span><span class="p">:</span> <span class="s">&quot;fashion_brands_training&quot;</span>
+    <span class="nt">eval_dataset</span><span class="p">:</span> <span class="s">&quot;fashion_brands_eval&quot;</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>The directories list is a list of project subfolders.  If you want spaCy to always create a new folder for you, just add it to the list.  This is cleaner than adding ‘mkdir’ calls in the scripts sections.</p></li>
+</ol>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">directories</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;assets&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;training&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;configs&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;corpus&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;packages&quot;</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="the-new-language-project-file">
 <h2><span class="section-number">19.4. </span>The New Language Project File<a class="headerlink" href="#the-new-language-project-file" title="Permalink to this headline">¶</a></h2>
