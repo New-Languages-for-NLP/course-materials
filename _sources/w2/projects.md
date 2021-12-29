@@ -67,7 +67,7 @@ There's much more that you can do with yaml, but let's keep it simple for now. W
 
 ### Project file sections
 
-1. Most project files begin with basic **metadata** about the project.  This is often just a title and description, but can include whatever you feel is important to record and give context for the project. 
+-  Most project files begin with basic **metadata** about the project.  This is often just a title and description, but can include whatever you feel is important to record and give context for the project. 
 
 ```yaml
 title: "New Language Model using UD Data"
@@ -78,7 +78,7 @@ description: "This project..."
 date: 29/12/2021
 ```
 
-2. The **variables** section lets you clearly declare project settings and variables. These variable can be called and reused within the project using the format `${ vars.your-variable }`. You can also nest variables. We can use the train_file variable from below by calling `${ vars.files.train_file }`.  Using the variables section makes your project more consistent and easier to read. 
+- The **variables** section lets you clearly declare project settings and variables. These variable can be called and reused within the project using the format `${vars.your-variable}`. 
 
 ```yaml
 vars:
@@ -87,17 +87,9 @@ vars:
   version: "0.0.0"
   # Change this variable if you want to use the GPU (gpu_id: 0)
   gpu_id: -1
-
-  files:
-    train_file: "fashion_brands_training.jsonl"
-    eval_file: "fashion_brands_eval.jsonl"
-
-  prodigy:
-    train_dataset: "fashion_brands_training"
-    eval_dataset: "fashion_brands_eval"
 ```
 
-3. The directories list is a list of project subfolders.  If you want spaCy to always create a new folder for you, just add it to the list.  This is nicer than adding 'mkdir' calls in the scripts sections.
+- The directories list is a list of project subfolders.  If you want spaCy to always create a new folder for you, just add it to the list.  This is nicer than adding 'mkdir' calls in the scripts sections.
 
 ```yaml
 directories: ["assets", "assets/conllu", "training", "configs", "corpus", "packages"]
@@ -105,7 +97,7 @@ directories: ["assets", "assets/conllu", "training", "configs", "corpus", "packa
 
 > spaCy uses the pathlib library to confirm that each directory exists and creates any that are missing [src](https://github.com/explosion/spaCy/blob/f40e237c5a72784034b61425f7d863ce1ac9f46e/spacy/cli/_util.py#L162)
 
-4. The **assets** section describes the actions to be taken when you call `spacy project assets`. In most cases, this will fetch data from a remote source such as GitHub and download it to the computer currently running the project. The approach means that anyone running the experiment will be using the same data and not something that's specific to their computer. 
+- The **assets** section describes the actions to be taken when you call `spacy project assets`. In most cases, this will fetch data from a remote source such as GitHub and download it to the computer currently running the project. The approach means that anyone running the experiment will be using the same data and not something that's specific to their computer. 
 
 For the example below, let's say that `vars.treebank` is Yoruba. The code below will clone the `New-Languages-for-NLP/Yoruba` github repository and save all the files in the `assets/Yoruba` folder. 
 ```yaml
@@ -119,7 +111,7 @@ assets:
 ```
 > For more sees the [spaCy docs](https://spacy.io/usage/projects#data-assets)
 
-5. The **workflows** section makes it possible to run several commands in sequence.The most most common use of this feature is `spacy project run all`. For example, 
+- The **workflows** section makes it possible to run several commands in sequence.The most most common use of this feature is `spacy project run all`. For example, 
 
 ```yaml
 workflows:
@@ -130,7 +122,7 @@ workflows:
 will run the `install` and then the `convert` commands.  Commands can also be run individually, but the workflow provides a clear sequence in which they are meant to be run.   
 
 
-6. Probably the most important section of a project.yml file is the **commands** section. This section describes an action or step within the larger workflow. Each action has a `name`. It can also require certain inputs and outputs.  The `deps` section will test that required files are present.  An `outputs` section will confirm that the expected output files were created.  The `script` section works like the command line. You can run several commands in sequence utilizing information from `variables`.  
+- Probably the most important section of a `project.yml` file is the **commands** section. This section describes an action or step within the larger workflow. Each action has a `name`. It can also require certain inputs and outputs.  The `deps` section will test that required files are present.  An `outputs` section will confirm that the expected output files were created.  The `script` section works like the command line. You can run several commands in sequence utilizing information from `variables`.  For example, the code below will run a python script called `split.py` to create files needed for model training. If there is more than one action in a command, you can add as many as you need. 
 
 ```yaml
 commands:
@@ -146,6 +138,54 @@ commands:
       - "corpus/test.spacy"
 ```      
 
+> There's much more to spaCy projects, but this outline should give you the essentials to understand how the file is formatted and what it does. 
+
+
 ### The New Language Project File
 
-...
+- For the New Languages for NLP workshops, we've created a project file for you that can be adapted to meet the specific needs of your project. In this section, we've walk through the various sections and scripts of the project.  We've made some choices on your behalf. They may be right, or you may want to change things. Let's see what's there. 
+
+In your language teams GitHub repository, you'll find a `newlang_project` folder.  
+```
+newlang_project
+│   README.md
+│   project.yml    
+│
+└───scripts
+    │   convert.py
+    │   split.py
+    │   update_config.py
+```
+
+- Let's start with the **project.yml** file. 
+
+  - You'll find a **metadata** section that you can update however you like using the yaml format. 
+  - The **vars** section will have some information that is specific to your team.  
+    - The `config` setting is the name and location of the config file.  We'll just have `config.cfg` in the project directory, so nothing fancy here. 
+    - `lang` is the ISO-style abbreviation for your language. 
+    - `treebank` is the name of your language's repository (and is ususally the same as the language name).
+    - `test_size` is the percentage of data that you want to set aside for model validation and testing. An 80/20 split is a good place to start, so you'll see it set initially to `0.2`. For more, this [stackoverflow discussion](https://stackoverflow.com/questions/13610074/is-there-a-rule-of-thumb-for-how-to-divide-a-dataset-into-training-and-validatio) is very informative. 
+    - We need to evenly distribute your texts between the training and validation datasets. We split each text into blocks of 10 sentences. This is defined by the `n_sents` variable.
+    - To ensure that the test and train split is consistent and reproducable, we use a number called `random_state`. More [here](https://scikit-learn.org/stable/glossary.html#term-random_state).
+    - The `package_name` is used during packaging and sets the package's metadata name. Basically, what is the name of your language model? 
+    - Similarly, `package_version` sets the package metadata for version.
+    - spaCy comes with some basic ways to log training data.  However, [Weights and Biases](https://wandb.ai/) provides an excellent way to record, manage and share experiment data. You'll need to create a free account and get an API key to use bandb.  When set to `true` your project will use bandb (we highly recommend). You can change this to `false` if you prefer spaCy defaul logging. 
+    - Finally, model training with graphics chips (GPUs) is often faster than with a standard CPU. We recommend using Colab for their free GPUs.  In such a case you'd change `-1` (CPU) to `0` (the GPU id).        
+
+```yaml 
+vars:
+  config: "config"
+  lang: "yi"
+  treebank: "yiddish"
+  test_size: 0.2
+  n_sents: 10
+  random_state: 11
+  package_name: "Yiddish NewNLP Model May 2022"
+  package_version: "0.1"
+  wandb: true 
+  gpu: -1
+```
+
+- **Assets** is configured to use your language repo name to fetch project data from GitHub.  It will save all that data in the `assets/your-language-name` folder. 
+
+- The **commands** section is the heart of the project file.  Let's take some time to understand each command and what it does. 
