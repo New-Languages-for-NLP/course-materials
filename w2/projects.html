@@ -360,23 +360,30 @@
 <h1><span class="section-number">19. </span>The Project File<a class="headerlink" href="#the-project-file" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2><span class="section-number">19.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>To help organize your work and to create a clear and explicit workflow, spaCy offers a feature called “projects.” A “project” is a file that acts like a template and script that runs various steps in your experiment. It’s a way to write everything down and clearly establish each step in your workflow. In this section, we’ll cover the syntax of the project file and its main parts.  We’ll then look over the main project file that we have provided you for this workshop, which will read the data in your github repository, prepare the data and then train and package a model for your language.</p>
+<p>To help organize your work and to create a clear, reproducable and explicit workflow, spaCy offers a feature called “projects.” A “project” is a file that acts like a template that runs various steps in your experiment. It’s a way to write everything down and clearly establish each step in your model training workflow. In this section, we’ll cover the syntax of the project file and its main parts.  We’ll then look over the main project file that we have provided you for this workshop, which will read the data from your github repository, prepare the data and then train and package a model for your language.</p>
 <blockquote>
-<div><p><a class="reference external" href="https://spacy.io/usage/projects">spaCy Projects docs</a></p>
+<div><p><a class="reference external" href="https://spacy.io/usage/projects">spaCy projects docs</a></p>
 </div></blockquote>
 </div>
 <div class="section" id="syntax">
 <h2><span class="section-number">19.2. </span>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">project.yml</span></code> file follows a format called yaml which is a simplified and human-friendly form for common data types such as Python lists and dictionaries. If you’ve ever worked with markdown, that is a simplified format for HTML content.YAML is to data what markdown is for content.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">project.yml</span></code> file follows a format called yaml which is a simplified and human-friendly form for common data types such as Python lists and dictionaries. If you’ve ever worked with markdown this should feel somewhat familiar. Marksdown is a simplified format for HTML content. YAML is to data what markdown is for content. In fact, the name means “yet another markup language” (yaml).</p>
 <p>The simplest way to write yaml is to separate a key and value with a semi-colon:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Fred</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">first-name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Paula</span>
+<span class="nt">last-name</span><span class="p">:</span> <span class="s">&quot;Poundstone&quot;</span>
 </pre></div>
 </div>
-<p>Becomes a Python dictionary</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Fred&#39;</span><span class="p">}</span>
+<p>which becomes a Python dictionary</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;first-name&quot;</span><span class="p">:</span> <span class="s2">&quot;Paula&quot;</span><span class="p">,</span> 
+  <span class="s2">&quot;last-name&quot;</span><span class="p">:</span> <span class="s2">&quot;Poundstone&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>Or to create a list, use the hyphen <code class="docutils literal notranslate"><span class="pre">-</span></code></p>
+<blockquote>
+<div><p>note that quotes are not required for string values, but can be used if you prefer.</p>
+</div></blockquote>
+<p>To create a list, use the hyphen <code class="docutils literal notranslate"><span class="pre">-</span></code>.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Fred</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Inna</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Oleh</span> 
@@ -406,29 +413,27 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>There’s much more that you can do with yaml, but this should be the basics that you’ll need to understand a spaCy project file.</p>
+<p>I find it helpful to remember that we’re basically building a JSON object. When in doubt, you can fall back on that syntax. Here’s a great app to test how your yaml will be converted into data: <a class="reference external" href="https://yaml-online-parser.appspot.com/">https://yaml-online-parser.appspot.com/</a></p>
+<p>There’s much more that you can do with yaml, but let’s keep it simple for now. We’ve covered the basics that you’ll need for spaCy project files.</p>
 <blockquote>
-<div><p>For more here’s the <a class="reference external" href="https://github.com/dreftymac/awesome-yaml">awesome yaml page</a></p>
-</div></blockquote>
-<blockquote>
-<div><p>Here’s a great app to test how your yaml will be converted into data: <a class="reference external" href="https://yaml-online-parser.appspot.com/">https://yaml-online-parser.appspot.com/</a></p>
+<div><p>For more, here’s the <a class="reference external" href="https://github.com/dreftymac/awesome-yaml">awesome yaml page</a></p>
 </div></blockquote>
 </div>
 <div class="section" id="project-file-sections">
 <h2><span class="section-number">19.3. </span>Project file sections<a class="headerlink" href="#project-file-sections" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p>Most project files begin with basic metadata about the project.  This is often a title and description.</p></li>
+<li><p>Most project files begin with basic <strong>metadata</strong> about the project.  This is often just a title and description, but can include whatever you feel is important to record and give context for the project.</p></li>
 </ol>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">title</span><span class="p">:</span> <span class="s">&quot;New</span><span class="nv"> </span><span class="s">Language</span><span class="nv"> </span><span class="s">Model</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">UD</span><span class="nv"> </span><span class="s">Data&quot;</span>
 <span class="nt">authors</span><span class="p">:</span> 
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Phil</span> 
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Emma</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Sudipta</span>
-<span class="nt">description</span><span class="p">:</span> <span class="s">&quot;This</span><span class="nv"> </span><span class="s">project...</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Emma</span>
+<span class="nt">description</span><span class="p">:</span> <span class="s">&quot;This</span><span class="nv"> </span><span class="s">project...&quot;</span>
+<span class="nt">date</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">29/12/2021</span>
 </pre></div>
 </div>
 <ol class="simple">
-<li><p>The variables section lets you clearly declare project settings and variables. These variable can be called and reused with the format <code class="docutils literal notranslate"><span class="pre">${</span> <span class="pre">vars.your-variable}</span></code> You can also nest variables. We can use the train_file variable below by calling <code class="docutils literal notranslate"><span class="pre">${</span> <span class="pre">vars.files.train_file</span> <span class="pre">}</span></code>.  Using the variables section makes your project more consistent and easier to read.</p></li>
+<li><p>The <strong>variables</strong> section lets you clearly declare project settings and variables. These variable can be called and reused within the project using the format <code class="docutils literal notranslate"><span class="pre">${</span> <span class="pre">vars.your-variable</span> <span class="pre">}</span></code>. You can also nest variables. We can use the train_file variable from below by calling <code class="docutils literal notranslate"><span class="pre">${</span> <span class="pre">vars.files.train_file</span> <span class="pre">}</span></code>.  Using the variables section makes your project more consistent and easier to read.</p></li>
 </ol>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">vars</span><span class="p">:</span>
   <span class="nt">config</span><span class="p">:</span> <span class="s">&quot;config.cfg&quot;</span>
@@ -447,9 +452,53 @@
 </pre></div>
 </div>
 <ol class="simple">
-<li><p>The directories list is a list of project subfolders.  If you want spaCy to always create a new folder for you, just add it to the list.  This is cleaner than adding ‘mkdir’ calls in the scripts sections.</p></li>
+<li><p>The directories list is a list of project subfolders.  If you want spaCy to always create a new folder for you, just add it to the list.  This is nicer than adding ‘mkdir’ calls in the scripts sections.</p></li>
 </ol>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">directories</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;assets&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;training&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;configs&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;corpus&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;packages&quot;</span><span class="p p-Indicator">]</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">directories</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;assets&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;assets/conllu&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;training&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;configs&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;corpus&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;packages&quot;</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>spaCy uses the pathlib library to confirm that each directory exists and creates any that are missing <a class="reference external" href="https://github.com/explosion/spaCy/blob/f40e237c5a72784034b61425f7d863ce1ac9f46e/spacy/cli/_util.py#L162">src</a></p>
+</div></blockquote>
+<ol class="simple">
+<li><p>The <strong>assets</strong> section describes the actions to be taken when you call <code class="docutils literal notranslate"><span class="pre">spacy</span> <span class="pre">project</span> <span class="pre">assets</span></code>. In most cases, this will fetch data from a remote source such as GitHub and download it to the computer currently running the project. The approach means that anyone running the experiment will be using the same data and not something that’s specific to their computer.</p></li>
+</ol>
+<p>For the example below, let’s say that <code class="docutils literal notranslate"><span class="pre">vars.treebank</span></code> is Yoruba. The code below will clone the <code class="docutils literal notranslate"><span class="pre">New-Languages-for-NLP/Yoruba</span></code> github repository and save all the files in the <code class="docutils literal notranslate"><span class="pre">assets/Yoruba</span></code> folder.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">assets</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">dest</span><span class="p">:</span> <span class="s">&quot;assets/${vars.treebank}&quot;</span>
+    <span class="nt">git</span><span class="p">:</span>
+      <span class="nt">repo</span><span class="p">:</span> <span class="s">&quot;https://github.com/New-Languages-for-NLP/${vars.treebank}&quot;</span>
+      <span class="nt">branch</span><span class="p">:</span> <span class="s">&quot;main&quot;</span>
+      <span class="nt">path</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>For more sees the <a class="reference external" href="https://spacy.io/usage/projects#data-assets">spaCy docs</a></p>
+</div></blockquote>
+<ol class="simple">
+<li><p>The <strong>workflows</strong> section makes it possible to run several commands in sequence.The most most common use of this feature is <code class="docutils literal notranslate"><span class="pre">spacy</span> <span class="pre">project</span> <span class="pre">run</span> <span class="pre">all</span></code>. For example,</p></li>
+</ol>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">workflows</span><span class="p">:</span>
+  <span class="nt">all</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">install</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">convert</span>
+</pre></div>
+</div>
+<p>will run the <code class="docutils literal notranslate"><span class="pre">install</span></code> and then the <code class="docutils literal notranslate"><span class="pre">convert</span></code> commands.  Commands can also be run individually, but the workflow provides a clear sequence in which they are meant to be run.</p>
+<ol class="simple">
+<li><p>Probably the most important section of a project.yml file is the <strong>commands</strong> section. This section describes an action or step within the larger workflow. Each action has a <code class="docutils literal notranslate"><span class="pre">name</span></code>. It can also require certain inputs and outputs.  The <code class="docutils literal notranslate"><span class="pre">deps</span></code> section will test that required files are present.  An <code class="docutils literal notranslate"><span class="pre">outputs</span></code> section will confirm that the expected output files were created.  The <code class="docutils literal notranslate"><span class="pre">script</span></code> section works like the command line. You can run several commands in sequence utilizing information from <code class="docutils literal notranslate"><span class="pre">variables</span></code>.</p></li>
+</ol>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">commands</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">split</span>
+    <span class="nt">help</span><span class="p">:</span> <span class="s">&quot;Split</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">into</span><span class="nv"> </span><span class="s">train,</span><span class="nv"> </span><span class="s">validation,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">test&quot;</span>
+    <span class="nt">script</span><span class="p">:</span> 
+      <span class="p p-Indicator">-</span> <span class="s">&quot;python</span><span class="nv"> </span><span class="s">scripts/split.py</span><span class="nv"> </span><span class="s">${vars.test_size}</span><span class="nv"> </span><span class="s">${vars.random_state}</span><span class="nv"> </span><span class="s">${vars.lang}&quot;</span>
+    <span class="nt">deps</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;corpus/converted&quot;</span>
+    <span class="nt">outputs</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;corpus/train.spacy&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;corpus/dev.spacy&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;corpus/test.spacy&quot;</span>
 </pre></div>
 </div>
 </div>
