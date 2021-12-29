@@ -202,39 +202,31 @@ The `config` command is rather dull by comparison.  It creates a generic `config
 
 The `debug` command runs `spacy debug data`, which provides a good overview of your prepared data.  This can help identify problems that will lead to poor model training. It's a good check and moment of reflection on the state of your data before moving forward. For more see the [spaCy docs](https://spacy.io/api/cli#debug-data). 
 
-The `train` command is where this is all headed. Go ahead and press the launch button 🚀 This step will train the model using the settings in the config file.  By default, this will use a training optimizer to adjust the learning rate hyperparameter. 
+The `train` command is the moment we've all been waiting for. Go ahead and press the launch button! 🚀 This step will train the model using the settings in the config file.  
+
+When training begins, you'll see a bunch of numbers. Let's make sense of what they're saying.
+
+You'll see a list of what components are currently being trained.  `Pipeline: ['tok2vec', 'tagger', 'parser', 'ner']` Tok2vec are token embeddings or numerical representations of tokens that can be used efficiently by the model. The tagger will learn to predict part of speech values for your tokens. The parser will learn to predict grammatical structure. The ner component learns to predict named entities in the text. 
+
+For each of these components, spaCy will print training metrics. So let's dive into this pile of forbidding verbiage and numbers.
+
 ```
 E    #       LOSS TOK2VEC  LOSS TAGGER  LOSS PARSER  LOSS NER  TAG_ACC  DEP_UAS  DEP_LAS  SENTS_F  ENTS_F  ENTS_P  ENTS_R  SCORE 
 ---  ------  ------------  -----------  -----------  --------  -------  -------  -------  -------  ------  ------  ------  ------
 ```
+- The `E` refers to the epoch. An epoch is one complete pass of all the data throught the model. To conserve memory, the data is usually split into batches. You can set the number of epoch to complete during training or let spaCy optimize the number of epochs automatically (this is the default). 
+- Every 200 examples, spaCy outputs an accuracy scores in the `#` column. 
+- `LOSS` refers to training loss. Loss is a measure of error. During training, the model will try to learn how to improve its predictions. Decreasing loss can suggest that model is learning and improving.  If the loss value flattens or plateaus, the model has probably stopped learning or reached the best result for a given set of parameters and data.  You will find a loss measure for each of the pipeline components being trained. If the loss varies greatly and looks like a zigzag, the model is struggling to improve its predictions in a deliberate manner. `LOSS TOK2VEC  LOSS TAGGER  LOSS PARSER  LOSS NER`
+- `TAG_ACC` refers to the accuracy of the tagger component. [Accuracy](https://developers.google.com/machine-learning/glossary#accuracy) is the number of correct predictions divided by the total number of predictions made.
+- `DEP_UAS` and  `DEP_LAS` are the unlabeled attachment score (UAS) and labeled attachment score (LAS) for the dependency parser. This is a measure of how many times the model correctly predicted the correct head.
+- `SENTS_F` gives the model's [f-score](https://en.wikipedia.org/wiki/F-score) for sentence prediction.     
+- `ENTS_F  ENTS_P  ENTS_R` relate to the model's predictions of named entities. The f-score is the mean of precision and recall.   
+- Finally, spaCy logs a `SCORE` for the model's predictions overall. This gives a rough number for the model's overall accuracy.  As a general rule, increasing numbers means that the model is improving. By default, spaCy will end training when the score stops rising. 
 
+The **evaluate** command takes the trained model and tests it with the test data.  Recall that these are examples that the model has never seen, so they provide the best measure of its performance. The output will be saved as a json file in the metrics folder.
+
+#TODO shouldn't we do something with the file? Add it to the package somehow? 
       
-  - name: train
-    help: "Train ${vars.treebank}"
-    script:
-      - "python -m spacy train config.cfg --output training/${vars.treebank} --gpu-id ${vars.gpu} --nlp.lang=${vars.lang}"
-    deps:
-      - "corpus/converted/train.spacy"
-      - "corpus/converted/dev.spacy"
-      - "config.cfg"
-    outputs:
-      - "training/${vars.treebank}/model-best"
+Finally, the **package** command saves your trained model in a single tar file that can be shared and installed on other computers.  
 
-  - name: evaluate
-    help: "Evaluate on the test data and save the metrics"
-    script:
-      - "python -m spacy evaluate ./training/${vars.treebank}/model-best ./corpus/converted/test.spacy --output ./metrics/${vars.treebank}.json --gpu-id ${vars.gpu}"
-    deps:
-      - "training/${vars.treebank}/model-best"
-      - "corpus/converted/test.spacy"
-    outputs:
-      - "metrics/${vars.treebank}.json"
-
-  - name: package
-    help: "Package the trained model so it can be installed"
-    script:
-      - "python -m spacy package training/${vars.treebank}/model-best packages --name ${vars.package_name} --version ${vars.package_version} --force"
-    deps:
-      - "training/${vars.treebank}/model-best"
-    outputs_no_cache:
-      - "packages/${vars.lang}_${vars.package_name}-${vars.package_version}/dist/en_${vars.package_name}-${vars.package_version}.tar.gz"
+When all commands are successfully run, you will have converted your text annotations from inception and language object from cadet into a trained statistical language model that can be loaded with spaCy for a large variety of research tasks.  Keep in mind that you'll need some persistence and patience along the way. You'll probably need to run multiple experiments before you find the right blend of data and parameters to create a final product.  The instructors are happy to help along the way and we look forward to learning together with you.    
