@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Project File &#8212; New Languages for NLP</title>
+    <title>19. The Project File &#8212; New Languages for NLP</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,6 +53,8 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="20. The Config File" href="config.html" />
+    <link rel="prev" title="18. Introduction to Machine Learning" href="intro-ml.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -197,7 +199,7 @@
   Workshop II Model Training ~ January 10-14, 2022
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="overview.html">
    16. Welcome to Workshop II
@@ -213,14 +215,19 @@
    18. Introduction to Machine Learning
   </a>
  </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   19. The Project File
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="config.html">
-   19. The Config File
+   20. The Config File
   </a>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="practical-intro.html">
-   20. Practical Introduction to Model Training
+   21. Practical Introduction to Model Training
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -230,7 +237,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="practical-intro/Practical%20Introduction%20to%20Model%20Training.html">
-     20.1. Practical Introduction to Model Training
+     21.1. Practical Introduction to Model Training
     </a>
    </li>
   </ul>
@@ -244,7 +251,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../w3/overview.html">
-   21. Welcome to Workshop III
+   22. Welcome to Workshop III
   </a>
  </li>
 </ul>
@@ -320,22 +327,22 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
-   Introduction
+   19.1. Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#syntax">
-   Syntax
+   19.2. Syntax
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#project-file-sections">
-   Project file sections
+   19.3. Project file sections
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-new-language-project-file">
-   The New Language Project File
+   19.4. The New Language Project File
   </a>
  </li>
 </ul>
@@ -350,16 +357,16 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="the-project-file">
-<h1>The Project File<a class="headerlink" href="#the-project-file" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">19. </span>The Project File<a class="headerlink" href="#the-project-file" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">19.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>To help organize your work and to create a clear and explicit workflow, spaCy offers what they call “projects.” A “project” is a file that acts like a script to run various steps in your experiment. It’s a way to write everything down and explain the steps of your work. In this section, we’ll cover the syntax of the project file and its main parts.  We’ll then look over the main project file that we have provided you for this workshop, which will read the data in your github repository, pre-process the data and then train and package a model for your language.</p>
 <blockquote>
 <div><p><a class="reference external" href="https://spacy.io/usage/projects">spaCy Projects docs</a></p>
 </div></blockquote>
 </div>
 <div class="section" id="syntax">
-<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">19.2. </span>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">project.yml</span></code> file follows a format called yaml which is a simplified and human-friendly form for common data types such as Python lists and dictionaries. If you’ve ever worked with markdown, that’s a simplified format for HTML content.YAML is to data what markdown is for content.</p>
 <p>The simplest way to write yaml is to separate a key and value with a semi-colon:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Fred</span>
@@ -406,11 +413,11 @@ Here’s a great app to test how your yaml will be converted into data: <a class
 </div></blockquote>
 </div>
 <div class="section" id="project-file-sections">
-<h2>Project file sections<a class="headerlink" href="#project-file-sections" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">19.3. </span>Project file sections<a class="headerlink" href="#project-file-sections" title="Permalink to this headline">¶</a></h2>
 <p>…</p>
 </div>
 <div class="section" id="the-new-language-project-file">
-<h2>The New Language Project File<a class="headerlink" href="#the-new-language-project-file" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">19.4. </span>The New Language Project File<a class="headerlink" href="#the-new-language-project-file" title="Permalink to this headline">¶</a></h2>
 <p>…</p>
 </div>
 </div>
@@ -439,7 +446,21 @@ Here’s a great app to test how your yaml will be converted into data: <a class
               
         
             <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="intro-ml.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">18. </span>Introduction to Machine Learning</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="config.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">20. </span>The Config File</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
