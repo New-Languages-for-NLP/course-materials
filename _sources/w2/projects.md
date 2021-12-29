@@ -67,7 +67,7 @@ There's much more that you can do with yaml, but let's keep it simple for now. W
 
 ### Project file sections
 
--  Most project files begin with basic **metadata** about the project.  This is often just a title and description, but can include whatever you feel is important to record and give context for the project. 
+Most project files begin with basic **metadata** about the project.  This is often just a title and description, but can include whatever you feel is important to record and give context for the project. 
 
 ```yaml
 title: "New Language Model using UD Data"
@@ -78,7 +78,7 @@ description: "This project..."
 date: 29/12/2021
 ```
 
-- The **variables** section lets you clearly declare project settings and variables. These variable can be called and reused within the project using the format `${vars.your-variable}`. 
+The **variables** section lets you clearly declare project settings and variables. These variable can be called and reused within the project using the format `${vars.your-variable}`. 
 
 ```yaml
 vars:
@@ -89,7 +89,7 @@ vars:
   gpu_id: -1
 ```
 
-- The directories list is a list of project subfolders.  If you want spaCy to always create a new folder for you, just add it to the list.  This is nicer than adding 'mkdir' calls in the scripts sections.
+The directories list is a list of project subfolders.  If you want spaCy to always create a new folder for you, just add it to the list.  This is nicer than adding 'mkdir' calls in the scripts sections.
 
 ```yaml
 directories: ["assets", "assets/conllu", "training", "configs", "corpus", "packages"]
@@ -97,7 +97,7 @@ directories: ["assets", "assets/conllu", "training", "configs", "corpus", "packa
 
 > spaCy uses the pathlib library to confirm that each directory exists and creates any that are missing [src](https://github.com/explosion/spaCy/blob/f40e237c5a72784034b61425f7d863ce1ac9f46e/spacy/cli/_util.py#L162)
 
-- The **assets** section describes the actions to be taken when you call `spacy project assets`. In most cases, this will fetch data from a remote source such as GitHub and download it to the computer currently running the project. The approach means that anyone running the experiment will be using the same data and not something that's specific to their computer. 
+The **assets** section describes the actions to be taken when you call `spacy project assets`. In most cases, this will fetch data from a remote source such as GitHub and download it to the computer currently running the project. The approach means that anyone running the experiment will be using the same data and not something that's specific to their computer. 
 
 For the example below, let's say that `vars.treebank` is Yoruba. The code below will clone the `New-Languages-for-NLP/Yoruba` github repository and save all the files in the `assets/Yoruba` folder. 
 ```yaml
@@ -109,9 +109,9 @@ assets:
       path: ""
 
 ```
-> For more sees the [spaCy docs](https://spacy.io/usage/projects#data-assets)
+> For more sees the [spaCy docs](https://spacy.io/usage/projects#data-assets)  
 
-- The **workflows** section makes it possible to run several commands in sequence.The most most common use of this feature is `spacy project run all`. For example, 
+The **workflows** section makes it possible to run several commands in sequence.The most most common use of this feature is `spacy project run all`. For example, 
 
 ```yaml
 workflows:
@@ -122,7 +122,7 @@ workflows:
 will run the `install` and then the `convert` commands.  Commands can also be run individually, but the workflow provides a clear sequence in which they are meant to be run.   
 
 
-- Probably the most important section of a `project.yml` file is the **commands** section. This section describes an action or step within the larger workflow. Each action has a `name`. It can also require certain inputs and outputs.  The `deps` section will test that required files are present.  An `outputs` section will confirm that the expected output files were created.  The `script` section works like the command line. You can run several commands in sequence utilizing information from `variables`.  For example, the code below will run a python script called `split.py` to create files needed for model training. If there is more than one action in a command, you can add as many as you need. 
+Probably the most important section of a `project.yml` file is the **commands** section. This section describes an action or step within the larger workflow. Each action has a `name`. It can also require certain inputs and outputs.  The `deps` section will test that required files are present.  An `outputs` section will confirm that the expected output files were created.  The `script` section works like the command line. You can run several commands in sequence utilizing information from `variables`.  For example, the code below will run a python script called `split.py` to create files needed for model training. If there is more than one action in a command, you can add as many as you need. 
 
 ```yaml
 commands:
@@ -143,7 +143,7 @@ commands:
 
 ### The New Language Project File
 
-- For the New Languages for NLP workshops, we've created a project file for you that can be adapted to meet the specific needs of your project. In this section, we've walk through the various sections and scripts of the project.  We've made some choices on your behalf. They may be right, or you may want to change things. Let's see what's there. 
+For the New Languages for NLP workshops, we've created a project file for you that can be adapted to meet the specific needs of your project. In this section, we've walk through the various sections and scripts of the project.  We've made some choices on your behalf. They may be right, or you may want to change things. Let's see what's there.   
 
 In your language teams GitHub repository, you'll find a `newlang_project` folder.  
 ```
@@ -157,10 +157,11 @@ newlang_project
     │   update_config.py
 ```
 
-- Let's start with the **project.yml** file. 
+Let's start with the **project.yml** file. 
 
-  - You'll find a **metadata** section that you can update however you like using the yaml format. 
-  - The **vars** section will have some information that is specific to your team.  
+You'll find a **metadata** section that you can update however you like using the yaml format.   
+
+The **vars** section will have some information that is specific to your team.  
     - The `config` setting is the name and location of the config file.  We'll just have `config.cfg` in the project directory, so nothing fancy here. 
     - `lang` is the ISO-style abbreviation for your language. 
     - `treebank` is the name of your language's repository (and is ususally the same as the language name).
@@ -186,6 +187,6 @@ vars:
   gpu: -1
 ```
 
-- **Assets** is configured to use your language repo name to fetch project data from GitHub.  It will save all that data in the `assets/your-language-name` folder. 
+**Assets** is configured to use your language repo name to fetch project data from GitHub.  It will save all that data in the `assets/your-language-name` folder.   
 
-- The **commands** section is the heart of the project file.  Let's take some time to understand each command and what it does. 
+The **commands** section is the heart of the project file.  Let's take some time to understand each command and what it does. 
