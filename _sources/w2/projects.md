@@ -170,7 +170,7 @@ The **vars** section will have some information that is specific to your team.
 - To ensure that the test and train split is consistent and reproducable, we use a number called `random_state`. More [here](https://scikit-learn.org/stable/glossary.html#term-random_state).
 - The `package_name` is used during packaging and sets the package's metadata name. Basically, what is the name of your language model? 
 - Similarly, `package_version` sets the package metadata for version.
-- spaCy comes with some basic ways to log training data.  However, [Weights and Biases](https://wandb.ai/) provides an excellent way to record, manage and share experiment data. You'll need to create a free account and get an API key to use bandb.  When set to `true` your project will use bandb (we highly recommend). You can change this to `false` if you prefer spaCy defaul logging. 
+- spaCy comes with some basic ways to log training data.  However, [Weights and Biases](https://wandb.ai/) provides an excellent way to record, manage and share experiment data. You'll need to create a free account and get an API key to use bandb.  When set to `true` your project will use bandb (we highly recommend). You can change this to `false` if you prefer spaCy's default logging. 
 - Finally, model training with graphics chips (GPUs) is often faster than with a standard CPU. We recommend using Colab for their free GPUs.  In such a case you'd change `-1` (CPU) to `0` (the GPU id).        
 
 ```yaml 
@@ -190,3 +190,51 @@ vars:
 **Assets** is configured to use your language repo name to fetch project data from GitHub.  It will save all that data in the `assets/your-language-name` folder.   
 
 The **commands** section is the heart of the project file.  Let's take some time to understand each command and what it does. 
+
+The `install` command will read the files in the `2_new_language_object` directory and install the customized spaCy language object that you created for your language in Cadet. The language object will tell spaCy how to break your texts into tokens and sentence spans.
+
+`Convert` will fetch your CoNLL-U and CoNLL 2002 (ner) files from the `3_inception_export` folder.  It creates a spaCy Doc object for each text and then splits the Doc into separate documents with 10 sentences each. For each text file,the `convert` script will look for a CoNLL 2002 file with the same name.  If that text exists, it will add the named entity data in the file to the existing Doc objects. It will then save all the Docs to disk using the `.spacy` binary format. 
+The outcome is a `.spacy` for each text that includes the tokenization, sents, part of speech, lemma, morphology and named entity data.
+
+The `split` command loads all of the `.spacy` files and creates a list of Doc objects.  We then randomly shuffle them so that different kinds of text are evenly distibuted across the corpus.  Using a [`test_train_split`](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) function, we divide the corpus into a training and validation set. The split is determined by the `test_size` variable. The model will learn how to make accurate predictions using the training data. We then use the validation set to assess how well the model performs on completeley new and unseen data. We want the model to learn general rules and patterns rather than overfitting on one particular set of data. The validation set provides a measure of model improvement as part of the training process. Because the model has seen this data before, it's no longer useful as a tool to evaluate the trained model's performance.  So before we get started training, we also set aside 20% of the validation data to make a test set.  This final set of totally unseen data lets us measure how well the model has learned what we've asked it to learn.
+
+The `config` command is rather dull by comparison.  It creates a generic `config.cfg` file (for more on config files, see the Config section in these course materials).  It updates the `train` and `dev` settings in the config file to point to your new `train.spacy` and `dev.spacy` files from the `split` command.  If you're using Weights and Biases, it will also change the `training logger`. 
+
+The `debug` command runs `spacy debug data`, which provides a good overview of your prepared data.  This can help identify problems that will lead to poor model training. It's a good check and moment of reflection on the state of your data before moving forward. For more see the [spaCy docs](https://spacy.io/api/cli#debug-data). 
+
+The `train` command is where this is all headed. Go ahead and press the launch button 🚀 This step will train the model using the settings in the config file.  By default, this will use a training optimizer to adjust the learning rate hyperparameter. 
+```
+E    #       LOSS TOK2VEC  LOSS TAGGER  LOSS PARSER  LOSS NER  TAG_ACC  DEP_UAS  DEP_LAS  SENTS_F  ENTS_F  ENTS_P  ENTS_R  SCORE 
+---  ------  ------------  -----------  -----------  --------  -------  -------  -------  -------  ------  ------  ------  ------
+```
+
+      
+  - name: train
+    help: "Train ${vars.treebank}"
+    script:
+      - "python -m spacy train config.cfg --output training/${vars.treebank} --gpu-id ${vars.gpu} --nlp.lang=${vars.lang}"
+    deps:
+      - "corpus/converted/train.spacy"
+      - "corpus/converted/dev.spacy"
+      - "config.cfg"
+    outputs:
+      - "training/${vars.treebank}/model-best"
+
+  - name: evaluate
+    help: "Evaluate on the test data and save the metrics"
+    script:
+      - "python -m spacy evaluate ./training/${vars.treebank}/model-best ./corpus/converted/test.spacy --output ./metrics/${vars.treebank}.json --gpu-id ${vars.gpu}"
+    deps:
+      - "training/${vars.treebank}/model-best"
+      - "corpus/converted/test.spacy"
+    outputs:
+      - "metrics/${vars.treebank}.json"
+
+  - name: package
+    help: "Package the trained model so it can be installed"
+    script:
+      - "python -m spacy package training/${vars.treebank}/model-best packages --name ${vars.package_name} --version ${vars.package_version} --force"
+    deps:
+      - "training/${vars.treebank}/model-best"
+    outputs_no_cache:
+      - "packages/${vars.lang}_${vars.package_name}-${vars.package_version}/dist/en_${vars.package_name}-${vars.package_version}.tar.gz"
