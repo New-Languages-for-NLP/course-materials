@@ -370,13 +370,13 @@
 <p>The <code class="docutils literal notranslate"><span class="pre">project.yml</span></code> file follows a format called yaml which is a simplified and human-friendly form for common data types such as Python lists and dictionaries. If you’ve ever worked with markdown this should feel somewhat familiar. Marksdown is a simplified format for HTML content. YAML is to data what markdown is for content. In fact, the name means “yet another markup language” (yaml).</p>
 <p>The simplest way to write yaml is to separate a key and value with a semi-colon:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">first-name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Paula</span>
-<span class="nt">last-name</span><span class="p">:</span> <span class="s">&quot;Poundstone&quot;</span>
+<span class="nt">last-name</span><span class="p">:</span> <span class="s">&quot;Sloane&quot;</span>
 </pre></div>
 </div>
 <p>which becomes a Python dictionary</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;first-name&quot;</span><span class="p">:</span> <span class="s2">&quot;Paula&quot;</span><span class="p">,</span> 
-  <span class="s2">&quot;last-name&quot;</span><span class="p">:</span> <span class="s2">&quot;Poundstone&quot;</span>
+  <span class="s2">&quot;last-name&quot;</span><span class="p">:</span> <span class="s2">&quot;Sloane&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -397,11 +397,11 @@
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Inna</span>
     <span class="nt">bringing</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">tacos</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ice</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ice cream</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">napkins</span>
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Oleh</span>
     <span class="nt">bringing</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">dip</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pickles</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hoagies</span>  
 </pre></div>
 </div>
@@ -502,18 +502,6 @@
 <p>Let’s start with the <strong>project.yml</strong> file.</p>
 <p>You’ll find a <strong>metadata</strong> section that you can update however you like using the yaml format.</p>
 <p>The <strong>vars</strong> section will have some information that is specific to your team.</p>
-<ul class="simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">config</span></code> setting is the name and location of the config file.  We’ll just have <code class="docutils literal notranslate"><span class="pre">config.cfg</span></code> in the project directory, so nothing fancy here.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code> is the ISO-style abbreviation for your language.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">treebank</span></code> is the name of your language’s repository (and is ususally the same as the language name).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">test_size</span></code> is the percentage of data that you want to set aside for model validation and testing. An 80/20 split is a good place to start, so you’ll see it set initially to <code class="docutils literal notranslate"><span class="pre">0.2</span></code>. For more, this <a class="reference external" href="https://stackoverflow.com/questions/13610074/is-there-a-rule-of-thumb-for-how-to-divide-a-dataset-into-training-and-validatio">stackoverflow discussion</a> is very informative.</p></li>
-<li><p>We need to evenly distribute your texts between the training and validation datasets. We split each text into blocks of 10 sentences. This is defined by the <code class="docutils literal notranslate"><span class="pre">n_sents</span></code> variable.</p></li>
-<li><p>To ensure that the test and train split is consistent and reproducable, we use a number called <code class="docutils literal notranslate"><span class="pre">random_state</span></code>. More <a class="reference external" href="https://scikit-learn.org/stable/glossary.html#term-random_state">here</a>.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">package_name</span></code> is used during packaging and sets the package’s metadata name. Basically, what is the name of your language model?</p></li>
-<li><p>Similarly, <code class="docutils literal notranslate"><span class="pre">package_version</span></code> sets the package metadata for version.</p></li>
-<li><p>spaCy comes with some basic ways to log training data.  However, <a class="reference external" href="https://wandb.ai/">Weights and Biases</a> provides an excellent way to record, manage and share experiment data. You’ll need to create a free account and get an API key to use bandb.  When set to <code class="docutils literal notranslate"><span class="pre">true</span></code> your project will use bandb (we highly recommend). You can change this to <code class="docutils literal notranslate"><span class="pre">false</span></code> if you prefer spaCy’s default logging.</p></li>
-<li><p>Finally, model training with graphics chips (GPUs) is often faster than with a standard CPU. We recommend using Colab for their free GPUs.  In such a case you’d change <code class="docutils literal notranslate"><span class="pre">-1</span></code> (CPU) to <code class="docutils literal notranslate"><span class="pre">0</span></code> (the GPU id).</p></li>
-</ul>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">vars</span><span class="p">:</span>
   <span class="nt">config</span><span class="p">:</span> <span class="s">&quot;config&quot;</span>
   <span class="nt">lang</span><span class="p">:</span> <span class="s">&quot;yi&quot;</span>
@@ -527,6 +515,18 @@
   <span class="nt">gpu</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-1</span>
 </pre></div>
 </div>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">config</span></code> setting is the name and location of the config file.  We’ll just have <code class="docutils literal notranslate"><span class="pre">config.cfg</span></code> in the project directory, so nothing fancy here.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code> is the ISO-style abbreviation for your language.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">treebank</span></code> is the name of your language’s repository (and is ususally the same as the language name).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test_size</span></code> is the percentage of data that you want to set aside for model validation and testing. An 80/20 split is a good place to start, so you’ll see it set initially to <code class="docutils literal notranslate"><span class="pre">0.2</span></code>. For more, this <a class="reference external" href="https://stackoverflow.com/questions/13610074/is-there-a-rule-of-thumb-for-how-to-divide-a-dataset-into-training-and-validatio">stackoverflow discussion</a> is very informative.</p></li>
+<li><p>We need to evenly distribute your texts between the training and validation datasets. We split each text into blocks of 10 sentences. This is defined by the <code class="docutils literal notranslate"><span class="pre">n_sents</span></code> variable.</p></li>
+<li><p>To ensure that the test and train split is consistent and reproducable, we use a number called <code class="docutils literal notranslate"><span class="pre">random_state</span></code>. More <a class="reference external" href="https://scikit-learn.org/stable/glossary.html#term-random_state">here</a>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">package_name</span></code> is used during packaging and sets the package’s metadata name. Basically, what is the name of your language model?</p></li>
+<li><p>Similarly, <code class="docutils literal notranslate"><span class="pre">package_version</span></code> sets the package metadata for version.</p></li>
+<li><p>spaCy comes with some basic ways to log training data.  However, <a class="reference external" href="https://wandb.ai/">Weights and Biases</a> provides an excellent way to record, manage and share experiment data. You’ll need to create a free account and get an API key to use bandb.  When set to <code class="docutils literal notranslate"><span class="pre">true</span></code> your project will use bandb (we highly recommend). You can change this to <code class="docutils literal notranslate"><span class="pre">false</span></code> if you prefer spaCy’s default logging.</p></li>
+<li><p>Finally, model training with graphics chips (GPUs) is often faster than with a standard CPU. We recommend using Colab for their free GPUs.  In such a case you’d change <code class="docutils literal notranslate"><span class="pre">-1</span></code> (CPU) to <code class="docutils literal notranslate"><span class="pre">0</span></code> (the GPU id).</p></li>
+</ul>
 <p><strong>Assets</strong> is configured to use your language repo name to fetch project data from GitHub.  It will save all that data in the <code class="docutils literal notranslate"><span class="pre">assets/your-language-name</span></code> folder.</p>
 <p>The <strong>commands</strong> section is the heart of the project file.  Let’s take some time to understand each command and what it does.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">install</span></code> command will read the files in the <code class="docutils literal notranslate"><span class="pre">2_new_language_object</span></code> directory and install the customized spaCy language object that you created for your language in Cadet. The language object will tell spaCy how to break your texts into tokens and sentence spans.</p>
