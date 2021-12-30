@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>20. The Config File &#8212; New Languages for NLP</title>
+    <title>21. The Config File &#8212; New Languages for NLP</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="21. Practical Introduction to Model Training" href="practical-intro.html" />
-    <link rel="prev" title="19. The Project File" href="projects.html" />
+    <link rel="next" title="22. Practical Introduction to Model Training" href="practical-intro.html" />
+    <link rel="prev" title="20. The New Language Project File" href="newlang_project.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -220,14 +220,19 @@
    19. The Project File
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="newlang_project.html">
+   20. The New Language Project File
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   20. The Config File
+   21. The Config File
   </a>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="practical-intro.html">
-   21. Practical Introduction to Model Training
+   22. Practical Introduction to Model Training
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -237,7 +242,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="practical-intro/Practical%20Introduction%20to%20Model%20Training.html">
-     21.1. Practical Introduction to Model Training
+     22.1. Practical Introduction to Model Training
     </a>
    </li>
   </ul>
@@ -251,7 +256,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../w3/overview.html">
-   22. Welcome to Workshop III
+   23. Welcome to Workshop III
   </a>
  </li>
 </ul>
@@ -327,12 +332,12 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-basics">
-   20.1. The Basics
+   21.1. The Basics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#customizing-pipeline-training">
-   20.2. Customizing Pipeline Training
+   21.2. Customizing Pipeline Training
   </a>
  </li>
 </ul>
@@ -347,10 +352,10 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="the-config-file">
-<h1><span class="section-number">20. </span>The Config File<a class="headerlink" href="#the-config-file" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">21. </span>The Config File<a class="headerlink" href="#the-config-file" title="Permalink to this headline">¶</a></h1>
 <p>For these workshops you will likely not need to make any changes to the <code class="docutils literal notranslate"><span class="pre">config.cfg</span></code> file. This section is here for participants who want a basic understanding of what the config file does. Advanced users who are interested in changing model components and architecture are best served by the existing spaCy documentation on the config system.</p>
 <div class="section" id="the-basics">
-<h2><span class="section-number">20.1. </span>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.1. </span>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">config.cfg</span></code> file is similar in many ways to the <code class="docutils literal notranslate"><span class="pre">project.yml</span></code> file. It offers a stable place to record your model’s parameters and settings.</p>
 <ul class="simple">
 <li><p>It has an <code class="docutils literal notranslate"><span class="pre">[nlp]</span></code> section that contains settings for the NLP object.</p></li>
@@ -359,7 +364,7 @@
 </ul>
 </div>
 <div class="section" id="customizing-pipeline-training">
-<h2><span class="section-number">20.2. </span>Customizing Pipeline Training<a class="headerlink" href="#customizing-pipeline-training" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.2. </span>Customizing Pipeline Training<a class="headerlink" href="#customizing-pipeline-training" title="Permalink to this headline">¶</a></h2>
 <p>The section in the documentation on <a class="reference external" href="https://spacy.io/usage/training#config-components">Defining pipeline components</a> may be especially helpful for teams that are interested in customizing the organization and capabilities of their model.</p>
 <p>For example, what if you want to fine-tune an existing tokenizer rather than training from scratch?  Perhaps fine-tuning from an existing multi-lingual model would be better than training on a small set of annotated texts?</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">[</span><span class="nv">nlp.tokenizer</span><span class="p p-Indicator">]</span>
@@ -400,17 +405,17 @@
         
             <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="projects.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="newlang_project.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">19. </span>The Project File</p>
+            <p class="prev-next-title"><span class="section-number">20. </span>The New Language Project File</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="practical-intro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">21. </span>Practical Introduction to Model Training</p>
+        <p class="prev-next-title"><span class="section-number">22. </span>Practical Introduction to Model Training</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -53,7 +53,7 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="20. The Config File" href="config.html" />
+    <link rel="next" title="20. The New Language Project File" href="newlang_project.html" />
     <link rel="prev" title="18. Introduction to Machine Learning" href="intro-ml.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -221,13 +221,18 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="newlang_project.html">
+   20. The New Language Project File
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="config.html">
-   20. The Config File
+   21. The Config File
   </a>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="practical-intro.html">
-   21. Practical Introduction to Model Training
+   22. Practical Introduction to Model Training
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -237,7 +242,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="practical-intro/Practical%20Introduction%20to%20Model%20Training.html">
-     21.1. Practical Introduction to Model Training
+     22.1. Practical Introduction to Model Training
     </a>
    </li>
   </ul>
@@ -251,7 +256,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../w3/overview.html">
-   22. Welcome to Workshop III
+   23. Welcome to Workshop III
   </a>
  </li>
 </ul>
@@ -340,11 +345,6 @@
    19.3. Project file sections
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-new-language-project-file">
-   19.4. The New Language Project File
-  </a>
- </li>
 </ul>
 
             </nav>
@@ -360,7 +360,7 @@
 <h1><span class="section-number">19. </span>The Project File<a class="headerlink" href="#the-project-file" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2><span class="section-number">19.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>To help organize your work and to create a clear, reproducable and explicit workflow, spaCy offers a feature called “projects.” A “project” is a file that acts like a template that runs various steps in your experiment. It’s a way to write everything down and clearly establish each step in your model training workflow. In this section, we’ll cover the syntax of the project file and its main parts.  We’ll then look over the main project file that we have provided you for this workshop, which will read the data from your github repository, prepare the data and then train and package a model for your language.</p>
+<p>To help organize your work and to create a clear, reproducable and explicit workflow, spaCy offers a feature called “projects.” A “project” is a file that acts like a template that runs various steps in your experiment. It’s a way to write everything down and clearly establish each step in your model training workflow. In this section, we’ll cover the syntax of the project file and its main parts.</p>
 <blockquote>
 <div><p>More here: <a class="reference external" href="https://spacy.io/usage/projects">spaCy projects docs</a></p>
 </div></blockquote>
@@ -482,78 +482,6 @@
 <div><p>There’s much more to spaCy projects, but this outline should give you the essentials to understand how the file is formatted and what it does.</p>
 </div></blockquote>
 </div>
-<div class="section" id="the-new-language-project-file">
-<h2><span class="section-number">19.4. </span>The New Language Project File<a class="headerlink" href="#the-new-language-project-file" title="Permalink to this headline">¶</a></h2>
-<p>For our workshops, we’ve created a project file for you. It can be adapted to meet the specific needs of your project. In this section, we will walk through the various sections and scripts of the project.  We’ve made some choices on your behalf. They may be right, or you may want to change things. Let’s see what’s there.</p>
-<p>In your language team’s GitHub repository, you’ll find a <code class="docutils literal notranslate"><span class="pre">newlang_project</span></code> folder.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>newlang_project
-│   README.md
-│   project.yml    
-│
-└───scripts
-    │   convert.py
-    │   split.py
-    │   update_config.py
-</pre></div>
-</div>
-<p>Let’s start with the <strong>project.yml</strong> file.</p>
-<p>You’ll find a <strong>metadata</strong> section that you can update however you like using the yaml format.</p>
-<p>The <strong>vars</strong> section will have some information that is specific to your team.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">vars</span><span class="p">:</span>
-  <span class="nt">config</span><span class="p">:</span> <span class="s">&quot;config&quot;</span>
-  <span class="nt">lang</span><span class="p">:</span> <span class="s">&quot;yi&quot;</span>
-  <span class="nt">treebank</span><span class="p">:</span> <span class="s">&quot;yiddish&quot;</span>
-  <span class="nt">test_size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.2</span>
-  <span class="nt">n_sents</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
-  <span class="nt">random_state</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">11</span>
-  <span class="nt">package_name</span><span class="p">:</span> <span class="s">&quot;Yiddish</span><span class="nv"> </span><span class="s">NewNLP</span><span class="nv"> </span><span class="s">Model</span><span class="nv"> </span><span class="s">May</span><span class="nv"> </span><span class="s">2022&quot;</span>
-  <span class="nt">package_version</span><span class="p">:</span> <span class="s">&quot;0.1&quot;</span>
-  <span class="nt">wandb</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span> 
-  <span class="nt">gpu</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-1</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">config</span></code> setting is the name and location of the config file.  We’ll just have <code class="docutils literal notranslate"><span class="pre">config.cfg</span></code> in the project directory, so nothing fancy here.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code> is the ISO-style abbreviation for your language.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">treebank</span></code> is the name of your language’s repository (and is ususally the same as the language name).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">test_size</span></code> is the percentage of data that you want to set aside for model validation and testing. An 80/20 split is a good place to start, so you’ll see it set initially to <code class="docutils literal notranslate"><span class="pre">0.2</span></code>. For more, this <a class="reference external" href="https://stackoverflow.com/questions/13610074/is-there-a-rule-of-thumb-for-how-to-divide-a-dataset-into-training-and-validatio">stackoverflow discussion</a> is very informative.</p></li>
-<li><p>To evenly distribute your texts between the training and validation datasets, we split each text into blocks of 10 sentences. This is defined by the <code class="docutils literal notranslate"><span class="pre">n_sents</span></code> variable.</p></li>
-<li><p>To ensure that the test and train split is consistent and reproducible, we use a number called <code class="docutils literal notranslate"><span class="pre">random_state</span></code>. More <a class="reference external" href="https://scikit-learn.org/stable/glossary.html#term-random_state">here</a>.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">package_name</span></code> is used during packaging. It sets the package’s metadata name. Basically, what is the name of your language model?</p></li>
-<li><p>Similarly, <code class="docutils literal notranslate"><span class="pre">package_version</span></code> sets the package metadata for version.</p></li>
-<li><p>spaCy comes with some basic ways to log training data.  However, <a class="reference external" href="https://wandb.ai/">Weights and Biases</a> provides an excellent way to record, manage and share experiment data. You’ll need to create a free account and get an API key to use bandb. When set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, your project will use bandb (we highly recommend it). You can change this to <code class="docutils literal notranslate"><span class="pre">false</span></code> if you prefer spaCy’s default logging.</p></li>
-<li><p>Finally, model training with graphics chips (GPUs) is often faster than with a standard CPU. We recommend using Colab for their free GPUs.  In such a case, you’d change <code class="docutils literal notranslate"><span class="pre">-1</span></code> (CPU) to <code class="docutils literal notranslate"><span class="pre">0</span></code> (the GPU id).</p></li>
-</ul>
-<p><strong>Assets</strong> is configured to use your language repo name to fetch project data from GitHub.  It will save all that data in the <code class="docutils literal notranslate"><span class="pre">assets/your-language-name</span></code> folder.</p>
-<p>The <strong>commands</strong> section is the heart of the project file.  Let’s take some time to understand each command and what it does.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">install</span></code> command will read the files in the <code class="docutils literal notranslate"><span class="pre">2_new_language_object</span></code> directory and will install the customized spaCy language object that you created for your language in Cadet. The language object will tell spaCy how to break your texts into tokens and sentence spans.</p>
-<p><code class="docutils literal notranslate"><span class="pre">Convert</span></code> will fetch your CoNLL-U and CoNLL 2002 (ner) files from the <code class="docutils literal notranslate"><span class="pre">3_inception_export</span></code> folder.  It creates a spaCy Doc object for each text and then splits the Doc into separate documents with 10 sentences each. For each text file, the <code class="docutils literal notranslate"><span class="pre">convert</span></code> script will look for a CoNLL 2002 file with the same name.  If that text exists, it will add the named entity data in the file to the existing Doc objects. It will then save all the Docs to disk using the <code class="docutils literal notranslate"><span class="pre">.spacy</span></code> binary format.
-The outcome is a <code class="docutils literal notranslate"><span class="pre">.spacy</span></code> for each text that includes the tokenization, sents, part of speech, lemma, morphology and named entity data.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">split</span></code> command loads all of the <code class="docutils literal notranslate"><span class="pre">.spacy</span></code> files and creates a list of Doc objects.  We then randomly shuffle them so that different kinds of text are evenly distibuted across the corpus.  Using a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html"><code class="docutils literal notranslate"><span class="pre">test_train_split</span></code></a> function, we divide the corpus into a training and validation set. The split is determined by the <code class="docutils literal notranslate"><span class="pre">test_size</span></code> variable. The model will learn how to make accurate predictions using the training data. We then use the validation set to assess how well the model performs on completeley new and unseen data. We want the model to learn general rules and patterns rather than overfitting on one particular set of data. The validation set provides a measure of model improvement as part of the training process. Because the model has seen this data before, it’s no longer useful as a tool to evaluate the trained model’s performance.  So before we get started training, we also set aside 20% of the validation data to make a test set.  This final set of totally unseen data lets us measure how well the model has learned what we’ve asked it to learn.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">config</span></code> command is rather dull by comparison.  It creates a generic <code class="docutils literal notranslate"><span class="pre">config.cfg</span></code> file (for more on config files, see the Config section in these course materials).  It updates the <code class="docutils literal notranslate"><span class="pre">train</span></code> and <code class="docutils literal notranslate"><span class="pre">dev</span></code> settings in the config file to point to your new <code class="docutils literal notranslate"><span class="pre">train.spacy</span></code> and <code class="docutils literal notranslate"><span class="pre">dev.spacy</span></code> files from the <code class="docutils literal notranslate"><span class="pre">split</span></code> command.  If you’re using Weights and Biases, it will also change the <code class="docutils literal notranslate"><span class="pre">training</span> <span class="pre">logger</span></code>.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">debug</span></code> command runs <code class="docutils literal notranslate"><span class="pre">spacy</span> <span class="pre">debug</span> <span class="pre">data</span></code>, which provides a good overview of your prepared data.  This can help identify problems that will lead to poor model training. It’s a good check-in and moment of reflection on the state of your data before moving forward. For more, see the <a class="reference external" href="https://spacy.io/api/cli#debug-data">spaCy docs</a>.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">train</span></code> command is the moment we’ve all been waiting for. Go ahead and press the launch button! 🚀 This step will train the model using the settings in the config file.</p>
-<p>When training begins, you’ll see a bunch of numbers. Let’s make sense of what they’re saying.</p>
-<p>You’ll see a list of what components are currently being trained.  <code class="docutils literal notranslate"><span class="pre">Pipeline:</span> <span class="pre">['tok2vec',</span> <span class="pre">'tagger',</span> <span class="pre">'parser',</span> <span class="pre">'ner']</span></code> Tok2vec are token embeddings or numerical representations of tokens that can be used efficiently by the model. The tagger will learn to predict part of speech values for your tokens. The parser will learn to predict grammatical structure. The ner component learns to predict named entities in the text.</p>
-<p>For each of these components, spaCy will print training metrics. So let’s dive into this pile of forbidding verbiage and numbers.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">E</span>    <span class="c1">#       LOSS TOK2VEC  LOSS TAGGER  LOSS PARSER  LOSS NER  TAG_ACC  DEP_UAS  DEP_LAS  SENTS_F  ENTS_F  ENTS_P  ENTS_R  SCORE </span>
-<span class="o">---</span>  <span class="o">------</span>  <span class="o">------------</span>  <span class="o">-----------</span>  <span class="o">-----------</span>  <span class="o">--------</span>  <span class="o">-------</span>  <span class="o">-------</span>  <span class="o">-------</span>  <span class="o">-------</span>  <span class="o">------</span>  <span class="o">------</span>  <span class="o">------</span>  <span class="o">------</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">E</span></code> refers to the epoch. An epoch is one complete pass of all the data through the model. You can set the number of epochs to complete during training or let spaCy optimize the number of epochs automatically (this is the default).</p></li>
-<li><p>Every 200 examples, spaCy outputs accuracy scores in the <code class="docutils literal notranslate"><span class="pre">#</span></code> column.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">LOSS</span></code> refers to training loss. Loss is a measure of error. During training, the model will try to learn how to improve its predictions. Decreasing loss can suggest that the model is learning and improving.  If the loss value flattens or plateaus, the model has probably stopped learning or reached the best result for a given set of parameters and data.  You will find a loss measure for each of the pipeline components being trained. If the loss varies greatly and looks like a zigzag, the model is struggling to improve its predictions in a deliberate manner. <code class="docutils literal notranslate"><span class="pre">LOSS</span> <span class="pre">TOK2VEC</span>&#160; <span class="pre">LOSS</span> <span class="pre">TAGGER</span>&#160; <span class="pre">LOSS</span> <span class="pre">PARSER</span>&#160; <span class="pre">LOSS</span> <span class="pre">NER</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TAG_ACC</span></code> refers to the accuracy of the tagger component. <a class="reference external" href="https://developers.google.com/machine-learning/glossary#accuracy">Accuracy</a> is the number of correct predictions divided by the total number of predictions made.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DEP_UAS</span></code> and  <code class="docutils literal notranslate"><span class="pre">DEP_LAS</span></code> are the unlabeled attachment score (UAS) and labeled attachment score (LAS) for the dependency parser. This is a measure of how many times the model correctly predicted the correct head.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">SENTS_F</span></code> gives the model’s <a class="reference external" href="https://en.wikipedia.org/wiki/F-score">f-score</a> for sentence prediction.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ENTS_F</span>&#160; <span class="pre">ENTS_P</span>&#160; <span class="pre">ENTS_R</span></code> relate to the model’s predictions of named entities. The f-score is the mean of precision and recall.</p></li>
-<li><p>Finally, spaCy logs a <code class="docutils literal notranslate"><span class="pre">SCORE</span></code> for the model’s predictions overall. This gives a rough number for the model’s overall accuracy.  As a general rule, increasing numbers means that the model is improving. By default, spaCy will end training when the score stops rising.</p></li>
-</ul>
-<p>The <strong>evaluate</strong> command takes the trained model and tests it with the test data.  Recall that these are examples that the model has never seen, so they provide the best measure of its performance. The output will be saved as a json file in the metrics folder.</p>
-<p>Finally, the <strong>package</strong> command saves your trained model in a single tar file that can be shared and installed on other computers.</p>
-<p>Keep in mind that you’ll need some persistence and patience along the way. You’ll probably need to run multiple experiments before you find the right blend of data and parameters to create a final product.  The instructors are happy to help along the way and we look forward to learning together with you. When all commands are successfully run, you will have converted your text annotations from inception and language object from Cadet into a trained statistical language model that can be loaded with spaCy for a large variety of research tasks.</p>
-</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -588,10 +516,10 @@ The outcome is a <code class="docutils literal notranslate"><span class="pre">.s
             <p class="prev-next-title"><span class="section-number">18. </span>Introduction to Machine Learning</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="config.html" title="next page">
+    <a class='right-next' id="next-link" href="newlang_project.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">20. </span>The Config File</p>
+        <p class="prev-next-title"><span class="section-number">20. </span>The New Language Project File</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
