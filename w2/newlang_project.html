@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>20. The New Language Project File &#8212; New Languages for NLP</title>
+    <title>22. The New Language Project File &#8212; New Languages for NLP</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="21. The Config File" href="config.html" />
-    <link rel="prev" title="19. The Project File" href="projects.html" />
+    <link rel="next" title="23. 🏋️ Weights and Biases" href="wandb.html" />
+    <link rel="prev" title="21. The Config File" href="config.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -216,13 +216,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="projects.html">
-   19. The Project File
+  <a class="reference internal" href="practical-intro/Practical%20Introduction%20to%20Model%20Training.html">
+   19. Practical Introduction to Model Training
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   20. The New Language Project File
+ <li class="toctree-l1">
+  <a class="reference internal" href="projects.html">
+   20. The Project File
   </a>
  </li>
  <li class="toctree-l1">
@@ -230,22 +230,20 @@
    21. The Config File
   </a>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="practical-intro.html">
-   22. Practical Introduction to Model Training
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   22. The New Language Project File
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="practical-intro/Practical%20Introduction%20to%20Model%20Training.html">
-     22.1. Practical Introduction to Model Training
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="wandb.html">
+   23. 🏋️ Weights and Biases
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="huggingface.html">
+   24. 🤗 Hugging Face
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -256,7 +254,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../w3/overview.html">
-   23. Welcome to Workshop III
+   25. Welcome to Workshop III
   </a>
  </li>
 </ul>
@@ -334,7 +332,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="the-new-language-project-file">
-<h1><span class="section-number">20. </span>The New Language Project File<a class="headerlink" href="#the-new-language-project-file" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">22. </span>The New Language Project File<a class="headerlink" href="#the-new-language-project-file" title="Permalink to this headline">¶</a></h1>
 <p>For our workshops, we’ve created a project file for you. It can be adapted to meet the specific needs of your project. In this section, we will walk through the various sections and scripts of the project.  We’ve made some choices on your behalf. They may be right, or you may want to change things. Let’s see what’s there.</p>
 <p>In your language team’s GitHub repository, you’ll find a <code class="docutils literal notranslate"><span class="pre">newlang_project</span></code> folder.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>newlang_project
@@ -350,17 +348,17 @@
 <p>Let’s start with the <strong>project.yml</strong> file.</p>
 <p>You’ll find a <strong>metadata</strong> section that you can update however you like using the yaml format.</p>
 <p>The <strong>vars</strong> section will have some information that is specific to your team.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">vars</span><span class="p">:</span>
-  <span class="nt">config</span><span class="p">:</span> <span class="s">&quot;config&quot;</span>
-  <span class="nt">lang</span><span class="p">:</span> <span class="s">&quot;yi&quot;</span>
-  <span class="nt">treebank</span><span class="p">:</span> <span class="s">&quot;yiddish&quot;</span>
-  <span class="nt">test_size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.2</span>
-  <span class="nt">n_sents</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
-  <span class="nt">random_state</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">11</span>
-  <span class="nt">package_name</span><span class="p">:</span> <span class="s">&quot;Yiddish</span><span class="nv"> </span><span class="s">NewNLP</span><span class="nv"> </span><span class="s">Model</span><span class="nv"> </span><span class="s">May</span><span class="nv"> </span><span class="s">2022&quot;</span>
-  <span class="nt">package_version</span><span class="p">:</span> <span class="s">&quot;0.1&quot;</span>
-  <span class="nt">wandb</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span> 
-  <span class="nt">gpu</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-1</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;config&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">lang</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yi&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">treebank</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yiddish&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">test_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.2</span><span class="w"></span>
+<span class="w">  </span><span class="nt">n_sents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
+<span class="w">  </span><span class="nt">random_state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">11</span><span class="w"></span>
+<span class="w">  </span><span class="nt">package_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Yiddish</span><span class="nv"> </span><span class="s">NewNLP</span><span class="nv"> </span><span class="s">Model</span><span class="nv"> </span><span class="s">May</span><span class="nv"> </span><span class="s">2022&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">package_version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.1&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">wandb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1</span><span class="w"></span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -431,17 +429,17 @@ The outcome is a <code class="docutils literal notranslate"><span class="pre">.s
         
             <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="projects.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="config.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">19. </span>The Project File</p>
+            <p class="prev-next-title"><span class="section-number">21. </span>The Config File</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="config.html" title="next page">
+    <a class='right-next' id="next-link" href="wandb.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">21. </span>The Config File</p>
+        <p class="prev-next-title"><span class="section-number">23. </span>🏋️ Weights and Biases</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -216,13 +216,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../w2/projects.html">
-   19. The Project File
+  <a class="reference internal" href="../w2/practical-intro/Practical%20Introduction%20to%20Model%20Training.html">
+   19. Practical Introduction to Model Training
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../w2/newlang_project.html">
-   20. The New Language Project File
+  <a class="reference internal" href="../w2/projects.html">
+   20. The Project File
   </a>
  </li>
  <li class="toctree-l1">
@@ -230,22 +230,20 @@
    21. The Config File
   </a>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../w2/practical-intro.html">
-   22. Practical Introduction to Model Training
+ <li class="toctree-l1">
+  <a class="reference internal" href="../w2/newlang_project.html">
+   22. The New Language Project File
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../w2/practical-intro/Practical%20Introduction%20to%20Model%20Training.html">
-     22.1. Practical Introduction to Model Training
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../w2/wandb.html">
+   23. 🏋️ Weights and Biases
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../w2/huggingface.html">
+   24. 🤗 Hugging Face
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -256,7 +254,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../w3/overview.html">
-   23. Welcome to Workshop III
+   25. Welcome to Workshop III
   </a>
  </li>
 </ul>
@@ -369,10 +367,11 @@
 <h3><span class="section-number">5.1.1. </span>Debugging and Validating JSON<a class="headerlink" href="#debugging-and-validating-json" title="Permalink to this headline">¶</a></h3>
 <p>Working with JSON can be tricky, especially when you are have large files and you do not know exactly where the error occurs. An open source web application called <strong><a class="reference external" href="https://jsonlint.com/">JSONLint</a></strong> can come handy in this regard. It is designed to help users to debug and validate their JSON files.</p>
 <p>To use JSONLint, simply copy your JSON code to the editor and click <strong>Validate JSON</strong>. For example, when the following code</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-	<span class="nt">&quot;be&quot;</span><span class="p">:</span> <span class="nt">&quot;VERB&quot;</span>
-	<span class="nt">&quot;bee&quot;</span><span class="p">:</span> <span class="s2">&quot;NOUN&quot;</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+	&quot;be&quot;: &quot;VERB&quot;
+	&quot;bee&quot;: &quot;NOUN&quot;
+}
+
 </pre></div>
 </div>
 <p>is copied to JSONLint and validated, we see this error.</p>
@@ -384,10 +383,10 @@ Expecting &#39;EOF&#39;, &#39;}&#39;, &#39;:&#39;, &#39;,&#39;, &#39;]&#39;, got
 </pre></div>
 </div>
 <p>As it states, the error occurs near the word <strong>“VERB”</strong> and the editor was expecting one of these characters: ‘}’, ‘:’, ‘,’, ‘]’ but received a string. If you have figured it out, we were missing a comma (,) in line 2. When the comma issue is fixed in this example, JSON should validate successfully and you should see a <strong>“Valid JSON”</strong> message in JSONLint.</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-	<span class="nt">&quot;be&quot;</span><span class="p">:</span> <span class="s2">&quot;VERB&quot;</span><span class="p">,</span>
-	<span class="nt">&quot;bee&quot;</span><span class="p">:</span> <span class="s2">&quot;NOUN&quot;</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="nt">&quot;be&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VERB&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">	</span><span class="nt">&quot;bee&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NOUN&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>From the JSONLint website, here are some rules to consider to ensure your JSON is properly formatted:</p>
