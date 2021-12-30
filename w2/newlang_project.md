@@ -1,7 +1,9 @@
-The New Language Project File
+🌿 The New Language Project
 =======================
 
-For our workshops, we've created a project file for you. It can be adapted to meet the specific needs of your project. In this section, we will walk through the various sections and scripts of the project.  We've made some choices on your behalf. They may be right, or you may want to change things. Let's see what's there.   
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1iC2YF3s30e0lDxdGmegRKS8iggLldMMH?usp=sharing)
+
+For our workshops, we've created a project for you. It can be adapted to meet the specific needs of your project. In this section, we will walk through the various sections and scripts of the project.  We've made some choices on your behalf. They may be right, or you may want to change things. Let's see what's there.   
 
 In your language team's GitHub repository, you'll find a `newlang_project` folder.  
 ```
