@@ -53,7 +53,7 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="22. 🌿 The New Language Project" href="newlang_project.html" />
+    <link rel="next" title="22. 🌿 The New Language Project" href="using-inception-data/New%20Language%20Training.html" />
     <link rel="prev" title="20. The Project File" href="projects.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -231,7 +231,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="newlang_project.html">
+  <a class="reference internal" href="using-inception-data/New%20Language%20Training.html">
    22. 🌿 The New Language Project
   </a>
  </li>
@@ -356,7 +356,7 @@
 <h2><span class="section-number">21.1. </span>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">config.cfg</span></code> file is similar in many ways to the <code class="docutils literal notranslate"><span class="pre">project.yml</span></code> file. It offers a stable place to record your model’s parameters and settings.</p>
 <ul class="simple">
-<li><p>It has an <code class="docutils literal notranslate"><span class="pre">[nlp]</span></code> section that contains settings for the NLP object.</p></li>
+<li><p>It has an <code class="docutils literal notranslate"><span class="pre">[nlp]</span></code> section that contains settings for the NLP object. If you don’t have any named entity data, you may want to edit this line: <code class="docutils literal notranslate"><span class="pre">pipeline</span> <span class="pre">=</span> <span class="pre">[&quot;tok2vec&quot;,&quot;tagger&quot;,&quot;parser&quot;,&quot;ner&quot;]</span></code> to remove <code class="docutils literal notranslate"><span class="pre">&quot;ner&quot;</span></code>.</p></li>
 <li><p>There is a <code class="docutils literal notranslate"><span class="pre">[components]</span></code> section with settings for each individual component in the pipeline.  This section is especially useful for custom components and for deviating from spaCy default configurations.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">[training]</span></code> section contains various hypterparameters that can be changed, such as seed, dropout, and evaluation frequency.</p></li>
 </ul>
@@ -410,7 +410,7 @@
             <p class="prev-next-title"><span class="section-number">20. </span>The Project File</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="newlang_project.html" title="next page">
+    <a class='right-next' id="next-link" href="using-inception-data/New%20Language%20Training.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">22. </span>🌿 The New Language Project</p>
