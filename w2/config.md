@@ -7,7 +7,8 @@ For these workshops you will likely not need to make any changes to the `config.
 
 The `config.cfg` file is similar in many ways to the `project.yml` file. It offers a stable place to record your model's parameters and settings.  
 
-- It has an `[nlp]` section that contains settings for the NLP object. 
+- It has an `[nlp]` section that contains settings for the NLP object. If you don't have any named entity data, you may want to edit this line: `pipeline = ["tok2vec","tagger","parser","ner"]` to remove `"ner"`.
+ 
 - There is a `[components]` section with settings for each individual component in the pipeline.  This section is especially useful for custom components and for deviating from spaCy default configurations. 
 - The `[training]` section contains various hypterparameters that can be changed, such as seed, dropout, and evaluation frequency. 
 
