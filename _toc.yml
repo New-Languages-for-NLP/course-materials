@@ -42,7 +42,7 @@ parts:
   - file: w2/embeddings
   - file: w2/applied-embeddings
 
-- caption: Workshop III  Presentations and Publications ~ May 12-13, 2022
+- caption: Workshop III  Presentations and Publications ~ May 12-14, 2022
   numbered: true
   chapters:
   - file: w3/overview
