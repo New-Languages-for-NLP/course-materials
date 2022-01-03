@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>22. 🌿 The New Language Project &#8212; New Languages for NLP</title>
+    <title>23. 🌿 The New Language Project &#8212; New Languages for NLP</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="23. 🏋️ Weights and Biases" href="../wandb.html" />
-    <link rel="prev" title="21. The Config File" href="../config.html" />
+    <link rel="next" title="24. 🏋️ Weights and Biases" href="../wandb.html" />
+    <link rel="prev" title="22. The Config File" href="../config.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -211,38 +211,38 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../colab.html">
+   18. Using Colab
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../intro-ml.html">
-   18. Introduction to Machine Learning
+   19. Introduction to Machine Learning
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../practical-intro/Practical%20Introduction%20to%20Model%20Training.html">
-   19. Practical Introduction to Model Training
+   20. Practical Introduction to Model Training
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../projects.html">
-   20. The Project File
+   21. The Project File
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../config.html">
-   21. The Config File
+   22. The Config File
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   22. 🌿 The New Language Project
+   23. 🌿 The New Language Project
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../wandb.html">
-   23. 🏋️ Weights and Biases
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../huggingface.html">
-   24. 🤗 Hugging Face
+   24. 🏋️ Weights and Biases
   </a>
  </li>
 </ul>
@@ -347,42 +347,42 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#install">
-   22.1. Install
+   23.1. Install
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#config">
-   22.2. Config
+   23.2. Config
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#convert">
-   22.3. Convert
+   23.3. Convert
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#split">
-   22.4. Split
+   23.4. Split
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#debug">
-   22.5. Debug
+   23.5. Debug
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#train">
-   22.6. Train
+   23.6. Train
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#evaluate">
-   22.7. Evaluate
+   23.7. Evaluate
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#package">
-   22.8. Package
+   23.8. Package
   </a>
  </li>
 </ul>
@@ -397,7 +397,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="the-new-language-project">
-<h1><span class="section-number">22. </span>🌿 The New Language Project<a class="headerlink" href="#the-new-language-project" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">23. </span>🌿 The New Language Project<a class="headerlink" href="#the-new-language-project" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/drive/1iC2YF3s30e0lDxdGmegRKS8iggLldMMH?usp=sharing"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <p>For our workshops, we’ve created a spaCy project file for you that will:</p>
 <ul class="simple">
@@ -494,7 +494,7 @@ python -m spacy project assets /srv/projects/course-materials/w2/using-inception
 <p>The <strong>commands</strong> section is the heart of the project file.  Let’s take some time to understand each command and what it does.</p>
 <hr class="docutils" />
 <div class="section" id="install">
-<h2><span class="section-number">22.1. </span>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">23.1. </span>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">install</span></code> command in the next cell will read the files in the <code class="docutils literal notranslate"><span class="pre">2_new_language_object</span></code> directory and will install the customized spaCy language object that you created for your language in Cadet. The language object will tell spaCy how to break your texts into tokens and sentence spans.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -526,7 +526,7 @@ Successfully installed yi
 </div>
 </div>
 <div class="section" id="config">
-<h2><span class="section-number">22.2. </span>Config<a class="headerlink" href="#config" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">23.2. </span>Config<a class="headerlink" href="#config" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">config</span></code> command creates a generic <code class="docutils literal notranslate"><span class="pre">config.cfg</span></code> file (for more on config files, see the <a class="reference external" href="https://new-languages-for-nlp.github.io/course-materials/w2/config.html">Config section</a> in these course materials).  It updates the <code class="docutils literal notranslate"><span class="pre">train</span></code> and <code class="docutils literal notranslate"><span class="pre">dev</span></code> settings in the config file to point to the <code class="docutils literal notranslate"><span class="pre">train.spacy</span></code> and <code class="docutils literal notranslate"><span class="pre">dev.spacy</span></code> files that are created by the <code class="docutils literal notranslate"><span class="pre">split</span></code> command.  If you’re using Weights and Biases, it will also change the <code class="docutils literal notranslate"><span class="pre">training</span> <span class="pre">logger</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -559,7 +559,7 @@ Running command: /srv/projects/course-materials/w2/venv/bin/python scripts/updat
 </div>
 </div>
 <div class="section" id="convert">
-<h2><span class="section-number">22.3. </span>Convert<a class="headerlink" href="#convert" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">23.3. </span>Convert<a class="headerlink" href="#convert" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Convert</span></code> will fetch your CoNLL-U and CoNLL 2002 (ner) files from the <code class="docutils literal notranslate"><span class="pre">3_inception_export</span></code> folder.  It creates a spaCy Doc object for each text and then splits the Doc into separate documents with 10 sentences each. For each text file, the <code class="docutils literal notranslate"><span class="pre">convert</span></code> script will look for a CoNLL 2002 file with the same name.  If that text exists, it will add the named entity data in the file to the existing Doc objects. It will then save all the Docs to disk using the <code class="docutils literal notranslate"><span class="pre">.spacy</span></code> binary format.
 The outcome is a <code class="docutils literal notranslate"><span class="pre">.spacy</span></code> for each text that includes the tokenization, sents, part of speech, lemma, morphology and named entity data.</p>
 <div class="cell docutils container">
@@ -587,7 +587,7 @@ Running command: /srv/projects/course-materials/w2/venv/bin/python scripts/conve
 </div>
 </div>
 <div class="section" id="split">
-<h2><span class="section-number">22.4. </span>Split<a class="headerlink" href="#split" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">23.4. </span>Split<a class="headerlink" href="#split" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">split</span></code> command loads all of the <code class="docutils literal notranslate"><span class="pre">.spacy</span></code> files and creates a list of Doc objects.  We then randomly shuffle them so that different kinds of text are evenly distibuted across the corpus.  Using a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html"><code class="docutils literal notranslate"><span class="pre">test_train_split</span></code></a> function, we divide the corpus into a training and validation set. The split is determined by the <code class="docutils literal notranslate"><span class="pre">test_size</span></code> variable. The model will learn how to make accurate predictions using the training data. We then use the validation set to assess how well the model performs on completeley new and unseen data. We want the model to learn general rules and patterns rather than overfitting on one particular set of data. The validation set provides a measure of model improvement as part of the training process. Because the model has seen this data before, it’s no longer useful as a tool to evaluate the trained model’s performance.  So before we get started training, we also set aside 20% of the validation data to make a test set.  This final set of totally unseen data lets us measure how well the model has learned what we’ve asked it to learn.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -608,7 +608,7 @@ Running command: /srv/projects/course-materials/w2/venv/bin/python scripts/split
 </div>
 </div>
 <div class="section" id="debug">
-<h2><span class="section-number">22.5. </span>Debug<a class="headerlink" href="#debug" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">23.5. </span>Debug<a class="headerlink" href="#debug" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">debug</span></code> command runs <code class="docutils literal notranslate"><span class="pre">spacy</span> <span class="pre">debug</span> <span class="pre">data</span></code>, which provides a good overview of your prepared data.  This can help identify problems that will lead to poor model training. It’s a good check-in and moment of reflection on the state of your data before moving forward. For more, see the <a class="reference external" href="https://spacy.io/api/cli#debug-data">spaCy docs</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -670,7 +670,7 @@ Training pipeline: tok2vec, tagger, parser, ner
 </div>
 </div>
 <div class="section" id="train">
-<h2><span class="section-number">22.6. </span>Train<a class="headerlink" href="#train" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">23.6. </span>Train<a class="headerlink" href="#train" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">train</span></code> command is the moment we’ve all been waiting for. Go ahead and press the launch button! 🚀 This step will train the model using the settings in the config file.</p>
 <p>When training begins, you’ll see a bunch of numbers. Let’s make sense of what they’re saying.</p>
 <p>You’ll see a list of what components are currently being trained.  <code class="docutils literal notranslate"><span class="pre">Pipeline:</span> <span class="pre">['tok2vec',</span> <span class="pre">'tagger',</span> <span class="pre">'parser',</span> <span class="pre">'ner']</span></code> Tok2vec are token embeddings or numerical representations of tokens that can be used efficiently by the model. The tagger will learn to predict part of speech values for your tokens. The parser will learn to predict grammatical structure. The ner component learns to predict named entities in the text.</p>
@@ -725,7 +725,7 @@ training/urban-giggle/model-last
 </div>
 </div>
 <div class="section" id="evaluate">
-<h2><span class="section-number">22.7. </span>Evaluate<a class="headerlink" href="#evaluate" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">23.7. </span>Evaluate<a class="headerlink" href="#evaluate" title="Permalink to this headline">¶</a></h2>
 <p>The <strong>evaluate</strong> command takes the trained model and tests it with the test data.  Recall that these are examples that the model has never seen, so they provide the best measure of its performance. The output will be saved as a json file in the metrics folder.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -795,7 +795,7 @@ aux               62.50   38.46   47.62
 </div>
 </div>
 <div class="section" id="package">
-<h2><span class="section-number">22.8. </span>Package<a class="headerlink" href="#package" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">23.8. </span>Package<a class="headerlink" href="#package" title="Permalink to this headline">¶</a></h2>
 <p>Finally, the <strong>package</strong> command saves your trained model in a single tar file that can be shared and installed on other computers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -909,13 +909,13 @@ export/yi_pipeline-0.0.0/dist/yi_pipeline-0.0.0.tar.gz
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">21. </span>The Config File</p>
+            <p class="prev-next-title"><span class="section-number">22. </span>The Config File</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../wandb.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">23. </span>🏋️ Weights and Biases</p>
+        <p class="prev-next-title"><span class="section-number">24. </span>🏋️ Weights and Biases</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
