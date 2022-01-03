@@ -31,6 +31,7 @@ parts:
   chapters:
   - file: w2/overview
   - file: w2/prep
+  - file: w2/colab
   - file: w2/intro-ml 
   - file: w2/practical-intro/Practical Introduction to Model Training.ipynb
   - file: w2/projects
@@ -38,7 +39,6 @@ parts:
   #- file: w2/newlang_project
   - file: w2/using-inception-data/New Language Training.ipynb
   - file: w2/wandb
-  - file: w2/huggingface
 
 - caption: Workshop III  Presentations and Publications ~ May 12-13, 2022
   numbered: true
