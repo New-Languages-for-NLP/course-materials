@@ -39,6 +39,8 @@ parts:
   #- file: w2/newlang_project
   - file: w2/using-inception-data/New Language Training.ipynb
   - file: w2/wandb
+  - file: w2/embeddings
+  - file: w2/applied-embeddings
 
 - caption: Workshop III  Presentations and Publications ~ May 12-13, 2022
   numbered: true
