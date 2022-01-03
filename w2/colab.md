@@ -21,11 +21,13 @@ One key difference is that you need a Google account to log in to Colab.
 Another important difference is the runtime.  When you run a Jupyter notebook on your laptop or desktop computer it connects to a runtime or kernel on your computer.  The runtime is basically the environment  where you scripts are run and processed. Jupyter displays the notebook, but the runtime does the actual work of running your code. 
 
 One of the key design choices behind Colab is that everyone starts with the same runtime environment  running Ubuntu 18 with Python 3.7 and a host of common machine learning and data science libraries already installed. This generic kernel means that you can connect, run your code and get things done.  It also means that **your runtime can timeout if you're not using it.**  
-- If your computer falls asleep or you close your browser, Colab timeout after 90 minutes.  If you leave the browser open, it will keep a session open for as much as 12 hours. 
+- If your computer falls asleep or you close your browser, Colab will timeout after 90 minutes.  If you leave the browser open, it will keep a session open for as much as 12 hours. However, in my experience these numbers aren't set in stone and Colab can be finicky.  I find it helpful to keep the Colab tab open while I work some other task on the computer. It's like a pet you have to keep an eye on.  
 - If your connection drops out, you can use the reconnect button to rejoin your session if it's still running.  Often times, the notebook is still chugging along and you'll be right back where you need to be. If the runtime has timed out, reconnect will connect you with a new generic runtime and you'll need to start over.  
 
 Any files that you've created in a session can be lost. spaCy's project system will keep up safe most of the time.  However, once your model is trained, don't forget to run the cells to package it and download the file to your local machine.  You can then save it in GitHub. 
 
+> One trick that you can try is to limit the number of training epochs.  In your `config.cfg` file, find the `[training]` section and change `max_epochs = 0` to a number that works for you, such as `10`.
+ 
 ### CPUs and GPUs
 
 As mentioned before, one of the remarkable (and quite honestly unbelievable) benefits of Colab is the free use of GPUs.  If you know someone that's really into computer games or crypto mining, then you may have seen one hooked up to a liquid cooling system with neon lights.
