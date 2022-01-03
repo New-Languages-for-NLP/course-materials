@@ -16,14 +16,6 @@ The `config.cfg` file is similar in many ways to the `project.yml` file. It offe
 
 The section in the documentation on [Defining pipeline components](https://spacy.io/usage/training#config-components) may be especially helpful for teams that are interested in customizing the organization and capabilities of their model.  
 
-For example, what if you want to fine-tune an existing tokenizer rather than training from scratch?  Perhaps fine-tuning from an existing multi-lingual model would be better than training on a small set of annotated texts? 
-
-```yaml
-[nlp.tokenizer]
-source = "xx_ent_wiki_sm"
-```
-Adding the code above to your `config.cfg` file instructs spaCy to load the tokenizer from the small multilingual model and then fine-tune it using your training data.  #TODO would this actually work for tokenizer, or just for components?
-
 
 For more in-depth and practical information, please see the spaCy documentation:
 - [Useage](https://spacy.io/usage/training#config)
