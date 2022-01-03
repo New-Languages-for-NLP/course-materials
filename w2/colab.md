@@ -32,6 +32,9 @@ As mentioned before, one of the remarkable (and quite honestly unbelievable) ben
 
 In a nutshell, GPUs are great for machine learning because they allow for lots of parallel or concurrent processing. Most CPUs nowadays have between 2 and 6 cores.  That means that the computer can only process two to six tasks at a time. For those of you thinking "ah ha, what about multithreading," let's just leave that aside for the moment. GPUs have thousands of cores and can run thousands of computations simultaneously. They have lower precision, so they're not good for all tasks, but they're just the thing for the matrix multiplication that drives much of machine learning today.  
 
+- Your Colab notebook should already have GPUs enabled. If it does not, just go to Edit > Notebook Settings and select GPU under hardware accelerator.  
+- By default, your `project.yml` will show `gpu: 0` in the `vars` section.  This tells Colab to use the first GPU with id 0.  If you need to use the CPU, you can change this to `-1`.
+
 
 ### Table of Contents 
 
