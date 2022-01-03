@@ -389,6 +389,10 @@
 <h2><span class="section-number">18.3. </span>CPUs and GPUs<a class="headerlink" href="#cpus-and-gpus" title="Permalink to this headline">¶</a></h2>
 <p>As mentioned before, one of the remarkable (and quite honestly unbelievable) benefits of Colab is the free use of GPUs.  If you know someone that’s really into computer games or crypto mining, then you may have seen one hooked up to a liquid cooling system with neon lights.</p>
 <p>In a nutshell, GPUs are great for machine learning because they allow for lots of parallel or concurrent processing. Most CPUs nowadays have between 2 and 6 cores.  That means that the computer can only process two to six tasks at a time. For those of you thinking “ah ha, what about multithreading,” let’s just leave that aside for the moment. GPUs have thousands of cores and can run thousands of computations simultaneously. They have lower precision, so they’re not good for all tasks, but they’re just the thing for the matrix multiplication that drives much of machine learning today.</p>
+<ul class="simple">
+<li><p>Your Colab notebook should already have GPUs enabled. If it does not, just go to Edit &gt; Notebook Settings and select GPU under hardware accelerator.</p></li>
+<li><p>By default, your <code class="docutils literal notranslate"><span class="pre">project.yml</span></code> will show <code class="docutils literal notranslate"><span class="pre">gpu:</span> <span class="pre">0</span></code> in the <code class="docutils literal notranslate"><span class="pre">vars</span></code> section.  This tells Colab to use the first GPU with id 0.  If you need to use the CPU, you can change this to <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p></li>
+</ul>
 </div>
 <div class="section" id="table-of-contents">
 <h2><span class="section-number">18.4. </span>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
