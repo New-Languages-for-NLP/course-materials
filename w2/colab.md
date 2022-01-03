@@ -20,7 +20,11 @@ One key difference is that you need a Google account to log in to Colab.
 
 Another important difference is the runtime.  When you run a Jupyter notebook on your laptop or desktop computer it connects to a runtime or kernel on your computer.  The runtime is basically the environment  where you scripts are run and processed. Jupyter displays the notebook, but the runtime does the actual work of running your code. 
 
-One of the key design choices behind Colab is that everyone starts with the same runtime environment  running Ubuntu 18 with Python 3.7 and a host of common machine learning and data science libraries already installed. This generic kernel means that you can connect, run your code and get things done.  It also means that **your runtime can timeout if you're not using it.**  Any files that you've created in that session can be lost.  Just remember that the cloud is just someone else's computer.  They'll loan it to you, but you need to save any files that you want to keep.   
+One of the key design choices behind Colab is that everyone starts with the same runtime environment  running Ubuntu 18 with Python 3.7 and a host of common machine learning and data science libraries already installed. This generic kernel means that you can connect, run your code and get things done.  It also means that **your runtime can timeout if you're not using it.**  
+- If your computer falls asleep or you close your browser, Colab timeout after 90 minutes.  If you leave the browser open, it will keep a session open for as much as 12 hours. 
+- If your connection drops out, you can use the reconnect button to rejoin your session if it's still running.  Often times, the notebook is still chugging along and you'll be right back where you need to be. If the runtime has timed out, reconnect will connect you with a new generic runtime and you'll need to start over.  
+
+Any files that you've created in a session can be lost. spaCy's project system will keep up safe most of the time.  However, once your model is trained, don't forget to run the cells to package it and download the file to your local machine.  You can then save it in GitHub. 
 
 ### CPUs and GPUs
 
