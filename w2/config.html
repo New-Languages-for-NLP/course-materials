@@ -241,18 +241,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="wandb.html">
-   24. 🏋️ Weights and Biases
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="embeddings.html">
-   25. Embeddings, Do You Need Them?
+   24. Embeddings, Do You Need Them?
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="applied-embeddings.html">
-   26. Applied Session with Transformers
+   25. Applied Session with Transformers
   </a>
  </li>
 </ul>
@@ -264,7 +259,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../w3/overview.html">
-   27. Welcome to Workshop III
+   26. Welcome to Workshop III
   </a>
  </li>
 </ul>
@@ -368,7 +363,12 @@
 <ul class="simple">
 <li><p>It has an <code class="docutils literal notranslate"><span class="pre">[nlp]</span></code> section that contains settings for the NLP object. If you don’t have any named entity data, you may want to edit this line: <code class="docutils literal notranslate"><span class="pre">pipeline</span> <span class="pre">=</span> <span class="pre">[&quot;tok2vec&quot;,&quot;tagger&quot;,&quot;parser&quot;,&quot;ner&quot;]</span></code> to remove <code class="docutils literal notranslate"><span class="pre">&quot;ner&quot;</span></code>.</p></li>
 <li><p>There is a <code class="docutils literal notranslate"><span class="pre">[components]</span></code> section with settings for each individual component in the pipeline.  This section is especially useful for custom components and for deviating from spaCy default configurations.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">[training]</span></code> section contains various hypterparameters that can be changed, such as seed, dropout, and evaluation frequency.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">[training]</span></code> section contains various hypterparameters that can be changed, such as seed, dropout, and evaluation frequency. By default, spaCy will continue training until the model stops improving. You can change the <code class="docutils literal notranslate"><span class="pre">patience</span></code> setting. If set to 400, for example, patience will wait for 400 steps without improvement before stopping training. You can also stop training after a specified number of epochs or steps.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_epochs</span></code> will stop training after a specific number of epochs have completed. For example, <code class="docutils literal notranslate"><span class="pre">max_epochs</span> <span class="pre">=</span> <span class="pre">10</span></code>.  If set to <code class="docutils literal notranslate"><span class="pre">0</span></code>, there is no epoch limit.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_steps</span></code> provides a maximum number of steps before training is stopped.</p></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="customizing-pipeline-training">
