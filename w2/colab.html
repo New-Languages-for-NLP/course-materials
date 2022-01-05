@@ -42,7 +42,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -308,7 +308,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -326,7 +326,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -364,26 +364,66 @@
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1>Using Colab</h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+                <div>
+                    <h2> Contents </h2>
+                </div>
+                <nav aria-label="Page">
+                    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#colab-101">
+   18.1. Colab 101
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#runtime">
+   18.2. Runtime
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cpus-and-gpus">
+   18.3. CPUs and GPUs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   18.4. Table of Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cell-input">
+   18.5. Cell input
+  </a>
+ </li>
+</ul>
+
+                </nav>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="using-colab">
 <h1><span class="section-number">18. </span>Using Colab<a class="headerlink" href="#using-colab" title="Permalink to this headline">¶</a></h1>
-<p>For these workshops, we have chosen to use a free service offered by Google called Colab.  Colab is an environment for running code notebooks using Google’s infrastructure on the cloud.  It allows us to all work in our browsers in the same environment with similar computational power and memory.  It doesn’t matter if you’re running Windows, or Mac or Linux.  Remarkably, Google also provides free usage of graphics processing chips (GPUs), which are much faster for model training.</p>
-<p>Of course, nothing is really free. If you’re interested in the  economics and self-interest of it all, here’s a good start on <a class="reference external" href="https://www.reddit.com/r/MachineLearning/comments/liiqxr/d_why_is_google_colab_free/">Reddit</a>.  You are welcome to use your own computer or service if you prefer.</p>
+<p>For these workshops, we have chosen to use a free service offered by Google called Colab.  Colab is an environment for running code notebooks using Google’s infrastructure on the cloud.  It allows us to all work in our browsers in the same environment with similar computational power and memory.  It doesn’t matter if you’re running Windows, or Mac or Linux.  Remarkably, Google also provides free usage of graphics processing chips (GPUs), which are much faster for model training.  To improve your experience, We have purchased a Colab Pro subscription for each team.  With this subscription you will have access to greater processing and memory sources and you will not be subject to time limitations as well.</p>
 <hr class="docutils" />
 <div class="section" id="colab-101">
 <h2><span class="section-number">18.1. </span>Colab 101<a class="headerlink" href="#colab-101" title="Permalink to this headline">¶</a></h2>
 <p>When using Colab to train your spaCy model, there are a few things to know and keep in mind.</p>
 <p>If you’ve used Jupyter Notebooks before, then Colab should feel very familiar.  Colab runs on Jupyter, so any existing notebooks you have will work.</p>
 <p>One key difference is that you need a Google account to log in to Colab.</p>
+<p>Colab is similar to Google Docs and is part of Google Drive. You can open and run a shared Colab, but you may not have permission to change it.  With File &gt; Save a copy in drive, you can create your own copy that can be changed and saved however you like.</p>
 </div>
 <div class="section" id="runtime">
 <h2><span class="section-number">18.2. </span>Runtime<a class="headerlink" href="#runtime" title="Permalink to this headline">¶</a></h2>
 <p>Another important difference is the runtime.  When you run a Jupyter notebook on your laptop or desktop computer it connects to a runtime or kernel on your computer.  The runtime is basically the environment  where you scripts are run and processed. Jupyter displays the notebook, but the runtime does the actual work of running your code.</p>
-<p>One of the key design choices behind Colab is that everyone starts with the same runtime environment  running Ubuntu 18 with Python 3.7 and a host of common machine learning and data science libraries already installed. This generic kernel means that you can connect, run your code and get things done.  It also means that <strong>your runtime can timeout if you’re not using it.</strong></p>
+<p>One of the key design choices behind Colab is that everyone starts with the same runtime environment  running Ubuntu 18 with Python 3.7 and a host of common machine learning and data science libraries already installed. This generic kernel means that you can connect, run your code and get things done.</p>
 <ul class="simple">
 <li><p>If your computer falls asleep or you close your browser, Colab will timeout after 90 minutes.  If you leave the browser open, it will keep a session open for as much as 12 hours. However, in my experience these numbers aren’t set in stone and Colab can be finicky.  I find it helpful to keep the Colab tab open while I work some other task on the computer. It’s like a pet you have to keep an eye on.</p></li>
 <li><p>If your connection drops out, you can use the reconnect button to rejoin your session if it’s still running.  Often times, the notebook is still chugging along and you’ll be right back where you need to be. If the runtime has timed out, reconnect will connect you with a new generic runtime and you’ll need to start over.</p></li>
@@ -392,10 +432,13 @@
 <blockquote>
 <div><p>One trick that you can try is to limit the number of training epochs.  In your <code class="docutils literal notranslate"><span class="pre">config.cfg</span></code> file, find the <code class="docutils literal notranslate"><span class="pre">[training]</span></code> section and change <code class="docutils literal notranslate"><span class="pre">max_epochs</span> <span class="pre">=</span> <span class="pre">0</span></code> to a number that works for you, such as <code class="docutils literal notranslate"><span class="pre">10</span></code>.</p>
 </div></blockquote>
+<blockquote>
+<div><p>If you need to hard reset your notebook and just start from scratch, use Runtime &gt; Factory reset runtime.</p>
+</div></blockquote>
 </div>
 <div class="section" id="cpus-and-gpus">
 <h2><span class="section-number">18.3. </span>CPUs and GPUs<a class="headerlink" href="#cpus-and-gpus" title="Permalink to this headline">¶</a></h2>
-<p>As mentioned before, one of the remarkable (and quite honestly unbelievable) benefits of Colab is the free use of GPUs.  If you know someone that’s really into computer games or crypto mining, then you may have seen one hooked up to a liquid cooling system with neon lights.</p>
+<p>As mentioned before, one of the benefits of Colab is the use of GPUs.  If you know someone that’s really into computer games or crypto mining, then you may have seen one hooked up to a liquid cooling system with neon lights.</p>
 <p>In a nutshell, GPUs are great for machine learning because they allow for lots of parallel or concurrent processing. Most CPUs nowadays have between 2 and 6 cores.  That means that the computer can only process two to six tasks at a time. For those of you thinking “ah ha, what about multithreading,” let’s just leave that aside for the moment. GPUs have thousands of cores and can run thousands of computations simultaneously. They have lower precision, so they’re not good for all tasks, but they’re just the thing for the matrix multiplication that drives much of machine learning today.</p>
 <ul class="simple">
 <li><p>Your Colab notebook should already have GPUs enabled. If it does not, just go to Edit &gt; Notebook Settings and select GPU under hardware accelerator.</p></li>
@@ -407,7 +450,92 @@
 <p>On the left hand side of the page, you’ll find a menu for the table of contents, find and replace, and Files among others.</p>
 <ul class="simple">
 <li><p>The table of contents gives you a good way to view the larger structure of the notebook and its main parts.  If you want to jump to a specific section of the notebook, the toc is great for that.</p></li>
-<li><p>The Files section here is also very useful.  It lets you view the files on the current system.  You can also double-click on the files to edit them.  This is very useful if you want to make small changes to your <code class="docutils literal notranslate"><span class="pre">config.cfg</span></code> or <code class="docutils literal notranslate"><span class="pre">project.yml</span></code> files.</p></li>
+<li><p>The Files section here is also very useful.  It lets you view the files on the current system.  You can also double-click on the files to edit them.  This is very useful if you want to make small changes to your <code class="docutils literal notranslate"><span class="pre">config.cfg</span></code> or <code class="docutils literal notranslate"><span class="pre">project.yml</span></code> files. Note that any changes to files will not be shown until you click on Refresh (the folder with a circle).</p></li>
+</ul>
+</div>
+<div class="section" id="cell-input">
+<h2><span class="section-number">18.5. </span>Cell input<a class="headerlink" href="#cell-input" title="Permalink to this headline">¶</a></h2>
+<p>If you are using Weights and Biases for logging, you will be asked if you want to use an existing account and for you API key.  Colab does a good job of handling input. Just click next to the area requesting input and you should see a small blue box that you can type in.  Enter your information and press Enter.</p>
+<p>Links and further reading:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://colab.research.google.com/">https://colab.research.google.com/</a></p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/getting-started-with-google-colab-f2fff97f594c">Getting Started With Google Colab</a></p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./w2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="using-colab">
+<h1><span class="section-number">18. </span>Using Colab<a class="headerlink" href="#using-colab" title="Permalink to this headline">¶</a></h1>
+<p>For these workshops, we have chosen to use a free service offered by Google called Colab.  Colab is an environment for running code notebooks using Google’s infrastructure on the cloud.  It allows us to all work in our browsers in the same environment with similar computational power and memory.  It doesn’t matter if you’re running Windows, or Mac or Linux.  Remarkably, Google also provides free usage of graphics processing chips (GPUs), which are much faster for model training.  To improve your experience, We have purchased a Colab Pro subscription for each team.  With this subscription you will have access to greater processing and memory sources and you will not be subject to time limitations as well.</p>
+<hr class="docutils" />
+<div class="section" id="colab-101">
+<h2><span class="section-number">18.1. </span>Colab 101<a class="headerlink" href="#colab-101" title="Permalink to this headline">¶</a></h2>
+<p>When using Colab to train your spaCy model, there are a few things to know and keep in mind.</p>
+<p>If you’ve used Jupyter Notebooks before, then Colab should feel very familiar.  Colab runs on Jupyter, so any existing notebooks you have will work.</p>
+<p>One key difference is that you need a Google account to log in to Colab.</p>
+<p>Colab is similar to Google Docs and is part of Google Drive. You can open and run a shared Colab, but you may not have permission to change it.  With File &gt; Save a copy in drive, you can create your own copy that can be changed and saved however you like.</p>
+</div>
+<div class="section" id="runtime">
+<h2><span class="section-number">18.2. </span>Runtime<a class="headerlink" href="#runtime" title="Permalink to this headline">¶</a></h2>
+<p>Another important difference is the runtime.  When you run a Jupyter notebook on your laptop or desktop computer it connects to a runtime or kernel on your computer.  The runtime is basically the environment  where you scripts are run and processed. Jupyter displays the notebook, but the runtime does the actual work of running your code.</p>
+<p>One of the key design choices behind Colab is that everyone starts with the same runtime environment  running Ubuntu 18 with Python 3.7 and a host of common machine learning and data science libraries already installed. This generic kernel means that you can connect, run your code and get things done.</p>
+<ul class="simple">
+<li><p>If your computer falls asleep or you close your browser, Colab will timeout after 90 minutes.  If you leave the browser open, it will keep a session open for as much as 12 hours. However, in my experience these numbers aren’t set in stone and Colab can be finicky.  I find it helpful to keep the Colab tab open while I work some other task on the computer. It’s like a pet you have to keep an eye on.</p></li>
+<li><p>If your connection drops out, you can use the reconnect button to rejoin your session if it’s still running.  Often times, the notebook is still chugging along and you’ll be right back where you need to be. If the runtime has timed out, reconnect will connect you with a new generic runtime and you’ll need to start over.</p></li>
+</ul>
+<p>Any files that you’ve created in a session can be lost. spaCy’s project system will keep up safe most of the time.  However, once your model is trained, don’t forget to run the cells to package it and download the file to your local machine.  You can then save it in GitHub.</p>
+<blockquote>
+<div><p>One trick that you can try is to limit the number of training epochs.  In your <code class="docutils literal notranslate"><span class="pre">config.cfg</span></code> file, find the <code class="docutils literal notranslate"><span class="pre">[training]</span></code> section and change <code class="docutils literal notranslate"><span class="pre">max_epochs</span> <span class="pre">=</span> <span class="pre">0</span></code> to a number that works for you, such as <code class="docutils literal notranslate"><span class="pre">10</span></code>.</p>
+</div></blockquote>
+<blockquote>
+<div><p>If you need to hard reset your notebook and just start from scratch, use Runtime &gt; Factory reset runtime.</p>
+</div></blockquote>
+</div>
+<div class="section" id="cpus-and-gpus">
+<h2><span class="section-number">18.3. </span>CPUs and GPUs<a class="headerlink" href="#cpus-and-gpus" title="Permalink to this headline">¶</a></h2>
+<p>As mentioned before, one of the benefits of Colab is the use of GPUs.  If you know someone that’s really into computer games or crypto mining, then you may have seen one hooked up to a liquid cooling system with neon lights.</p>
+<p>In a nutshell, GPUs are great for machine learning because they allow for lots of parallel or concurrent processing. Most CPUs nowadays have between 2 and 6 cores.  That means that the computer can only process two to six tasks at a time. For those of you thinking “ah ha, what about multithreading,” let’s just leave that aside for the moment. GPUs have thousands of cores and can run thousands of computations simultaneously. They have lower precision, so they’re not good for all tasks, but they’re just the thing for the matrix multiplication that drives much of machine learning today.</p>
+<ul class="simple">
+<li><p>Your Colab notebook should already have GPUs enabled. If it does not, just go to Edit &gt; Notebook Settings and select GPU under hardware accelerator.</p></li>
+<li><p>By default, your <code class="docutils literal notranslate"><span class="pre">project.yml</span></code> will show <code class="docutils literal notranslate"><span class="pre">gpu:</span> <span class="pre">0</span></code> in the <code class="docutils literal notranslate"><span class="pre">vars</span></code> section.  This tells Colab to use the first GPU with id 0.  If you need to use the CPU, you can change this to <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="table-of-contents">
+<h2><span class="section-number">18.4. </span>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<p>On the left hand side of the page, you’ll find a menu for the table of contents, find and replace, and Files among others.</p>
+<ul class="simple">
+<li><p>The table of contents gives you a good way to view the larger structure of the notebook and its main parts.  If you want to jump to a specific section of the notebook, the toc is great for that.</p></li>
+<li><p>The Files section here is also very useful.  It lets you view the files on the current system.  You can also double-click on the files to edit them.  This is very useful if you want to make small changes to your <code class="docutils literal notranslate"><span class="pre">config.cfg</span></code> or <code class="docutils literal notranslate"><span class="pre">project.yml</span></code> files. Note that any changes to files will not be shown until you click on Refresh (the folder with a circle).</p></li>
 </ul>
 </div>
 <div class="section" id="cell-input">
@@ -465,23 +593,21 @@
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
-        
-          <div class="extra_footer">
-            <p>
+  <p>
+    
+      By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
+    
+      <div class="extra_footer">
+        <p>
 <a target="_blank" href="https://www.neh.gov/divisions/odh"><img style="height:10%; width:10%" src="https://www.neh.gov/sites/default/files/inline-files/NEH-Horizontal-Stk-Seal-Black820.jpg" /></a>
 <a target="_blank" href="https://cdh.princeton.edu"><img style="height:10%; width:10%" src="https://cdh.princeton.edu/static/img/CDH_logo.svg" /></a>
 <a target="_blank" href="https://www.dariah.eu/"><img style="height:19%; width:19%" src="https://www.dariah.eu/wp-content/uploads/2017/02/logo.png" /></a>
 
 </p>
 
-          </div>
-      </p>
-    </div>
-  </footer>
+      </div>
+  </p>
+</footer>
 </main>
 
 

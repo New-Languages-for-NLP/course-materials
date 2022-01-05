@@ -42,7 +42,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -310,7 +310,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -328,7 +328,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -383,7 +383,306 @@
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1>Tokenization</h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+                <div>
+                    <h2> Contents </h2>
+                </div>
+                <nav aria-label="Page">
+                    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#natural-language-processing-tokenization">
+   13.1. Natural language processing &amp; Tokenization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spacy-s-tokenizer">
+   13.2. spaCy’s Tokenizer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-new-exceptions-for-your-language">
+   13.3. Adding new exceptions for your language
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#specific-exceptions">
+   13.4. Specific Exceptions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#separate-a-word-into-two-tokens">
+   13.5. Separate a word into two tokens
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rule-based-exceptions">
+   13.6. Rule-based exceptions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extending-defaults">
+   13.7. Extending defaults
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prefixes-in-action">
+     13.7.1. Prefixes in action
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                </nav>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="tokenization">
+<h1><span class="section-number">13. </span>Tokenization<a class="headerlink" href="#tokenization" title="Permalink to this headline">¶</a></h1>
+<p>From your computer’s perspective, text is nothing more than a sequence of characters. If you ask Python to iterate over a snippet of text, you’ll see that it returns just one letter at a time. Note that the index starts at 0, not 1 and that spaces are part of the sequence.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Siberia has many rivers.&quot;</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">char</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">char</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>  <span class="n">S</span>
+<span class="mi">1</span>  <span class="n">i</span>
+<span class="mi">2</span>  <span class="n">b</span>
+<span class="mi">3</span>  <span class="n">e</span>
+<span class="mi">4</span>  <span class="n">r</span>
+<span class="mi">5</span>  <span class="n">i</span>
+<span class="mi">6</span>  <span class="n">a</span>
+<span class="mi">7</span>  
+<span class="mi">8</span>  <span class="n">h</span>
+<span class="mi">9</span>  <span class="n">a</span>
+<span class="mi">10</span> <span class="n">s</span>
+<span class="mi">11</span>  
+<span class="mi">12</span> <span class="n">m</span>
+<span class="mi">13</span> <span class="n">a</span>
+<span class="mi">14</span> <span class="n">n</span>
+<span class="mi">15</span> <span class="n">y</span>
+<span class="mi">16</span>  
+<span class="mi">17</span> <span class="n">r</span>
+<span class="mi">18</span> <span class="n">i</span>
+<span class="mi">19</span> <span class="n">v</span>
+<span class="mi">20</span> <span class="n">e</span>
+<span class="mi">21</span> <span class="n">r</span>
+<span class="mi">22</span> <span class="n">s</span>
+<span class="mi">23</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>When we ask Python to find a word, say “rivers”, in a larger text, it is actually searching for a lower-case “r” followed by “i” “v” and so on. It returns a match only if it finds exactly the right letters in the right order.  When it makes a match, Python’s .find() function will return the location of the first character in the sequence. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Siberia has many rivers.&quot;</span>
+<span class="n">text</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;rivers&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">17</span>
+</pre></div>
+</div>
+<p>Keep in mind that computers are very precise and picky.  Any messiness in the text will cause the word to be missed, so <code class="docutils literal notranslate"><span class="pre">text.find(&quot;Rivers&quot;)</span></code> returns -1, which means that the sequence could not be found. You can also accidentally match characters that are part of the sequence, but not part of a word.  Try <code class="docutils literal notranslate"><span class="pre">text.find(&quot;y</span> <span class="pre">riv&quot;)</span></code>.  You get 15 as the answer because that is the beginning of the “y riv” sequence, which is present in the text, but isn’t a thing that you’d normally want to find.</p>
+<div class="section" id="natural-language-processing-tokenization">
+<h2><span class="section-number">13.1. </span>Natural language processing &amp; Tokenization<a class="headerlink" href="#natural-language-processing-tokenization" title="Permalink to this headline">¶</a></h2>
+<p>While pure Python is sufficient for many tasks, natural language processing (NLP) libraries allow us to work computationally with the text as language. NLP reveals a whole host of linguistic attributes of the text that can be used for analysis.  For example, the machine will know if a word is a noun or a verb with part of speech tagging.  We can find the direct object of a verb to determine who is speaking and the subject of that speech.  NLP gives your programs an instant boost of information that opens new forms of analysis.</p>
+<p>Our first NLP task is tokenization. This is where our text is split into meaningful parts; usually word tokens, spans (“New York City”) or sentences. The sentence, “Siberia has many rivers.” can be split into five tokens: <code class="docutils literal notranslate"><span class="pre">&lt;Siberia&gt;&lt;has&gt;&lt;many&gt;&lt;rivers&gt;&lt;.&gt;</span></code>  Note that the ending punctuation is now distinct from the word rivers. The rules for tokenization depend on the language your are using. For English and other languages with spaces between words, you often get good results simply by splitting the tokens on spaces. However, a host of rules are also needed to separate punctuation from a token, to split and normalize words (ex. “Let’s” = “Let us”) as well as specific exceptions that don’t follow regular patterns.</p>
+<p>The <a class="reference external" href="https://spacy.io/usage/linguistic-features/#tokenization">spaCy documentation</a> is really excellent on this topic and I recommend that you start there. When you’re done come back and we’ll cover some practical topics and processes that you’ll need when creating a new language object.</p>
+</div>
+<div class="section" id="spacy-s-tokenizer">
+<h2><span class="section-number">13.2. </span>spaCy’s Tokenizer<a class="headerlink" href="#spacy-s-tokenizer" title="Permalink to this headline">¶</a></h2>
+<p>spaCy’s tokenization begins by splitting tokens on spaces. It’s nearly identical what you’d get from <code class="docutils literal notranslate"><span class="pre">&quot;Siberia</span> <span class="pre">has</span> <span class="pre">many</span> <span class="pre">rivers.&quot;.split()</span></code>, which is <code class="docutils literal notranslate"><span class="pre">['Siberia','has','many','rivers.']</span></code>  Keep a close eye on the period in this sentence. On its own, Python has trouble identifying the period as a distinct token.</p>
+<p>To address this problem, spaCy has rules for how to split these chunks into tokens. In this case, it has a list of punctuation symbols.  If any of those symbols are at the end of a chunk, a suffix rule separates the word from the punctuation.  These rules cover a lot of ground and are very powerful. However, there are many cases where we need to tell spaCy to handle things differently.</p>
+<p>Exceptions are a list of patterns to look for and what to do with them. The exceptions for your language are most often found in <code class="docutils literal notranslate"><span class="pre">spacy/lang</span></code> directory in a <code class="docutils literal notranslate"><span class="pre">tokenizer_exceptions.py</span></code> file. For example, here are the exceptions for English to handle shortened forms of <code class="docutils literal notranslate"><span class="pre">you</span> <span class="pre">all</span></code> such as <code class="docutils literal notranslate"><span class="pre">y'all</span></code>. These exceptions cause the tokenizer to split the “y’all” into two tokens.</p>
+<p><strong><a class="reference external" href="https://github.com/explosion/spaCy/blob/34e13c1161f7d42b961026b12d2eb3d3165bae27/spacy/lang/en/tokenizer_exceptions.py#L361">tokenizer_exceptions.py</a></strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;y&#39;all&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;y&#39;&quot;</span><span class="p">,</span> <span class="n">NORM</span><span class="p">:</span> <span class="s2">&quot;you&quot;</span><span class="p">},</span> <span class="p">{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">}],</span>
+<span class="s2">&quot;yall&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">NORM</span><span class="p">:</span> <span class="s2">&quot;you&quot;</span><span class="p">},</span> <span class="p">{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">}],</span>
+</pre></div>
+</div>
+<p>Note that the spaCy developers have accounted for the most common variations of ‘you all’ and deliberately decided to incorporate slang and idiomatic usage. They have added a normalized form (NORM). If we’re interested in word frequencies and not variation, this can be a very useful. This is available to you as <code class="docutils literal notranslate"><span class="pre">token.norm_</span></code>.</p>
+<p>If you look at the <code class="docutils literal notranslate"><span class="pre">tokenizer_exceptions.py</span></code> files for the existing languages, you’ll see a wide range of exceptions and ways of writing the rules. For the sake of simplicity, we’ll discuss the two most common ways to add exceptions for your language.</p>
+<blockquote>
+<div><p>What are ORTH and NORM? They are token attributes. When your exception becomes a token, it will have a <code class="docutils literal notranslate"><span class="pre">token.text</span></code> attribute: that’s ORTH. NORM is <code class="docutils literal notranslate"><span class="pre">token.norm_</span></code> LEMMA is <code class="docutils literal notranslate"><span class="pre">token.lemma_</span></code>, <code class="docutils literal notranslate"><span class="pre">IS_STOP:True</span></code> will mark the token as a stop word; <code class="docutils literal notranslate"><span class="pre">token.is_stop</span></code>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="adding-new-exceptions-for-your-language">
+<h2><span class="section-number">13.3. </span>Adding new exceptions for your language<a class="headerlink" href="#adding-new-exceptions-for-your-language" title="Permalink to this headline">¶</a></h2>
+<p>spaCy comes with a lot of opinions and defaults right from the beginning.  In most cases, this will save you time. You can find the default tokenizer exceptions by importing them.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.lang.tokenizer_exceptions</span> <span class="kn">import</span> <span class="n">BASE_EXCEPTIONS</span>
+</pre></div>
+</div>
+<p>You’ll find that <code class="docutils literal notranslate"><span class="pre">BASE_EXCEPTIONS</span></code> is a Python dictionary.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+ <span class="s1">&#39;C++&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="mi">65</span><span class="p">:</span> <span class="s1">&#39;C++&#39;</span><span class="p">}],</span>
+ <span class="s1">&#39;a.&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="mi">65</span><span class="p">:</span> <span class="s1">&#39;a.&#39;</span><span class="p">}],</span>
+ <span class="s1">&#39;b.&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="mi">65</span><span class="p">:</span> <span class="s1">&#39;b.&#39;</span><span class="p">}],</span>
+ <span class="o">...</span> 
+</pre></div>
+</div>
+<p>If one of the base exceptions is causing problems for your language, it’s easy to remove it. To remove the <code class="docutils literal notranslate"><span class="pre">'C++'</span></code> exception above:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BASE_EXCEPTIONS</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;C++&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>spaCy also comes with a nice utility function that lets you add new exceptions to the defaults: <code class="docutils literal notranslate"><span class="pre">update_exc()</span></code>.</p>
+<p>For clarity, we will refer to two types of exceptions.  The first are specific, or one-time, exceptions.  These define a very specific pattern for spaCy to look for. If it finds a match, it will apply specific tokenization rules to it. In the example above, <code class="docutils literal notranslate"><span class="pre">'Cuz</span></code> would normally be split into <code class="docutils literal notranslate"><span class="pre">&lt;'&gt;&lt;Cuz&gt;</span></code> because the spaCy defaults would treat <code class="docutils literal notranslate"><span class="pre">'</span></code> as a prefix. To prevent this, we can add a specific exception in <code class="docutils literal notranslate"><span class="pre">tokenizer_exceptions.py</span></code></p>
+<p>Rule-based exceptions look for more general patterns. For the example above, we could add an exception for any time we find <code class="docutils literal notranslate"><span class="pre">'</span></code> followed by the letter c. This would be much more flexible and catch more variations on the form. Instead of 8 specific rules, we’d have one pattern.  But be careful, our rule-based pattern would also apply to <code class="docutils literal notranslate"><span class="pre">'cuse</span> <span class="pre">me!</span></code> which is a shortened form of <code class="docutils literal notranslate"><span class="pre">excuse</span> <span class="pre">me!</span></code> That might be a good thing, it might not.</p>
+<p>The lesson here is that it’s up to you when to use specific exceptions and when to use rule-based exceptions.</p>
+</div>
+<div class="section" id="specific-exceptions">
+<h2><span class="section-number">13.4. </span>Specific Exceptions<a class="headerlink" href="#specific-exceptions" title="Permalink to this headline">¶</a></h2>
+<p>To add a new exception, pass a dictionary with a key with the string to match and a list with instructions on how to transform it.</p>
+<p>For example:
+“BIG YIKES” would normally be split into two tokens <code class="docutils literal notranslate"><span class="pre">&lt;BIG&gt;&lt;YIKES&gt;</span></code>. To prevent this from happening, we can create an exception.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.symbols</span> <span class="kn">import</span> <span class="n">ORTH</span>
+<span class="kn">from</span> <span class="nn">spacy.util</span> <span class="kn">import</span> <span class="n">update_exc</span>
+         <span class="c1">#&#39;match&#39;:   [{what to do }]</span>
+<span class="n">yikes</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;BIG YIKES&#39;</span><span class="p">:[{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s1">&#39;BIG YIKES&#39;</span><span class="p">}]}</span>
+<span class="n">TOKENIZER_EXCEPTIONS</span> <span class="o">=</span> <span class="n">update_exc</span><span class="p">(</span><span class="n">BASE_EXCEPTIONS</span><span class="p">,</span> <span class="n">yikes</span><span class="p">)</span>
+
+
+</pre></div>
+</div>
+<p>Let’s test to confirm that our the tokenizer is acting as we’d expect.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.lang.en</span> <span class="kn">import</span> <span class="n">English</span>
+<span class="kn">from</span> <span class="nn">spacy.lang.tokenizer_exceptions</span> <span class="kn">import</span> <span class="n">BASE_EXCEPTIONS</span>
+
+<span class="c1">#Load the basic English language object</span>
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">English</span><span class="p">()</span> 
+
+<span class="c1">#Here&#39;s our new exception</span>
+<span class="n">yikes</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;BIG YIKES&#39;</span><span class="p">:[{</span><span class="n">ORTH</span><span class="p">:</span> <span class="s1">&#39;BIG YIKES&#39;</span><span class="p">}]}</span>
+
+<span class="c1">#Update the default tokenizer with our tokenizer exception</span>
+<span class="n">nlp</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">rules</span> <span class="o">=</span> <span class="n">update_exc</span><span class="p">(</span><span class="n">BASE_EXCEPTIONS</span><span class="p">,</span> <span class="n">yikes</span><span class="p">)</span>
+
+<span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="s2">&quot;Yikes! BIG YIKES!&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">doc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s2">&quot;BIG YIKES&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[ t for t in doc]
+[Yikes, !, BIG YIKES, !]
+</pre></div>
+</div>
+<p>That’s exciting! We’ve made a change to the tokenization rules and it worked. Just keep in mind that exceptions are very specific.  If we have <code class="docutils literal notranslate"><span class="pre">&quot;Yikes!</span> <span class="pre">BIG</span> <span class="pre">yikes!&quot;</span></code>, we get “BIG” and “yikes” as separate tokens because “yikes” isn’t all in caps. Yes, it’s that picky. When adding specific exceptions, you’ll want to add rules for all of the variations that your model is likely to encounter.</p>
+<p>To build on our momentum, let’s discuss several other common types of tokenizer exceptions.</p>
+</div>
+<div class="section" id="separate-a-word-into-two-tokens">
+<h2><span class="section-number">13.5. </span>Separate a word into two tokens<a class="headerlink" href="#separate-a-word-into-two-tokens" title="Permalink to this headline">¶</a></h2>
+<p>It’s very common to have words that should be split into separate tokens, but there isn’t a regular infix that will make the cut.  Here we need an exception. As an example, let’s explore Kummerspeck (‘grief bacon’) the German name for weight from emotional eating.</p>
+<p>Here we can use the exceptions list to split the word into parts and detail how to handle each of the new tokens: <code class="docutils literal notranslate"><span class="pre">'matchword':[{match}{word}]</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">grief_bacon</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Kummerspeck&#39;</span><span class="p">:[{</span><span class="n">ORTH</span><span class="p">:</span><span class="s2">&quot;Kummer&quot;</span><span class="p">},{</span><span class="n">ORTH</span><span class="p">:</span><span class="s2">&quot;speck&quot;</span><span class="p">}]}</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.lang.de</span> <span class="kn">import</span> <span class="n">German</span>
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">German</span><span class="p">()</span>
+<span class="n">nlp</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">rules</span> <span class="o">=</span> <span class="n">update_exc</span><span class="p">(</span><span class="n">BASE_EXCEPTIONS</span><span class="p">,</span> <span class="n">grief_bacon</span><span class="p">)</span>
+
+<span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="s2">&quot;Das Problem ist nur, dass das Gewicht, das McCoy sich anfuttert, nicht nur beruflich bedingt ist, sondern mindestens zur Hälfte aus Kummerspeck besteht.&quot;</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">doc</span><span class="p">[</span><span class="mi">25</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;Kummer&#39;</span> <span class="ow">and</span> <span class="n">doc</span><span class="p">[</span><span class="mi">26</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;speck&#39;</span>
+</pre></div>
+</div>
+<p>The three use cases covered above are the most common types of tokenizer exceptions: adding normalizations, combining words, splitting words. Exceptions can be extremely useful for one-time problems for which there just aren’t any rules or common patterns. However, it’s simply impractical to handle everything with specific exceptions. The next section cover ways that you can handle common patterns and rule-based exceptions.</p>
+</div>
+<div class="section" id="rule-based-exceptions">
+<h2><span class="section-number">13.6. </span>Rule-based exceptions<a class="headerlink" href="#rule-based-exceptions" title="Permalink to this headline">¶</a></h2>
+<p>To handle regular patterns, spaCy has three kinds of rule-based exceptions. They are:</p>
+<ul class="simple">
+<li><p>Prefix: A section at the start of a word that should be separated into its own token.</p></li>
+<li><p>Infix: A section in the middle of a word that should be separated into its own token.</p></li>
+<li><p>Suffix: A section at the end of a word that should be separated into its own token.</p></li>
+</ul>
+<p>spaCy comes with default rule-based exceptions that can often be found in the language’s <code class="docutils literal notranslate"><span class="pre">punctuations.py</span></code> file. Additionally, there is a <code class="docutils literal notranslate"><span class="pre">spacy/lang/punctuation.py</span></code> file that has base <code class="docutils literal notranslate"><span class="pre">TOKENIZER_PREFIXES</span></code>, <code class="docutils literal notranslate"><span class="pre">TOKENIZER_SUFFIXES</span></code>, and <code class="docutils literal notranslate"><span class="pre">TOKENIZER_INFIXES</span></code>; <a class="reference external" href="https://github.com/explosion/spaCy/blob/master/spacy/lang/punctuation.py">see here</a>. These defaults are lists of exception patterns. If you look at the files, you’ll see some variety.  Some are just a string such as “<span class="math notranslate nohighlight">\(&quot; as a prefix for dollars. '\)</span>100’ will be split into <code class="docutils literal notranslate"><span class="pre">&lt;$&gt;&lt;100&gt;</span></code>. Another approach is to work by charachter type.  For example we could just add <code class="docutils literal notranslate"><span class="pre">LIST_CURRENCY</span></code> as a prefix.  Now spaCy will separate all of the listed currency symbols for you (‘$’, ‘£’, ‘€’, ‘¥’, ‘฿’…). There’s a large menu of charachter types available to you in <a class="reference external" href="https://github.com/explosion/spaCy/blob/master/spacy/lang/char_classes.py">char_classes.py</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.lang.char_classes</span> <span class="kn">import</span> <span class="n">LIST_CURRENCY</span>
+
+<span class="n">TOKENIZER_PREFIXES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">LIST_CURRENCY</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>A third approach uses regular expressions. Regex is a serious pain in the butt.  There are regex masters out there, but most people Google helplessly until they get it to work.  A very helpful resource is <a class="reference external" href="https://regex101.com/">regex101</a>.  This is a website that let’s you build a regular expression see its matches in a text.  There are also very helpful explainations to get you started. For the current example, we want to create a tokenization exception for a <code class="docutils literal notranslate"><span class="pre">$</span></code> followed by numbers.  One way of expressing that is <code class="docutils literal notranslate"><span class="pre">&quot;\$\d*&quot;</span></code>, which will match any string with the charachter <code class="docutils literal notranslate"><span class="pre">$</span></code> followed by digits (<code class="docutils literal notranslate"><span class="pre">\d</span></code>) repeating any number of times (<code class="docutils literal notranslate"><span class="pre">*</span></code>).  If you try it out in regex101, you’ll see that we get matches on <code class="docutils literal notranslate"><span class="pre">$1</span></code>, <code class="docutils literal notranslate"><span class="pre">$10000</span></code> and <code class="docutils literal notranslate"><span class="pre">$10000000</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">TOKENIZER_PREFIXES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="sa">r</span><span class="s2">&quot;\$\d*&quot;</span> 
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Wondering what the r is for?  It’s Python’s raw string, which treats a backslash as a literal character and won’t mistake it for a new line \n or tab \t or other escape charachters with a <code class="docutils literal notranslate"><span class="pre">\</span></code> in them.</p>
+<p>We can also add a rule for all of the currency symbols</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.lang.char_classes</span> <span class="kn">import</span> <span class="n">CURRENCY</span>
+
+<span class="n">TOKENIZER_PREFIXES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="sa">r</span><span class="s2">&quot;\</span><span class="si">{c}</span><span class="s2">\d*&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="n">CURRENCY</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The code above will take each individual symbol in CURRENCY and add a regular expression rule for it by replacing {c} with the symbol.</p>
+</div>
+<div class="section" id="extending-defaults">
+<h2><span class="section-number">13.7. </span>Extending defaults<a class="headerlink" href="#extending-defaults" title="Permalink to this headline">¶</a></h2>
+<p>As you develop a language object for a new language, you can delegate much of the work to the existing defaults, but it’s quite likely that your language has its own specific symbols and charachters. You can add them to your language’s <code class="docutils literal notranslate"><span class="pre">punctuation.py</span></code> file.</p>
+<p>For example, the default list of currency symbols does not include the Sheckel ₪. We can add our new prefix by adding a list of new symbols to our TOKENIZER_PREFIXES.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.lang.punctuation</span> <span class="kn">import</span> <span class="n">TOKENIZER_PREFIXES</span> <span class="k">as</span> <span class="n">BASE_TOKENIZER_PREFIXES</span>
+
+<span class="n">TOKENIZER_PREFIXES</span> <span class="o">=</span> <span class="n">BASE_TOKENIZER_PREFIXES</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;₪&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The prefixes are added to the language object in <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code></p>
+<div class="section" id="prefixes-in-action">
+<h3><span class="section-number">13.7.1. </span>Prefixes in action<a class="headerlink" href="#prefixes-in-action" title="Permalink to this headline">¶</a></h3>
+<p>The addition of prefixes will usually be added to the language object. However, you may want to make adjustments on the fly. It’s also a good way to check that the new prefix is really what you need <a class="reference external" href="https://spacy.io/usage/linguistic-features#native-tokenizer-additions">docs</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy</span> <span class="kn">import</span> <span class="n">util</span>
+<span class="kn">from</span> <span class="nn">spacy.lang.he</span> <span class="kn">import</span> <span class="n">Hebrew</span>
+
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">Hebrew</span><span class="p">()</span>
+
+<span class="n">prefixes</span> <span class="o">=</span> <span class="n">nlp</span><span class="o">.</span><span class="n">Defaults</span><span class="o">.</span><span class="n">prefixes</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;₪&#39;</span><span class="p">]</span>
+<span class="n">prefix_regex</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">compile_prefix_regex</span><span class="p">(</span><span class="n">prefixes</span><span class="p">)</span>
+<span class="n">nlp</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">prefix_search</span> <span class="o">=</span> <span class="n">prefix_regex</span><span class="o">.</span><span class="n">search</span>
+
+<span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="s2">&quot;₪181 בלבד! משלוח חינם!&quot;</span><span class="p">)</span> <span class="c1">#&quot;Only NIS 181! Free Shipping!&quot;</span>
+<span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[₪, 181, בלבד, !, משלוח, חינם, !]
+</pre></div>
+</div>
+<p>Extra brain teaser: Hebrew is written from right to left, so why isn’t ₪ a suffix?
+spaCy works well with RTL langauges, but the tokenizer moves from left to right.  Even though ₪ follows 181 in the sentence, spaCy considers it a prefix.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./w1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
@@ -644,23 +943,21 @@ spaCy works well with RTL langauges, but the tokenizer moves from left to right.
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
-        
-          <div class="extra_footer">
-            <p>
+  <p>
+    
+      By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
+    
+      <div class="extra_footer">
+        <p>
 <a target="_blank" href="https://www.neh.gov/divisions/odh"><img style="height:10%; width:10%" src="https://www.neh.gov/sites/default/files/inline-files/NEH-Horizontal-Stk-Seal-Black820.jpg" /></a>
 <a target="_blank" href="https://cdh.princeton.edu"><img style="height:10%; width:10%" src="https://cdh.princeton.edu/static/img/CDH_logo.svg" /></a>
 <a target="_blank" href="https://www.dariah.eu/"><img style="height:19%; width:19%" src="https://www.dariah.eu/wp-content/uploads/2017/02/logo.png" /></a>
 
 </p>
 
-          </div>
-      </p>
-    </div>
-  </footer>
+      </div>
+  </p>
+</footer>
 </main>
 
 

@@ -42,7 +42,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -308,7 +308,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -326,7 +326,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -344,7 +344,76 @@
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1>Neural Networks and Machine Learning</h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+                <div>
+                    <h2> Contents </h2>
+                </div>
+                <nav aria-label="Page">
+                    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-reading">
+   2.1. Further Reading
+  </a>
+ </li>
+</ul>
+
+                </nav>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="neural-networks-and-machine-learning">
+<h1><span class="section-number">2. </span>Neural Networks and Machine Learning<a class="headerlink" href="#neural-networks-and-machine-learning" title="Permalink to this headline">¶</a></h1>
+<p>Neural networks have become an essential method of Machine Learning since the first “perceptron” was invented in 1958. A neural network is a graph composed of nodes and edges that are typically structured as layers in their most basic form. During inference, information flows, layer by layer, in one direction making for a directed graph (DAG). There are different types of layers, for example, fully connected or convolutional, that characterize the connections between layers. Each connecting edge has a weight value that can be adjusted. By deliberately improving these weights, the network can either emphasize or discard specific inputs. Additionally, before passing the weighted inputs forward to the next node, a non-linear activation function is applied.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UOvPeC8WOt8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+<p><img alt="" src="https://miro.medium.com/max/645/0*LJBO8UbtzK_SKMog" /></p>
+<p>In the late 1980s, it became possible to “backpropagate” and update the weights based on the error in the model’s predictions. Together with gradient descent, backpropagation enabled models to automatically improve their predictions without handwritten rules and criteria.</p>
+<p><a class="reference external" href="https://thinc.ai/docs/concept">Code intro to backprop and layer chaining</a></p>
+<p>As the computations could be parallelized on GPUs and more data became available, it has sparked a period of rapid innovation and heightened expectations. Many-layered networks with increasingly complex architectures can complete computer vision and natural language tasks with near- or super-human precision.</p>
+<p><img alt="" src="https://miro.medium.com/max/3840/1*5K-1CSOB2mb5Jn2L8K3f9Q.gif" /></p>
+<p>As models become more complex, they require more processing power, training time, and memory. In addition to the exciting new potential and new capabilities of machine learning, scholars are also beginning to evaluate the environmental and social costs of models built in person-years using petabytes of data (<a class="reference external" href="https://faculty.washington.edu/ebender/papers/Stochastic_Parrots.pdf">1</a>,<a class="reference external" href="https://arxiv.org/pdf/1906.02243.pdf">2</a>).</p>
+<div class="section" id="further-reading">
+<h2><span class="section-number">2.1. </span>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Andrew Trask, <a class="reference external" href="https://www.manning.com/books/grokking-deep-learning">Grokking Deep Learning</a></p></li>
+<li><p>Ian Goodfellow et al., <a class="reference external" href="https://www.deeplearningbook.org/">Deep Learning</a></p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./prep"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
@@ -412,23 +481,21 @@
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
-        
-          <div class="extra_footer">
-            <p>
+  <p>
+    
+      By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
+    
+      <div class="extra_footer">
+        <p>
 <a target="_blank" href="https://www.neh.gov/divisions/odh"><img style="height:10%; width:10%" src="https://www.neh.gov/sites/default/files/inline-files/NEH-Horizontal-Stk-Seal-Black820.jpg" /></a>
 <a target="_blank" href="https://cdh.princeton.edu"><img style="height:10%; width:10%" src="https://cdh.princeton.edu/static/img/CDH_logo.svg" /></a>
 <a target="_blank" href="https://www.dariah.eu/"><img style="height:19%; width:19%" src="https://www.dariah.eu/wp-content/uploads/2017/02/logo.png" /></a>
 
 </p>
 
-          </div>
-      </p>
-    </div>
-  </footer>
+      </div>
+  </p>
+</footer>
 </main>
 
 

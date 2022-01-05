@@ -42,7 +42,7 @@
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -308,7 +308,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -343,7 +343,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -361,7 +361,345 @@
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1>Practical Introduction to Model Training</h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+                <div>
+                    <h2> Contents </h2>
+                </div>
+                <nav aria-label="Page">
+                    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#in-this-notebook-we-will-train-a-spacy-named-entity-recognition-model-ner-using-data-from-litbank-an-annotated-dataset-of-100-works-of-english-language-fiction">
+   20.1. In this notebook, we will train a spaCy named entity recognition model (NER) using data from LitBank an annotated dataset of 100 works of English-language fiction.
+  </a>
+ </li>
+</ul>
+
+                </nav>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="practical-introduction-to-model-training">
+<h1><span class="section-number">20. </span>Practical Introduction to Model Training<a class="headerlink" href="#practical-introduction-to-model-training" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="in-this-notebook-we-will-train-a-spacy-named-entity-recognition-model-ner-using-data-from-litbank-an-annotated-dataset-of-100-works-of-english-language-fiction">
+<h2><span class="section-number">20.1. </span>In this notebook, we will train a spaCy named entity recognition model (NER) using data from <a class="reference external" href="https://github.com/dbamman/litbank">LitBank</a> an annotated dataset of 100 works of English-language fiction.<a class="headerlink" href="#in-this-notebook-we-will-train-a-spacy-named-entity-recognition-model-ner-using-data-from-litbank-an-annotated-dataset-of-100-works-of-english-language-fiction" title="Permalink to this headline">¶</a></h2>
+<p>Steps:<br />
+✅ Load annotation data from LitBank<br />
+✅ Create train and validation sets<br />
+✅ Train NER from scratch using only the EN language object<br />
+✅ Visualize the results and compare the model’s predictions against the original data<br />
+✅ Is the model sufficiently useful for research? What would need to be improved and changed?</p>
+<p><a class="reference external" href="https://colab.research.google.com/drive/1QnBUI9eD2djoNn2XyNM3j8xYqWf46hvT?usp=sharing"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install spacy sklearn tqdm
+<span class="o">!</span>git clone https://github.com/dbamman/litbank.git
+<span class="kn">import</span> <span class="nn">spacy</span> 
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Using spaCy version </span><span class="si">{</span><span class="n">spacy</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="n">entities_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;litbank&#39;</span> <span class="o">/</span> <span class="s1">&#39;entities&#39;</span> <span class="o">/</span> <span class="s1">&#39;brat&#39;</span>
+
+<span class="n">text_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">entities_path</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s1">&#39;.txt&#39;</span><span class="p">]</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">text_files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[*] imported </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">text_files</span><span class="p">)</span><span class="si">}</span><span class="s1"> files&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*] imported 100 files
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for each file, create a Doc object and add the annotation data to doc.ents</span>
+<span class="c1"># our output is a list of Doc objects </span>
+<span class="kn">import</span> <span class="nn">spacy</span> 
+<span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span> <span class="nn">spacy.tokens</span> <span class="kn">import</span> <span class="n">Span</span><span class="p">,</span> <span class="n">DocBin</span>
+<span class="kn">from</span> <span class="nn">spacy.util</span> <span class="kn">import</span> <span class="n">filter_spans</span>
+
+
+<span class="n">docs</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1">#note: not using pretrained model because it adds predictions, just want LitBank data</span>
+<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">blank</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+<span class="n">nlp</span><span class="o">.</span><span class="n">add_pipe</span><span class="p">(</span><span class="s1">&#39;sentencizer&#39;</span><span class="p">)</span> <span class="c1"># used in training assessment</span>
+
+
+<span class="k">for</span> <span class="n">text_file</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">text_files</span><span class="p">):</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">text_file</span><span class="o">.</span><span class="n">read_text</span><span class="p">())</span>
+    <span class="n">annotation_file</span> <span class="o">=</span> <span class="p">(</span><span class="n">entities_path</span> <span class="o">/</span> <span class="p">(</span><span class="n">text_file</span><span class="o">.</span><span class="n">stem</span> <span class="o">+</span><span class="s1">&#39;.ann&#39;</span><span class="p">))</span>
+    <span class="n">annotations</span> <span class="o">=</span> <span class="n">annotation_file</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ents</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">annotation</span> <span class="ow">in</span> <span class="n">annotations</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">label</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="n">span</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">char_span</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">start</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">end</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">span</span><span class="p">:</span> <span class="c1"># when start and end do not match a valid string, spaCy returns a NoneType span</span>
+            <span class="n">ents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">span</span><span class="p">)</span>
+    
+    <span class="n">filtered</span> <span class="o">=</span> <span class="n">filter_spans</span><span class="p">(</span><span class="n">ents</span><span class="p">)</span>
+    <span class="n">doc</span><span class="o">.</span><span class="n">ents</span> <span class="o">=</span> <span class="n">filtered</span>
+    <span class="n">docs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+    
+
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "efc87b9b924149c0bc15c7069191b128", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split the data into sets for training and validation </span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">train_set</span><span class="p">,</span> <span class="n">validation_set</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">validation_set</span><span class="p">,</span> <span class="n">test_set</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">validation_set</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;🚂 Created </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">train_set</span><span class="p">)</span><span class="si">}</span><span class="s1"> training docs&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;😊 Created </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">validation_set</span><span class="p">)</span><span class="si">}</span><span class="s1"> validation docs&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;🧪 Created </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">test_set</span><span class="p">)</span><span class="si">}</span><span class="s1"> test docs&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🚂 Created 90 training docs
+😊 Created 7 validation docs
+🧪 Created 3 test docs
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add training Docs to DocBin and store to disk</span>
+<span class="kn">from</span> <span class="nn">spacy.tokens</span> <span class="kn">import</span> <span class="n">DocBin</span>
+
+<span class="c1"># the DocBin will store the training documents</span>
+<span class="n">train_db</span> <span class="o">=</span> <span class="n">DocBin</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">train_set</span><span class="p">:</span>
+    <span class="n">train_db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+<span class="n">train_db</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="s2">&quot;./train.spacy&quot;</span><span class="p">)</span>
+
+<span class="c1"># Save the validation Docs to disk </span>
+<span class="n">validation_db</span> <span class="o">=</span> <span class="n">DocBin</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">validation_set</span><span class="p">:</span>
+    <span class="n">validation_db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+    
+<span class="n">validation_db</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="s2">&quot;./dev.spacy&quot;</span><span class="p">)</span> 
+
+<span class="c1"># Save the test Docs to disk </span>
+<span class="n">test_db</span> <span class="o">=</span> <span class="n">DocBin</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">test_set</span><span class="p">:</span>
+    <span class="n">test_db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+    
+<span class="n">test_db</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="s2">&quot;./test.spacy&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls -al train.spacy dev.spacy test.spacy
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 root root  115753 Dec 23 08:20 dev.spacy
+-rw-r--r-- 1 root root   53751 Dec 23 08:20 test.spacy
+-rw-r--r-- 1 root root 1406959 Dec 23 08:20 train.spacy
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python3 -m spacy init config ./config.cfg --lang en --pipeline ner -F
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C3">⚠ To generate a more effective transformer-based config (GPU-only),</span>
+<span class=" -Color -Color-C3">install the spacy-transformers package and re-run this command. The config</span>
+<span class=" -Color -Color-C3">generated now does not use transformers.</span>
+<span class=" -Color -Color-C4">ℹ Generated config template specific for your use case</span>
+- Language: en
+- Pipeline: ner
+- Optimize for: efficiency
+- Hardware: CPU
+- Transformer: None
+<span class=" -Color -Color-C2">✔ Auto-filled config with all values</span>
+<span class=" -Color -Color-C2">✔ Saved config</span>
+config.cfg
+You can now add your data and train your pipeline:
+python -m spacy train config.cfg --paths.train ./train.spacy --paths.dev ./dev.spacy
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python3 -m spacy train config.cfg --output ./output --paths.train train.spacy --paths.dev dev.spacy
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C4">ℹ Saving to output directory: output</span>
+<span class=" -Color -Color-C4">ℹ Using CPU</span>
+
+<span class=" -Color -Color-Bold">=========================== Initializing pipeline ===========================</span>
+[2021-12-23 08:22:05,786] [INFO] Set up nlp object from config
+[2021-12-23 08:22:05,792] [INFO] Pipeline: [&#39;tok2vec&#39;, &#39;ner&#39;]
+[2021-12-23 08:22:05,794] [INFO] Created vocabulary
+[2021-12-23 08:22:05,795] [INFO] Finished initializing nlp object
+[2021-12-23 08:22:11,376] [INFO] Initialized pipeline components: [&#39;tok2vec&#39;, &#39;ner&#39;]
+<span class=" -Color -Color-C2">✔ Initialized pipeline</span>
+
+<span class=" -Color -Color-Bold">============================= Training pipeline =============================</span>
+<span class=" -Color -Color-C4">ℹ Pipeline: [&#39;tok2vec&#39;, &#39;ner&#39;]</span>
+<span class=" -Color -Color-C4">ℹ Initial learn rate: 0.001</span>
+E    #       LOSS TOK2VEC  LOSS NER  ENTS_F  ENTS_P  ENTS_R  SCORE 
+---  ------  ------------  --------  ------  ------  ------  ------
+  0       0          0.00   1072.88    0.00    0.00    0.00    0.00
+  2     200      18889.69  63358.78   35.62   28.97   46.21    0.36
+  4     400      11414.18  27850.79   53.58   60.92   47.83    0.54
+  6     600      24399.51  23338.55   54.53   64.79   47.08    0.55
+  8     800      20359.37  18970.20   57.03   62.17   52.67    0.57
+ 11    1000       6056.26  15459.09   56.76   65.95   49.81    0.57
+ 13    1200       6623.85  13355.36   59.69   62.62   57.02    0.60
+ 15    1400       6450.33  10892.70   63.05   67.52   59.13    0.63
+ 17    1600       8249.34  10429.20   61.55   68.65   55.78    0.62
+ 20    1800       8022.00   8933.03   58.64   59.82   57.52    0.59
+ 22    2000      10772.98   8298.90   59.52   62.85   56.52    0.60
+ 24    2200       9276.31   7258.57   58.76   61.78   56.02    0.59
+ 26    2400       6356.31   5919.32   57.84   60.22   55.65    0.58
+ 28    2600       7711.42   5918.36   58.36   63.77   53.79    0.58
+ 31    2800      11050.54   5581.69   56.84   61.72   52.67    0.57
+ 33    3000       8032.93   4899.75   56.33   60.37   52.80    0.56
+<span class=" -Color -Color-C2">✔ Saved pipeline to output directory</span>
+output/model-last
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View the predictions of our new model</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">spacy</span> <span class="kn">import</span> <span class="n">displacy</span> 
+
+<span class="n">new_nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;output/model-last&quot;</span><span class="p">)</span>
+<span class="n">val_doc</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">test_set</span><span class="p">)</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">new_nlp</span><span class="p">(</span><span class="n">val_doc</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+<span class="n">displacy</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">doc</span><span class="p">[:</span><span class="mi">100</span><span class="p">],</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;ent&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><span class="tex2jax_ignore"><div class="entities" style="line-height: 2.5; direction: ltr">CHAPTER I At sunset hour 
+<mark class="entity" style="background: #ff9561; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
+    the forest
+    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">LOC</span>
+</mark>
+ was still , lonely , sweet with tang of fir and spruce , blazing in gold and red and green ; and 
+<mark class="entity" style="background: #ddd; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
+    the man who glided on under the great trees seemed to blend with
+    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">PER</span>
+</mark>
+
+<mark class="entity" style="background: #ddd; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
+    the colors
+    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">PER</span>
+</mark>
+ and , disappearing , to have become a part of the wild woodland .</br>
+<mark class="entity" style="background: #ddd; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
+    Old Baldy
+    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">PER</span>
+</mark>
+ , highest of the White Mountains , stood up round and bare , rimmed bright gold in the last glow of the setting sun .</br>Then , as the fire dropped behind the domed peak , a change </div></span></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare against the original LitBank annotations </span>
+<span class="n">displacy</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">val_doc</span><span class="p">[:</span><span class="mi">100</span><span class="p">],</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;ent&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><span class="tex2jax_ignore"><div class="entities" style="line-height: 2.5; direction: ltr">CHAPTER I At sunset hour 
+<mark class="entity" style="background: #ff9561; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
+    the forest
+    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">LOC</span>
+</mark>
+ was still , lonely , sweet with tang of fir and spruce , blazing in gold and red and green ; and 
+<mark class="entity" style="background: #ddd; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
+    the man who glided on under the great trees
+    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">PER</span>
+</mark>
+ seemed to blend with the colors and , disappearing , to have become a part of 
+<mark class="entity" style="background: #ff9561; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
+    the wild woodland
+    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">LOC</span>
+</mark>
+ .</br>
+<mark class="entity" style="background: #ff9561; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
+    Old Baldy
+    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">LOC</span>
+</mark>
+ , highest of 
+<mark class="entity" style="background: #ddd; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
+    the White Mountains
+    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">PER</span>
+</mark>
+ , stood up round and bare , rimmed bright gold in the last glow of the setting sun .</br>Then , as the fire dropped behind the domed peak , a change </div></span></div></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./w2/practical-intro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
@@ -698,23 +1036,21 @@ output/model-last
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
-        
-          <div class="extra_footer">
-            <p>
+  <p>
+    
+      By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
+    
+      <div class="extra_footer">
+        <p>
 <a target="_blank" href="https://www.neh.gov/divisions/odh"><img style="height:10%; width:10%" src="https://www.neh.gov/sites/default/files/inline-files/NEH-Horizontal-Stk-Seal-Black820.jpg" /></a>
 <a target="_blank" href="https://cdh.princeton.edu"><img style="height:10%; width:10%" src="https://cdh.princeton.edu/static/img/CDH_logo.svg" /></a>
 <a target="_blank" href="https://www.dariah.eu/"><img style="height:19%; width:19%" src="https://www.dariah.eu/wp-content/uploads/2017/02/logo.png" /></a>
 
 </p>
 
-          </div>
-      </p>
-    </div>
-  </footer>
+      </div>
+  </p>
+</footer>
 </main>
 
 

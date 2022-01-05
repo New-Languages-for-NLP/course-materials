@@ -42,7 +42,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -306,7 +306,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -324,12 +324,112 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1>Python</h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="python">
+<h1>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
+<img style="height:100px;" src="https://images.emojiterra.com/google/android-11/512px/1f40d.png" />
+<p>Creating, training, and using spaCy natural language processing (NLP) models requires code in the Python programming language. For this workshop, we don’t expect that you’ll be comfortable writing that code on your own. We’ve tried to put together tools with user interfaces that you can use instead of writing Python code. These tools are experimental, and they might not work in all situations. As a backup, we’ve prepared Jupyter notebooks where you can access the Python code directly.</p>
+<p>Jupyter notebooks provide an environment for reading, writing, and running code in a number of languages, including Python. What sets them apart from other environments is that they make it easy to juxtapose (even lengthy) explanations in human-readable text and images along with the code. You can read more <a class="reference external" href="https://programminghistorian.org/en/lessons/jupyter-notebooks">about Jupyter Notebooks in theory and practice on Programming Historian</a>. The notebooks we prepare will explain every step, along with what parameters you need to change, depending on what you’re trying to do. If there’s something you don’t understand in our notebooks, please ask! We’ll be improving them based on your feedback. If something isn’t clear to you (regardless of your technical background), we need to do a better job explaining it.</p>
+<p>No prior experience with Python is needed for this workshop, but there’s a few things you should keep in mind:</p>
+<ul class="simple">
+<li><p>Python (like any other programming language) is very particular about syntax. Very often, when code doesn’t run correctly, it’s because there’s a misplaced parenthesis, quotation mark, extra space, or something else small.</p></li>
+<li><p>Python, specifically, is very fussy about whitespace and indentation. Things need to be indented correctly (using tabs) to work. Be very careful if you ever add or delete any indentation.</p></li>
+<li><p>With spaCy, the text that you process using one of the spaCy models is contained in a doc object that contains a lot of properties and other objects (which also have properties). Even if you’re not familiar with how objects work in Python, we’ll have lots of examples for how to access the things that interest you.</p></li>
+<li><p>A lot of Python comes down to learning how to debug the error messages you run into. Feel free to post your error messages on Slack (along with a link to the notebook and data set where it’s occurring), and we can try to help! A few tips…</p>
+<ul>
+<li><p>“Object is not callable”: don’t use the curvy parentheses</p></li>
+<li><p>“Object is not subscriptable”: don’t use the square parentheses</p></li>
+<li><p>“Invalid syntax”: you used the wrong number of equals signs, or maybe the actual error is multiple lines up</p></li>
+<li><p>“Name error”: that doesn’t exist yet, or you spelled it wrong</p></li>
+</ul>
+</li>
+<li><p>If you want some exposure to Python basics, check out these Programming Historian tutorials:</p>
+<ul>
+<li><p><a class="reference external" href="https://programminghistorian.org/en/lessons/working-with-text-files">Working with text files in Python</a></p></li>
+<li><p><a class="reference external" href="https://programminghistorian.org/en/lessons/manipulating-strings-in-python">Manipulating strings in Python</a></p></li>
+<li><p><a class="reference external" href="https://programminghistorian.org/en/lessons/counting-frequencies">Counting word frequencies in Python</a></p></li>
+</ul>
+</li>
+<li><p>You’re likely  to  hear a lot of new  terms and concepts. It’s always good to Google  things that are new.  In nearly every case others have asked the same questions before and there’s a question-answering community called Stack Overflow that has voted for the best answers.</p>
+<ul>
+<li><p>Google everything. You’re almost always asking answered questions.</p>
+<ul>
+<li><p><a class="reference external" href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/43835.pdf">How Developers Search for Code: A Case Study</a></p></li>
+<li><p><a class="reference external" href="https://knightlab.northwestern.edu/2014/03/13/googling-for-code-solutions-can-be-tricky-heres-how-to-get-started/">Googling for code solutions can be tricky — here’s how to get started
+by Suyeon Son</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>How to read Python error messages</p>
+<ul>
+<li><p>Read from the bottom up</p></li>
+<li><p>Look for the <a class="reference external" href="https://www.programiz.com/python-programming/exceptions">type of error</a> (such as SyntaxError, ImportError)</p></li>
+<li><p>Find the first line that has code that you’ve written</p></li>
+<li><p>What was the last change made before it broke? If you undo it, do you still get the error?</p></li>
+<li><p>Do your dependencies have unmet dependencies?</p></li>
+</ul>
+</li>
+<li><p>How to read <a class="reference external" href="https://stackoverflow.com/tour">Stack Overflow</a></p>
+<ul>
+<li><p>Is this the exact same error or something similar?</p></li>
+<li><p>When were the problem and solutions posted?</p></li>
+<li><p>Skim for code blocks and commands.</p></li>
+<li><p>The best answer may be in the comments</p></li>
+<li><p>The answer that you need may not have the most up votes</p></li>
+</ul>
+</li>
+<li><p>Persistence pays</p>
+<ul>
+<li><p>When you’re not able to get something to work, keep at it, try new things, but keep at it until you fix the problem.</p></li>
+<li><p>Sometimes persistence means finding an alternative path.  If the road is really blocked ahead, finding a route around is the only way forward.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./prep"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
@@ -427,23 +527,21 @@ by Suyeon Son</a></p></li>
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
-        
-          <div class="extra_footer">
-            <p>
+  <p>
+    
+      By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
+    
+      <div class="extra_footer">
+        <p>
 <a target="_blank" href="https://www.neh.gov/divisions/odh"><img style="height:10%; width:10%" src="https://www.neh.gov/sites/default/files/inline-files/NEH-Horizontal-Stk-Seal-Black820.jpg" /></a>
 <a target="_blank" href="https://cdh.princeton.edu"><img style="height:10%; width:10%" src="https://cdh.princeton.edu/static/img/CDH_logo.svg" /></a>
 <a target="_blank" href="https://www.dariah.eu/"><img style="height:19%; width:19%" src="https://www.dariah.eu/wp-content/uploads/2017/02/logo.png" /></a>
 
 </p>
 
-          </div>
-      </p>
-    </div>
-  </footer>
+      </div>
+  </p>
+</footer>
 </main>
 
 

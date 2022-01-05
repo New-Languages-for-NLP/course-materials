@@ -42,7 +42,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -308,7 +308,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -326,7 +326,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -354,7 +354,88 @@
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1>NLP and spaCy</h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+                <div>
+                    <h2> Contents </h2>
+                </div>
+                <nav aria-label="Page">
+                    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nlp">
+   3.1. NLP
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spacy">
+   3.2. spaCy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-reading">
+   3.3. Further Reading
+  </a>
+ </li>
+</ul>
+
+                </nav>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="nlp-and-spacy">
+<h1><span class="section-number">3. </span>NLP and spaCy<a class="headerlink" href="#nlp-and-spacy" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="nlp">
+<h2><span class="section-number">3.1. </span>NLP<a class="headerlink" href="#nlp" title="Permalink to this headline">¶</a></h2>
+<p>Natural language processing (NLP) is a field of artificial intelligence that allows machines to process and reason about human language using information about the linguistic attributes of texts. Using morphological, semantic, and other features of language, machines can complete a variety of complex tasks, including parsing a text into parts, tagging the linguistic attributes of those parts, entity recognition, sentiment analysis, text categorization, co-reference resolution, topic modeling and <a class="reference external" href="https://medium.com/&#64;miranthaj/25-nlp-tasks-at-a-glance-52e3fdff32e2">more</a>. A common use of NLP is to transform unstructured text into structured data.  For example, the <a class="reference external" href="https://github.com/dbamman/book-nlp">BookNLP project</a> can process an entire novel and return an exact list of all the unique characters in the text, their genders, how often they speak, and to whom. For another example, see this tutorial <a class="reference external" href="https://pmbaumgartner.github.io/blog/holy-nlp/">“Holy NLP! Understanding Part of Speech Tags, Dependency Parsing, and Named Entity Recognition”</a>.</p>
+</div>
+<div class="section" id="spacy">
+<h2><span class="section-number">3.2. </span>spaCy<a class="headerlink" href="#spacy" title="Permalink to this headline">¶</a></h2>
+<p>spaCy is an open-source NLP library for Python designed for quick experimentation and applied NLP tasks.  This focus on applied tasks is the most significant difference between spaCy and NLTK, which is designed to be a teaching and research tool. The shift of focus from NLP research to applied NLP has several important outcomes.</p>
+<p>First, the goal of a spaCy model is not state-of-the-art performance (SOTA). spaCy’s developers, Matthew Honnibal and Ines Montani, will frequently favor speed, memory usage, and practicality over small gains in accuracy. The goal is a practical, opinionated tool that delivers results in production.  As a result, spaCy offers a library that works well on laptops and consumer devices. It works efficiently on a CPU and does not require GPUs. For our methods to be accessible, we cannot require research computing resources. Whenever possible, we tailor our exercises and tasks to perform on a standard laptop or Colab notebook.  spaCy is also a very extensible library designed for the addition of new pipeline components and custom attributes.</p>
+<p>Additionally, spaCy offers several useful command-line tools for language model training. There is a debug data command that will validate and inspect training data.  The debug tool offers users some bearing on gaps in the data and how the model is likely to perform given the current data. There is a train command that loads a base spaCy language object and then either creates or updates a statistical language model using the data provided.  While it is possible to add and train individual pipelines, this offers a simple CLI for users to create an initial language model from data with parser, tagger, and ner pipelines from the CoNLL-U data.</p>
+</div>
+<div class="section" id="further-reading">
+<h2><span class="section-number">3.3. </span>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Ines Montani has a wonderful free online course to learn spaCy at <a class="reference external" href="https://course.spacy.io">course.spacy.io</a></p></li>
+<li><p>There’s also <a class="reference external" href="https://spacy.io/usage/spacy-101">spaCy 101</a></p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./prep"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
@@ -424,23 +505,21 @@
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
-        
-          <div class="extra_footer">
-            <p>
+  <p>
+    
+      By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
+    
+      <div class="extra_footer">
+        <p>
 <a target="_blank" href="https://www.neh.gov/divisions/odh"><img style="height:10%; width:10%" src="https://www.neh.gov/sites/default/files/inline-files/NEH-Horizontal-Stk-Seal-Black820.jpg" /></a>
 <a target="_blank" href="https://cdh.princeton.edu"><img style="height:10%; width:10%" src="https://cdh.princeton.edu/static/img/CDH_logo.svg" /></a>
 <a target="_blank" href="https://www.dariah.eu/"><img style="height:19%; width:19%" src="https://www.dariah.eu/wp-content/uploads/2017/02/logo.png" /></a>
 
 </p>
 
-          </div>
-      </p>
-    </div>
-  </footer>
+      </div>
+  </p>
+</footer>
 </main>
 
 

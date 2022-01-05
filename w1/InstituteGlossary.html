@@ -42,7 +42,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -308,7 +308,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -326,7 +326,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -349,7 +349,101 @@
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1>Institute Glossary</h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+                <div>
+                    <h2> Contents </h2>
+                </div>
+                <nav aria-label="Page">
+                    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#technical-terms">
+   15.1. Technical terms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#standard-linguistic-terms">
+   15.2. Standard linguistic terms
+  </a>
+ </li>
+</ul>
+
+                </nav>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="institute-glossary">
+<h1><span class="section-number">15. </span>Institute Glossary<a class="headerlink" href="#institute-glossary" title="Permalink to this headline">¶</a></h1>
+<p>Below you will find brief definition of some terms used frequently. If you didn’t find what you were looking for, please <a class="reference external" href="https://newlanguagesfornlp.slack.com/archives/C019617THFF">contact the tech team</a> or add to <a class="reference external" href="https://docs.google.com/document/d/1znbQVzi0Tgb_aFDi6_GYg_a5xUw5mCqGaH6TexFwFG8/edit">this list</a>.</p>
+<div class="section" id="technical-terms">
+<h2><span class="section-number">15.1. </span>Technical terms<a class="headerlink" href="#technical-terms" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Statistical Language Model (Machine Learning Model)</strong>: An approach to NLP by providing lots of annotated text to the machine which then makes a prediction of a text that it has never seen before.
+For more details, refer to <a class="reference external" href="https://youtu.be/OiK2Z2KawnY?t=353">this video</a>.</p></li>
+<li><p><strong>Rule-based system</strong>: An approach to NLP using formal grammatical rules. For more details, refer to <a class="reference external" href="https://youtu.be/OiK2Z2KawnY?t=188">this video</a>.</p></li>
+</ul>
+<p>This <a class="reference external" href="https://medium.com/friendly-data/machine-learning-vs-rule-based-systems-in-nlp-5476de53c3b8">medium article</a> also has a good explanation on Rule-based system and Statistical system.</p>
+<ul class="simple">
+<li><p><strong>Annotations</strong>: Tags or labels on a token based on the role it plays in the text. For example, in the sentence <em>He eats pizza.</em>, you might label <em>eats</em> as verb and <em>pizza</em> as a noun. You have just made annotations for Part of Speech (POS) Layer.</p></li>
+<li><p><strong>Transformers vs Sequence Model (RNN)</strong>: Simply put, Recurrent Neural Networks (RNN) process data in a sequential order, that is, from beginning to end. On the other hand, Transformers uses the attention mechanism to provide context and process the text not necessarily in sequential order. For further details on how transformers work, refer to <a class="reference external" href="https://www.youtube.com/watch?v=iDulhoQ2pro">this video</a>.</p></li>
+<li><p><strong>Transducers</strong>:</p></li>
+<li><p><strong>Features</strong>:</p></li>
+<li><p><strong>Entities</strong>: “Real-world” objects, like persons, companies or locations. For example: New York, Haverford College, Google. More explanation on <a class="reference external" href="https://youtu.be/YoUDBUw3D_w?t=1401">this video</a>.</p></li>
+<li><p><strong>Layers</strong>: The types of annotations you can do to text or a token. For example, when you are annotating <em>He eats pizza.</em>, in the POS Layer you would annotate <em>eats</em> as a “verb” but in the Lemma Layer you would assign <em>eats</em> to “eat”. Same tokens have different annotations in different layers based on the context.</p></li>
+<li><p><strong>Recommenders</strong>: Enabling Recommenders allow INCEpTION to learn from the annonated data and give suggestions for further annotations. <a class="reference external" href="https://inception-project.github.io/releases/0.19.7/docs/user-guide.html#sect_annotation_recommendation">Read more from the INCEpTION site…</a></p></li>
+<li><p><strong>Embeddings</strong>:</p></li>
+<li><p><strong>Transfer Learning</strong>:</p></li>
+<li><p><strong>External recommender</strong>:</p></li>
+</ul>
+</div>
+<div class="section" id="standard-linguistic-terms">
+<h2><span class="section-number">15.2. </span>Standard linguistic terms<a class="headerlink" href="#standard-linguistic-terms" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Token</strong>: Meaningful segments that make up the text. For example, the sentence <em>He eats pizza.</em> can be said to be made up of four tokens <em>He</em>, <em>eats</em>, <em>pizza</em>, and <em>. (full stop)</em> if we were tokenizing based on white spaces. Jump to the <a class="reference external" href="https://new-languages-for-nlp.github.io/course-materials/w1/tokenization.html">tokenization section of the book</a> or <a class="reference external" href="https://www.youtube.com/watch?v=OiK2Z2KawnY">watch a video from workshop</a>!</p></li>
+<li><p><strong>Span</strong>: Sequence of one or more tokens. If tokens were only the basis of NLP, it would be difficult to understand some entities that “go together”. For example, <em>New York</em> collectively refers to a place but if we base our analysis on two separate tokens, we might end up refering to a <em>York</em> that is not old! See the use of span in spaCy in <a class="reference external" href="https://youtu.be/THduWAnG97k?t=116">this tutorial</a>.</p></li>
+<li><p><strong>Lemma</strong>: The base (simplest) form or the dictionary form of a token. For example, lemma of <em>see</em>, <em>sees</em>, <em>saw</em>, <em>seeing</em>, <em>seen</em> would be <em>see</em> as all of them are simply different forms of the same word. For explanation, see <a class="reference external" href="https://youtu.be/OiK2Z2KawnY?t=855">this video</a>.</p></li>
+<li><p><strong>POS</strong>: A layer for annotation that assigns part of speech for a token.</p></li>
+<li><p><strong>Morphology</strong>:</p></li>
+<li><p><strong>Agglutination</strong>:</p></li>
+<li><p><strong>N-gram</strong>:</p></li>
+<li><p><strong>TEI</strong>: Text Encoding Initiative (TEI) is a XML-based encoding of digital texts. More on <a class="reference external" href="https://youtu.be/YoUDBUw3D_w?t=627">this video</a>.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./w1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
@@ -437,23 +531,21 @@ For more details, refer to <a class="reference external" href="https://youtu.be/
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
-        
-          <div class="extra_footer">
-            <p>
+  <p>
+    
+      By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
+    
+      <div class="extra_footer">
+        <p>
 <a target="_blank" href="https://www.neh.gov/divisions/odh"><img style="height:10%; width:10%" src="https://www.neh.gov/sites/default/files/inline-files/NEH-Horizontal-Stk-Seal-Black820.jpg" /></a>
 <a target="_blank" href="https://cdh.princeton.edu"><img style="height:10%; width:10%" src="https://cdh.princeton.edu/static/img/CDH_logo.svg" /></a>
 <a target="_blank" href="https://www.dariah.eu/"><img style="height:19%; width:19%" src="https://www.dariah.eu/wp-content/uploads/2017/02/logo.png" /></a>
 
 </p>
 
-          </div>
-      </p>
-    </div>
-  </footer>
+      </div>
+  </p>
+</footer>
 </main>
 
 

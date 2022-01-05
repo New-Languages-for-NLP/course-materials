@@ -42,7 +42,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -308,7 +308,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -326,7 +326,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -356,7 +356,144 @@
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
+    <!-- Table of contents that is only displayed when printing the page -->
+    <div id="jb-print-docs-body" class="onlyprint">
+        <h1>Data Formats</h1>
+        <!-- Table of contents -->
+        <div id="print-main-content" class="row">
+            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
+            <div id="jb-print-toc">
+                
+                <div>
+                    <h2> Contents </h2>
+                </div>
+                <nav aria-label="Page">
+                    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#json-javascript-object-notation">
+   5.1. JSON  (JavaScript Object Notation)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#debugging-and-validating-json">
+     5.1.1. Debugging and Validating JSON
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tabular-data-csv-and-tsv">
+   5.2. Tabular Data (CSV and TSV)
+  </a>
+ </li>
+</ul>
+
+                </nav>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="data-formats">
+<h1><span class="section-number">5. </span>Data Formats<a class="headerlink" href="#data-formats" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="json-javascript-object-notation">
+<h2><span class="section-number">5.1. </span>JSON  (JavaScript Object Notation)<a class="headerlink" href="#json-javascript-object-notation" title="Permalink to this headline">¶</a></h2>
+<p>The vast majority of our data will be in the JSON format. This format begins and ends with curly braces <code class="docutils literal notranslate"><span class="pre">{}</span></code>. Within the braces, we add pairs of keys and values. The key is contained within double quotes and is separated from the value by a colon. For example, <code class="docutils literal notranslate"><span class="pre">{&quot;key&quot;:&quot;value&quot;}</span></code>. We can add more “key”:value pairs by separating them with a comma.  For example, <code class="docutils literal notranslate"><span class="pre">{&quot;first_name&quot;:&quot;Valentina&quot;,&quot;last_name&quot;:&quot;Tereshkova&quot;}</span></code> You can add as many “key”:value pairs as you like.</p>
+<p>The most common place you’ll find JSON data is in lookups tables.  We use these tables to look up information about a word. We’ll use them with part of speech, lemmata and entity lookups.  In that context, the key is the term that we’re searching for and the value is the result. For example, <code class="docutils literal notranslate"><span class="pre">{&quot;be&quot;:&quot;VERB&quot;}</span></code> or <code class="docutils literal notranslate"><span class="pre">{&quot;bee&quot;:&quot;NOUN&quot;}</span></code>. We can store thousands of “key”:value pairs in a file.</p>
+<p>For more information on JSON, we recommend the <a class="reference external" href="https://www.w3schools.com/js/js_json_intro.asp">W3 Schools</a> and this <a class="reference external" href="https://jsonformatter.curiousconcept.com/">json formatter</a>.</p>
+<div class="section" id="debugging-and-validating-json">
+<h3><span class="section-number">5.1.1. </span>Debugging and Validating JSON<a class="headerlink" href="#debugging-and-validating-json" title="Permalink to this headline">¶</a></h3>
+<p>Working with JSON can be tricky, especially when you are have large files and you do not know exactly where the error occurs. An open source web application called <strong><a class="reference external" href="https://jsonlint.com/">JSONLint</a></strong> can come handy in this regard. It is designed to help users to debug and validate their JSON files.</p>
+<p>To use JSONLint, simply copy your JSON code to the editor and click <strong>Validate JSON</strong>. For example, when the following code</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="nt">&quot;be&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;VERB&quot;</span><span class="w"></span>
+<span class="w">	</span><span class="nt">&quot;bee&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NOUN&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>is copied to JSONLint and validated, we see this error.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>Error: Parse error on line 2:
+{	&quot;be&quot;: &quot;VERB&quot;	&quot;bee&quot;: &quot;NOUN&quot;}
+---------------^
+Expecting &#39;EOF&#39;, &#39;}&#39;, &#39;:&#39;, &#39;,&#39;, &#39;]&#39;, got &#39;STRING&#39;
+
+</pre></div>
+</div>
+<p>As it states, the error occurs near the word <strong>“VERB”</strong> and the editor was expecting one of these characters: ‘}’, ‘:’, ‘,’, ‘]’ but received a string. If you have figured it out, we were missing a comma (,) in line 2. When the comma issue is fixed in this example, JSON should validate successfully and you should see a <strong>“Valid JSON”</strong> message in JSONLint.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">	</span><span class="nt">&quot;be&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VERB&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">	</span><span class="nt">&quot;bee&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NOUN&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>From the JSONLint website, here are some rules to consider to ensure your JSON is properly formatted:</p>
+<ul class="simple">
+<li><p>Data is in name/value pairs</p></li>
+<li><p>Data is separated by commas</p></li>
+<li><p>Objects are encapsulated within the opening and closing curly brackets</p></li>
+<li><p>An empty object can be represented by {}</p></li>
+<li><p>Arrays are encapsulated within opening and closing square brackets</p></li>
+<li><p>An empty array can be represented by []</p></li>
+<li><p>A member is represented by a key-value pair, contained in double quotes</p></li>
+<li><p>Each member should have a unique key within an object structure</p></li>
+<li><p>The value of a member must be contained in double quotes, if it’s a string</p></li>
+<li><p>Boolean values are represented using the true or false literals in lower case</p></li>
+<li><p>Number values are represented using double-precision floating-point format and shouldn’t have leading zeroes</p></li>
+<li><p>“Offensive” characters in a string need to be escaped using the backslash character \</p></li>
+<li><p>Null values are represented by the null literal in lower case</p></li>
+<li><p>Dates, and similar object types, aren’t adequately supported and should be converted to strings</p></li>
+<li><p>Each member of an object or array value must be followed by a comma, except for the last one</p></li>
+<li><p>The standard extension for the JSON file is ‘.json’</p></li>
+<li><p>The mime type for JSON files is ‘application/json’</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="tabular-data-csv-and-tsv">
+<h2><span class="section-number">5.2. </span>Tabular Data (CSV and TSV)<a class="headerlink" href="#tabular-data-csv-and-tsv" title="Permalink to this headline">¶</a></h2>
+<p>If you’ve used a spreadsheet program like Excel or Google Sheets, then you’re familiar with tabular data. This is structured information that has rows and columns. To store tabular data in a simple format, programmers often use comma-separated value files. These are simple text files with symbols that split the text into rows and columns. Rows are separated by the new line character <code class="docutils literal notranslate"><span class="pre">\n</span></code>. The row is split into columns by commas. For example,</p>
+<p><code class="docutils literal notranslate"><span class="pre">first_name,last_name\nValentina,Tereshkova</span></code></p>
+<p>becomes</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>first_name</p></th>
+<th class="head"><p>last_name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Valentina</p></td>
+<td><p>Tereshkova</p></td>
+</tr>
+</tbody>
+</table>
+<p>However, we don’t have to use commas to separate the columns.  What if you have commas in your data!? To address this problem, it is also common to use tab-separated values using the tab <code class="docutils literal notranslate"><span class="pre">\t</span></code> escape character.  In this project, we’ll use two types of tab-separated value formats.  One is the <a class="reference external" href="https://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/pipeline/CoNLLOutputter.html">Stanford CoreNLP format</a>. We’ll use this to move tokenized and annotated text from Cadet to INCEpTION.  Second is the Universal Dependencies, <a class="reference external" href="https://universaldependencies.org/format.html">CoNLL-U</a> format.  We’ll export your annotated texts from INCEpTION using this format because it’s a widely adopted format for language model training.  Because the columns are standardized, you won’t see a header row in the file.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./prep"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <div id="main-content" class="row noprint">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
               <div>
@@ -480,23 +617,21 @@ Expecting &#39;EOF&#39;, &#39;}&#39;, &#39;:&#39;, &#39;,&#39;, &#39;]&#39;, got
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
-        
-          <div class="extra_footer">
-            <p>
+  <p>
+    
+      By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
+    
+      <div class="extra_footer">
+        <p>
 <a target="_blank" href="https://www.neh.gov/divisions/odh"><img style="height:10%; width:10%" src="https://www.neh.gov/sites/default/files/inline-files/NEH-Horizontal-Stk-Seal-Black820.jpg" /></a>
 <a target="_blank" href="https://cdh.princeton.edu"><img style="height:10%; width:10%" src="https://cdh.princeton.edu/static/img/CDH_logo.svg" /></a>
 <a target="_blank" href="https://www.dariah.eu/"><img style="height:19%; width:19%" src="https://www.dariah.eu/wp-content/uploads/2017/02/logo.png" /></a>
 
 </p>
 
-          </div>
-      </p>
-    </div>
-  </footer>
+      </div>
+  </p>
+</footer>
 </main>
 
 
