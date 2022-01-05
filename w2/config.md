@@ -5,9 +5,9 @@ For these workshops you will likely not need to make any changes to the `config.
 
 ### The Basics
 
-The `config.cfg` file is similar in many ways to the `project.yml` file. It offers a stable place to record your model's parameters and settings.  
+The `config.cfg` file is similar in many ways to the `project.yml` file. It offers a stable place to record your model's parameters and settings. You can find your config files in your language's GitHub repository in `newlang_project/configs`. We encourage you to edit the `config.cfg` file in GitHub.  This will provide consistency across experiments and provides a [single source of truth](https://en.wikipedia.org/wiki/Single_source_of_truth) for your project.  
 
-- It has an `[nlp]` section that contains settings for the NLP object. If you don't have any named entity data, you may want to edit this line: `pipeline = ["tok2vec","tagger","parser","ner"]` to remove `"ner"`.
+- config.cfg has an `[nlp]` section that contains settings for the NLP object. If you don't have any named entity data, you may want to edit this line: `pipeline = ["tok2vec","tagger","parser","ner"]` to remove `"ner"`.
  
 - There is a `[components]` section with settings for each individual component in the pipeline.  This section is especially useful for custom components and for deviating from spaCy default configurations. 
 
