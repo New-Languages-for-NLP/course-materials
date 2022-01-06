@@ -351,8 +351,45 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#in-this-notebook-we-will-train-a-spacy-named-entity-recognition-model-ner-using-data-from-litbank-an-annotated-dataset-of-100-works-of-english-language-fiction">
-   20.1. In this notebook, we will train a spaCy named entity recognition model (NER) using data from LitBank an annotated dataset of 100 works of English-language fiction.
+  <a class="reference internal nav-link" href="#installing-dependencies-loading-data">
+   20.1. Installing dependencies &amp; loading data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#process-litbank-data">
+   20.2. Process LitBank data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#split-data-into-sets-for-training-and-validation">
+   20.3. Split data into sets for training and validation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#save-the-data-sets">
+     20.3.1. Save the data sets
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-training-configuration-file">
+   20.4. Create training configuration file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-training">
+   20.5. Model training
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#test-the-new-model">
+   20.6. Test the new model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluation">
+   20.7. Evaluation
   </a>
  </li>
 </ul>
@@ -361,35 +398,74 @@
         </div>
     </div>
 </div>
-    <!-- Table of contents that is only displayed when printing the page -->
-    <div id="jb-print-docs-body" class="onlyprint">
-        <h1>Practical Introduction to Model Training</h1>
-        <!-- Table of contents -->
-        <div id="print-main-content" class="row">
-            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
-            <div id="jb-print-toc">
-                
-                <div>
-                    <h2> Contents </h2>
-                </div>
-                <nav aria-label="Page">
-                    <ul class="visible nav section-nav flex-column">
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Practical Introduction to Model Training</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#in-this-notebook-we-will-train-a-spacy-named-entity-recognition-model-ner-using-data-from-litbank-an-annotated-dataset-of-100-works-of-english-language-fiction">
-   20.1. In this notebook, we will train a spaCy named entity recognition model (NER) using data from LitBank an annotated dataset of 100 works of English-language fiction.
+  <a class="reference internal nav-link" href="#installing-dependencies-loading-data">
+   20.1. Installing dependencies &amp; loading data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#process-litbank-data">
+   20.2. Process LitBank data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#split-data-into-sets-for-training-and-validation">
+   20.3. Split data into sets for training and validation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#save-the-data-sets">
+     20.3.1. Save the data sets
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-training-configuration-file">
+   20.4. Create training configuration file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-training">
+   20.5. Model training
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#test-the-new-model">
+   20.6. Test the new model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluation">
+   20.7. Evaluation
   </a>
  </li>
 </ul>
 
-                </nav>
+                        </nav>
+                    </div>
+                </div>
             </div>
             
               <div>
                 
-  <div class="section" id="practical-introduction-to-model-training">
+  <div class="tex2jax_ignore mathjax_ignore section" id="practical-introduction-to-model-training">
 <h1><span class="section-number">20. </span>Practical Introduction to Model Training<a class="headerlink" href="#practical-introduction-to-model-training" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="in-this-notebook-we-will-train-a-spacy-named-entity-recognition-model-ner-using-data-from-litbank-an-annotated-dataset-of-100-works-of-english-language-fiction">
-<h2><span class="section-number">20.1. </span>In this notebook, we will train a spaCy named entity recognition model (NER) using data from <a class="reference external" href="https://github.com/dbamman/litbank">LitBank</a> an annotated dataset of 100 works of English-language fiction.<a class="headerlink" href="#in-this-notebook-we-will-train-a-spacy-named-entity-recognition-model-ner-using-data-from-litbank-an-annotated-dataset-of-100-works-of-english-language-fiction" title="Permalink to this headline">¶</a></h2>
+<p><strong>In this notebook, we will train a spaCy named entity recognition model (NER) using data from <a class="reference external" href="https://github.com/dbamman/litbank">LitBank</a>, an annotated dataset of 100 works of English-language fiction.</strong></p>
 <p>Steps:<br />
 ✅ Load annotation data from LitBank<br />
 ✅ Create train and validation sets<br />
@@ -397,23 +473,87 @@
 ✅ Visualize the results and compare the model’s predictions against the original data<br />
 ✅ Is the model sufficiently useful for research? What would need to be improved and changed?</p>
 <p><a class="reference external" href="https://colab.research.google.com/drive/1QnBUI9eD2djoNn2XyNM3j8xYqWf46hvT?usp=sharing"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<div class="section" id="installing-dependencies-loading-data">
+<h2><span class="section-number">20.1. </span>Installing dependencies &amp; loading data<a class="headerlink" href="#installing-dependencies-loading-data" title="Permalink to this headline">¶</a></h2>
+<p>First, we install spaCy (to train the model), sklearn (to split the data for training), and tqdm (for a nice progress bar).</p>
+<p>We also clone the GitHub repo with the LitBank data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install spacy sklearn tqdm
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Install libraries</span>
+<span class="o">!</span>pip install spacy sklearn tqdm
+<span class="c1">#Clone LitBank</span>
 <span class="o">!</span>git clone https://github.com/dbamman/litbank.git
-<span class="kn">import</span> <span class="nn">spacy</span> 
+<span class="kn">import</span> <span class="nn">spacy</span>
+<span class="c1">#Show what version of spaCy we&#39;re using</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Using spaCy version </span><span class="si">{</span><span class="n">spacy</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: spacy in ./anaconda3/lib/python3.8/site-packages (3.0.6)
+Collecting sklearn
+  Using cached sklearn-0.0.tar.gz (1.1 kB)
+Requirement already satisfied: tqdm in ./anaconda3/lib/python3.8/site-packages (4.59.0)
+Requirement already satisfied: scikit-learn in ./anaconda3/lib/python3.8/site-packages (from sklearn) (0.24.1)
+Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in ./anaconda3/lib/python3.8/site-packages (from spacy) (2.0.5)
+Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in ./anaconda3/lib/python3.8/site-packages (from spacy) (3.0.5)
+Requirement already satisfied: typer&lt;0.4.0,&gt;=0.3.0 in ./anaconda3/lib/python3.8/site-packages (from spacy) (0.3.2)
+Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.3 in ./anaconda3/lib/python3.8/site-packages (from spacy) (2.0.4)
+Requirement already satisfied: pydantic&lt;1.8.0,&gt;=1.7.1 in ./anaconda3/lib/python3.8/site-packages (from spacy) (1.7.4)
+Requirement already satisfied: jinja2 in ./anaconda3/lib/python3.8/site-packages (from spacy) (2.11.3)
+Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.4 in ./anaconda3/lib/python3.8/site-packages (from spacy) (3.0.6)
+Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in ./anaconda3/lib/python3.8/site-packages (from spacy) (2.25.1)
+Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in ./anaconda3/lib/python3.8/site-packages (from spacy) (1.0.5)
+Requirement already satisfied: blis&lt;0.8.0,&gt;=0.4.0 in ./anaconda3/lib/python3.8/site-packages (from spacy) (0.7.4)
+Requirement already satisfied: wasabi&lt;1.1.0,&gt;=0.8.1 in ./anaconda3/lib/python3.8/site-packages (from spacy) (0.8.2)
+Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.1 in ./anaconda3/lib/python3.8/site-packages (from spacy) (2.4.1)
+Requirement already satisfied: thinc&lt;8.1.0,&gt;=8.0.3 in ./anaconda3/lib/python3.8/site-packages (from spacy) (8.0.7)
+Requirement already satisfied: pathy&gt;=0.3.5 in ./anaconda3/lib/python3.8/site-packages (from spacy) (0.6.0)
+Requirement already satisfied: setuptools in ./anaconda3/lib/python3.8/site-packages (from spacy) (52.0.0.post20210125)
+Requirement already satisfied: packaging&gt;=20.0 in ./anaconda3/lib/python3.8/site-packages (from spacy) (20.9)
+Requirement already satisfied: numpy&gt;=1.15.0 in ./anaconda3/lib/python3.8/site-packages (from spacy) (1.20.1)
+Requirement already satisfied: pyparsing&gt;=2.0.2 in ./anaconda3/lib/python3.8/site-packages (from packaging&gt;=20.0-&gt;spacy) (2.4.7)
+Requirement already satisfied: smart-open&lt;6.0.0,&gt;=5.0.0 in ./anaconda3/lib/python3.8/site-packages (from pathy&gt;=0.3.5-&gt;spacy) (5.1.0)
+Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in ./anaconda3/lib/python3.8/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (4.0.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in ./anaconda3/lib/python3.8/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (2020.12.5)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in ./anaconda3/lib/python3.8/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (2.10)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in ./anaconda3/lib/python3.8/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (1.26.4)
+Requirement already satisfied: click&lt;7.2.0,&gt;=7.1.1 in ./anaconda3/lib/python3.8/site-packages (from typer&lt;0.4.0,&gt;=0.3.0-&gt;spacy) (7.1.2)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in ./anaconda3/lib/python3.8/site-packages (from jinja2-&gt;spacy) (1.1.1)
+Requirement already satisfied: joblib&gt;=0.11 in ./anaconda3/lib/python3.8/site-packages (from scikit-learn-&gt;sklearn) (1.0.1)
+Requirement already satisfied: threadpoolctl&gt;=2.0.0 in ./anaconda3/lib/python3.8/site-packages (from scikit-learn-&gt;sklearn) (2.1.0)
+Requirement already satisfied: scipy&gt;=0.19.1 in ./anaconda3/lib/python3.8/site-packages (from scikit-learn-&gt;sklearn) (1.6.2)
+Building wheels for collected packages: sklearn
+  Building wheel for sklearn (setup.py) ... ?25ldone
+?25h  Created wheel for sklearn: filename=sklearn-0.0-py2.py3-none-any.whl size=1316 sha256=db5390d21c32acd66c5429a0581e41b52ee88f3a3a505c48cc05eb83b47016be
+  Stored in directory: /Users/qad/Library/Caches/pip/wheels/22/0b/40/fd3f795caaa1fb4c6cb738bc1f56100be1e57da95849bfc897
+Successfully built sklearn
+Installing collected packages: sklearn
+Successfully installed sklearn-0.0
+Cloning into &#39;litbank&#39;...
+remote: Enumerating objects: 1179, done.
+remote: Counting objects: 100% (123/123), done.
+remote: Compressing objects: 100% (118/118), done.
+remote: Total 1179 (delta 12), reused 104 (delta 5), pack-reused 1056
+Receiving objects: 100% (1179/1179), 40.71 MiB | 9.84 MiB/s, done.
+Resolving deltas: 100% (129/129), done.
+Using spaCy version 3.0.6
+</pre></div>
 </div>
+</div>
+</div>
+<p>Next, we creat a list of the text files in the <code class="docutils literal notranslate"><span class="pre">litbank/entities/brat</span></code> directory and display the number of texts.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Imports the Path library</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="c1">#Moves to the path litbank/entities/brat</span>
 <span class="n">entities_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;litbank&#39;</span> <span class="o">/</span> <span class="s1">&#39;entities&#39;</span> <span class="o">/</span> <span class="s1">&#39;brat&#39;</span>
-
+<span class="c1">#Creates a list of text files in the path above</span>
 <span class="n">text_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">entities_path</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s1">&#39;.txt&#39;</span><span class="p">]</span>
+<span class="c1">#Counts how many text files there are</span>
 <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">text_files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">100</span>
+<span class="c1">#Show how many text files have been imported</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[*] imported </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">text_files</span><span class="p">)</span><span class="si">}</span><span class="s1"> files&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -424,36 +564,52 @@
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="process-litbank-data">
+<h2><span class="section-number">20.2. </span>Process LitBank data<a class="headerlink" href="#process-litbank-data" title="Permalink to this headline">¶</a></h2>
+<p>Here, we run each of the LitBank text files through spaCy, but only using the sentenceizer (i.e. not all the other pieces of the default English pipeline, because we want to train a new model, not use its existing predictions). We also extract each of the annotations in the LitBank text files (which should refer to people, places, etc.) and add them to an entity list for that text.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for each file, create a Doc object and add the annotation data to doc.ents</span>
 <span class="c1"># our output is a list of Doc objects </span>
+<span class="c1">#Import spaCy, tqdm, and various utilities from spaCy</span>
 <span class="kn">import</span> <span class="nn">spacy</span> 
 <span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
 <span class="kn">from</span> <span class="nn">spacy.tokens</span> <span class="kn">import</span> <span class="n">Span</span><span class="p">,</span> <span class="n">DocBin</span>
 <span class="kn">from</span> <span class="nn">spacy.util</span> <span class="kn">import</span> <span class="n">filter_spans</span>
 
-
+<span class="c1">#Creates a list of Doc objects that are the output from spaCy</span>
 <span class="n">docs</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="c1">#note: not using pretrained model because it adds predictions, just want LitBank data</span>
+<span class="c1">#Use a blank spaCy model</span>
 <span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">blank</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
+<span class="c1">#Add the stentencizer ot break it up into sentences</span>
 <span class="n">nlp</span><span class="o">.</span><span class="n">add_pipe</span><span class="p">(</span><span class="s1">&#39;sentencizer&#39;</span><span class="p">)</span> <span class="c1"># used in training assessment</span>
 
-
+<span class="c1">#With each text file, while showing a progress bar</span>
 <span class="k">for</span> <span class="n">text_file</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">text_files</span><span class="p">):</span>
+    <span class="c1">#Read the file</span>
     <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">text_file</span><span class="o">.</span><span class="n">read_text</span><span class="p">())</span>
+    <span class="c1">#Create a file for the extracted annotations</span>
     <span class="n">annotation_file</span> <span class="o">=</span> <span class="p">(</span><span class="n">entities_path</span> <span class="o">/</span> <span class="p">(</span><span class="n">text_file</span><span class="o">.</span><span class="n">stem</span> <span class="o">+</span><span class="s1">&#39;.ann&#39;</span><span class="p">))</span>
+    <span class="c1">#Split the annotations by new lines</span>
     <span class="n">annotations</span> <span class="o">=</span> <span class="n">annotation_file</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="c1">#Create a list for the entities</span>
     <span class="n">ents</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1">#For each annotation</span>
     <span class="k">for</span> <span class="n">annotation</span> <span class="ow">in</span> <span class="n">annotations</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="c1">#Split the data based on tab characters to seaprate label, start, and end</span>
         <span class="n">label</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="c1">#Span is the text in the doc corresponding to the annotation</span>
         <span class="n">span</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">char_span</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">start</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">end</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+        <span class="c1">#Handles errors</span>
         <span class="k">if</span> <span class="n">span</span><span class="p">:</span> <span class="c1"># when start and end do not match a valid string, spaCy returns a NoneType span</span>
             <span class="n">ents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">span</span><span class="p">)</span>
-    
+    <span class="c1">#Removes duplicated or overlapping words</span>
     <span class="n">filtered</span> <span class="o">=</span> <span class="n">filter_spans</span><span class="p">(</span><span class="n">ents</span><span class="p">)</span>
+    <span class="c1">#The entities we want are the filtered list</span>
     <span class="n">doc</span><span class="o">.</span><span class="n">ents</span> <span class="o">=</span> <span class="n">filtered</span>
+    <span class="c1">#Append the spaCy-analyzed text to the list of docs</span>
     <span class="n">docs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
     
 
@@ -463,16 +619,24 @@
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "efc87b9b924149c0bc15c7069191b128", "version_major": 2, "version_minor": 0}
+{"model_id": "5043b111420d47b4b8f69cbad2c1be47", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
+</div>
+<div class="section" id="split-data-into-sets-for-training-and-validation">
+<h2><span class="section-number">20.3. </span>Split data into sets for training and validation<a class="headerlink" href="#split-data-into-sets-for-training-and-validation" title="Permalink to this headline">¶</a></h2>
+<p>We don’t want to use all the data for training, because that would leave us without any data to use for checking the model’s accuracy. The <em>training</em> data is what the model actually learns from; the <em>validation</em> data is the data that’s used to choose the best model from multiple training runs; the <em>test</em> data is the “gold standard” of “right” answers.</p>
+<p>If you read general-purpose descriptions of the different data sets for model training, you may see references to <em>hyperparamters</em> (like the “learning rate”). spaCy’s built-in model training provides sensible defaults that you don’t necessarily need to modify, but if you’re interested in the details of what <em>could</em> be modified, you can check the <a class="reference external" href="https://spacy.io/usage/training#config">documentation about the training config file</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split the data into sets for training and validation </span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
+<span class="c1">#Split the data into the training set (90%) and validation set (10%)</span>
 <span class="n">train_set</span><span class="p">,</span> <span class="n">validation_set</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="c1">#Split the validation set into the actual validation set (70%) and test set (30%)</span>
 <span class="n">validation_set</span><span class="p">,</span> <span class="n">test_set</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">validation_set</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="c1">#Print how many docs are in each set</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;🚂 Created </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">train_set</span><span class="p">)</span><span class="si">}</span><span class="s1"> training docs&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;😊 Created </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">validation_set</span><span class="p">)</span><span class="si">}</span><span class="s1"> validation docs&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;🧪 Created </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">test_set</span><span class="p">)</span><span class="si">}</span><span class="s1"> test docs&#39;</span><span class="p">)</span>
@@ -487,34 +651,39 @@
 </div>
 </div>
 </div>
+<div class="section" id="save-the-data-sets">
+<h3><span class="section-number">20.3.1. </span>Save the data sets<a class="headerlink" href="#save-the-data-sets" title="Permalink to this headline">¶</a></h3>
+<p>From here, we save the training, validation, and test data sets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add training Docs to DocBin and store to disk</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import DocBin, a format for saving a collection of spaCy Doc objects</span>
 <span class="kn">from</span> <span class="nn">spacy.tokens</span> <span class="kn">import</span> <span class="n">DocBin</span>
 
-<span class="c1"># the DocBin will store the training documents</span>
+<span class="c1">#Define a DocBin for training data</span>
 <span class="n">train_db</span> <span class="o">=</span> <span class="n">DocBin</span><span class="p">()</span>
+<span class="c1">#For each doc in the training set</span>
 <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">train_set</span><span class="p">:</span>
+    <span class="c1">#Add it to the training DocBin</span>
     <span class="n">train_db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+<span class="c1">#Save the resulting file</span>
 <span class="n">train_db</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="s2">&quot;./train.spacy&quot;</span><span class="p">)</span>
 
-<span class="c1"># Save the validation Docs to disk </span>
+<span class="c1"># Define a DocBin for validation data, and do the same as above</span>
 <span class="n">validation_db</span> <span class="o">=</span> <span class="n">DocBin</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">validation_set</span><span class="p">:</span>
     <span class="n">validation_db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
-    
 <span class="n">validation_db</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="s2">&quot;./dev.spacy&quot;</span><span class="p">)</span> 
 
-<span class="c1"># Save the test Docs to disk </span>
+<span class="c1"># Define a DocBin for test data, and do the same as above</span>
 <span class="n">test_db</span> <span class="o">=</span> <span class="n">DocBin</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">test_set</span><span class="p">:</span>
-    <span class="n">test_db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
-    
+    <span class="n">test_db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>   
 <span class="n">test_db</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="s2">&quot;./test.spacy&quot;</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
 </div>
+<p>Here, we check to make sure the files all exist and are of reasonable sizes given the way we split them (90% training, then splitting that remaining 10% into 70% validation and 30% test.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls -al train.spacy dev.spacy test.spacy
@@ -529,6 +698,11 @@
 </div>
 </div>
 </div>
+</div>
+</div>
+<div class="section" id="create-training-configuration-file">
+<h2><span class="section-number">20.4. </span>Create training configuration file<a class="headerlink" href="#create-training-configuration-file" title="Permalink to this headline">¶</a></h2>
+<p>Here, we create the configuration file we’ll need to actually run the training. We’re using English language, the named-entity recognition (NER) pipeline, and otherwise just the defaults.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python3 -m spacy init config ./config.cfg --lang en --pipeline ner -F
@@ -554,6 +728,10 @@ python -m spacy train config.cfg --paths.train ./train.spacy --paths.dev ./dev.s
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="model-training">
+<h2><span class="section-number">20.5. </span>Model training<a class="headerlink" href="#model-training" title="Permalink to this headline">¶</a></h2>
+<p>The following code starts the training. The training output goes into a directory called <code class="docutils literal notranslate"><span class="pre">output</span></code>, and we define the paths to the training (train.spacy) and the validation (dev.spacy) data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python3 -m spacy train config.cfg --output ./output --paths.train train.spacy --paths.dev dev.spacy
@@ -599,16 +777,25 @@ output/model-last
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="test-the-new-model">
+<h2><span class="section-number">20.6. </span>Test the new model<a class="headerlink" href="#test-the-new-model" title="Permalink to this headline">¶</a></h2>
+<p>Finally, we can check how the model we just trained performs, using the test data set for comparison. The closer the model results are to the human-annotated test set, the better the model is performing. We’ll start with running the model on a random exerpt from the test set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View the predictions of our new model</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Imports the random library to choose a random exerpt.</span>
 <span class="kn">import</span> <span class="nn">random</span>
+<span class="c1">#Displacy shows a nice visualization of spaCy data, including entities on text</span>
 <span class="kn">from</span> <span class="nn">spacy</span> <span class="kn">import</span> <span class="n">displacy</span> 
 
+<span class="c1">#Load the model we just trained</span>
 <span class="n">new_nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;output/model-last&quot;</span><span class="p">)</span>
+<span class="c1">#Pick a random exerpt from the test data set.</span>
 <span class="n">val_doc</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">test_set</span><span class="p">)</span>
+<span class="c1">#Run the new model on the random exerpt</span>
 <span class="n">doc</span> <span class="o">=</span> <span class="n">new_nlp</span><span class="p">(</span><span class="n">val_doc</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 
+<span class="c1">#Show the first 100 words of the random document.</span>
 <span class="n">displacy</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">doc</span><span class="p">[:</span><span class="mi">100</span><span class="p">],</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;ent&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -636,9 +823,10 @@ output/model-last
 </mark>
  , highest of the White Mountains , stood up round and bare , rimmed bright gold in the last glow of the setting sun .</br>Then , as the fire dropped behind the domed peak , a change </div></span></div></div>
 </div>
+<p>To compare, let’s display the original, human-generated annotations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare against the original LitBank annotations </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the original annotations in the same style</span>
 <span class="n">displacy</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">val_doc</span><span class="p">[:</span><span class="mi">100</span><span class="p">],</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;ent&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -671,6 +859,11 @@ output/model-last
 </mark>
  , stood up round and bare , rimmed bright gold in the last glow of the setting sun .</br>Then , as the fire dropped behind the domed peak , a change </div></span></div></div>
 </div>
+<p>It’s not always easy to see the differences right away: walk through the human-annotated text, entity by entity, and then check what happened with the model at that same point in the text. Some common errors include getting the entity right but the label wrong (e.g. switching LOC/PER), and including too many words in the entity, in addition to just missing the entity entirely.</p>
+</div>
+<div class="section" id="evaluation">
+<h2><span class="section-number">20.7. </span>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h2>
+<p>Is the model sufficiently useful for research? What would need to be improved and changed?</p>
 </div>
 </div>
 
@@ -696,326 +889,8 @@ output/model-last
 
               </div>
               
-            </div>
-        </div>
-    </div>
-    <div id="main-content" class="row noprint">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
-                
-  <div class="section" id="practical-introduction-to-model-training">
-<h1><span class="section-number">20. </span>Practical Introduction to Model Training<a class="headerlink" href="#practical-introduction-to-model-training" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="in-this-notebook-we-will-train-a-spacy-named-entity-recognition-model-ner-using-data-from-litbank-an-annotated-dataset-of-100-works-of-english-language-fiction">
-<h2><span class="section-number">20.1. </span>In this notebook, we will train a spaCy named entity recognition model (NER) using data from <a class="reference external" href="https://github.com/dbamman/litbank">LitBank</a> an annotated dataset of 100 works of English-language fiction.<a class="headerlink" href="#in-this-notebook-we-will-train-a-spacy-named-entity-recognition-model-ner-using-data-from-litbank-an-annotated-dataset-of-100-works-of-english-language-fiction" title="Permalink to this headline">¶</a></h2>
-<p>Steps:<br />
-✅ Load annotation data from LitBank<br />
-✅ Create train and validation sets<br />
-✅ Train NER from scratch using only the EN language object<br />
-✅ Visualize the results and compare the model’s predictions against the original data<br />
-✅ Is the model sufficiently useful for research? What would need to be improved and changed?</p>
-<p><a class="reference external" href="https://colab.research.google.com/drive/1QnBUI9eD2djoNn2XyNM3j8xYqWf46hvT?usp=sharing"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install spacy sklearn tqdm
-<span class="o">!</span>git clone https://github.com/dbamman/litbank.git
-<span class="kn">import</span> <span class="nn">spacy</span> 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Using spaCy version </span><span class="si">{</span><span class="n">spacy</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="n">entities_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;litbank&#39;</span> <span class="o">/</span> <span class="s1">&#39;entities&#39;</span> <span class="o">/</span> <span class="s1">&#39;brat&#39;</span>
-
-<span class="n">text_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">entities_path</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s1">&#39;.txt&#39;</span><span class="p">]</span>
-<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">text_files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">100</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[*] imported </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">text_files</span><span class="p">)</span><span class="si">}</span><span class="s1"> files&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*] imported 100 files
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for each file, create a Doc object and add the annotation data to doc.ents</span>
-<span class="c1"># our output is a list of Doc objects </span>
-<span class="kn">import</span> <span class="nn">spacy</span> 
-<span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
-<span class="kn">from</span> <span class="nn">spacy.tokens</span> <span class="kn">import</span> <span class="n">Span</span><span class="p">,</span> <span class="n">DocBin</span>
-<span class="kn">from</span> <span class="nn">spacy.util</span> <span class="kn">import</span> <span class="n">filter_spans</span>
-
-
-<span class="n">docs</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="c1">#note: not using pretrained model because it adds predictions, just want LitBank data</span>
-<span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">blank</span><span class="p">(</span><span class="s2">&quot;en&quot;</span><span class="p">)</span>
-<span class="n">nlp</span><span class="o">.</span><span class="n">add_pipe</span><span class="p">(</span><span class="s1">&#39;sentencizer&#39;</span><span class="p">)</span> <span class="c1"># used in training assessment</span>
-
-
-<span class="k">for</span> <span class="n">text_file</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">text_files</span><span class="p">):</span>
-    <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">text_file</span><span class="o">.</span><span class="n">read_text</span><span class="p">())</span>
-    <span class="n">annotation_file</span> <span class="o">=</span> <span class="p">(</span><span class="n">entities_path</span> <span class="o">/</span> <span class="p">(</span><span class="n">text_file</span><span class="o">.</span><span class="n">stem</span> <span class="o">+</span><span class="s1">&#39;.ann&#39;</span><span class="p">))</span>
-    <span class="n">annotations</span> <span class="o">=</span> <span class="n">annotation_file</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">ents</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">annotation</span> <span class="ow">in</span> <span class="n">annotations</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
-        <span class="n">label</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-        <span class="n">span</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">char_span</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">start</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">end</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">span</span><span class="p">:</span> <span class="c1"># when start and end do not match a valid string, spaCy returns a NoneType span</span>
-            <span class="n">ents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">span</span><span class="p">)</span>
-    
-    <span class="n">filtered</span> <span class="o">=</span> <span class="n">filter_spans</span><span class="p">(</span><span class="n">ents</span><span class="p">)</span>
-    <span class="n">doc</span><span class="o">.</span><span class="n">ents</span> <span class="o">=</span> <span class="n">filtered</span>
-    <span class="n">docs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
-    
-
-<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">100</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "efc87b9b924149c0bc15c7069191b128", "version_major": 2, "version_minor": 0}
-</script></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split the data into sets for training and validation </span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-
-<span class="n">train_set</span><span class="p">,</span> <span class="n">validation_set</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
-<span class="n">validation_set</span><span class="p">,</span> <span class="n">test_set</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">validation_set</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;🚂 Created </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">train_set</span><span class="p">)</span><span class="si">}</span><span class="s1"> training docs&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;😊 Created </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">validation_set</span><span class="p">)</span><span class="si">}</span><span class="s1"> validation docs&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;🧪 Created </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">test_set</span><span class="p">)</span><span class="si">}</span><span class="s1"> test docs&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🚂 Created 90 training docs
-😊 Created 7 validation docs
-🧪 Created 3 test docs
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add training Docs to DocBin and store to disk</span>
-<span class="kn">from</span> <span class="nn">spacy.tokens</span> <span class="kn">import</span> <span class="n">DocBin</span>
-
-<span class="c1"># the DocBin will store the training documents</span>
-<span class="n">train_db</span> <span class="o">=</span> <span class="n">DocBin</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">train_set</span><span class="p">:</span>
-    <span class="n">train_db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
-<span class="n">train_db</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="s2">&quot;./train.spacy&quot;</span><span class="p">)</span>
-
-<span class="c1"># Save the validation Docs to disk </span>
-<span class="n">validation_db</span> <span class="o">=</span> <span class="n">DocBin</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">validation_set</span><span class="p">:</span>
-    <span class="n">validation_db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
-    
-<span class="n">validation_db</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="s2">&quot;./dev.spacy&quot;</span><span class="p">)</span> 
-
-<span class="c1"># Save the test Docs to disk </span>
-<span class="n">test_db</span> <span class="o">=</span> <span class="n">DocBin</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">test_set</span><span class="p">:</span>
-    <span class="n">test_db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
-    
-<span class="n">test_db</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="s2">&quot;./test.spacy&quot;</span><span class="p">)</span> 
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls -al train.spacy dev.spacy test.spacy
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-r--r-- 1 root root  115753 Dec 23 08:20 dev.spacy
--rw-r--r-- 1 root root   53751 Dec 23 08:20 test.spacy
--rw-r--r-- 1 root root 1406959 Dec 23 08:20 train.spacy
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python3 -m spacy init config ./config.cfg --lang en --pipeline ner -F
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C3">⚠ To generate a more effective transformer-based config (GPU-only),</span>
-<span class=" -Color -Color-C3">install the spacy-transformers package and re-run this command. The config</span>
-<span class=" -Color -Color-C3">generated now does not use transformers.</span>
-<span class=" -Color -Color-C4">ℹ Generated config template specific for your use case</span>
-- Language: en
-- Pipeline: ner
-- Optimize for: efficiency
-- Hardware: CPU
-- Transformer: None
-<span class=" -Color -Color-C2">✔ Auto-filled config with all values</span>
-<span class=" -Color -Color-C2">✔ Saved config</span>
-config.cfg
-You can now add your data and train your pipeline:
-python -m spacy train config.cfg --paths.train ./train.spacy --paths.dev ./dev.spacy
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python3 -m spacy train config.cfg --output ./output --paths.train train.spacy --paths.dev dev.spacy
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C4">ℹ Saving to output directory: output</span>
-<span class=" -Color -Color-C4">ℹ Using CPU</span>
-
-<span class=" -Color -Color-Bold">=========================== Initializing pipeline ===========================</span>
-[2021-12-23 08:22:05,786] [INFO] Set up nlp object from config
-[2021-12-23 08:22:05,792] [INFO] Pipeline: [&#39;tok2vec&#39;, &#39;ner&#39;]
-[2021-12-23 08:22:05,794] [INFO] Created vocabulary
-[2021-12-23 08:22:05,795] [INFO] Finished initializing nlp object
-[2021-12-23 08:22:11,376] [INFO] Initialized pipeline components: [&#39;tok2vec&#39;, &#39;ner&#39;]
-<span class=" -Color -Color-C2">✔ Initialized pipeline</span>
-
-<span class=" -Color -Color-Bold">============================= Training pipeline =============================</span>
-<span class=" -Color -Color-C4">ℹ Pipeline: [&#39;tok2vec&#39;, &#39;ner&#39;]</span>
-<span class=" -Color -Color-C4">ℹ Initial learn rate: 0.001</span>
-E    #       LOSS TOK2VEC  LOSS NER  ENTS_F  ENTS_P  ENTS_R  SCORE 
----  ------  ------------  --------  ------  ------  ------  ------
-  0       0          0.00   1072.88    0.00    0.00    0.00    0.00
-  2     200      18889.69  63358.78   35.62   28.97   46.21    0.36
-  4     400      11414.18  27850.79   53.58   60.92   47.83    0.54
-  6     600      24399.51  23338.55   54.53   64.79   47.08    0.55
-  8     800      20359.37  18970.20   57.03   62.17   52.67    0.57
- 11    1000       6056.26  15459.09   56.76   65.95   49.81    0.57
- 13    1200       6623.85  13355.36   59.69   62.62   57.02    0.60
- 15    1400       6450.33  10892.70   63.05   67.52   59.13    0.63
- 17    1600       8249.34  10429.20   61.55   68.65   55.78    0.62
- 20    1800       8022.00   8933.03   58.64   59.82   57.52    0.59
- 22    2000      10772.98   8298.90   59.52   62.85   56.52    0.60
- 24    2200       9276.31   7258.57   58.76   61.78   56.02    0.59
- 26    2400       6356.31   5919.32   57.84   60.22   55.65    0.58
- 28    2600       7711.42   5918.36   58.36   63.77   53.79    0.58
- 31    2800      11050.54   5581.69   56.84   61.72   52.67    0.57
- 33    3000       8032.93   4899.75   56.33   60.37   52.80    0.56
-<span class=" -Color -Color-C2">✔ Saved pipeline to output directory</span>
-output/model-last
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View the predictions of our new model</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">from</span> <span class="nn">spacy</span> <span class="kn">import</span> <span class="n">displacy</span> 
-
-<span class="n">new_nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;output/model-last&quot;</span><span class="p">)</span>
-<span class="n">val_doc</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">test_set</span><span class="p">)</span>
-<span class="n">doc</span> <span class="o">=</span> <span class="n">new_nlp</span><span class="p">(</span><span class="n">val_doc</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-
-<span class="n">displacy</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">doc</span><span class="p">[:</span><span class="mi">100</span><span class="p">],</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;ent&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><span class="tex2jax_ignore"><div class="entities" style="line-height: 2.5; direction: ltr">CHAPTER I At sunset hour 
-<mark class="entity" style="background: #ff9561; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
-    the forest
-    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">LOC</span>
-</mark>
- was still , lonely , sweet with tang of fir and spruce , blazing in gold and red and green ; and 
-<mark class="entity" style="background: #ddd; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
-    the man who glided on under the great trees seemed to blend with
-    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">PER</span>
-</mark>
-
-<mark class="entity" style="background: #ddd; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
-    the colors
-    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">PER</span>
-</mark>
- and , disappearing , to have become a part of the wild woodland .</br>
-<mark class="entity" style="background: #ddd; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
-    Old Baldy
-    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">PER</span>
-</mark>
- , highest of the White Mountains , stood up round and bare , rimmed bright gold in the last glow of the setting sun .</br>Then , as the fire dropped behind the domed peak , a change </div></span></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare against the original LitBank annotations </span>
-<span class="n">displacy</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">val_doc</span><span class="p">[:</span><span class="mi">100</span><span class="p">],</span> <span class="n">jupyter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;ent&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><span class="tex2jax_ignore"><div class="entities" style="line-height: 2.5; direction: ltr">CHAPTER I At sunset hour 
-<mark class="entity" style="background: #ff9561; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
-    the forest
-    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">LOC</span>
-</mark>
- was still , lonely , sweet with tang of fir and spruce , blazing in gold and red and green ; and 
-<mark class="entity" style="background: #ddd; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
-    the man who glided on under the great trees
-    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">PER</span>
-</mark>
- seemed to blend with the colors and , disappearing , to have become a part of 
-<mark class="entity" style="background: #ff9561; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
-    the wild woodland
-    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">LOC</span>
-</mark>
- .</br>
-<mark class="entity" style="background: #ff9561; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
-    Old Baldy
-    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">LOC</span>
-</mark>
- , highest of 
-<mark class="entity" style="background: #ddd; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
-    the White Mountains
-    <span style="font-size: 0.8em; font-weight: bold; line-height: 1; border-radius: 0.35em; vertical-align: middle; margin-left: 0.5rem">PER</span>
-</mark>
- , stood up round and bare , rimmed bright gold in the last glow of the setting sun .</br>Then , as the fire dropped behind the domed peak , a change </div></span></div></div>
-</div>
-</div>
-</div>
-
-    <script type="text/x-thebe-config">
-    {
-        requestKernel: true,
-        binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
-        },
-        codeMirrorConfig: {
-            theme: "abcdef",
-            mode: "python"
-        },
-        kernelOptions: {
-            kernelName: "python3",
-            path: "./w2/practical-intro"
-        },
-        predefinedOutput: true
-    }
-    </script>
-    <script>kernelName = 'python3'</script>
-
-              </div>
-              
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="../intro-ml.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1032,7 +907,7 @@ output/model-last
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">

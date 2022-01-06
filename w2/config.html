@@ -349,19 +349,20 @@
         </div>
     </div>
 </div>
-    <!-- Table of contents that is only displayed when printing the page -->
-    <div id="jb-print-docs-body" class="onlyprint">
-        <h1>The Config File</h1>
-        <!-- Table of contents -->
-        <div id="print-main-content" class="row">
-            <div class="col-12 col-md-12 pl-md-5 pr-md-5">
-            <div id="jb-print-toc">
-                
-                <div>
-                    <h2> Contents </h2>
-                </div>
-                <nav aria-label="Page">
-                    <ul class="visible nav section-nav flex-column">
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>The Config File</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-basics">
    22.1. The Basics
@@ -374,7 +375,9 @@
  </li>
 </ul>
 
-                </nav>
+                        </nav>
+                    </div>
+                </div>
             </div>
             
               <div>
@@ -429,66 +432,8 @@
 
               </div>
               
-            </div>
-        </div>
-    </div>
-    <div id="main-content" class="row noprint">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
-                
-  <div class="tex2jax_ignore mathjax_ignore section" id="the-config-file">
-<h1><span class="section-number">22. </span>The Config File<a class="headerlink" href="#the-config-file" title="Permalink to this headline">¶</a></h1>
-<p>For these workshops you will likely not need to make any changes to the <code class="docutils literal notranslate"><span class="pre">config.cfg</span></code> file. This section is here for participants who want a basic understanding of what the config file does. Advanced users who are interested in changing model components and architecture are best served by the existing spaCy documentation on the config system.</p>
-<div class="section" id="the-basics">
-<h2><span class="section-number">22.1. </span>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">config.cfg</span></code> file is similar in many ways to the <code class="docutils literal notranslate"><span class="pre">project.yml</span></code> file. It offers a stable place to record your model’s parameters and settings. You can find your config files in your language’s GitHub repository in <code class="docutils literal notranslate"><span class="pre">newlang_project/configs</span></code>. We encourage you to edit the <code class="docutils literal notranslate"><span class="pre">config.cfg</span></code> file in GitHub.  This will provide consistency across experiments and provides a <a class="reference external" href="https://en.wikipedia.org/wiki/Single_source_of_truth">single source of truth</a> for your project.</p>
-<ul class="simple">
-<li><p>config.cfg has an <code class="docutils literal notranslate"><span class="pre">[nlp]</span></code> section that contains settings for the NLP object. If you don’t have any named entity data, you may want to edit this line: <code class="docutils literal notranslate"><span class="pre">pipeline</span> <span class="pre">=</span> <span class="pre">[&quot;tok2vec&quot;,&quot;tagger&quot;,&quot;parser&quot;,&quot;ner&quot;]</span></code> to remove <code class="docutils literal notranslate"><span class="pre">&quot;ner&quot;</span></code>.</p></li>
-<li><p>There is a <code class="docutils literal notranslate"><span class="pre">[components]</span></code> section with settings for each individual component in the pipeline.  This section is especially useful for custom components and for deviating from spaCy default configurations.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">[training]</span></code> section contains various hypterparameters that can be changed, such as seed, dropout, and evaluation frequency. By default, spaCy will continue training until the model stops improving. You can change the <code class="docutils literal notranslate"><span class="pre">patience</span></code> setting. If set to 400, for example, patience will wait for 400 steps without improvement before stopping training. You can also stop training after a specified number of epochs or steps.</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">max_epochs</span></code> will stop training after a specific number of epochs have completed. For example, <code class="docutils literal notranslate"><span class="pre">max_epochs</span> <span class="pre">=</span> <span class="pre">10</span></code>.  If set to <code class="docutils literal notranslate"><span class="pre">0</span></code>, there is no epoch limit.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">max_steps</span></code> provides a maximum number of steps before training is stopped.</p></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="customizing-pipeline-training">
-<h2><span class="section-number">22.2. </span>Customizing Pipeline Training<a class="headerlink" href="#customizing-pipeline-training" title="Permalink to this headline">¶</a></h2>
-<p>The section in the documentation on <a class="reference external" href="https://spacy.io/usage/training#config-components">Defining pipeline components</a> may be especially helpful for teams that are interested in customizing the organization and capabilities of their model.</p>
-<p>For more in-depth and practical information, please see the spaCy documentation:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://spacy.io/usage/training#config">Useage</a></p></li>
-<li><p><a class="reference external" href="https://spacy.io/api/data-formats#config">API</a></p></li>
-</ul>
-</div>
-</div>
-
-    <script type="text/x-thebe-config">
-    {
-        requestKernel: true,
-        binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
-        },
-        codeMirrorConfig: {
-            theme: "abcdef",
-            mode: "python"
-        },
-        kernelOptions: {
-            kernelName: "python3",
-            path: "./w2"
-        },
-        predefinedOutput: true
-    }
-    </script>
-    <script>kernelName = 'python3'</script>
-
-              </div>
-              
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="projects.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -505,7 +450,7 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
