@@ -36,7 +36,7 @@ parts:
   - file: w2/practical-intro/Practical Introduction to Model Training.ipynb
   - file: w2/projects
   - file: w2/config
-  - file: w2/toy
+#  - file: w2/toy
   - file: w2/using-inception-data/New Language Training.ipynb
   - file: w2/embeddings
   - file: w2/applied-embeddings
