@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>20. Practical Introduction to Model Training &#8212; New Languages for NLP</title>
+    <title>21. Practical Introduction to Model Training &#8212; New Languages for NLP</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,7 +53,7 @@
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="21. The Project File" href="../projects.html" />
+    <link rel="next" title="22. The Project File" href="../projects.html" />
     <link rel="prev" title="19. Introduction to Machine Learning" href="../intro-ml.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -222,32 +222,32 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   20. Practical Introduction to Model Training
+   21. Practical Introduction to Model Training
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../projects.html">
-   21. The Project File
+   22. The Project File
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../config.html">
-   22. The Config File
+   23. The Config File
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../using-inception-data/New%20Language%20Training.html">
-   23. 🌿 The New Language Project
+   24. 🌿 The New Language Project
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../embeddings.html">
-   24. Embeddings, Do You Need Them?
+   25. Embeddings, Do You Need Them?
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../applied-embeddings.html">
-   25. Applied Session with Transformers
+   26. Applied Session with Transformers
   </a>
  </li>
 </ul>
@@ -259,7 +259,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../w3/overview.html">
-   26. Welcome to Workshop III
+   27. Welcome to Workshop III
   </a>
  </li>
 </ul>
@@ -352,44 +352,44 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#installing-dependencies-loading-data">
-   20.1. Installing dependencies &amp; loading data
+   21.1. Installing dependencies &amp; loading data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#process-litbank-data">
-   20.2. Process LitBank data
+   21.2. Process LitBank data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#split-data-into-sets-for-training-and-validation">
-   20.3. Split data into sets for training and validation
+   21.3. Split data into sets for training and validation
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#save-the-data-sets">
-     20.3.1. Save the data sets
+     21.3.1. Save the data sets
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#create-training-configuration-file">
-   20.4. Create training configuration file
+   21.4. Create training configuration file
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#model-training">
-   20.5. Model training
+   21.5. Model training
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#test-the-new-model">
-   20.6. Test the new model
+   21.6. Test the new model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#evaluation">
-   20.7. Evaluation
+   21.7. Evaluation
   </a>
  </li>
 </ul>
@@ -414,44 +414,44 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#installing-dependencies-loading-data">
-   20.1. Installing dependencies &amp; loading data
+   21.1. Installing dependencies &amp; loading data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#process-litbank-data">
-   20.2. Process LitBank data
+   21.2. Process LitBank data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#split-data-into-sets-for-training-and-validation">
-   20.3. Split data into sets for training and validation
+   21.3. Split data into sets for training and validation
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#save-the-data-sets">
-     20.3.1. Save the data sets
+     21.3.1. Save the data sets
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#create-training-configuration-file">
-   20.4. Create training configuration file
+   21.4. Create training configuration file
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#model-training">
-   20.5. Model training
+   21.5. Model training
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#test-the-new-model">
-   20.6. Test the new model
+   21.6. Test the new model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#evaluation">
-   20.7. Evaluation
+   21.7. Evaluation
   </a>
  </li>
 </ul>
@@ -464,7 +464,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="practical-introduction-to-model-training">
-<h1><span class="section-number">20. </span>Practical Introduction to Model Training<a class="headerlink" href="#practical-introduction-to-model-training" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">21. </span>Practical Introduction to Model Training<a class="headerlink" href="#practical-introduction-to-model-training" title="Permalink to this headline">¶</a></h1>
 <p><strong>In this notebook, we will train a spaCy named entity recognition model (NER) using data from <a class="reference external" href="https://github.com/dbamman/litbank">LitBank</a>, an annotated dataset of 100 works of English-language fiction.</strong></p>
 <p>Steps:<br />
 ✅ Load annotation data from LitBank<br />
@@ -474,7 +474,7 @@
 ✅ Is the model sufficiently useful for research? What would need to be improved and changed?</p>
 <p><a class="reference external" href="https://colab.research.google.com/drive/1QnBUI9eD2djoNn2XyNM3j8xYqWf46hvT?usp=sharing"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <div class="section" id="installing-dependencies-loading-data">
-<h2><span class="section-number">20.1. </span>Installing dependencies &amp; loading data<a class="headerlink" href="#installing-dependencies-loading-data" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.1. </span>Installing dependencies &amp; loading data<a class="headerlink" href="#installing-dependencies-loading-data" title="Permalink to this headline">¶</a></h2>
 <p>First, we install spaCy (to train the model), sklearn (to split the data for training), and tqdm (for a nice progress bar).</p>
 <p>We also clone the GitHub repo with the LitBank data.</p>
 <div class="cell docutils container">
@@ -486,58 +486,6 @@
 <span class="kn">import</span> <span class="nn">spacy</span>
 <span class="c1">#Show what version of spaCy we&#39;re using</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Using spaCy version </span><span class="si">{</span><span class="n">spacy</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: spacy in ./anaconda3/lib/python3.8/site-packages (3.0.6)
-Collecting sklearn
-  Using cached sklearn-0.0.tar.gz (1.1 kB)
-Requirement already satisfied: tqdm in ./anaconda3/lib/python3.8/site-packages (4.59.0)
-Requirement already satisfied: scikit-learn in ./anaconda3/lib/python3.8/site-packages (from sklearn) (0.24.1)
-Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in ./anaconda3/lib/python3.8/site-packages (from spacy) (2.0.5)
-Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in ./anaconda3/lib/python3.8/site-packages (from spacy) (3.0.5)
-Requirement already satisfied: typer&lt;0.4.0,&gt;=0.3.0 in ./anaconda3/lib/python3.8/site-packages (from spacy) (0.3.2)
-Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.3 in ./anaconda3/lib/python3.8/site-packages (from spacy) (2.0.4)
-Requirement already satisfied: pydantic&lt;1.8.0,&gt;=1.7.1 in ./anaconda3/lib/python3.8/site-packages (from spacy) (1.7.4)
-Requirement already satisfied: jinja2 in ./anaconda3/lib/python3.8/site-packages (from spacy) (2.11.3)
-Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.4 in ./anaconda3/lib/python3.8/site-packages (from spacy) (3.0.6)
-Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in ./anaconda3/lib/python3.8/site-packages (from spacy) (2.25.1)
-Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in ./anaconda3/lib/python3.8/site-packages (from spacy) (1.0.5)
-Requirement already satisfied: blis&lt;0.8.0,&gt;=0.4.0 in ./anaconda3/lib/python3.8/site-packages (from spacy) (0.7.4)
-Requirement already satisfied: wasabi&lt;1.1.0,&gt;=0.8.1 in ./anaconda3/lib/python3.8/site-packages (from spacy) (0.8.2)
-Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.1 in ./anaconda3/lib/python3.8/site-packages (from spacy) (2.4.1)
-Requirement already satisfied: thinc&lt;8.1.0,&gt;=8.0.3 in ./anaconda3/lib/python3.8/site-packages (from spacy) (8.0.7)
-Requirement already satisfied: pathy&gt;=0.3.5 in ./anaconda3/lib/python3.8/site-packages (from spacy) (0.6.0)
-Requirement already satisfied: setuptools in ./anaconda3/lib/python3.8/site-packages (from spacy) (52.0.0.post20210125)
-Requirement already satisfied: packaging&gt;=20.0 in ./anaconda3/lib/python3.8/site-packages (from spacy) (20.9)
-Requirement already satisfied: numpy&gt;=1.15.0 in ./anaconda3/lib/python3.8/site-packages (from spacy) (1.20.1)
-Requirement already satisfied: pyparsing&gt;=2.0.2 in ./anaconda3/lib/python3.8/site-packages (from packaging&gt;=20.0-&gt;spacy) (2.4.7)
-Requirement already satisfied: smart-open&lt;6.0.0,&gt;=5.0.0 in ./anaconda3/lib/python3.8/site-packages (from pathy&gt;=0.3.5-&gt;spacy) (5.1.0)
-Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in ./anaconda3/lib/python3.8/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (4.0.0)
-Requirement already satisfied: certifi&gt;=2017.4.17 in ./anaconda3/lib/python3.8/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (2020.12.5)
-Requirement already satisfied: idna&lt;3,&gt;=2.5 in ./anaconda3/lib/python3.8/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (2.10)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in ./anaconda3/lib/python3.8/site-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy) (1.26.4)
-Requirement already satisfied: click&lt;7.2.0,&gt;=7.1.1 in ./anaconda3/lib/python3.8/site-packages (from typer&lt;0.4.0,&gt;=0.3.0-&gt;spacy) (7.1.2)
-Requirement already satisfied: MarkupSafe&gt;=0.23 in ./anaconda3/lib/python3.8/site-packages (from jinja2-&gt;spacy) (1.1.1)
-Requirement already satisfied: joblib&gt;=0.11 in ./anaconda3/lib/python3.8/site-packages (from scikit-learn-&gt;sklearn) (1.0.1)
-Requirement already satisfied: threadpoolctl&gt;=2.0.0 in ./anaconda3/lib/python3.8/site-packages (from scikit-learn-&gt;sklearn) (2.1.0)
-Requirement already satisfied: scipy&gt;=0.19.1 in ./anaconda3/lib/python3.8/site-packages (from scikit-learn-&gt;sklearn) (1.6.2)
-Building wheels for collected packages: sklearn
-  Building wheel for sklearn (setup.py) ... ?25ldone
-?25h  Created wheel for sklearn: filename=sklearn-0.0-py2.py3-none-any.whl size=1316 sha256=db5390d21c32acd66c5429a0581e41b52ee88f3a3a505c48cc05eb83b47016be
-  Stored in directory: /Users/qad/Library/Caches/pip/wheels/22/0b/40/fd3f795caaa1fb4c6cb738bc1f56100be1e57da95849bfc897
-Successfully built sklearn
-Installing collected packages: sklearn
-Successfully installed sklearn-0.0
-Cloning into &#39;litbank&#39;...
-remote: Enumerating objects: 1179, done.
-remote: Counting objects: 100% (123/123), done.
-remote: Compressing objects: 100% (118/118), done.
-remote: Total 1179 (delta 12), reused 104 (delta 5), pack-reused 1056
-Receiving objects: 100% (1179/1179), 40.71 MiB | 9.84 MiB/s, done.
-Resolving deltas: 100% (129/129), done.
-Using spaCy version 3.0.6
 </pre></div>
 </div>
 </div>
@@ -566,7 +514,7 @@ Using spaCy version 3.0.6
 </div>
 </div>
 <div class="section" id="process-litbank-data">
-<h2><span class="section-number">20.2. </span>Process LitBank data<a class="headerlink" href="#process-litbank-data" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.2. </span>Process LitBank data<a class="headerlink" href="#process-litbank-data" title="Permalink to this headline">¶</a></h2>
 <p>Here, we run each of the LitBank text files through spaCy, but only using the sentenceizer (i.e. not all the other pieces of the default English pipeline, because we want to train a new model, not use its existing predictions). We also extract each of the annotations in the LitBank text files (which should refer to people, places, etc.) and add them to an entity list for that text.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -617,14 +565,10 @@ Using spaCy version 3.0.6
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "5043b111420d47b4b8f69cbad2c1be47", "version_major": 2, "version_minor": 0}
-</script></div>
 </div>
 </div>
 <div class="section" id="split-data-into-sets-for-training-and-validation">
-<h2><span class="section-number">20.3. </span>Split data into sets for training and validation<a class="headerlink" href="#split-data-into-sets-for-training-and-validation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.3. </span>Split data into sets for training and validation<a class="headerlink" href="#split-data-into-sets-for-training-and-validation" title="Permalink to this headline">¶</a></h2>
 <p>We don’t want to use all the data for training, because that would leave us without any data to use for checking the model’s accuracy. The <em>training</em> data is what the model actually learns from; the <em>validation</em> data is the data that’s used to choose the best model from multiple training runs; the <em>test</em> data is the “gold standard” of “right” answers.</p>
 <p>If you read general-purpose descriptions of the different data sets for model training, you may see references to <em>hyperparamters</em> (like the “learning rate”). spaCy’s built-in model training provides sensible defaults that you don’t necessarily need to modify, but if you’re interested in the details of what <em>could</em> be modified, you can check the <a class="reference external" href="https://spacy.io/usage/training#config">documentation about the training config file</a>.</p>
 <div class="cell docutils container">
@@ -652,7 +596,7 @@ Using spaCy version 3.0.6
 </div>
 </div>
 <div class="section" id="save-the-data-sets">
-<h3><span class="section-number">20.3.1. </span>Save the data sets<a class="headerlink" href="#save-the-data-sets" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">21.3.1. </span>Save the data sets<a class="headerlink" href="#save-the-data-sets" title="Permalink to this headline">¶</a></h3>
 <p>From here, we save the training, validation, and test data sets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -701,7 +645,7 @@ Using spaCy version 3.0.6
 </div>
 </div>
 <div class="section" id="create-training-configuration-file">
-<h2><span class="section-number">20.4. </span>Create training configuration file<a class="headerlink" href="#create-training-configuration-file" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.4. </span>Create training configuration file<a class="headerlink" href="#create-training-configuration-file" title="Permalink to this headline">¶</a></h2>
 <p>Here, we create the configuration file we’ll need to actually run the training. We’re using English language, the named-entity recognition (NER) pipeline, and otherwise just the defaults.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -730,7 +674,7 @@ python -m spacy train config.cfg --paths.train ./train.spacy --paths.dev ./dev.s
 </div>
 </div>
 <div class="section" id="model-training">
-<h2><span class="section-number">20.5. </span>Model training<a class="headerlink" href="#model-training" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.5. </span>Model training<a class="headerlink" href="#model-training" title="Permalink to this headline">¶</a></h2>
 <p>The following code starts the training. The training output goes into a directory called <code class="docutils literal notranslate"><span class="pre">output</span></code>, and we define the paths to the training (train.spacy) and the validation (dev.spacy) data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -779,7 +723,7 @@ output/model-last
 </div>
 </div>
 <div class="section" id="test-the-new-model">
-<h2><span class="section-number">20.6. </span>Test the new model<a class="headerlink" href="#test-the-new-model" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.6. </span>Test the new model<a class="headerlink" href="#test-the-new-model" title="Permalink to this headline">¶</a></h2>
 <p>Finally, we can check how the model we just trained performs, using the test data set for comparison. The closer the model results are to the human-annotated test set, the better the model is performing. We’ll start with running the model on a random exerpt from the test set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -862,8 +806,15 @@ output/model-last
 <p>It’s not always easy to see the differences right away: walk through the human-annotated text, entity by entity, and then check what happened with the model at that same point in the text. Some common errors include getting the entity right but the label wrong (e.g. switching LOC/PER), and including too many words in the entity, in addition to just missing the entity entirely.</p>
 </div>
 <div class="section" id="evaluation">
-<h2><span class="section-number">20.7. </span>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">21.7. </span>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h2>
 <p>Is the model sufficiently useful for research? What would need to be improved and changed?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m spacy evaluate output/model-last test.spacy --output litbank.json
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -902,7 +853,7 @@ output/model-last
     <a class='right-next' id="next-link" href="../projects.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">21. </span>The Project File</p>
+        <p class="prev-next-title"><span class="section-number">22. </span>The Project File</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

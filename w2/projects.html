@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>21. The Project File &#8212; New Languages for NLP</title>
+    <title>22. The Project File &#8212; New Languages for NLP</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="22. The Config File" href="config.html" />
-    <link rel="prev" title="20. Practical Introduction to Model Training" href="practical-intro/Practical%20Introduction%20to%20Model%20Training.html" />
+    <link rel="next" title="23. The Config File" href="config.html" />
+    <link rel="prev" title="21. Practical Introduction to Model Training" href="practical-intro/Practical%20Introduction%20to%20Model%20Training.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -222,32 +222,32 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="practical-intro/Practical%20Introduction%20to%20Model%20Training.html">
-   20. Practical Introduction to Model Training
+   21. Practical Introduction to Model Training
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   21. The Project File
+   22. The Project File
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="config.html">
-   22. The Config File
+   23. The Config File
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="using-inception-data/New%20Language%20Training.html">
-   23. 🌿 The New Language Project
+   24. 🌿 The New Language Project
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="embeddings.html">
-   24. Embeddings, Do You Need Them?
+   25. Embeddings, Do You Need Them?
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="applied-embeddings.html">
-   25. Applied Session with Transformers
+   26. Applied Session with Transformers
   </a>
  </li>
 </ul>
@@ -259,7 +259,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../w3/overview.html">
-   26. Welcome to Workshop III
+   27. Welcome to Workshop III
   </a>
  </li>
 </ul>
@@ -335,17 +335,17 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
-   21.1. Introduction
+   22.1. Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#syntax">
-   21.2. Syntax
+   22.2. Syntax
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#project-file-sections">
-   21.3. Project file sections
+   22.3. Project file sections
   </a>
  </li>
 </ul>
@@ -370,17 +370,17 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
-   21.1. Introduction
+   22.1. Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#syntax">
-   21.2. Syntax
+   22.2. Syntax
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#project-file-sections">
-   21.3. Project file sections
+   22.3. Project file sections
   </a>
  </li>
 </ul>
@@ -393,16 +393,16 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="the-project-file">
-<h1><span class="section-number">21. </span>The Project File<a class="headerlink" href="#the-project-file" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">22. </span>The Project File<a class="headerlink" href="#the-project-file" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
-<h2><span class="section-number">21.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">22.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>To help organize your work and to create a clear, reproducable and explicit workflow, spaCy offers a feature called “projects.” A “project” is a file that acts like a template that runs various steps in your experiment. It’s a way to write everything down and clearly establish each step in your model training workflow. In this section, we’ll cover the syntax of the project file and its main parts.</p>
 <blockquote>
 <div><p>More here: <a class="reference external" href="https://spacy.io/usage/projects">spaCy projects docs</a></p>
 </div></blockquote>
 </div>
 <div class="section" id="syntax">
-<h2><span class="section-number">21.2. </span>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">22.2. </span>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">project.yml</span></code> file follows a format called yaml (“yet another markup language”), which is a simplified and human-friendly form for common data types such as Python lists and dictionaries. If you’ve ever worked with markdown, this should feel somewhat familiar. Marksdown is a simplified format for HTML content. YAML is to data what markdown is to content.</p>
 <p>The simplest way to write yaml is to separate a key and value with a semi-colon:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">first-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Paula</span><span class="w"></span>
@@ -456,7 +456,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="project-file-sections">
-<h2><span class="section-number">21.3. </span>Project file sections<a class="headerlink" href="#project-file-sections" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">22.3. </span>Project file sections<a class="headerlink" href="#project-file-sections" title="Permalink to this headline">¶</a></h2>
 <p>Most project files begin with basic <strong>metadata</strong> about the project.  This is often just a title and description, but it can include whatever details you feel are important to give give context for the project. For example:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;New</span><span class="nv"> </span><span class="s">Language</span><span class="nv"> </span><span class="s">Model</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">UD</span><span class="nv"> </span><span class="s">Data&quot;</span><span class="w"></span>
 <span class="nt">authors</span><span class="p">:</span><span class="w"> </span>
@@ -549,13 +549,13 @@
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">20. </span>Practical Introduction to Model Training</p>
+            <p class="prev-next-title"><span class="section-number">21. </span>Practical Introduction to Model Training</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="config.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">22. </span>The Config File</p>
+        <p class="prev-next-title"><span class="section-number">23. </span>The Config File</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

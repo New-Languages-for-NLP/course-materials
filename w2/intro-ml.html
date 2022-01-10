@@ -53,7 +53,7 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="20. Practical Introduction to Model Training" href="practical-intro/Practical%20Introduction%20to%20Model%20Training.html" />
+    <link rel="next" title="21. Practical Introduction to Model Training" href="practical-intro/Practical%20Introduction%20to%20Model%20Training.html" />
     <link rel="prev" title="18. Using Colab" href="colab.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -222,32 +222,32 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="practical-intro/Practical%20Introduction%20to%20Model%20Training.html">
-   20. Practical Introduction to Model Training
+   21. Practical Introduction to Model Training
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="projects.html">
-   21. The Project File
+   22. The Project File
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="config.html">
-   22. The Config File
+   23. The Config File
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="using-inception-data/New%20Language%20Training.html">
-   23. 🌿 The New Language Project
+   24. 🌿 The New Language Project
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="embeddings.html">
-   24. Embeddings, Do You Need Them?
+   25. Embeddings, Do You Need Them?
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="applied-embeddings.html">
-   25. Applied Session with Transformers
+   26. Applied Session with Transformers
   </a>
  </li>
 </ul>
@@ -259,7 +259,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../w3/overview.html">
-   26. Welcome to Workshop III
+   27. Welcome to Workshop III
   </a>
  </li>
 </ul>
@@ -328,6 +328,66 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   19. Introduction to Machine Learning
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#key-ideas-from-the-video">
+   20. Key ideas from the video
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training">
+     20.1. Training
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#learning">
+     20.2. Learning
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classification-metrics">
+     20.3. Classification Metrics
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#underfitting-and-overfitting">
+     20.4. Underfitting and overfitting
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-splits">
+     20.5. Data splits
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#label-distribution">
+     20.6. Label distribution
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#embeddings">
+     20.7. Embeddings
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#further-reading">
+     20.8. Further reading
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -340,6 +400,66 @@
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   19. Introduction to Machine Learning
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#key-ideas-from-the-video">
+   20. Key ideas from the video
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training">
+     20.1. Training
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#learning">
+     20.2. Learning
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classification-metrics">
+     20.3. Classification Metrics
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#underfitting-and-overfitting">
+     20.4. Underfitting and overfitting
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-splits">
+     20.5. Data splits
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#label-distribution">
+     20.6. Label distribution
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#embeddings">
+     20.7. Embeddings
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#further-reading">
+     20.8. Further reading
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -349,6 +469,61 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-machine-learning">
 <h1><span class="section-number">19. </span>Introduction to Machine Learning<a class="headerlink" href="#introduction-to-machine-learning" title="Permalink to this headline">¶</a></h1>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/yoU8WGyNLEY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="key-ideas-from-the-video">
+<h1><span class="section-number">20. </span>Key ideas from the video<a class="headerlink" href="#key-ideas-from-the-video" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="training">
+<h2><span class="section-number">20.1. </span>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://docs.paperspace.com/machine-learning/wiki/machine-learning-models-explained#what-is-a-model">model</a> is only updated during training and then its “memory” is fixed to provide consistent predictions.</p>
+</div>
+<div class="section" id="learning">
+<h2><span class="section-number">20.2. </span>Learning<a class="headerlink" href="#learning" title="Permalink to this headline">¶</a></h2>
+<p>The model learns to improve its predictions given feedback from the training data.  When incorrect, the <a class="reference external" href="https://docs.paperspace.com/machine-learning/wiki/weights-and-biases">weights and biases</a> in the model are adjusted deliberately to reduce error. With spaCy, training continues until the model is no longer improving its predictions.</p>
+</div>
+<div class="section" id="classification-metrics">
+<h2><span class="section-number">20.3. </span>Classification Metrics<a class="headerlink" href="#classification-metrics" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.paperspace.com/machine-learning/wiki/accuracy-and-loss">Accuracy and loss</a>. As the model trains, the loss (a measure of incorrect predictions) should decrease, while accuracy (percentage of correct predictions) should increase.</p></li>
+</ul>
+<p><img alt="" src="https://static.packt-cdn.com/products/9781838555078/graphics/C13314_06_05.jpg" /></p>
+<ul class="simple">
+<li><p>True positives (TP): The prediction was yes, and the true value is yes</p></li>
+<li><p>False positives (FP): The prediction was yes, but the true value was no</p></li>
+<li><p>False negatives (FN): The prediction was no, but the true value is yes</p></li>
+<li><p>Precision is a measure of how often the model’s predictions were correct. It is the number of correct predictions divided by the total number of predictions made by the model: <code class="docutils literal notranslate"><span class="pre">TP/(TP+FP)</span></code></p></li>
+<li><p>Recall is a similar measure, but uses false negatives <code class="docutils literal notranslate"><span class="pre">TP/(TP+FN)</span></code></p></li>
+<li><p>F1 score, the weighted average of precision and recall</p></li>
+<li><p><a class="reference external" href="https://youtu.be/qWfzIYCvBqo">short video: Precision vs Recall</a></p></li>
+<li><p><a class="reference external" href="https://docs.paperspace.com/machine-learning/wiki/confusion-matrix">more here</a></p></li>
+</ul>
+</div>
+<div class="section" id="underfitting-and-overfitting">
+<h2><span class="section-number">20.4. </span><a class="reference external" href="https://docs.paperspace.com/machine-learning/wiki/overfitting-vs-underfitting">Underfitting and overfitting</a><a class="headerlink" href="#underfitting-and-overfitting" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Underfitting describes a model that isn’t learning how to make good predictions on your data.  It may need more data, better data, more training, better feature engineering or model architecture.</p></li>
+<li><p>Overfitting describes a model that performs very well with the training data but is unable to make good predictions with new or unseen data.</p></li>
+</ul>
+</div>
+<div class="section" id="data-splits">
+<h2><span class="section-number">20.5. </span>Data splits<a class="headerlink" href="#data-splits" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://cs230.stanford.edu/blog/split/">Training, validation and test</a> data.<br />
+Training and validation are used during training.  The validation set is checked to measure if the model is improving.  The test set is needed to evaluate the model after training.  It’s data that the model has never seen, so it’s a good measure of its ability to reason about new data.</p>
+</div>
+<div class="section" id="label-distribution">
+<h2><span class="section-number">20.6. </span>Label distribution<a class="headerlink" href="#label-distribution" title="Permalink to this headline">¶</a></h2>
+<p>When we run <a class="reference external" href="https://spacy.io/api/cli#debug-data">spacy debug data</a> you’ll be able to identify labels in your dataset with a small number of examples.  In such a case, we need to be careful that a sufficient  number of examples are present in the training, validation, and test sets.</p>
+</div>
+<div class="section" id="embeddings">
+<h2><span class="section-number">20.7. </span>Embeddings<a class="headerlink" href="#embeddings" title="Permalink to this headline">¶</a></h2>
+<p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Word_embedding">word or token embedding</a> is a numerical representation of a word or token. You may also hear them referred to as vectors. A vector is a one dimensional array such as <code class="docutils literal notranslate"><span class="pre">[0,0,0,0,1]</span></code>.</p>
+</div>
+<div class="section" id="further-reading">
+<h2><span class="section-number">20.8. </span>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtu.be/jJ7ff7Gcq34">Introduction to Precision, Recall and F1</a></p></li>
+<li><p><a class="reference external" href="https://developers.google.com/machine-learning/glossary">Google machine learning glossary</a></p></li>
+</ul>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -386,7 +561,7 @@
     <a class='right-next' id="next-link" href="practical-intro/Practical%20Introduction%20to%20Model%20Training.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">20. </span>Practical Introduction to Model Training</p>
+        <p class="prev-next-title"><span class="section-number">21. </span>Practical Introduction to Model Training</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
