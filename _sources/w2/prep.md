@@ -6,7 +6,7 @@ Preparation for Workshop II
 
 
 ## GitHub repository for your data
-- In the [New Languages for NLP GitHub organization](https://github.com/orgs/New-Languages-for-NLP), you will find a repository template with your language's name on it.
+- In the [New Languages for NLP GitHub organization](https://github.com/orgs/New-Languages-for-NLP), you will find a repository template with your language's name on it. If you do not see a repository for your language, I will need to add you add a contributor. Please send me your GitHub account name and I'll get you set up.  
 - Clone the repository to your local machine. The GitHub docs have great instructions if this is an unfamiliar task: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository 
 - Confirm that you can access and push data to repo. Here's an helpful how-to tutorial for this task with VSCode: https://zeroesandones.medium.com/how-to-commit-and-push-your-changes-to-your-github-repository-in-vscode-77a7a3d7dd02  
 
