@@ -43,6 +43,7 @@ When we run [spacy debug data](https://spacy.io/api/cli#debug-data) you'll be ab
 A [word or token embedding](https://en.wikipedia.org/wiki/Word_embedding) is a numerical representation of a word or token. You may also hear them referred to as vectors. A vector is a one dimensional array such as `[0,0,0,0,1]`.
 
 
-## Further reading
+## Links
+- [Tensorflow playground](https://playground.tensorflow.org)
 - [Introduction to Precision, Recall and F1](https://youtu.be/jJ7ff7Gcq34)
 - [Google machine learning glossary](https://developers.google.com/machine-learning/glossary)
