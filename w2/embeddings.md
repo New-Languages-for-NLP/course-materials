@@ -74,6 +74,13 @@ If your activation function's perpexity mixes Baysian logits against cross entro
 What if a transformer model does not exist for my language, domain or anything like it? 
 1. You can try transfer learning by using an existing multi-lingual transformer.
 2. Train a transformer using [this notebook](https://colab.research.google.com/github/huggingface/notebooks/blob/master/examples/causal_language_modeling_flax.ipynb) using the Oscar dataset with text in 166 languages from the web. Note that the amount for text for different languages will vary a lot.  Also you're depending on automatic language identification.  Still, this is a not entirely crazy way to train your own transformer from scratch. You have been warned! 
+The notebook does not contain the code you'll need to save model.  You'll need to add the following:
+
+1. `!curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash`
+2. `!apt-get install git-lfs`
+3. `!huggingface-cli login` you'll need to use a token from HF. 
+4. `!huggingface-cli repo create your-language-name`
+5. `model.save_pretrained('your-user/HF-repo', push_to_hub=True)`
 ```
 
 When training with transformer-based models, you should use GPUs on Colab and be prepared for significantly larger training times. However, for many tasks, the beneifts of pre-training and transfer learning should be very clear in the model metrics. 
