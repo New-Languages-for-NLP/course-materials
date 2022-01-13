@@ -344,13 +344,8 @@
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tok2vec">
-     25.2. Tok2Vec
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#transformers">
-     25.3. Transformers
+     25.2. Transformers
     </a>
    </li>
   </ul>
@@ -398,13 +393,8 @@
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tok2vec">
-     25.2. Tok2Vec
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#transformers">
-     25.3. Transformers
+     25.2. Transformers
     </a>
    </li>
   </ul>
@@ -435,11 +425,6 @@
 <div class="section" id="introduction">
 <h2><span class="section-number">25.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>lecture notes and slides will be added after the session.</p>
-</div>
-<div class="section" id="tok2vec">
-<h2><span class="section-number">25.2. </span>Tok2Vec<a class="headerlink" href="#tok2vec" title="Permalink to this headline">¶</a></h2>
-<p>The standard spaCy model uses a trainable component called Tok2Vec.  These are numerical representations of spaCy Token objects.  Similar to word embeddings,these tensors can be adjusted to store semantic information such as similarity, meaning or sentiment. Note that these vectors can be shared across pipeline components. During training, shared tensors can be updated given information from other pipeline components to facilitate better performance. It is also possible to have an independent vectors for single components. The default configuration uses the shared approach. The costs and benefits shared versus independent token embeddings is are detailed further in the <a class="reference external" href="https://spacy.io/usage/embeddings-transformers#embedding-layers">spaCy documentation</a>.</p>
-<img src="https://spacy.io/tok2vec-246ce1f8619a1c5cf5a36e1df5493dfb.svg" />
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>I find this visualization helps me to make sense of embeddings. It has English word2vec embeddings as well as the multilingual GNMT Interlingua embeddings.</p>
@@ -447,8 +432,8 @@
 </div>
 </div>
 <div class="section" id="transformers">
-<h2><span class="section-number">25.3. </span>Transformers<a class="headerlink" href="#transformers" title="Permalink to this headline">¶</a></h2>
-<p>In June 2017, researchers from Google published a now famous paper titled <a class="reference external" href="https://arxiv.org/abs/1706.03762">“Attention is All You Need.”</a>.  In the text, they ouline a new kind of language model called a Transformer.  This new architecture builds on many existing methods, but as the title suggests, it gives pride of place to attention.  Simply put, attention is the ability to highlight or focus on particular elements over others in the input text. For example, let’s take the sentence: “My date left a novel in the park.” If we ask a machine to predict  each token’s part of speech, it needs to look at the words around each token to disambiguate the many possible meanings. In a sequence model, the model looks at the tokens one after another moving from the beginning to the end of the sentence.  Using attention, a model can highlight those elements of the preceeding sequence that aid in making predictions.  I know that “novel” is most likely a book, because it is the subject of preceeding action.  But at the start of the sentence, we have very little to help us.  Is “My date” going to be “My date left” or “My date of birth?”  Transformers overcome this problem by being bi-directional. They can “see” the whole sentence when making predictions. They can also “remember” and attend to attributes across the corpus.  This is where transformers start to become a more general model of language and its grammar as well as the “look and feel” of human languages. It still has no understanding of the content of the text, but it’s very good at understanding the patterns in the corpus and common traits.</p>
+<h2><span class="section-number">25.2. </span>Transformers<a class="headerlink" href="#transformers" title="Permalink to this headline">¶</a></h2>
+<p>In June 2017, researchers from Google published a now famous paper titled <a class="reference external" href="https://arxiv.org/abs/1706.03762">“Attention is All You Need.”</a>.  In the text, they ouline a new kind of language model called a Transformer.  This new architecture builds on many existing methods, but as the title suggests, it gives pride of place to attention.  Simply put, attention is the ability to highlight or focus on particular elements over others in the input text. For example, let’s take the sentence: “My date left a novel in the park.” If we ask a machine to predict  each token’s part of speech, it needs to look at the words around each token to disambiguate the many possible meanings. In a sequence model, the model looks at the tokens one after another moving from the beginning to the end of the sentence.  Using attention, a model can highlight those elements of the preceeding sequence that aid in making predictions.  I know that “novel” is most likely a book (and not an adjective), because it is the subject of preceeding action.  But at the start of the sentence, we have very little to help us.  Is “My date” going to be “My date left” or “My date of birth?”  Transformers overcome this problem by being bi-directional. They can “see” the whole sentence when making predictions. They can also “remember” and attend to attributes across the corpus.  This is where transformers start to become very good at generating text as well as the “look and feel” of human languages. It still has no understanding of the content of the text, but it’s very good at understanding the patterns in the corpus and common traits.</p>
 <p>I find this visualization helps to see what attention looks like in practice. This model is learning to translate from English to French. The model attends to corresponding words in the French and the English versions of the sentence. This allows the model to negotiate the different word order in <code class="docutils literal notranslate"><span class="pre">zone</span> <span class="pre">économique</span> <span class="pre">européenne</span></code> and <code class="docutils literal notranslate"><span class="pre">European</span> <span class="pre">Economic</span> <span class="pre">Area</span></code>.</p>
 <img src="https://miro.medium.com/max/625/0*Zxi7-StjTuHDIg9I.png" />
 <p>(<a class="reference external" href="https://arxiv.org/abs/1409.0473">source</a>)</p>
