@@ -482,7 +482,13 @@
 <p>What if a transformer model does not exist for my language, domain or anything like it?</p>
 <ol class="simple">
 <li><p>You can try transfer learning by using an existing multi-lingual transformer.</p></li>
-<li><p>Train a transformer using <a class="reference external" href="https://colab.research.google.com/github/huggingface/notebooks/blob/master/examples/causal_language_modeling_flax.ipynb">this notebook</a> using the Oscar dataset with text in 166 languages from the web. Note that the amount for text for different languages will vary a lot.  Also you’re depending on automatic language identification.  Still, this is a not entirely crazy way to train your own transformer from scratch. You have been warned!</p></li>
+<li><p>Train a transformer using <a class="reference external" href="https://colab.research.google.com/github/huggingface/notebooks/blob/master/examples/causal_language_modeling_flax.ipynb">this notebook</a> using the Oscar dataset with text in 166 languages from the web. Note that the amount for text for different languages will vary a lot.  Also you’re depending on automatic language identification.  Still, this is a not entirely crazy way to train your own transformer from scratch. You have been warned!
+The notebook does not contain the code you’ll need to save model.  You’ll need to add the following:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">!curl</span> <span class="pre">-s</span> <span class="pre">https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh</span> <span class="pre">|</span> <span class="pre">sudo</span> <span class="pre">bash</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">!apt-get</span> <span class="pre">install</span> <span class="pre">git-lfs</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">!huggingface-cli</span> <span class="pre">login</span></code> you’ll need to use a token from HF.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">!huggingface-cli</span> <span class="pre">repo</span> <span class="pre">create</span> <span class="pre">your-language-name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model.save_pretrained('your-user/HF-repo',</span> <span class="pre">push_to_hub=True)</span></code></p></li>
 </ol>
 </div>
 <p>When training with transformer-based models, you should use GPUs on Colab and be prepared for significantly larger training times. However, for many tasks, the beneifts of pre-training and transfer learning should be very clear in the model metrics.</p>
