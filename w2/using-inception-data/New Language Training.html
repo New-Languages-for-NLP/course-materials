@@ -550,7 +550,20 @@ python -m spacy project assets /srv/projects/course-materials/w2/using-inception
 <li><p>To ensure that the test and train split is consistent and reproducible, we use a number called <code class="docutils literal notranslate"><span class="pre">random_state</span></code>. More <a class="reference external" href="https://scikit-learn.org/stable/glossary.html#term-random_state">here</a>.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">package_name</span></code> is used during packaging. It sets the package’s metadata name. Basically, what is the name of your language model?</p></li>
 <li><p>Similarly, <code class="docutils literal notranslate"><span class="pre">package_version</span></code> sets the package metadata for version.</p></li>
-<li><p>spaCy comes with some basic ways to log training data.  However, <a class="reference external" href="https://wandb.ai/">Weights and Biases</a> provides an excellent way to record, manage and share experiment data. You’ll need to create a free account and get an API key to use bandb. When set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, your project will use bandb (we highly recommend it). You can change this to <code class="docutils literal notranslate"><span class="pre">false</span></code> if you prefer spaCy’s default logging.</p></li>
+<li><p>spaCy comes with some basic ways to log training data.  However, <a class="reference external" href="https://wandb.ai/">Weights and Biases</a> provides an excellent way to record, manage and share experiment data. You’ll need to create a free account and get an API key to use bandb. Then change the <code class="docutils literal notranslate"><span class="pre">[training.logger]</span></code> section from</p></li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>@loggers = &quot;spacy.ConsoleLogger.v1&quot;
+
+# to 
+
+@loggers = &quot;spacy.WandbLogger.v2&quot;
+project_name = &quot;{treebank}&quot;
+remove_config_values = []
+log_dataset_dir = &quot;./assets&quot;
+model_log_interval = 1000 # optional to save checkpoint files to wanb
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>Finally, model training with graphics chips (GPUs) is often faster than with a standard CPU. We recommend using Colab for their free GPUs.  In such a case, you’d change <code class="docutils literal notranslate"><span class="pre">-1</span></code> (CPU) to <code class="docutils literal notranslate"><span class="pre">0</span></code> (the GPU id).</p></li>
 </ul>
 <p><strong>Assets</strong> is configured to use your language repo name to fetch project data from GitHub.  It will save all that data in the <code class="docutils literal notranslate"><span class="pre">assets/your-language-name</span></code> folder.</p>
