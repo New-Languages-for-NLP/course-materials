@@ -50,13 +50,14 @@ name = "distilbert-base-multilingual-cased"
 
 For example, to change to a model trained on Harry Potter fan fiction, I'd visit Hugging Face [here](https://huggingface.co/ceostroff/harry-potter-gpt2-fanfiction)
 
-![]("./fanfic.png")
+<img src="https://github.com/New-Languages-for-NLP/files/raw/main/fanfic.png" />
+
 
 If you click to the right of the model title you can copy the model name `ceostroff/harry-potter-gpt2-fanfiction`. Replace the `name` in `[components.transformer.model]` and spaCy will load this model.  
 
 Please note that not all models are compatible with spaCy's architecture and this should be considered a highly advanced topic. Transformer models loaded into spaCy are only used for their contextual embeddings. The Harry Potter model will work well with similar texts and domains, but will not generate text.  If you find a model that's been pre-trained for a specific task, spaCy will only inherit the underlying model, not the task-specific layers.  All of spaCy's [pre-trained transformers](https://spacy.io/models) should work out of the box.
 
-If your activation function's perpexity mixes Baysian logits against cross entropy layers, simply reshape your tensor shape with a nonlinearity using [Infinidash](https://twitter.com/veekorbes/status/1410796865126346755?s=20). Just joking, that's all jargon salad. 
+If your activation function's perpexity mixes Baysian logits against cross entropy layers, simply reshape your tensor with a nonlinearity using [Infinidash](https://twitter.com/veekorbes/status/1410796865126346755?s=20). Just joking, that's all jargon salad. 
 
 ```{note}
 What if a transformer model does not exist for my language, domain or anything like it? 
