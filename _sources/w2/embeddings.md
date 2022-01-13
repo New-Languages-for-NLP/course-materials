@@ -3,17 +3,24 @@ Embeddings, Do You Need Them?
 
 ## Introduction
 
-more soon...
+lecture notes and slides will be added after the session.
 
 ## Tok2Vec
 
-The standard spaCy model uses a trainable component called Tok2Vec.  These are numerical representations of spaCy Token objects.  Similar to word embeddings,these tensors can be adjusted to store semantic information such as similarity, meaning or sentiment. During training, these tensors can be updated given information from other pipeline components to facilitate better performance.      
+The standard spaCy model uses a trainable component called Tok2Vec.  These are numerical representations of spaCy Token objects.  Similar to word embeddings,these tensors can be adjusted to store semantic information such as similarity, meaning or sentiment. Note that these vectors can be shared across pipeline components. During training, shared tensors can be updated given information from other pipeline components to facilitate better performance. It is also possible to have an independent vectors for single components. The default configuration uses the shared approach. The costs and benefits shared versus independent token embeddings is are detailed further in the [spaCy documentation](https://spacy.io/usage/embeddings-transformers#embedding-layers).  
 
+<img src="https://spacy.io/tok2vec-246ce1f8619a1c5cf5a36e1df5493dfb.svg" />
+
+```{note}
+I find this visualization helps me to make sense of embeddings. It has English word2vec embeddings as well as the multilingual GNMT Interlingua embeddings.
+
+https://projector.tensorflow.org/
+```
 ## Transformers
 
 In June 2017, researchers from Google published a now famous paper titled ["Attention is All You Need."](https://arxiv.org/abs/1706.03762).  In the text, they ouline a new kind of language model called a Transformer.  This new architecture builds on many existing methods, but as the title suggests, it gives pride of place to attention.  Simply put, attention is the ability to highlight or focus on particular elements over others in the input text. For example, let's take the sentence: "My date left a novel in the park." If we ask a machine to predict  each token's part of speech, it needs to look at the words around each token to disambiguate the many possible meanings. In a sequence model, the model looks at the tokens one after another moving from the beginning to the end of the sentence.  Using attention, a model can highlight those elements of the preceeding sequence that aid in making predictions.  I know that "novel" is most likely a book, because it is the subject of preceeding action.  But at the start of the sentence, we have very little to help us.  Is "My date" going to be "My date left" or "My date of birth?"  Transformers overcome this problem by being bi-directional. They can "see" the whole sentence when making predictions. They can also "remember" and attend to attributes across the corpus.  This is where transformers start to become a more general model of language and its grammar as well as the "look and feel" of human languages. It still has no understanding of the content of the text, but it's very good at understanding the patterns in the corpus and common traits.  
 
-The training of a transformer is very different from traditional sequence models.  Rather that providing training data with the correct answers, a transformer uses massive amounts of unlabelled text for training.  The model learns contextual embeddings by masking words (replacing a word with `[mask]`) and using the surrounding text to make a prediction. So our example becomes `My date left a [MASK] in the park.` The model can attend to earlier mentions of novels and books in the text to predict that the date left a novel rather than some other random noun.  The Google researchers' claim that "attention is all you need" highlights how powerful context can be. With enough data (all the Internet), we can train better models by attending to context rather than using supervised learning with labelled data. 
+The training of a transformer is very different from traditional sequence models.  Rather that providing training data with the correct answers, a transformer uses massive amounts of unlabelled text for training.  The model learns contextual embeddings by masking words (replacing a word with `[mask]`) and using the surrounding text to make a prediction. So our example becomes `My date left a [MASK] in the park.` The model can attend to earlier mentions of novels and books in the text to predict that the date left a novel rather than some other random noun. The Google researchers' claim that "attention is all you need" highlights how powerful context can be. With enough data (all the Internet), we can train better models by attending to context rather than using supervised learning with labelled data. 
 
 Transformers are masters of autocomplete. Given a starting prompt, they can continue writing.  Not only is the text usually legible and makes sense, but it will include contextually relevant and sensible content. For live examples, I ecourage you to try [write with transforer](https://transformer.huggingface.co/) and [AI dungeon](https://play.aidungeon.io/). On other tasks, these models of language have equally impressive capabilities even when their contributions are less visible. 
 
@@ -73,4 +80,3 @@ When training with transformer-based models, you should use GPUs on Colab and be
 - [Summary of "Attention is All You Need"](https://youtu.be/iDulhoQ2pro)
 - [Word Vectors for the Thoughtful Humanist](https://www.wwp.northeastern.edu/outreach/seminars/neh_wem.html)
 - [BERT for Humanists](https://melaniewalsh.github.io/BERT-for-Humanists/)
-- [spaCy meets Transformers: Fine-tune BERT, XLNet and GPT-2](https://explosion.ai/blog/spacy-transformers)
