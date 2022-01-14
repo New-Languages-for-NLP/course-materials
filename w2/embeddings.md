@@ -72,18 +72,21 @@ If your activation function's perpexity mixes Baysian logits against cross entro
 
 ```{note}
 What if a transformer model does not exist for my language, domain or anything like it? 
-1. You can try transfer learning by using an existing multi-lingual transformer.
-2. Train a transformer using [this notebook](https://colab.research.google.com/github/huggingface/notebooks/blob/master/examples/causal_language_modeling_flax.ipynb) using the Oscar dataset with text in 166 languages from the web. Note that the amount for text for different languages will vary a lot.  Also you're depending on automatic language identification.  Still, this is a not entirely crazy way to train your own transformer from scratch. You have been warned! 
-The notebook does not contain the code you'll need to save model.  You'll need to add the following:
+1. You can try transfer learning by using an existing multi-lingual transformer or related-language transformer.  
+2. Train a transformer from scratch using the Oscar dataset with text in [166 languages](https://oscar-corpus.com/post/oscar-2019/) from the web. Note that the amount of text for different languages will vary a lot.  Also you're depending on automatic language identification.  Still, this is a not entirely crazy way to train your own transformer from scratch. You have been warned! 
+AJ update 14/1: The notebooks that I shared earlier trains a type of model that is not compatible with spaCy at the moment. I am going to create a notebook that does the same but trains a PyTorch Roberta model that should be compatible.  Stay tuned and let me know if this would be useful for your project. 
+
+Also the notebook that I shared does not contain the code you'll need to save the model.  You'll need to add the following:
 
 1. `!curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash`
 2. `!apt-get install git-lfs`
 3. `!huggingface-cli login` you'll need to use a token from HF. 
 4. `!huggingface-cli repo create your-language-name`
-5. `model.save_pretrained('your-user/HF-repo', push_to_hub=True)`
+5. `model.save_pretrained('your-user/your-language-name', push_to_hub=True)`
+6. `tokenizer.save_pretrained("your-user/your-language-name", push_to_hub=True)`
 ```
 
-When training with transformer-based models, you should use GPUs on Colab and be prepared for significantly larger training times. However, for many tasks, the beneifts of pre-training and transfer learning should be very clear in the model metrics. 
+When training with transformer-based models, you should use GPUs or TPUs on Colab and be prepared for significantly larger training times (7 hours or more). However, for many tasks, the beneifts of pre-training and transfer learning should be very clear in the model metrics. 
 
 
 ## Links
