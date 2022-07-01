@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>24. 🌿 The New Language Project &#8212; New Languages for NLP</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -40,12 +38,13 @@
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -64,7 +63,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -73,9 +86,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -93,14 +107,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro.html">
-   Welcome!
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Prerequisite Knowledge
  </span>
@@ -267,91 +282,164 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/w2/using-inception-data/New Language Training.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/New-Languages-for-NLP/course-materials/gh-pages?urlpath=tree/w2/using-inception-data/New Language Training.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/New-Languages-for-NLP/course-materials/gh-pages?urlpath=tree/w2/using-inception-data/New Language Training.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/w2/using-inception-data/New Language Training.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#install">
    24.1. Install
@@ -394,12 +482,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>🌿 The New Language Project</h1>
@@ -458,11 +545,12 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="the-new-language-project">
-<h1><span class="section-number">24. </span>🌿 The New Language Project<a class="headerlink" href="#the-new-language-project" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="the-new-language-project">
+<h1><span class="section-number">24. </span>🌿 The New Language Project<a class="headerlink" href="#the-new-language-project" title="Permalink to this headline">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/drive/1iC2YF3s30e0lDxdGmegRKS8iggLldMMH?usp=sharing"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <p>For our workshops, we’ve created a spaCy project file for you that will:</p>
 <ul class="simple">
@@ -571,8 +659,8 @@ model_log_interval = 1000 # optional to save checkpoint files to wanb
 <p><strong>Assets</strong> is configured to use your language repo name to fetch project data from GitHub.  It will save all that data in the <code class="docutils literal notranslate"><span class="pre">assets/your-language-name</span></code> folder.</p>
 <p>The <strong>commands</strong> section is the heart of the project file.  Let’s take some time to understand each command and what it does.</p>
 <hr class="docutils" />
-<div class="section" id="install">
-<h2><span class="section-number">24.1. </span>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<section id="install">
+<h2><span class="section-number">24.1. </span>Install<a class="headerlink" href="#install" title="Permalink to this headline">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">install</span></code> command in the next cell will read the files in the <code class="docutils literal notranslate"><span class="pre">2_new_language_object</span></code> directory and will install the customized spaCy language object that you created for your language in Cadet. The language object will tell spaCy how to break your texts into tokens and sentence spans.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -602,9 +690,9 @@ Successfully installed yi
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="config">
-<h2><span class="section-number">24.2. </span>Config<a class="headerlink" href="#config" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="config">
+<h2><span class="section-number">24.2. </span>Config<a class="headerlink" href="#config" title="Permalink to this headline">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">config</span></code> command creates a generic <code class="docutils literal notranslate"><span class="pre">config.cfg</span></code> file (for more on config files, see the <a class="reference external" href="https://new-languages-for-nlp.github.io/course-materials/w2/config.html">Config section</a> in these course materials).  It updates the <code class="docutils literal notranslate"><span class="pre">train</span></code> and <code class="docutils literal notranslate"><span class="pre">dev</span></code> settings in the config file to point to the <code class="docutils literal notranslate"><span class="pre">train.spacy</span></code> and <code class="docutils literal notranslate"><span class="pre">dev.spacy</span></code> files that are created by the <code class="docutils literal notranslate"><span class="pre">split</span></code> command.  If you’re using Weights and Biases, it will also change the <code class="docutils literal notranslate"><span class="pre">training</span> <span class="pre">logger</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -635,9 +723,9 @@ Running command: /srv/projects/course-materials/w2/venv/bin/python scripts/updat
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="convert">
-<h2><span class="section-number">24.3. </span>Convert<a class="headerlink" href="#convert" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="convert">
+<h2><span class="section-number">24.3. </span>Convert<a class="headerlink" href="#convert" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Convert</span></code> will fetch your CoNLL-U and CoNLL 2002 (ner) files from the <code class="docutils literal notranslate"><span class="pre">3_inception_export</span></code> folder.  It creates a spaCy Doc object for each text and then splits the Doc into separate documents with 10 sentences each. For each text file, the <code class="docutils literal notranslate"><span class="pre">convert</span></code> script will look for a CoNLL 2002 file with the same name.  If that text exists, it will add the named entity data in the file to the existing Doc objects. It will then save all the Docs to disk using the <code class="docutils literal notranslate"><span class="pre">.spacy</span></code> binary format.
 The outcome is a <code class="docutils literal notranslate"><span class="pre">.spacy</span></code> for each text that includes the tokenization, sents, part of speech, lemma, morphology and named entity data.</p>
 <div class="cell docutils container">
@@ -663,9 +751,9 @@ Running command: /srv/projects/course-materials/w2/venv/bin/python scripts/conve
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="split">
-<h2><span class="section-number">24.4. </span>Split<a class="headerlink" href="#split" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="split">
+<h2><span class="section-number">24.4. </span>Split<a class="headerlink" href="#split" title="Permalink to this headline">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">split</span></code> command loads all of the <code class="docutils literal notranslate"><span class="pre">.spacy</span></code> files and creates a list of Doc objects.  We then randomly shuffle them so that different kinds of text are evenly distibuted across the corpus.  Using a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html"><code class="docutils literal notranslate"><span class="pre">test_train_split</span></code></a> function, we divide the corpus into a training and validation set. The split is determined by the <code class="docutils literal notranslate"><span class="pre">test_size</span></code> variable. The model will learn how to make accurate predictions using the training data. We then use the validation set to assess how well the model performs on completeley new and unseen data. We want the model to learn general rules and patterns rather than overfitting on one particular set of data. The validation set provides a measure of model improvement as part of the training process. Because the model has seen this data before, it’s no longer useful as a tool to evaluate the trained model’s performance.  So before we get started training, we also set aside 20% of the validation data to make a test set.  This final set of totally unseen data lets us measure how well the model has learned what we’ve asked it to learn.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -684,9 +772,9 @@ Running command: /srv/projects/course-materials/w2/venv/bin/python scripts/split
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="debug">
-<h2><span class="section-number">24.5. </span>Debug<a class="headerlink" href="#debug" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="debug">
+<h2><span class="section-number">24.5. </span>Debug<a class="headerlink" href="#debug" title="Permalink to this headline">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">debug</span></code> command runs <code class="docutils literal notranslate"><span class="pre">spacy</span> <span class="pre">debug</span> <span class="pre">data</span></code>, which provides a good overview of your prepared data.  This can help identify problems that will lead to poor model training. It’s a good check-in and moment of reflection on the state of your data before moving forward. For more, see the <a class="reference external" href="https://spacy.io/api/cli#debug-data">spaCy docs</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -746,9 +834,9 @@ Training pipeline: tok2vec, tagger, parser, ner
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="train">
-<h2><span class="section-number">24.6. </span>Train<a class="headerlink" href="#train" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="train">
+<h2><span class="section-number">24.6. </span>Train<a class="headerlink" href="#train" title="Permalink to this headline">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">train</span></code> command is the moment we’ve all been waiting for. Go ahead and press the launch button! 🚀 This step will train the model using the settings in the config file.</p>
 <p>When training begins, you’ll see a bunch of numbers. Let’s make sense of what they’re saying.</p>
 <p>You’ll see a list of what components are currently being trained.  <code class="docutils literal notranslate"><span class="pre">Pipeline:</span> <span class="pre">['tok2vec',</span> <span class="pre">'tagger',</span> <span class="pre">'parser',</span> <span class="pre">'ner']</span></code> Tok2vec are token embeddings or numerical representations of tokens that can be used efficiently by the model. The tagger will learn to predict part of speech values for your tokens. The parser will learn to predict grammatical structure. The ner component learns to predict named entities in the text.</p>
@@ -801,9 +889,9 @@ training/urban-giggle/model-last
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="evaluate">
-<h2><span class="section-number">24.7. </span>Evaluate<a class="headerlink" href="#evaluate" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="evaluate">
+<h2><span class="section-number">24.7. </span>Evaluate<a class="headerlink" href="#evaluate" title="Permalink to this headline">#</a></h2>
 <p>The <strong>evaluate</strong> command takes the trained model and tests it with the test data.  Recall that these are examples that the model has never seen, so they provide the best measure of its performance. The output will be saved as a json file in the metrics folder.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -871,9 +959,9 @@ aux               62.50   38.46   47.62
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="package">
-<h2><span class="section-number">24.8. </span>Package<a class="headerlink" href="#package" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="package">
+<h2><span class="section-number">24.8. </span>Package<a class="headerlink" href="#package" title="Permalink to this headline">#</a></h2>
 <p>Finally, the <strong>package</strong> command saves your trained model in a single tar file that can be shared and installed on other computers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -955,8 +1043,8 @@ export/yi_pipeline-0.0.0/dist/yi_pipeline-0.0.0.tar.gz
 </div>
 </div>
 <p>Keep in mind that you’ll need some persistence and patience along the way. You’ll probably need to run multiple experiments before you find the right blend of data and parameters to create a final product.  The instructors are happy to help along the way and we look forward to learning together with you. When all commands are successfully run, you will have converted your text annotations from inception and language object from Cadet into a trained statistical language model that can be loaded with spaCy for a large variety of research tasks.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -980,9 +1068,11 @@ export/yi_pipeline-0.0.0/dist/yi_pipeline-0.0.0.tar.gz
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../config.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -998,32 +1088,36 @@ export/yi_pipeline-0.0.0/dist/yi_pipeline-0.0.0.tar.gz
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
-    
-      By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
-    
-      <div class="extra_footer">
-        <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
+  
+    <div class="extra_footer">
+      <p>
 <a target="_blank" href="https://www.neh.gov/divisions/odh"><img style="height:10%; width:10%" src="https://www.neh.gov/sites/default/files/inline-files/NEH-Horizontal-Stk-Seal-Black820.jpg" /></a>
 <a target="_blank" href="https://cdh.princeton.edu"><img style="height:10%; width:10%" src="https://cdh.princeton.edu/static/img/CDH_logo.svg" /></a>
 <a target="_blank" href="https://www.dariah.eu/"><img style="height:19%; width:19%" src="https://www.dariah.eu/wp-content/uploads/2017/02/logo.png" /></a>
 
 </p>
 
-      </div>
-  </p>
-</footer>
-</main>
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>13. Tokenization &#8212; New Languages for NLP</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -40,12 +38,13 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -66,7 +65,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -75,9 +88,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -95,14 +109,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
-   Welcome!
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Prerequisite Knowledge
  </span>
@@ -269,12 +284,17 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
 </div>
 
 
@@ -282,61 +302,117 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+    <div class="header-article row sticky-top noprint">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/w1/tokenization.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/w1/tokenization.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
     </div>
 </div>
 
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#natural-language-processing-tokenization">
    13.1. Natural language processing &amp; Tokenization
@@ -381,12 +457,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Tokenization</h1>
@@ -447,11 +522,12 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="tokenization">
-<h1><span class="section-number">13. </span>Tokenization<a class="headerlink" href="#tokenization" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="tokenization">
+<h1><span class="section-number">13. </span>Tokenization<a class="headerlink" href="#tokenization" title="Permalink to this headline">#</a></h1>
 <p>From your computer’s perspective, text is nothing more than a sequence of characters. If you ask Python to iterate over a snippet of text, you’ll see that it returns just one letter at a time. Note that the index starts at 0, not 1 and that spaces are part of the sequence.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Siberia has many rivers.&quot;</span>
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">char</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
@@ -493,14 +569,14 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <p>Keep in mind that computers are very precise and picky.  Any messiness in the text will cause the word to be missed, so <code class="docutils literal notranslate"><span class="pre">text.find(&quot;Rivers&quot;)</span></code> returns -1, which means that the sequence could not be found. You can also accidentally match characters that are part of the sequence, but not part of a word.  Try <code class="docutils literal notranslate"><span class="pre">text.find(&quot;y</span> <span class="pre">riv&quot;)</span></code>.  You get 15 as the answer because that is the beginning of the “y riv” sequence, which is present in the text, but isn’t a thing that you’d normally want to find.</p>
-<div class="section" id="natural-language-processing-tokenization">
-<h2><span class="section-number">13.1. </span>Natural language processing &amp; Tokenization<a class="headerlink" href="#natural-language-processing-tokenization" title="Permalink to this headline">¶</a></h2>
+<section id="natural-language-processing-tokenization">
+<h2><span class="section-number">13.1. </span>Natural language processing &amp; Tokenization<a class="headerlink" href="#natural-language-processing-tokenization" title="Permalink to this headline">#</a></h2>
 <p>While pure Python is sufficient for many tasks, natural language processing (NLP) libraries allow us to work computationally with the text as language. NLP reveals a whole host of linguistic attributes of the text that can be used for analysis.  For example, the machine will know if a word is a noun or a verb with part of speech tagging.  We can find the direct object of a verb to determine who is speaking and the subject of that speech.  NLP gives your programs an instant boost of information that opens new forms of analysis.</p>
 <p>Our first NLP task is tokenization. This is where our text is split into meaningful parts; usually word tokens, spans (“New York City”) or sentences. The sentence, “Siberia has many rivers.” can be split into five tokens: <code class="docutils literal notranslate"><span class="pre">&lt;Siberia&gt;&lt;has&gt;&lt;many&gt;&lt;rivers&gt;&lt;.&gt;</span></code>  Note that the ending punctuation is now distinct from the word rivers. The rules for tokenization depend on the language your are using. For English and other languages with spaces between words, you often get good results simply by splitting the tokens on spaces. However, a host of rules are also needed to separate punctuation from a token, to split and normalize words (ex. “Let’s” = “Let us”) as well as specific exceptions that don’t follow regular patterns.</p>
 <p>The <a class="reference external" href="https://spacy.io/usage/linguistic-features/#tokenization">spaCy documentation</a> is really excellent on this topic and I recommend that you start there. When you’re done come back and we’ll cover some practical topics and processes that you’ll need when creating a new language object.</p>
-</div>
-<div class="section" id="spacy-s-tokenizer">
-<h2><span class="section-number">13.2. </span>spaCy’s Tokenizer<a class="headerlink" href="#spacy-s-tokenizer" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="spacy-s-tokenizer">
+<h2><span class="section-number">13.2. </span>spaCy’s Tokenizer<a class="headerlink" href="#spacy-s-tokenizer" title="Permalink to this headline">#</a></h2>
 <p>spaCy’s tokenization begins by splitting tokens on spaces. It’s nearly identical what you’d get from <code class="docutils literal notranslate"><span class="pre">&quot;Siberia</span> <span class="pre">has</span> <span class="pre">many</span> <span class="pre">rivers.&quot;.split()</span></code>, which is <code class="docutils literal notranslate"><span class="pre">['Siberia','has','many','rivers.']</span></code>  Keep a close eye on the period in this sentence. On its own, Python has trouble identifying the period as a distinct token.</p>
 <p>To address this problem, spaCy has rules for how to split these chunks into tokens. In this case, it has a list of punctuation symbols.  If any of those symbols are at the end of a chunk, a suffix rule separates the word from the punctuation.  These rules cover a lot of ground and are very powerful. However, there are many cases where we need to tell spaCy to handle things differently.</p>
 <p>Exceptions are a list of patterns to look for and what to do with them. The exceptions for your language are most often found in <code class="docutils literal notranslate"><span class="pre">spacy/lang</span></code> directory in a <code class="docutils literal notranslate"><span class="pre">tokenizer_exceptions.py</span></code> file. For example, here are the exceptions for English to handle shortened forms of <code class="docutils literal notranslate"><span class="pre">you</span> <span class="pre">all</span></code> such as <code class="docutils literal notranslate"><span class="pre">y'all</span></code>. These exceptions cause the tokenizer to split the “y’all” into two tokens.</p>
@@ -514,9 +590,9 @@ const thebe_selector_output = ".output, .cell_output"
 <blockquote>
 <div><p>What are ORTH and NORM? They are token attributes. When your exception becomes a token, it will have a <code class="docutils literal notranslate"><span class="pre">token.text</span></code> attribute: that’s ORTH. NORM is <code class="docutils literal notranslate"><span class="pre">token.norm_</span></code> LEMMA is <code class="docutils literal notranslate"><span class="pre">token.lemma_</span></code>, <code class="docutils literal notranslate"><span class="pre">IS_STOP:True</span></code> will mark the token as a stop word; <code class="docutils literal notranslate"><span class="pre">token.is_stop</span></code>.</p>
 </div></blockquote>
-</div>
-<div class="section" id="adding-new-exceptions-for-your-language">
-<h2><span class="section-number">13.3. </span>Adding new exceptions for your language<a class="headerlink" href="#adding-new-exceptions-for-your-language" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="adding-new-exceptions-for-your-language">
+<h2><span class="section-number">13.3. </span>Adding new exceptions for your language<a class="headerlink" href="#adding-new-exceptions-for-your-language" title="Permalink to this headline">#</a></h2>
 <p>spaCy comes with a lot of opinions and defaults right from the beginning.  In most cases, this will save you time. You can find the default tokenizer exceptions by importing them.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.lang.tokenizer_exceptions</span> <span class="kn">import</span> <span class="n">BASE_EXCEPTIONS</span>
 </pre></div>
@@ -537,9 +613,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p>For clarity, we will refer to two types of exceptions.  The first are specific, or one-time, exceptions.  These define a very specific pattern for spaCy to look for. If it finds a match, it will apply specific tokenization rules to it. In the example above, <code class="docutils literal notranslate"><span class="pre">'Cuz</span></code> would normally be split into <code class="docutils literal notranslate"><span class="pre">&lt;'&gt;&lt;Cuz&gt;</span></code> because the spaCy defaults would treat <code class="docutils literal notranslate"><span class="pre">'</span></code> as a prefix. To prevent this, we can add a specific exception in <code class="docutils literal notranslate"><span class="pre">tokenizer_exceptions.py</span></code></p>
 <p>Rule-based exceptions look for more general patterns. For the example above, we could add an exception for any time we find <code class="docutils literal notranslate"><span class="pre">'</span></code> followed by the letter c. This would be much more flexible and catch more variations on the form. Instead of 8 specific rules, we’d have one pattern.  But be careful, our rule-based pattern would also apply to <code class="docutils literal notranslate"><span class="pre">'cuse</span> <span class="pre">me!</span></code> which is a shortened form of <code class="docutils literal notranslate"><span class="pre">excuse</span> <span class="pre">me!</span></code> That might be a good thing, it might not.</p>
 <p>The lesson here is that it’s up to you when to use specific exceptions and when to use rule-based exceptions.</p>
-</div>
-<div class="section" id="specific-exceptions">
-<h2><span class="section-number">13.4. </span>Specific Exceptions<a class="headerlink" href="#specific-exceptions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="specific-exceptions">
+<h2><span class="section-number">13.4. </span>Specific Exceptions<a class="headerlink" href="#specific-exceptions" title="Permalink to this headline">#</a></h2>
 <p>To add a new exception, pass a dictionary with a key with the string to match and a list with instructions on how to transform it.</p>
 <p>For example:
 “BIG YIKES” would normally be split into two tokens <code class="docutils literal notranslate"><span class="pre">&lt;BIG&gt;&lt;YIKES&gt;</span></code>. To prevent this from happening, we can create an exception.</p>
@@ -575,9 +651,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>That’s exciting! We’ve made a change to the tokenization rules and it worked. Just keep in mind that exceptions are very specific.  If we have <code class="docutils literal notranslate"><span class="pre">&quot;Yikes!</span> <span class="pre">BIG</span> <span class="pre">yikes!&quot;</span></code>, we get “BIG” and “yikes” as separate tokens because “yikes” isn’t all in caps. Yes, it’s that picky. When adding specific exceptions, you’ll want to add rules for all of the variations that your model is likely to encounter.</p>
 <p>To build on our momentum, let’s discuss several other common types of tokenizer exceptions.</p>
-</div>
-<div class="section" id="separate-a-word-into-two-tokens">
-<h2><span class="section-number">13.5. </span>Separate a word into two tokens<a class="headerlink" href="#separate-a-word-into-two-tokens" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="separate-a-word-into-two-tokens">
+<h2><span class="section-number">13.5. </span>Separate a word into two tokens<a class="headerlink" href="#separate-a-word-into-two-tokens" title="Permalink to this headline">#</a></h2>
 <p>It’s very common to have words that should be split into separate tokens, but there isn’t a regular infix that will make the cut.  Here we need an exception. As an example, let’s explore Kummerspeck (‘grief bacon’) the German name for weight from emotional eating.</p>
 <p>Here we can use the exceptions list to split the word into parts and detail how to handle each of the new tokens: <code class="docutils literal notranslate"><span class="pre">'matchword':[{match}{word}]</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">grief_bacon</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Kummerspeck&#39;</span><span class="p">:[{</span><span class="n">ORTH</span><span class="p">:</span><span class="s2">&quot;Kummer&quot;</span><span class="p">},{</span><span class="n">ORTH</span><span class="p">:</span><span class="s2">&quot;speck&quot;</span><span class="p">}]}</span>
@@ -593,9 +669,9 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <p>The three use cases covered above are the most common types of tokenizer exceptions: adding normalizations, combining words, splitting words. Exceptions can be extremely useful for one-time problems for which there just aren’t any rules or common patterns. However, it’s simply impractical to handle everything with specific exceptions. The next section cover ways that you can handle common patterns and rule-based exceptions.</p>
-</div>
-<div class="section" id="rule-based-exceptions">
-<h2><span class="section-number">13.6. </span>Rule-based exceptions<a class="headerlink" href="#rule-based-exceptions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="rule-based-exceptions">
+<h2><span class="section-number">13.6. </span>Rule-based exceptions<a class="headerlink" href="#rule-based-exceptions" title="Permalink to this headline">#</a></h2>
 <p>To handle regular patterns, spaCy has three kinds of rule-based exceptions. They are:</p>
 <ul class="simple">
 <li><p>Prefix: A section at the start of a word that should be separated into its own token.</p></li>
@@ -626,9 +702,9 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <p>The code above will take each individual symbol in CURRENCY and add a regular expression rule for it by replacing {c} with the symbol.</p>
-</div>
-<div class="section" id="extending-defaults">
-<h2><span class="section-number">13.7. </span>Extending defaults<a class="headerlink" href="#extending-defaults" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="extending-defaults">
+<h2><span class="section-number">13.7. </span>Extending defaults<a class="headerlink" href="#extending-defaults" title="Permalink to this headline">#</a></h2>
 <p>As you develop a language object for a new language, you can delegate much of the work to the existing defaults, but it’s quite likely that your language has its own specific symbols and charachters. You can add them to your language’s <code class="docutils literal notranslate"><span class="pre">punctuation.py</span></code> file.</p>
 <p>For example, the default list of currency symbols does not include the Sheckel ₪. We can add our new prefix by adding a list of new symbols to our TOKENIZER_PREFIXES.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.lang.punctuation</span> <span class="kn">import</span> <span class="n">TOKENIZER_PREFIXES</span> <span class="k">as</span> <span class="n">BASE_TOKENIZER_PREFIXES</span>
@@ -637,8 +713,8 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <p>The prefixes are added to the language object in <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code></p>
-<div class="section" id="prefixes-in-action">
-<h3><span class="section-number">13.7.1. </span>Prefixes in action<a class="headerlink" href="#prefixes-in-action" title="Permalink to this headline">¶</a></h3>
+<section id="prefixes-in-action">
+<h3><span class="section-number">13.7.1. </span>Prefixes in action<a class="headerlink" href="#prefixes-in-action" title="Permalink to this headline">#</a></h3>
 <p>The addition of prefixes will usually be added to the language object. However, you may want to make adjustments on the fly. It’s also a good way to check that the new prefix is really what you need <a class="reference external" href="https://spacy.io/usage/linguistic-features#native-tokenizer-additions">docs</a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy</span> <span class="kn">import</span> <span class="n">util</span>
 <span class="kn">from</span> <span class="nn">spacy.lang.he</span> <span class="kn">import</span> <span class="n">Hebrew</span>
@@ -658,9 +734,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>Extra brain teaser: Hebrew is written from right to left, so why isn’t ₪ a suffix?
 spaCy works well with RTL langauges, but the tokenizer moves from left to right.  Even though ₪ follows 181 in the sentence, spaCy considers it a prefix.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -684,9 +760,11 @@ spaCy works well with RTL langauges, but the tokenizer moves from left to right.
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="inception.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -702,32 +780,36 @@ spaCy works well with RTL langauges, but the tokenizer moves from left to right.
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
-    
-      By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
-    
-      <div class="extra_footer">
-        <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Natalia Ermolaev, Andrew Janco, Toma Tasovac, Quinn Dombrowski, David Lassner<br/>
+  
+    <div class="extra_footer">
+      <p>
 <a target="_blank" href="https://www.neh.gov/divisions/odh"><img style="height:10%; width:10%" src="https://www.neh.gov/sites/default/files/inline-files/NEH-Horizontal-Stk-Seal-Black820.jpg" /></a>
 <a target="_blank" href="https://cdh.princeton.edu"><img style="height:10%; width:10%" src="https://cdh.princeton.edu/static/img/CDH_logo.svg" /></a>
 <a target="_blank" href="https://www.dariah.eu/"><img style="height:19%; width:19%" src="https://www.dariah.eu/wp-content/uploads/2017/02/logo.png" /></a>
 
 </p>
 
-      </div>
-  </p>
-</footer>
-</main>
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
