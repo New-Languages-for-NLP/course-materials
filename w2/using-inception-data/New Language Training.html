@@ -573,28 +573,28 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">repo_name</span> <span class="o">=</span> <span class="s2">&quot;repo-template&quot;</span>
-<span class="n">private_repo</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">git_access_token</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>repo_name = &quot;repo-template&quot;
+private_repo = False
+git_access_token = &quot;&quot;
 
-<span class="o">!</span>rm -rf /content/newlang_project
-<span class="o">!</span>rm -rf <span class="nv">$repo_name</span>
-<span class="k">if</span> <span class="n">private_repo</span><span class="p">:</span>
-    <span class="n">git_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://</span><span class="si">{</span><span class="n">git_access_token</span><span class="si">}</span><span class="s2">@github.com/New-Languages-for-NLP/</span><span class="si">{</span><span class="n">repo_name</span><span class="si">}</span><span class="s2">/&quot;</span>
-    <span class="o">!</span>git clone <span class="nv">$git_url</span>  -b main
-    <span class="o">!</span>cp -r ./<span class="nv">$repo_name</span>/newlang_project .  
-    <span class="o">!</span>mkdir newlang_project/assets/
-    <span class="o">!</span>mkdir newlang_project/configs/
-    <span class="o">!</span>mkdir newlang_project/corpus/
-    <span class="o">!</span>mkdir newlang_project/metrics/
-    <span class="o">!</span>mkdir newlang_project/packages/
-    <span class="o">!</span>mkdir newlang_project/training/
-    <span class="o">!</span>mkdir newlang_project/assets/<span class="nv">$repo_name</span>
-    <span class="o">!</span>cp -r ./<span class="nv">$repo_name</span>/* newlang_project/assets/<span class="nv">$repo_name</span>/
-    <span class="o">!</span>rm -rf ./<span class="nv">$repo_name</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="o">!</span>python -m spacy project clone newlang_project --repo https://github.com/New-Languages-for-NLP/<span class="nv">$repo_name</span> --branch main
-    <span class="o">!</span>python -m spacy project assets /srv/projects/course-materials/w2/using-inception-data/newlang_project
+!rm -rf /content/newlang_project
+!rm -rf $repo_name
+if private_repo:
+    git_url = f&quot;https://{git_access_token}@github.com/New-Languages-for-NLP/{repo_name}/&quot;
+    !git clone $git_url  -b main
+    !cp -r ./$repo_name/newlang_project .  
+    !mkdir newlang_project/assets/
+    !mkdir newlang_project/configs/
+    !mkdir newlang_project/corpus/
+    !mkdir newlang_project/metrics/
+    !mkdir newlang_project/packages/
+    !mkdir newlang_project/training/
+    !mkdir newlang_project/assets/$repo_name
+    !cp -r ./$repo_name/* newlang_project/assets/$repo_name/
+    !rm -rf ./$repo_name
+else:
+    !python -m spacy project clone newlang_project --repo https://github.com/New-Languages-for-NLP/$repo_name --branch main
+    !python -m spacy project assets /srv/projects/course-materials/w2/using-inception-data/newlang_project
 </pre></div>
 </div>
 </div>
@@ -664,8 +664,8 @@ model_log_interval = 1000 # optional to save checkpoint files to wanb
 <p>The <code class="docutils literal notranslate"><span class="pre">install</span></code> command in the next cell will read the files in the <code class="docutils literal notranslate"><span class="pre">2_new_language_object</span></code> directory and will install the customized spaCy language object that you created for your language in Cadet. The language object will tell spaCy how to break your texts into tokens and sentence spans.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install the custom language object from Cadet </span>
-<span class="o">!</span>python -m spacy project run install /srv/projects/course-materials/w2/using-inception-data/newlang_project
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Install the custom language object from Cadet 
+!python -m spacy project run install /srv/projects/course-materials/w2/using-inception-data/newlang_project
 </pre></div>
 </div>
 </div>
@@ -696,7 +696,7 @@ Successfully installed yi
 <p>The <code class="docutils literal notranslate"><span class="pre">config</span></code> command creates a generic <code class="docutils literal notranslate"><span class="pre">config.cfg</span></code> file (for more on config files, see the <a class="reference external" href="https://new-languages-for-nlp.github.io/course-materials/w2/config.html">Config section</a> in these course materials).  It updates the <code class="docutils literal notranslate"><span class="pre">train</span></code> and <code class="docutils literal notranslate"><span class="pre">dev</span></code> settings in the config file to point to the <code class="docutils literal notranslate"><span class="pre">train.spacy</span></code> and <code class="docutils literal notranslate"><span class="pre">dev.spacy</span></code> files that are created by the <code class="docutils literal notranslate"><span class="pre">split</span></code> command.  If you’re using Weights and Biases, it will also change the <code class="docutils literal notranslate"><span class="pre">training</span> <span class="pre">logger</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m spacy project run config /srv/projects/course-materials/w2/using-inception-data/newlang_project
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!python -m spacy project run config /srv/projects/course-materials/w2/using-inception-data/newlang_project
 </pre></div>
 </div>
 </div>
@@ -730,7 +730,7 @@ Running command: /srv/projects/course-materials/w2/venv/bin/python scripts/updat
 The outcome is a <code class="docutils literal notranslate"><span class="pre">.spacy</span></code> for each text that includes the tokenization, sents, part of speech, lemma, morphology and named entity data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m spacy project run convert /srv/projects/course-materials/w2/using-inception-data/newlang_project -F
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!python -m spacy project run convert /srv/projects/course-materials/w2/using-inception-data/newlang_project -F
 </pre></div>
 </div>
 </div>
@@ -757,7 +757,7 @@ Running command: /srv/projects/course-materials/w2/venv/bin/python scripts/conve
 <p>The <code class="docutils literal notranslate"><span class="pre">split</span></code> command loads all of the <code class="docutils literal notranslate"><span class="pre">.spacy</span></code> files and creates a list of Doc objects.  We then randomly shuffle them so that different kinds of text are evenly distibuted across the corpus.  Using a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html"><code class="docutils literal notranslate"><span class="pre">test_train_split</span></code></a> function, we divide the corpus into a training and validation set. The split is determined by the <code class="docutils literal notranslate"><span class="pre">test_size</span></code> variable. The model will learn how to make accurate predictions using the training data. We then use the validation set to assess how well the model performs on completeley new and unseen data. We want the model to learn general rules and patterns rather than overfitting on one particular set of data. The validation set provides a measure of model improvement as part of the training process. Because the model has seen this data before, it’s no longer useful as a tool to evaluate the trained model’s performance.  So before we get started training, we also set aside 20% of the validation data to make a test set.  This final set of totally unseen data lets us measure how well the model has learned what we’ve asked it to learn.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m spacy project run split /srv/projects/course-materials/w2/using-inception-data/newlang_project -F
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!python -m spacy project run split /srv/projects/course-materials/w2/using-inception-data/newlang_project -F
 </pre></div>
 </div>
 </div>
@@ -778,7 +778,7 @@ Running command: /srv/projects/course-materials/w2/venv/bin/python scripts/split
 <p>The <code class="docutils literal notranslate"><span class="pre">debug</span></code> command runs <code class="docutils literal notranslate"><span class="pre">spacy</span> <span class="pre">debug</span> <span class="pre">data</span></code>, which provides a good overview of your prepared data.  This can help identify problems that will lead to poor model training. It’s a good check-in and moment of reflection on the state of your data before moving forward. For more, see the <a class="reference external" href="https://spacy.io/api/cli#debug-data">spaCy docs</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m spacy project run debug  /srv/projects/course-materials/w2/using-inception-data/newlang_project
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!python -m spacy project run debug  /srv/projects/course-materials/w2/using-inception-data/newlang_project
 </pre></div>
 </div>
 </div>
@@ -856,7 +856,7 @@ Training pipeline: tok2vec, tagger, parser, ner
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m spacy project run train /srv/projects/course-materials/w2/using-inception-data/newlang_project
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!python -m spacy project run train /srv/projects/course-materials/w2/using-inception-data/newlang_project
 </pre></div>
 </div>
 </div>
@@ -895,8 +895,8 @@ training/urban-giggle/model-last
 <p>The <strong>evaluate</strong> command takes the trained model and tests it with the test data.  Recall that these are examples that the model has never seen, so they provide the best measure of its performance. The output will be saved as a json file in the metrics folder.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluate the model </span>
-<span class="o">!</span>python -m spacy project run evaluate /srv/projects/course-materials/w2/using-inception-data/newlang_project
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Evaluate the model 
+!python -m spacy project run evaluate /srv/projects/course-materials/w2/using-inception-data/newlang_project
 </pre></div>
 </div>
 </div>
@@ -965,7 +965,7 @@ aux               62.50   38.46   47.62
 <p>Finally, the <strong>package</strong> command saves your trained model in a single tar file that can be shared and installed on other computers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m spacy package ./newlang_project/training/urban-giggle/model-last ./export 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!python -m spacy package ./newlang_project/training/urban-giggle/model-last ./export 
 </pre></div>
 </div>
 </div>
