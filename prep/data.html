@@ -485,10 +485,10 @@ title="Print to PDF"
 <h3><span class="section-number">5.1.1. </span>Debugging and Validating JSON<a class="headerlink" href="#debugging-and-validating-json" title="Permalink to this headline">#</a></h3>
 <p>Working with JSON can be tricky, especially when you are have large files and you do not know exactly where the error occurs. An open source web application called <strong><a class="reference external" href="https://jsonlint.com/">JSONLint</a></strong> can come handy in this regard. It is designed to help users to debug and validate their JSON files.</p>
 <p>To use JSONLint, simply copy your JSON code to the editor and click <strong>Validate JSON</strong>. For example, when the following code</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">	</span><span class="nt">&quot;be&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;VERB&quot;</span><span class="w"></span>
-<span class="w">	</span><span class="nt">&quot;bee&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NOUN&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">	</span><span class="nt">&quot;be&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;VERB&quot;</span>
+<span class="w">	</span><span class="nt">&quot;bee&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NOUN&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>is copied to JSONLint and validated, we see this error.</p>
@@ -500,10 +500,10 @@ Expecting &#39;EOF&#39;, &#39;}&#39;, &#39;:&#39;, &#39;,&#39;, &#39;]&#39;, got
 </pre></div>
 </div>
 <p>As it states, the error occurs near the word <strong>“VERB”</strong> and the editor was expecting one of these characters: ‘}’, ‘:’, ‘,’, ‘]’ but received a string. If you have figured it out, we were missing a comma (,) in line 2. When the comma issue is fixed in this example, JSON should validate successfully and you should see a <strong>“Valid JSON”</strong> message in JSONLint.</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">	</span><span class="nt">&quot;be&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VERB&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">	</span><span class="nt">&quot;bee&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NOUN&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">	</span><span class="nt">&quot;be&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VERB&quot;</span><span class="p">,</span>
+<span class="w">	</span><span class="nt">&quot;bee&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NOUN&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>From the JSONLint website, here are some rules to consider to ensure your JSON is properly formatted:</p>

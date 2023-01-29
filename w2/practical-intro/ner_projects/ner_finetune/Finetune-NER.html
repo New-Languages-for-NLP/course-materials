@@ -443,112 +443,112 @@ title="Print to PDF"
   <p>src: <a class="reference external" href="https://github.com/explosion/projects/tree/v3/pipelines/ner_demo">https://github.com/explosion/projects/tree/v3/pipelines/ner_demo</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%writefile project.yml
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%writefile</span> project.yml
 
-title: &quot;Fine-tune the NER component in a pretrained pipeline&quot;
-description: &quot;Rather than training from scratch, we will fine-tune the ner pipeline of a pre-trained model.&quot;
-spacy_version: &quot;&gt;=3.0.6,&lt;4.0.0&quot;
-# Variables can be referenced across the project.yml using ${vars.var_name}
-vars:
-  name: &quot;ner_finetune&quot;
-  lang: &quot;en&quot;
-  # for en_core_web_trf or other trf pipeline, use spacy-transformers&gt;=1.1.1
-  pipeline: &quot;en_core_web_sm&quot;
-  train: &quot;train.json&quot;
-  dev: &quot;dev.json&quot;
-  version: &quot;0.0.0&quot;
-  # Set your GPU ID, -1 is CPU
-  gpu_id: -1
+<span class="n">title</span><span class="p">:</span> <span class="s2">&quot;Fine-tune the NER component in a pretrained pipeline&quot;</span>
+<span class="n">description</span><span class="p">:</span> <span class="s2">&quot;Rather than training from scratch, we will fine-tune the ner pipeline of a pre-trained model.&quot;</span>
+<span class="n">spacy_version</span><span class="p">:</span> <span class="s2">&quot;&gt;=3.0.6,&lt;4.0.0&quot;</span>
+<span class="c1"># Variables can be referenced across the project.yml using ${vars.var_name}</span>
+<span class="nb">vars</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;ner_finetune&quot;</span>
+  <span class="n">lang</span><span class="p">:</span> <span class="s2">&quot;en&quot;</span>
+  <span class="c1"># for en_core_web_trf or other trf pipeline, use spacy-transformers&gt;=1.1.1</span>
+  <span class="n">pipeline</span><span class="p">:</span> <span class="s2">&quot;en_core_web_sm&quot;</span>
+  <span class="n">train</span><span class="p">:</span> <span class="s2">&quot;train.json&quot;</span>
+  <span class="n">dev</span><span class="p">:</span> <span class="s2">&quot;dev.json&quot;</span>
+  <span class="n">version</span><span class="p">:</span> <span class="s2">&quot;0.0.0&quot;</span>
+  <span class="c1"># Set your GPU ID, -1 is CPU</span>
+  <span class="n">gpu_id</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
 
-# These are the directories that the project needs. The project CLI will make
-# sure that they always exist.
-directories: [&quot;assets&quot;, &quot;corpus&quot;, &quot;configs&quot;, &quot;training&quot;, &quot;scripts&quot;, &quot;packages&quot;]
+<span class="c1"># These are the directories that the project needs. The project CLI will make</span>
+<span class="c1"># sure that they always exist.</span>
+<span class="n">directories</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;assets&quot;</span><span class="p">,</span> <span class="s2">&quot;corpus&quot;</span><span class="p">,</span> <span class="s2">&quot;configs&quot;</span><span class="p">,</span> <span class="s2">&quot;training&quot;</span><span class="p">,</span> <span class="s2">&quot;scripts&quot;</span><span class="p">,</span> <span class="s2">&quot;packages&quot;</span><span class="p">]</span>
 
-# Fetch the litbank data from GitHub and save to the assets folder
+<span class="c1"># Fetch the litbank data from GitHub and save to the assets folder</span>
 
-assets:
-  - dest: &quot;assets/litbank&quot;
-    git:
-      repo: &quot;https://github.com/dbamman/litbank&quot;
-      branch: &quot;master&quot;
-      path: &quot;&quot;
+<span class="n">assets</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">dest</span><span class="p">:</span> <span class="s2">&quot;assets/litbank&quot;</span>
+    <span class="n">git</span><span class="p">:</span>
+      <span class="n">repo</span><span class="p">:</span> <span class="s2">&quot;https://github.com/dbamman/litbank&quot;</span>
+      <span class="n">branch</span><span class="p">:</span> <span class="s2">&quot;master&quot;</span>
+      <span class="n">path</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
         
-# Workflows are sequences of commands (see below) executed in order. You can
-# run them via &quot;spacy project run [workflow]&quot;. If a commands&#39;s inputs/outputs
-# haven&#39;t changed, it won&#39;t be re-run.
-workflows:
-  all:
-    - convert
-    - create-config
-    - train
-    - evaluate
+<span class="c1"># Workflows are sequences of commands (see below) executed in order. You can</span>
+<span class="c1"># run them via &quot;spacy project run [workflow]&quot;. If a commands&#39;s inputs/outputs</span>
+<span class="c1"># haven&#39;t changed, it won&#39;t be re-run.</span>
+<span class="n">workflows</span><span class="p">:</span>
+  <span class="nb">all</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">convert</span>
+    <span class="o">-</span> <span class="n">create</span><span class="o">-</span><span class="n">config</span>
+    <span class="o">-</span> <span class="n">train</span>
+    <span class="o">-</span> <span class="n">evaluate</span>
 
-# Project commands, specified in a style similar to CI config files (e.g. Azure
-# pipelines). The name is the command name that lets you trigger the command
-# via &quot;spacy project run [command] [path]&quot;. The help message is optional and
-# shown when executing &quot;spacy project run [optional command] [path] --help&quot;.
-commands:
-  - name: &quot;download&quot;
-    help: &quot;Download the pretrained pipeline&quot;
-    script:
-      - &quot;python -m spacy download ${vars.pipeline}&quot;
+<span class="c1"># Project commands, specified in a style similar to CI config files (e.g. Azure</span>
+<span class="c1"># pipelines). The name is the command name that lets you trigger the command</span>
+<span class="c1"># via &quot;spacy project run [command] [path]&quot;. The help message is optional and</span>
+<span class="c1"># shown when executing &quot;spacy project run [optional command] [path] --help&quot;.</span>
+<span class="n">commands</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;download&quot;</span>
+    <span class="n">help</span><span class="p">:</span> <span class="s2">&quot;Download the pretrained pipeline&quot;</span>
+    <span class="n">script</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;python -m spacy download $</span><span class="si">{vars.pipeline}</span><span class="s2">&quot;</span>
     
-  - name: &quot;convert&quot;
-    help: &quot;Convert the data to spaCy&#39;s binary format&quot;
-    script:
-      - &quot;python scripts/convert.py ${vars.lang} 0.2&quot;
-    deps:
-      - &quot;scripts/convert.py&quot;
-    outputs:
-      - &quot;corpus/train.spacy&quot;
-      - &quot;corpus/dev.spacy&quot;
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;convert&quot;</span>
+    <span class="n">help</span><span class="p">:</span> <span class="s2">&quot;Convert the data to spaCy&#39;s binary format&quot;</span>
+    <span class="n">script</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;python scripts/convert.py $</span><span class="si">{vars.lang}</span><span class="s2"> 0.2&quot;</span>
+    <span class="n">deps</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;scripts/convert.py&quot;</span>
+    <span class="n">outputs</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;corpus/train.spacy&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;corpus/dev.spacy&quot;</span>
 
-  - name: &quot;create-config&quot;
-    help: &quot;Create a config for updating only NER from an existing pipeline&quot;
-    script:
-      - &quot;python scripts/create_config.py ${vars.pipeline} ner configs/config.cfg&quot;
-    deps:
-      - &quot;scripts/create_config.py&quot;
-    outputs:
-      - &quot;configs/config.cfg&quot;
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;create-config&quot;</span>
+    <span class="n">help</span><span class="p">:</span> <span class="s2">&quot;Create a config for updating only NER from an existing pipeline&quot;</span>
+    <span class="n">script</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;python scripts/create_config.py $</span><span class="si">{vars.pipeline}</span><span class="s2"> ner configs/config.cfg&quot;</span>
+    <span class="n">deps</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;scripts/create_config.py&quot;</span>
+    <span class="n">outputs</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;configs/config.cfg&quot;</span>
 
-  - name: &quot;train&quot;
-    help: &quot;Update the NER model&quot;
-    script:
-      - &quot;python -m spacy train configs/config.cfg --output training/ --paths.train corpus/train.spacy --paths.dev corpus/dev.spacy --training.eval_frequency 10 --training.max_steps 500 --training.patience 50 --gpu-id ${vars.gpu_id}&quot;
-    deps:
-      - &quot;configs/config.cfg&quot;
-      - &quot;corpus/train.spacy&quot;
-      - &quot;corpus/dev.spacy&quot;
-    outputs:
-      - &quot;training/model-best&quot;
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;train&quot;</span>
+    <span class="n">help</span><span class="p">:</span> <span class="s2">&quot;Update the NER model&quot;</span>
+    <span class="n">script</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;python -m spacy train configs/config.cfg --output training/ --paths.train corpus/train.spacy --paths.dev corpus/dev.spacy --training.eval_frequency 10 --training.max_steps 500 --training.patience 50 --gpu-id $</span><span class="si">{vars.gpu_id}</span><span class="s2">&quot;</span>
+    <span class="n">deps</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;configs/config.cfg&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;corpus/train.spacy&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;corpus/dev.spacy&quot;</span>
+    <span class="n">outputs</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;training/model-best&quot;</span>
 
-  - name: &quot;evaluate&quot;
-    help: &quot;Evaluate the model and export metrics&quot;
-    script:
-      - &quot;python -m spacy evaluate training/model-best corpus/dev.spacy --output training/metrics.json&quot;
-    deps:
-      - &quot;corpus/dev.spacy&quot;
-      - &quot;training/model-best&quot;
-    outputs:
-      - &quot;training/metrics.json&quot;
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;evaluate&quot;</span>
+    <span class="n">help</span><span class="p">:</span> <span class="s2">&quot;Evaluate the model and export metrics&quot;</span>
+    <span class="n">script</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;python -m spacy evaluate training/model-best corpus/dev.spacy --output training/metrics.json&quot;</span>
+    <span class="n">deps</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;corpus/dev.spacy&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;training/model-best&quot;</span>
+    <span class="n">outputs</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;training/metrics.json&quot;</span>
 
-  - name: package
-    help: &quot;Package the trained model as a pip package&quot;
-    script:
-      - &quot;python -m spacy package training/model-best packages --name ${vars.name} --version ${vars.version} --force&quot;
-    deps:
-      - &quot;training/model-best&quot;
-    outputs_no_cache:
-      - &quot;packages/${vars.lang}_${vars.name}-${vars.version}/dist/${vars.lang}_${vars.name}-${vars.version}.tar.gz&quot;
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">package</span>
+    <span class="n">help</span><span class="p">:</span> <span class="s2">&quot;Package the trained model as a pip package&quot;</span>
+    <span class="n">script</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;python -m spacy package training/model-best packages --name $</span><span class="si">{vars.name}</span><span class="s2"> --version $</span><span class="si">{vars.version}</span><span class="s2"> --force&quot;</span>
+    <span class="n">deps</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;training/model-best&quot;</span>
+    <span class="n">outputs_no_cache</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;packages/$</span><span class="si">{vars.lang}</span><span class="s2">_$</span><span class="si">{vars.name}</span><span class="s2">-$</span><span class="si">{vars.version}</span><span class="s2">/dist/$</span><span class="si">{vars.lang}</span><span class="s2">_$</span><span class="si">{vars.name}</span><span class="s2">-$</span><span class="si">{vars.version}</span><span class="s2">.tar.gz&quot;</span>
 
-  - name: visualize-model
-    help: Visualize the model&#39;s output interactively using Streamlit
-    script:
-      - &quot;streamlit run scripts/visualize_model.py training/model-best \&quot;I saw Shaka Khan in London. I like horses.\&quot;&quot;
-    deps:
-      - &quot;scripts/visualize_model.py&quot;
-      - &quot;training/model-best&quot;
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">visualize</span><span class="o">-</span><span class="n">model</span>
+    <span class="n">help</span><span class="p">:</span> <span class="n">Visualize</span> <span class="n">the</span> <span class="n">model</span><span class="s1">&#39;s output interactively using Streamlit</span>
+    <span class="n">script</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;streamlit run scripts/visualize_model.py training/model-best </span><span class="se">\&quot;</span><span class="s2">I saw Shaka Khan in London. I like horses.</span><span class="se">\&quot;</span><span class="s2">&quot;</span>
+    <span class="n">deps</span><span class="p">:</span>
+      <span class="o">-</span> <span class="s2">&quot;scripts/visualize_model.py&quot;</span>
+      <span class="o">-</span> <span class="s2">&quot;training/model-best&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -560,68 +560,68 @@ commands:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%writefile ./scripts/convert.py
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%writefile</span> ./scripts/convert.py
 
-&quot;&quot;&quot;Convert LitBank data to spaCy v3
-.spacy format.&quot;&quot;&quot;
-import srsly
-import typer
-import warnings
-from pathlib import Path
+<span class="sd">&quot;&quot;&quot;Convert LitBank data to spaCy v3</span>
+<span class="sd">.spacy format.&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">srsly</span>
+<span class="kn">import</span> <span class="nn">typer</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
-import spacy
-from spacy.tokens import DocBin
-from spacy.util import filter_spans
-from sklearn.model_selection import train_test_split
+<span class="kn">import</span> <span class="nn">spacy</span>
+<span class="kn">from</span> <span class="nn">spacy.tokens</span> <span class="kn">import</span> <span class="n">DocBin</span>
+<span class="kn">from</span> <span class="nn">spacy.util</span> <span class="kn">import</span> <span class="n">filter_spans</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
 
 
-def convert(lang: str, test_size:float):
-    entities_path = Path.cwd() / &#39;assets&#39; / &#39;litbank&#39; / &#39;entities&#39; / &#39;brat&#39;
-    assert entities_path.exists()
+<span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">lang</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">test_size</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span>
+    <span class="n">entities_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;assets&#39;</span> <span class="o">/</span> <span class="s1">&#39;litbank&#39;</span> <span class="o">/</span> <span class="s1">&#39;entities&#39;</span> <span class="o">/</span> <span class="s1">&#39;brat&#39;</span>
+    <span class="k">assert</span> <span class="n">entities_path</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
     
-    text_files = [f for f in entities_path.iterdir() if f.suffix == &#39;.txt&#39;]
+    <span class="n">text_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">entities_path</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s1">&#39;.txt&#39;</span><span class="p">]</span>
 
-    docs = []
+    <span class="n">docs</span> <span class="o">=</span> <span class="p">[]</span>
 
-    #note: not using pretrained model because it adds predictions, just want LitBank data
-    nlp = spacy.blank(lang)
+    <span class="c1">#note: not using pretrained model because it adds predictions, just want LitBank data</span>
+    <span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">blank</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span>
 
-    for text_file in text_files:
-        doc = nlp.make_doc(text_file.read_text())
-        annotation_file = (entities_path / (text_file.stem +&#39;.ann&#39;))
-        annotations = annotation_file.read_text().split(&#39;\n&#39;)
-        ents = []
-        for annotation in annotations[:-1]:
-            label, start, end = annotation.split(&#39;\t&#39;)[1].split()
-            span = doc.char_span(int(start), int(end), label=label)
-            if span: # when start and end do not match a valid string, spaCy returns a NoneType span
-                ents.append(span)
+    <span class="k">for</span> <span class="n">text_file</span> <span class="ow">in</span> <span class="n">text_files</span><span class="p">:</span>
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="o">.</span><span class="n">make_doc</span><span class="p">(</span><span class="n">text_file</span><span class="o">.</span><span class="n">read_text</span><span class="p">())</span>
+        <span class="n">annotation_file</span> <span class="o">=</span> <span class="p">(</span><span class="n">entities_path</span> <span class="o">/</span> <span class="p">(</span><span class="n">text_file</span><span class="o">.</span><span class="n">stem</span> <span class="o">+</span><span class="s1">&#39;.ann&#39;</span><span class="p">))</span>
+        <span class="n">annotations</span> <span class="o">=</span> <span class="n">annotation_file</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">ents</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">annotation</span> <span class="ow">in</span> <span class="n">annotations</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">label</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="n">span</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">char_span</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">start</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">end</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">span</span><span class="p">:</span> <span class="c1"># when start and end do not match a valid string, spaCy returns a NoneType span</span>
+                <span class="n">ents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">span</span><span class="p">)</span>
 
-        filtered = filter_spans(ents)
-        doc.ents = filtered
-        docs.append(doc)
+        <span class="n">filtered</span> <span class="o">=</span> <span class="n">filter_spans</span><span class="p">(</span><span class="n">ents</span><span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">ents</span> <span class="o">=</span> <span class="n">filtered</span>
+        <span class="n">docs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
 
-    train_set, validation_set = train_test_split(docs, test_size=test_size)
-    print(f&#39;Created {len(train_set)} training docs&#39;)
-    print(f&#39;Created {len(validation_set)} validation docs&#39;)
+    <span class="n">train_set</span><span class="p">,</span> <span class="n">validation_set</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="n">test_size</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Created </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">train_set</span><span class="p">)</span><span class="si">}</span><span class="s1"> training docs&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Created </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">validation_set</span><span class="p">)</span><span class="si">}</span><span class="s1"> validation docs&#39;</span><span class="p">)</span>
     
-    # the DocBin will store the training documents
-    train_db = DocBin()
-    for doc in train_set:
-        train_db.add(doc)
-    train_db.to_disk((Path.cwd() / &#39;corpus&#39; /&quot;train.spacy&quot;))
+    <span class="c1"># the DocBin will store the training documents</span>
+    <span class="n">train_db</span> <span class="o">=</span> <span class="n">DocBin</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">train_set</span><span class="p">:</span>
+        <span class="n">train_db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+    <span class="n">train_db</span><span class="o">.</span><span class="n">to_disk</span><span class="p">((</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;corpus&#39;</span> <span class="o">/</span><span class="s2">&quot;train.spacy&quot;</span><span class="p">))</span>
 
-    # Save the validation Docs to disk 
-    validation_db = DocBin()
-    for doc in validation_set:
-        validation_db.add(doc)
+    <span class="c1"># Save the validation Docs to disk </span>
+    <span class="n">validation_db</span> <span class="o">=</span> <span class="n">DocBin</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">validation_set</span><span class="p">:</span>
+        <span class="n">validation_db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
 
-    validation_db.to_disk((Path.cwd() / &#39;corpus&#39; / &quot;dev.spacy&quot;))
+    <span class="n">validation_db</span><span class="o">.</span><span class="n">to_disk</span><span class="p">((</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;corpus&#39;</span> <span class="o">/</span> <span class="s2">&quot;dev.spacy&quot;</span><span class="p">))</span>
 
 
-if __name__ == &quot;__main__&quot;:
-    typer.run(convert)
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">typer</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">convert</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -635,8 +635,8 @@ if __name__ == &quot;__main__&quot;:
 <h1>Now let’s run the project!<a class="headerlink" href="#now-let-s-run-the-project" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Download the pretrained model
-!spacy project run download 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download the pretrained model</span>
+<span class="o">!</span>spacy<span class="w"> </span>project<span class="w"> </span>run<span class="w"> </span>download<span class="w"> </span>
 </pre></div>
 </div>
 </div>
@@ -687,8 +687,8 @@ You can now load the package via spacy.load(&#39;en_core_web_sm&#39;)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Fetch the LitBank data
-!spacy project assets 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fetch the LitBank data</span>
+<span class="o">!</span>spacy<span class="w"> </span>project<span class="w"> </span>assets<span class="w"> </span>
 </pre></div>
 </div>
 </div>
@@ -702,8 +702,8 @@ You can now load the package via spacy.load(&#39;en_core_web_sm&#39;)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Convert the LitBank data
-!spacy project run convert 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert the LitBank data</span>
+<span class="o">!</span>spacy<span class="w"> </span>project<span class="w"> </span>run<span class="w"> </span>convert<span class="w"> </span>
 </pre></div>
 </div>
 </div>
@@ -719,8 +719,8 @@ Created 20 validation docs
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># create a config file using the create_config script
-!spacy project run create-config
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a config file using the create_config script</span>
+<span class="o">!</span>spacy<span class="w"> </span>project<span class="w"> </span>run<span class="w"> </span>create-config
 </pre></div>
 </div>
 </div>
@@ -734,7 +734,7 @@ Created 20 validation docs
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!spacy project run train
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>spacy<span class="w"> </span>project<span class="w"> </span>run<span class="w"> </span>train
 </pre></div>
 </div>
 </div>
@@ -824,7 +824,7 @@ training/model-last
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># We can run spacy project run visualize-model from the terminal (not in Jupyter)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can run spacy project run visualize-model from the terminal (not in Jupyter)</span>
 </pre></div>
 </div>
 </div>

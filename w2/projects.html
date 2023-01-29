@@ -483,8 +483,8 @@ title="Print to PDF"
 <h2><span class="section-number">22.2. </span>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">project.yml</span></code> file follows a format called yaml (“yet another markup language”), which is a simplified and human-friendly form for common data types such as Python lists and dictionaries. If you’ve ever worked with markdown, this should feel somewhat familiar. Marksdown is a simplified format for HTML content. YAML is to data what markdown is to content.</p>
 <p>The simplest way to write yaml is to separate a key and value with a semi-colon:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">first-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Paula</span><span class="w"></span>
-<span class="nt">last-name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Sloane&quot;</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">first-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Paula</span>
+<span class="nt">last-name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Sloane&quot;</span>
 </pre></div>
 </div>
 <p>which becomes a Python dictionary</p>
@@ -498,8 +498,8 @@ title="Print to PDF"
 <div><p>Note that quotes are not required for string values, but can be used if you prefer.</p>
 </div></blockquote>
 <p>To create a list, use the hyphen <code class="docutils literal notranslate"><span class="pre">-</span></code>.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Fred</span><span class="w"></span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Inna</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Fred</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Inna</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Oleh</span><span class="w"> </span>
 </pre></div>
 </div>
@@ -507,15 +507,15 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>These two basic forms can be combined to create complex objects. For example, let’s make up a dictionary of guests and what they’re bringing to a party. Note that indentation (two spaces) is used to create values that are themselves dictionaries or lists (called nesting).</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">guests</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Inna</span><span class="w"></span>
-<span class="w">    </span><span class="nt">bringing</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tacos</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ice cream</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">napkins</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Oleh</span><span class="w"></span>
-<span class="w">    </span><span class="nt">bringing</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pickles</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">guests</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Inna</span>
+<span class="w">    </span><span class="nt">bringing</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tacos</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ice cream</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">napkins</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Oleh</span>
+<span class="w">    </span><span class="nt">bringing</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pickles</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hoagies</span><span class="w">  </span>
 </pre></div>
 </div>
@@ -536,60 +536,60 @@ title="Print to PDF"
 <section id="project-file-sections">
 <h2><span class="section-number">22.3. </span>Project file sections<a class="headerlink" href="#project-file-sections" title="Permalink to this headline">#</a></h2>
 <p>Most project files begin with basic <strong>metadata</strong> about the project.  This is often just a title and description, but it can include whatever details you feel are important to give give context for the project. For example:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;New</span><span class="nv"> </span><span class="s">Language</span><span class="nv"> </span><span class="s">Model</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">UD</span><span class="nv"> </span><span class="s">Data&quot;</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;New</span><span class="nv"> </span><span class="s">Language</span><span class="nv"> </span><span class="s">Model</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">UD</span><span class="nv"> </span><span class="s">Data&quot;</span>
 <span class="nt">authors</span><span class="p">:</span><span class="w"> </span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sudeepta</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Emma</span><span class="w"></span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;This</span><span class="nv"> </span><span class="s">project</span><span class="nv"> </span><span class="s">loads</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Abyssinian</span><span class="nv"> </span><span class="s">UD</span><span class="nv"> </span><span class="s">treebank</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">trains</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">language</span><span class="nv"> </span><span class="s">model</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">tagger</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">parser.&quot;</span><span class="w"></span>
-<span class="nt">date</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">29/12/2021</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sudeepta</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Emma</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;This</span><span class="nv"> </span><span class="s">project</span><span class="nv"> </span><span class="s">loads</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Abyssinian</span><span class="nv"> </span><span class="s">UD</span><span class="nv"> </span><span class="s">treebank</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">trains</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">language</span><span class="nv"> </span><span class="s">model</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">tagger</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">parser.&quot;</span>
+<span class="nt">date</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">29/12/2021</span>
 </pre></div>
 </div>
 <p>The <strong>variables</strong> section lets you clearly declare project settings and variables. These variables can be called and reused within the project using the format <code class="docutils literal notranslate"><span class="pre">${vars.your-variable}</span></code>.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">vars</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;config.cfg&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ner_fashion&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.0.0&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="c1"># Change this variable if you want to use the GPU (gpu_id: 0)</span><span class="w"></span>
-<span class="w">  </span><span class="nt">gpu_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;config.cfg&quot;</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ner_fashion&quot;</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.0.0&quot;</span>
+<span class="w">  </span><span class="c1"># Change this variable if you want to use the GPU (gpu_id: 0)</span>
+<span class="w">  </span><span class="nt">gpu_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1</span>
 </pre></div>
 </div>
 <p>The directories list is a list of project subfolders.  If you want spaCy to create a new folder for you, just add it to the list.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">directories</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;assets&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;assets/conllu&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;training&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;configs&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;corpus&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;packages&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">directories</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;assets&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;assets/conllu&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;training&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;configs&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;corpus&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;packages&quot;</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
 <p>The <strong>assets</strong> section describes the actions to be taken when you call <code class="docutils literal notranslate"><span class="pre">spacy</span> <span class="pre">project</span> <span class="pre">assets</span></code>. In most cases, this will fetch data from a remote source such as GitHub and download it to the computer currently running the project. This action ensures that anyone running the experiment will be using the same data and not something that’s specific to their computer.</p>
 <p>For the example below, let’s say that <code class="docutils literal notranslate"><span class="pre">vars.treebank</span></code> is Yoruba. The code below will clone the <code class="docutils literal notranslate"><span class="pre">New-Languages-for-NLP/Yoruba</span></code> github repository and save all the files in the <code class="docutils literal notranslate"><span class="pre">assets/Yoruba</span></code> folder.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">assets</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;assets/${vars.treebank}&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">git</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://github.com/New-Languages-for-NLP/${vars.treebank}&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;main&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">assets</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;assets/${vars.treebank}&quot;</span>
+<span class="w">    </span><span class="nt">git</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://github.com/New-Languages-for-NLP/${vars.treebank}&quot;</span>
+<span class="w">      </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;main&quot;</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 </pre></div>
 </div>
 <blockquote>
 <div><p>For more, see the <a class="reference external" href="https://spacy.io/usage/projects#data-assets">spaCy docs</a></p>
 </div></blockquote>
 <p>The <strong>workflows</strong> section makes it possible to run several commands in sequence. The most common use of this feature is <code class="docutils literal notranslate"><span class="pre">spacy</span> <span class="pre">project</span> <span class="pre">run</span> <span class="pre">all</span></code>. For example,</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">workflows</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">all</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">convert</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">workflows</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">all</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">convert</span>
 </pre></div>
 </div>
 <p>will run two commands: first, the <code class="docutils literal notranslate"><span class="pre">install</span></code> command, then the <code class="docutils literal notranslate"><span class="pre">convert</span></code> command.  Commands can also be run individually, but the workflow provides a clear sequence in which they are meant to be run.</p>
 <p>Probably the most important section of a <code class="docutils literal notranslate"><span class="pre">project.yml</span></code> file is the <strong>commands</strong> section. This section describes an action or step within the larger workflow. Each action has a <code class="docutils literal notranslate"><span class="pre">name</span></code>. It can also require certain inputs and outputs.  The <code class="docutils literal notranslate"><span class="pre">deps</span></code> section will test that required files are present.  An <code class="docutils literal notranslate"><span class="pre">outputs</span></code> section will confirm that the expected output files were created.  The <code class="docutils literal notranslate"><span class="pre">script</span></code> section works like the command line. You can run several commands in sequence. You can use variables from the <code class="docutils literal notranslate"><span class="pre">variables</span></code> section.  For example, the code below will run a python script called <code class="docutils literal notranslate"><span class="pre">split.py</span></code> to create files needed for model training with the <code class="docutils literal notranslate"><span class="pre">test_size</span></code>, <code class="docutils literal notranslate"><span class="pre">random_state</span></code> and <code class="docutils literal notranslate"><span class="pre">lang</span></code> variables. If there is more than one action in a command, you can add as many as you need.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">commands</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">split</span><span class="w"></span>
-<span class="w">    </span><span class="nt">help</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Split</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">into</span><span class="nv"> </span><span class="s">train,</span><span class="nv"> </span><span class="s">validation,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">test&quot;</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">split</span>
+<span class="w">    </span><span class="nt">help</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Split</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">into</span><span class="nv"> </span><span class="s">train,</span><span class="nv"> </span><span class="s">validation,</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">test&quot;</span>
 <span class="w">    </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;python</span><span class="nv"> </span><span class="s">scripts/split.py</span><span class="nv"> </span><span class="s">${vars.test_size}</span><span class="nv"> </span><span class="s">${vars.random_state}</span><span class="nv"> </span><span class="s">${vars.lang}&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">deps</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;corpus/converted&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">outputs</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;corpus/train.spacy&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;corpus/dev.spacy&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;corpus/test.spacy&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;python</span><span class="nv"> </span><span class="s">scripts/split.py</span><span class="nv"> </span><span class="s">${vars.test_size}</span><span class="nv"> </span><span class="s">${vars.random_state}</span><span class="nv"> </span><span class="s">${vars.lang}&quot;</span>
+<span class="w">    </span><span class="nt">deps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;corpus/converted&quot;</span>
+<span class="w">    </span><span class="nt">outputs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;corpus/train.spacy&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;corpus/dev.spacy&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;corpus/test.spacy&quot;</span>
 </pre></div>
 </div>
 <blockquote>
